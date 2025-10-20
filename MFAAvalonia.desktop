@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=testapp
+Type=Application
+Exec=/usr/share/testapp/testapp
+Icon=/usr/share/icons/testapp.png

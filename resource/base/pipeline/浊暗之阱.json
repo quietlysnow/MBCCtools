@@ -1,0 +1,49 @@
+{
+    "浊暗之阱": {
+        "next": [
+            "内海入口"
+        ],
+        "interrupt": [
+            "狄斯",
+            "危机管理2",
+            "危机管理",
+            "主菜单"
+        ]
+   },
+    "内海入口": {
+        "recognition": "OCR",
+        "expected": "内海",
+        "roi" : [116,557,1074,149],
+        "next": ["浊暗之阱入口"],
+        "interrupt": [
+            "数据间隙",
+            "无尽梦魇"
+        ],
+        "action": "Click"
+    },
+    "浊暗之阱入口": {
+        "recognition": "OCR",
+        "expected": "暗之阱",
+        "action": "Click",
+        "next": ["乐园"],
+        "interrupt": ["切换"]
+    },
+    "乐园": {
+        "recognition": "OCR",
+        "expected": "乐园幻境",
+        "roi" : [983,414,271,190],
+        "action": "Click",
+        "target" : [1063,493,1,1],
+        "next": [
+            "自动扫荡",
+            "关闭界面",
+            "主菜单"
+        ]
+    },
+    "切换": {
+        "recognition": "TemplateMatch",
+        "template": "浊暗之阱.png",
+        "roi" : [468,553,354,161],
+        "action": "Click"
+    }
+}

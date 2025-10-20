@@ -1,0 +1,36 @@
+{
+    "极域搜寻": {
+        "next": ["重构入口2"],
+        "interrupt": [
+            "重构入口",
+            "锈河",
+            "狄斯",
+            "危机管理2",
+            "危机管理",
+            "主菜单"
+        ]
+    },
+    "重构入口": {
+        "recognition": "TemplateMatch",
+        "template": "重构.png",
+        "roi" : [480,217,296,156],
+        "action": "Click",
+        "post_wait_freezes": 50
+    },
+    "重构入口2": {
+        "recognition": "OCR",
+        "expected": ["搜寻"],
+        "roi" : [17,91,335,270],
+        "action": "Click",
+        "next": [
+            "扫荡完成",
+            "扫荡失败"
+        ],
+        "interrupt": [
+            "难度选择",
+            "连续扫荡",
+            "扫荡最大次数"
+        ],
+        "post_wait_freezes": 100
+    }
+}

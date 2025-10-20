@@ -1,0 +1,60 @@
+{
+    "采购办": {
+        "next": [
+            "采购办入口"
+        ],
+        "interrupt": [
+            "危机管理2",
+            "危机管理",
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "采购办入口": {
+        "recognition": "OCR",
+        "expected": ["采购办"],
+        "roi" : [961,497,299,139],
+        "action": "Click",
+        "post_delay":2000,
+        "next":["精选礼包"],
+        "interrupt": ["上滑"]
+    },
+    "精选礼包": {
+        "recognition": "OCR",
+        "expected": [
+            "精选礼包",
+            "禮包",
+            "礼包"
+        ],
+        "action": "Click",
+        "post_delay":400,
+        "next":["精选推荐"],
+        "interrupt": ["上滑"]
+        
+    },
+    "精选推荐": {
+        "recognition": "OCR",
+        "expected": ["精选推荐"],
+        "index": 0,
+        "order_by": "Vertical",
+        "pre_delay":300,
+        "action": "Click",
+        "post_delay":400,
+        "next":["每日体力","结束任务"]
+    },
+    "每日体力": {
+        "recognition": "OCR",
+        "expected":"免费",
+        "roi" : [341,371,265,255],
+        "action": "Click",
+        "next":["购买"]
+    },
+    "购买": {
+        "recognition": "OCR",
+        "expected": "购买",
+        "roi" : [795,519,320,97],
+        "action": "Click",
+        "next":["关闭界面",
+                "主菜单"]
+    }
+}

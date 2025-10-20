@@ -1,0 +1,54 @@
+{
+    "监管": {
+        "next": [
+            "监管入口"
+        ],
+        "interrupt": [
+            "整备中心",
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "监管入口": {
+        "recognition": "OCR",
+        "expected": "监管",
+        "roi": [957,379,116,86],
+        "action": "Click",
+        "next": ["收菜","监管终端"]
+    },
+     "收菜": {
+        "recognition": "TemplateMatch",
+        "template": "一键收取.png",
+        "roi" : [21,85,209,294],
+        "action": "Click",
+        "target" : [139,342,1,1],
+        "next": [
+            "关闭界面"
+        ] 
+    },
+    "监管终端": {
+        "recognition": "TemplateMatch",
+        "template": "监管终端.png",
+        "roi": [21,85,209,294],
+        "action": "Click",
+        "next": ["开始按钮"]
+    },
+    "开始按钮": {
+        "recognition": "TemplateMatch",
+        "template": "开始按钮.png",
+        "action": "Click",
+        "next": ["循环检测"],
+        "post_wait_freezes": 500
+    },
+    "循环检测": {
+        "recognition": "OCR",
+        "expected": ["跳过", "下一位"],
+        "action": "Click",
+        "next": [
+            "关闭界面",
+            "循环检测",
+            "主菜单"
+        ],
+        "post_wait_freezes": 1000
+    }
+}

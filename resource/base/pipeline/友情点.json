@@ -1,0 +1,37 @@
+{
+    "友情点": {
+        "next": ["友情点入口"],
+        "interrupt": [
+            "整备中心",
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "友情点入口": {
+        "recognition": "OCR",
+        "expected": "好友",
+        "roi" : [1096,271,147,103],
+        "action": "Click",
+        "next": [
+            "领取友情点",
+            "主菜单",
+            "结束任务"
+        ],
+        "post_wait_freezes": 300
+    },
+    "领取友情点": {
+        "recognition": "TemplateMatch",
+        "template": "一键领取.png",
+        "action": "Click",
+        "post_delay": 300,
+        "next": ["赠送友情点"]
+    },
+    "赠送友情点": {
+        "recognition": "OCR",
+        "expected": "键赠送",
+        "roi" : [1058,590,185,71],
+        "pre_delay":1000,
+        "action": "Click", 
+        "next": ["主菜单"]
+    }
+}

@@ -1,0 +1,70 @@
+{
+    "启动": {
+        "action": "StartApp",
+        "package": "com.zy.wqmt.cn",
+        "next": [
+            "登录"
+        ],
+        "interrupt": [
+            "关闭公告",
+            "等待"
+        ]
+    },
+    "等待": {
+        "action": "DoNothing",
+        "post_delay": 2000
+    },
+    "关闭公告": {
+        "recognition": "OCR",
+        "expected": "公告",
+        "action":"Click",
+        "target" : [113,65,1,1]
+    },
+    "登录": {
+        "recognition": "OCR",
+        "expected": "进入管理局",
+        "action": "Click",
+        "post_delay": 20000,
+        "post_wait_freezes": 5000
+    },
+    "识别是否有公告遮挡": {
+        "recognition": "OCR",
+        "expected": ["禁闭者"],
+        "roi": [994, 397, 107, 83],
+        "action": "DoNothing",
+        "post_delay": 1000,
+        "next": ["情绪检测"],
+        "on_error": ["点击右下角"]
+    },
+    "点击右下角": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [1236, 512, 1, 1],
+        "post_delay": 1000,
+        "next": ["识别是否有公告遮挡"]
+    },
+    "情绪检测":{
+        "recognition": "OCR",
+        "expected": "情绪检测",
+        "roi" : [885,105,187,61],
+        "action": "Click",
+        "target" : [799,484,1,1],
+        "next":["情绪检测完成"],
+        "post_wait_freezes": 1000
+    },
+    "情绪检测完成":{
+        "recognition": "OCR",
+        "expected": "检测完成",
+        "roi" : [619,372,123,67],
+        "action": "Click",
+        "target" : [67,61,1,1]
+    },
+    "月卡":{
+        "recognition": "TemplateMatch",
+        "template": "月卡.png",
+        "action": "Click",
+        "target" : [799,484,1,1],
+        "next":["关闭界面"],
+        "post_wait_freezes": 1000
+    }   
+}

@@ -1,0 +1,123 @@
+{
+    "name": "MBCCtools",
+    "version": "0.1",
+    "mirrorchyan_rid":"MBCCtools",
+    "mirrorchyan_multiplatform": true,
+    "url": "https://github.com/quietlysnow/MBCCtools",
+    "controller": [
+        {
+            "name": "安卓端",
+            "type": "Adb"
+        },
+        {
+            "name": "桌面端",
+            "type": "Win32",
+            "win32": {
+                "class_regex": ".*",
+                "window_regex": "Visual Studio"
+            }
+        }
+    ],
+    "resource": [
+        {
+            "name": "官服",
+            "path": [
+                "{PROJECT_DIR}/resource/base"
+            ]
+        }
+    ],
+    "task": [
+        {
+            "name": "进入游戏",
+            "entry": "启动"
+        },
+        {
+            "name": "秘盟捐赠",
+            "entry": "密盟",
+            "doc": "默认捐赠狄斯币"
+        },
+        {
+            "name": "好友点数",
+            "entry": "友情点"
+        },
+        {
+            "name": "监管奖励",
+            "entry": "监管"
+        },
+        {
+            "name": "采购办免费礼包",
+            "entry": "采购办"
+        },
+        {
+            "name": "一键派遣",
+            "entry": "派遣"
+        },
+        {
+            "name": "领取体力",
+            "entry": "体力"
+        },
+        {
+            "name": "扫荡浊暗之阱",
+            "entry": "浊暗之阱",
+            "doc": "默认扫荡[b]乐园幻境[/b]"
+        },
+        {
+            "name": "扫荡记忆风暴",
+            "entry": "记忆风暴",
+            "option": [
+                "畸点选择"
+            ],
+            "doc": "扫荡上方选择副本的(已开启)最高难度关卡3次！\n如选中的畸点今日[color:red]未开放[/color]，则本任务会自动扫荡正在开放的畸点"
+        },
+        {
+            "name": "每日体力用途",
+            "entry": "每日体力用途",
+            "option": [
+                "作战区域"
+            ],
+            "doc":"会用所有体力来扫荡该关卡"
+        },
+        {
+            "name": "每日/密令奖励",
+            "entry": "密令"
+        }
+    ],
+    "option": {
+        "作战区域": {
+            "cases": [
+                {
+                    "name": "淘金狂热",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "狄斯币"
+                        }
+                    }
+                },
+                {
+                    "name": "恶兆之种",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "狂厄精粹"
+                        }
+                    }
+                },
+                {
+                    "name": "禁区探查(技能书)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "技能书"
+                        }
+                    }
+                },
+                {
+                    "name": "极域搜寻(重构材料)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "极域搜寻"
+                        }
+                    }
+                }
+            ]
+        }
+    }           
+}

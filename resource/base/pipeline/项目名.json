@@ -1,0 +1,164 @@
+{
+    "侧边点击": {
+        "action": "Click",
+        "target" : [19,24,1,1]
+    },
+    "点击关闭按钮": {
+        "recognition": "TemplateMatch",
+        "template": "关闭按钮.png",
+        "action": "Click",
+        "post_wait_freezes": 500
+    },
+    "返回按钮": {
+        "recognition": "TemplateMatch",
+        "template": "返回按钮.png",
+        "roi" : [11,6,320,79],
+        "action": "Click",
+        "post_wait_freezes": 30
+    },
+    "主菜单": {
+        "recognition": "TemplateMatch",
+        "template": "主菜单.png",
+        "roi" : [11,6,320,79],
+        "action": "Click"
+    },
+    "左滑": {
+        "action": "Swipe",
+        "begin": [1000,372,1,1],
+        "end": [900,369,1,1],
+        "post_wait_freezes": 20
+    },
+    "右滑": {
+        "action": "Swipe",
+        "begin": [800,369,1,1],
+        "end": [1090,372,1,1],
+        "post_wait_freezes": 20
+    },
+    "上滑": {
+        "action": "Swipe",
+        "begin":[219,609,1,1],
+        "end":[222,381,1,1],
+        "post_wait_freezes": 20
+    },
+    "自动扫荡": {
+        "recognition": "OCR",
+        "expected": "扫荡",
+        "roi" : [624,483,290,203],
+        "action": "Click",
+        "post_wait_freezes": 5000
+    },
+    "连续扫荡": {
+        "recognition": "TemplateMatch",
+        "template": "连续扫荡.png",
+        "roi" : [480,606,449,95],
+        "action": "Click",
+        "post_wait_freezes": 50
+    },
+    "扫荡最大次数": {
+        "recognition":"OCR",
+        "expected" : "米诺斯管理系统-体力消耗",
+        "action":"Click",
+        "target" : [827,466,1,1],
+        "next":["自动扫荡"],
+        "post_wait_freezes": 100
+    },
+    "扫荡失败": {
+        "recognition": "OCR",
+        "expected": "不足",
+        "roi" : [497,309,276,87],
+        "action": "Click",
+        "target" : [500,493,1,1],
+        "next": ["主菜单"]
+    },
+    "扫荡完成": {
+        "recognition": "OCR",
+        "expected": "完成",
+        "roi" : [340,593,307,108],
+        "action": "Click",
+        "next": [
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "难度选择": {
+        "recognition": "OCR",
+        "expected": [
+            "MS",
+            "已完成"
+        ],
+        "roi" : [507,422,751,106],
+        "action": "Click",
+        "order_by": "Horizontal",
+        "index": -1
+    },
+    "危机管理": {
+        "recognition": "TemplateMatch",
+        "template": "危机管理.png",
+        "roi" : [887,536,386,174],
+        "action": "Click"
+    },
+    "危机管理2": {
+        "recognition": "OCR",
+        "expected": "危机管理",
+        "roi" : [887,536,386,174],
+        "action": "Click"
+    },
+    "整备中心": {
+        "recognition": "TemplateMatch",
+        "template": "整备中心.png",
+        "roi" : [887,536,386,174],
+        "action": "Click"
+    },
+    "副本未开放": {
+        "recognition": "OCR",
+        "expected": "开放",
+        "roi": [669,505,190,50],
+        "next": ["主菜单"]
+    },
+    "战斗自动扫荡": {
+        "recognition": "TemplateMatch",
+        "template": "",
+        "action": "Click",
+        "post_wait_freezes": 30
+    },
+    "数据间隙": {
+        "recognition": "OCR",
+        "expected": "数据间隙",
+        "next": "左滑",
+        "action": "DoNothing"
+    },
+    "无尽梦魇": {
+        "recognition": "OCR",
+        "expected": "无尽梦",
+        "next": "左滑",
+        "action": "DoNothing"
+    },
+    "关闭界面":{
+        "recognition": "TemplateMatch",
+        "template": "获取物资.png",
+        "action": "Click",
+        "target" : [1208,366,1,1],
+        "post_wait_freezes": 30
+    },
+    "狄斯": {
+        "recognition": "OCR",
+        "expected": "狄斯",
+        "roi" : [898,100,350,151],
+        "action": "Click",
+        "post_wait_freezes": 500
+    },
+    "锈河":{
+        "recognition": "OCR",
+        "expected": "锈河",
+        "roi" : [63,595,1179,115],
+        "action": "Click",
+        "post_wait_freezes": 1000
+    },
+    "结束任务": {
+        "action": "StopTask"
+    },
+    "每日体力用途":{
+        "action":"DoNothing",
+        "next":["狄斯币"]
+    }
+}
