@@ -6,65 +6,161 @@
             "登录"
         ],
         "interrupt": [
-            "关闭公告",
-            "等待"
+            "关闭公告"
         ]
-    },
-    "等待": {
-        "action": "DoNothing",
-        "post_delay": 2000
     },
     "关闭公告": {
         "recognition": "OCR",
         "expected": "公告",
-        "action":"Click",
-        "target" : [113,65,1,1]
+        "action": "Click",
+        "target": [
+            113,
+            65,
+            1,
+            1
+        ],
+        "post_delay": 1000
     },
     "登录": {
         "recognition": "OCR",
         "expected": "进入管理局",
         "action": "Click",
         "post_delay": 20000,
-        "post_wait_freezes": 5000
-    },
-    "识别是否有公告遮挡": {
-        "recognition": "OCR",
-        "expected": ["禁闭者"],
-        "roi": [994, 397, 107, 83],
-        "action": "DoNothing",
-        "post_delay": 1000,
-        "next": ["情绪检测"],
-        "on_error": ["点击右下角"]
+        "next": [
+            "首页"
+        ],
+        "interrupt": [
+            "禁闭者生日",
+            "月卡",
+            "情绪检测",
+            "点击右下角"
+        ]
     },
     "点击右下角": {
-        "recognition": "DirectHit",
+        "recognition": "OCR",
+        "expected": "追踪",
+        "roi": [
+            1156,
+            388,
+            75,
+            66
+        ],
         "action": "Click",
-        "target": [1236, 512, 1, 1],
-        "post_delay": 1000,
-        "next": ["识别是否有公告遮挡"]
+        "target": [
+            1236,
+            512,
+            1,
+            1
+        ]
     },
-    "情绪检测":{
+    "情绪检测": {
         "recognition": "OCR",
         "expected": "情绪检测",
-        "roi" : [885,105,187,61],
+        "roi": [
+            885,
+            105,
+            187,
+            61
+        ],
         "action": "Click",
-        "target" : [799,484,1,1],
-        "next":["情绪检测完成"],
+        "target": [
+            799,
+            484,
+            1,
+            1
+        ],
+        "next": [
+            "情绪检测完成"
+        ],
         "post_wait_freezes": 1000
     },
-    "情绪检测完成":{
+    "情绪检测完成": {
         "recognition": "OCR",
         "expected": "检测完成",
-        "roi" : [619,372,123,67],
+        "roi": [
+            619,
+            372,
+            123,
+            67
+        ],
         "action": "Click",
-        "target" : [67,61,1,1]
-    },
-    "月卡":{
-        "recognition": "TemplateMatch",
-        "template": "月卡.png",
-        "action": "Click",
-        "target" : [799,484,1,1],
-        "next":["关闭界面"],
+        "target": [
+            67,
+            61,
+            1,
+            1
+        ],
         "post_wait_freezes": 1000
-    }   
+    },
+    "月卡": {
+        "recognition": "OCR",
+        "expected": "今日补给",
+        "roi": [
+            552,
+            617,
+            172,
+            71
+        ],
+        "action": "Click",
+        "target": [
+            799,
+            484,
+            1,
+            1
+        ],
+        "next": [
+            "关闭界面"
+        ],
+        "post_wait_freezes": 1000
+    },
+    "禁闭者生日": {
+        "recognition": "OCR",
+        "expected": "生日快乐",
+        "roi": [
+            873,
+            510,
+            266,
+            107
+        ],
+        "action": "Click",
+        "target": [
+            43,
+            41,
+            1,
+            1
+        ],
+        "next": [
+            "生日日历"
+        ],
+        "post_wait_freezes": 1000
+    },
+    "生日日历": {
+        "recognition": "OCR",
+        "expected": "日历",
+        "roi": [
+            945,
+            4,
+            275,
+            79
+        ],
+        "action": "Click",
+        "target": [
+            43,
+            41,
+            1,
+            1
+        ],
+        "post_wait_freezes": 1000
+    },
+    "首页": {
+        "recognition": "TemplateMatch",
+        "template": "首页.png",
+        "roi": [
+            274,
+            533,
+            90,
+            72
+        ],
+        "action": "DoNothing"
+    }
 }

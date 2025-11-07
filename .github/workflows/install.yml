@@ -63,10 +63,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Download MaaFramework
+      - name: Download MBCCtools
         uses: robinraju/release-downloader@v1
         with:
-          repository: MaaXYZ/MaaFramework
+          repository: quietlysnow/MBCCtools
           fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
           latest: true
           out-file-path: "deps"
@@ -110,7 +110,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-${{ matrix.os }}-${{ matrix.arch }}
+          name: MBCCtools-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
 
   changelog:
@@ -148,7 +148,7 @@ jobs:
           for f in *; do
             (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
           done
-          
+
       - uses: softprops/action-gh-release@v2
         with:
           files: assets/*

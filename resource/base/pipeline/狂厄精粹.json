@@ -1,6 +1,8 @@
 {
     "狂厄精粹": {
-        "next": ["恶兆之种2"],
+        "next": [
+            "恶兆之种2"
+        ],
         "interrupt": [
             "恶兆之种",
             "锈河",
@@ -13,14 +15,26 @@
     "恶兆之种": {
         "recognition": "TemplateMatch",
         "template": "狂厄.png",
-        "roi" : [705,19,278,178],
+        "roi": [
+            705,
+            19,
+            278,
+            178
+        ],
         "action": "Click",
         "post_wait_freezes": 50
     },
     "恶兆之种2": {
         "recognition": "OCR",
-        "expected": ["恶兆之种"],
-        "roi" : [7,86,348,283],
+        "expected": [
+            "恶兆之种"
+        ],
+        "roi": [
+            7,
+            86,
+            348,
+            283
+        ],
         "action": "Click",
         "next": [
             "扫荡完成",
@@ -31,6 +45,6 @@
             "连续扫荡",
             "扫荡最大次数"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 500
     }
 }

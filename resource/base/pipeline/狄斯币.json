@@ -31,6 +31,6 @@
             "连续扫荡",
             "扫荡最大次数"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 500
     }
 }

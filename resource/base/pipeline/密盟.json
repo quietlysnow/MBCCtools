@@ -12,8 +12,14 @@
     "密盟入口": {
         "recognition": "OCR",
         "expected": "秘盟",
-        "roi" : [1091,160,145,94],
+        "roi": [
+            1091,
+            160,
+            145,
+            94
+        ],
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "捐赠入口"
         ],
@@ -25,9 +31,17 @@
     "捐赠入口": {
         "recognition": "TemplateMatch",
         "template": "密盟捐赠.png",
-        "roi" : [571,559,695,121],
+        "roi": [
+            571,
+            559,
+            695,
+            121
+        ],
         "action": "Click",
-        "next": ["捐赠完成"],
+        "post_delay": 1000,
+        "next": [
+            "捐赠完成"
+        ],
         "interrupt": [
             "捐赠",
             "关闭界面"
@@ -36,23 +50,51 @@
     "捐赠完成": {
         "recognition": "OCR",
         "expected": "明日可捐赠",
-        "roi" : [120,548,294,97],
-        "next": ["主菜单"],
-        "interrupt": ["关闭界面"]
+        "roi": [
+            120,
+            548,
+            294,
+            97
+        ],
+        "post_delay": 1500,
+        "next": [
+            "主菜单"
+        ],
+        "interrupt": [
+            "关闭界面"
+        ]
     },
     "捐赠": {
         "recognition": "OCR",
         "expected": "全部捐赠",
-        "roi":[114,556,309,96],
+        "roi": [
+            114,
+            556,
+            309,
+            96
+        ],
+        "post_delay": 1500,
         "action": "Click",
-        "next": ["关闭界面"]
+        "next": [
+            "关闭界面"
+        ]
     },
-    "密盟签到":{
+    "密盟签到": {
         "recognition": "OCR",
         "expected": "今日已签到",
-        "roi" : [544,226,486,123],
+        "roi": [
+            544,
+            226,
+            486,
+            123
+        ],
         "action": "Click",
-        "target" : [1208,366,1,1],
-        "post_wait_freezes": 200
+        "target": [
+            1208,
+            366,
+            1,
+            1
+        ],
+        "post_wait_freezes": 500
     }
 }

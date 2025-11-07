@@ -1,7 +1,7 @@
 {
     "name": "MBCCtools",
     "version": "0.1",
-    "mirrorchyan_rid":"MBCCtools",
+    "mirrorchyan_rid": "MBCCtools",
     "mirrorchyan_multiplatform": true,
     "url": "https://github.com/quietlysnow/MBCCtools",
     "controller": [
@@ -29,7 +29,8 @@
     "task": [
         {
             "name": "进入游戏",
-            "entry": "启动"
+            "entry": "启动",
+            "doc": "请注意\n若当日有[color:red]禁闭者生日[/color]，需手动领取生日奖励进入主菜单后再运行"
         },
         {
             "name": "秘盟捐赠",
@@ -50,7 +51,11 @@
         },
         {
             "name": "一键派遣",
-            "entry": "派遣"
+            "entry": "派遣",
+            "option": [
+                "派遣区域"
+            ],
+            "doc": "不会帮你领取声望奖励哦"
         },
         {
             "name": "领取体力",
@@ -75,7 +80,7 @@
             "option": [
                 "作战区域"
             ],
-            "doc":"会用所有体力来扫荡该关卡"
+            "doc": "会用所有体力来扫荡该关卡\n当日关卡未开放会直接跳过"
         },
         {
             "name": "每日/密令奖励",
@@ -86,7 +91,10 @@
         "作战区域": {
             "cases": [
                 {
-                    "name": "淘金狂热",
+                    "name": "无"
+                },
+                {
+                    "name": "淘金狂热（狄斯币）",
                     "pipeline_override": {
                         "每日体力用途": {
                             "next": "狄斯币"
@@ -94,7 +102,7 @@
                     }
                 },
                 {
-                    "name": "恶兆之种",
+                    "name": "恶兆之种（狂厄精粹）",
                     "pipeline_override": {
                         "每日体力用途": {
                             "next": "狂厄精粹"
@@ -116,8 +124,173 @@
                             "next": "极域搜寻"
                         }
                     }
+                },
+                {
+                    "name": "帕尔马废墟(坚韧)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "帕尔马废墟"
+                        },
+                        "职业选择": {
+                            "expected": "坚韧"
+                        },
+                        "确认帕尔马废墟是否开放": {
+                            "expected": "坚韧"
+                        }
+                    }
+                },
+                {
+                    "name": "帕尔马废墟(诡秘)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "帕尔马废墟"
+                        },
+                        "职业选择": {
+                            "expected": "诡秘"
+                        },
+                        "确认帕尔马废墟是否开放": {
+                            "expected": "诡秘"
+                        }
+                    }
+                },
+                {
+                    "name": "帕尔马废墟(精准)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "帕尔马废墟"
+                        },
+                        "职业选择": {
+                            "expected": "精准"
+                        },
+                        "确认帕尔马废墟是否开放": {
+                            "expected": "精准"
+                        }
+                    }
+                },
+                {
+                    "name": "帕尔马废墟(狂暴)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "帕尔马废墟"
+                        },
+                        "职业选择": {
+                            "expected": "狂暴"
+                        },
+                        "确认帕尔马废墟是否开放": {
+                            "expected": "狂暴"
+                        }
+                    }
+                },
+                {
+                    "name": "帕尔马废墟(启迪)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "帕尔马废墟"
+                        },
+                        "职业选择": {
+                            "expected": "启迪"
+                        },
+                        "确认帕尔马废墟是否开放": {
+                            "expected": "启迪"
+                        }
+                    }
+                },
+                {
+                    "name": "帕尔马废墟(异能)",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "帕尔马废墟"
+                        },
+                        "职业选择": {
+                            "expected": "异能"
+                        },
+                        "确认帕尔马废墟是否开放": {
+                            "expected": "异能"
+                        }
+                    }
+                }
+            ]
+        },
+        "畸点选择": {
+            "cases": [
+                {
+                    "name": "记忆畸点",
+                    "pipeline_override": {
+                        "记忆风暴优先选择": {
+                            "expected": "记忆畸点"
+                        },
+                        "确认关卡是否开放": {
+                            "expected": "记忆畸点"
+                        }
+                    }
+                },
+                {
+                    "name": "印象畸点",
+                    "pipeline_override": {
+                        "记忆风暴优先选择": {
+                            "expected": "印象畸点"
+                        },
+                        "确认关卡是否开放": {
+                            "expected": "印象畸点"
+                        }
+                    }
+                },
+                {
+                    "name": "残响畸点",
+                    "pipeline_override": {
+                        "记忆风暴优先选择": {
+                            "expected": "残响畸点"
+                        },
+                        "确认关卡是否开放": {
+                            "expected": "残响畸点"
+                        }
+                    }
+                }
+            ]
+        },
+        "派遣区域": {
+            "cases": [
+                {
+                    "name": "每日任务",
+                    "pipeline_override": {
+                        "派遣区域选择": {
+                            "expected": "每日任务"
+                        }
+                    }
+                },
+                {
+                    "name": "辛迪加",
+                    "pipeline_override": {
+                        "派遣区域选择": {
+                            "expected": "辛迪加"
+                        }
+                    }
+                },
+                {
+                    "name": "新城",
+                    "pipeline_override": {
+                        "派遣区域选择": {
+                            "expected": "新城"
+                        }
+                    }
+                },
+                {
+                    "name": "里湾",
+                    "pipeline_override": {
+                        "派遣区域选择": {
+                            "expected": "里湾"
+                        }
+                    }
+                },
+                {
+                    "name": "砂海",
+                    "pipeline_override": {
+                        "派遣区域选择": {
+                            "expected": "砂海"
+                        }
+                    }
                 }
             ]
         }
-    }           
+    }
 }
