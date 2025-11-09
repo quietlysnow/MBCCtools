@@ -1,4 +1,4 @@
-ame: install
+name: install
 
 on:
   push:
