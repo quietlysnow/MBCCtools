@@ -1,4 +1,4 @@
-name: install
+ame: install
 
 on:
   push:
@@ -63,10 +63,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Download MBCCtools
+      - name: Download MaaFramework
         uses: robinraju/release-downloader@v1
         with:
-          repository: quietlysnow/MBCCtools
+          repository: MaaXYZ/MaaFramework
           fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
           latest: true
           out-file-path: "deps"
@@ -110,7 +110,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MBCCtools-${{ matrix.os }}-${{ matrix.arch }}
+          name: MaaXXX-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
 
   changelog:
