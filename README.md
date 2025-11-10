@@ -1,9 +1,7 @@
 <!-- markdownlint-disable MD033 MD041 -->
-<p align="center">
-  <img alt="LOGO" src="logo.ico" width="256" height="256" />
-</p>
-
 <div align="center">
+
+<img alt="LOGO" src="https://github.com/quietlysnow/MBCCtools/blob/main/resource/base/image/logo.jpg" width="256" height="256" />
 
 # MBCCtools
  
