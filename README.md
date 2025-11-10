@@ -1,88 +1,81 @@
 <!-- markdownlint-disable MD033 MD041 -->
 <p align="center">
-  <img alt="LOGO" src="https://cdn.jsdelivr.net/gh/MaaAssistantArknights/design@main/logo/maa-logo_512x512.png" width="256" height="256" />
+  <img alt="LOGO" src="logo.ico" width="256" height="256" />
 </p>
 
 <div align="center">
 
-# MaaPracticeBoilerplate
-
+# MBCCtools
+ 
+基于MaaFramework的 无期迷途 小助手。图像技术 + 模拟控制，解放双手！  
+由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！
 </div>
 
-本仓库为 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 所提供的项目模板，开发者可基于此模板直接创建自己的 MaaXXX 项目。
+## 说明
 
-> **MaaFramework** 是基于图像识别技术、运用 [MAA](https://github.com/MaaAssistantArknights/MaaAssistantArknights) 开发经验去芜存菁、完全重写的新一代自动化黑盒测试框架。
-> 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
+本项目是基于另一项目MACC(https://github.com/mxia9416/MACC)而诞生的，MACC作者太久未更新且无渠道联系，故本人自行编写了本项目，开发过程有参考MACC。
+本人纯新手，不会代码，使用纯 Pipeline 低代码编写，欢迎大佬指导。
 
-## 即刻开始
+## 功能介绍
 
-- [📄 快速开始](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md)
-- [🎞️ 视频教程](https://www.bilibili.com/video/BV1yr421E7MW)
+目前已有的功能：
 
-## 如何开发
+- 启动游戏:<br>消除广告/禁闭者情绪检测/奖励领取
+- 秘盟捐赠
+- 好友点数
+- 监管奖励
+- 领取免费礼包
+- 一键派遣
+- 领取体力
+- 扫荡作战:<br> 记忆风暴/浊暗之阱/暗域/淘金狂热/恶兆之种/极域搜寻/禁区探查/帕尔马废墟
+- 领取监察密令奖励
+  
+后续会添加其他功能比如刷材料之类的
+## 使用说明
 
-0. 使用右上角 `Use this template` - `Create a new repository` 来基于本模板创建您自己的项目。
+下载地址：<https://github.com/quietlysnow/MBCCtools/releases>
 
-1. 克隆本项目及子项目（地址请修改为您基于本模板创建的新项目地址）。
+### Windows用户
 
-    ```bash
-    git clone https://github.com/MaaXYZ/MaaPracticeBoilerplate.git
-    ```
+- 对于绝大部分用户，请下载 `MBCCtools-win-x86_64.zip`
+- 若确定自己的电脑是 arm 架构，请下载 `MBCCtools-win-aarch64.zip`  
+  请注意！Windows 的电脑几乎全都是 x86_64 的，可能占 99.999%，除非你非常确定自己是 arm，否则别下这个！_
+- 解压后运行 `MFAAvalonia.exe`。
+- 本人没有用过macos,无法给出使用指南。
+## 注意事项
 
-2. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中。
+- 提示“应用程序错误”，一般是缺少运行库，请安装一下 [vc_redist](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+- MAA framework 2.0 版本已支持 mumu 后台保活，会在 run task 时获取 mumu 最前台的 tab
+- 基于MuMu模拟器5，2560*1440（280DPI）平板版开发，其它模拟器或分辨率如遇到问题，可首先尝试上述配置
+- 因MAA基于720p开发图像识别，1280*720(240DPI)理论上有最强适配性，如1080p遇到问题，可换720p尝试
+- 反馈问题请附上日志文件 `debug/maa.log`以及问题界面的截图，谢谢！
 
-3. 下载通用资源子模块（MaaCommonAssets）
+## How to build
 
-    ```bash
-    git submodule update --init --recursive
-    ```
+**如果你要编译源码才看这节，否则直接 [下载](https://github.com/quietlysnow/MBCCtools/releases) 即可**
 
-    请注意，子模块仓库体积较大，请确认您已经成功下载，否则后续 OCR（文字识别）将报错并无识别结果。  
-    若 git 命令始终无法成功下载，也可尝试前往 [Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaCommonAssets&source=ghtempl-readme) 手动下载后解压到 `assets/MaaCommonAssets` 文件夹中，目录结构为 `assets/MaaCommonAssets/OCR`。
-
-4. 配置资源文件。
-
-    ```bash
-    python ./configure.py
-    ```
-
-    若报错 `File Not Found: XXXXXX`，则说明上一步 MaaCommonAssets 未正常下载，请再次检查！
-
-5. 进行开发工作，按您的业务需求修改 `assets` 中的资源文件，请参考 [MaaFramework 相关文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E8%B5%84%E6%BA%90%E5%87%86%E5%A4%87)。
-
-6. 完成开发后，上传您的代码并发布版本。
-
-    ```bash
-    # 配置 git 信息（仅第一次需要，后续不用再配置）
-    git config user.name "您的 GitHub 昵称"
-    git config user.email "您的 GitHub 邮箱"
-    
-    # 提交修改
-    git add .
-    git commit -m "XX 新功能"
-    git push origin HEAD -u
-    ```
-
-7. 发布您的版本
-
-    需要**先**修改仓库设置 `Settings` - `Actions` - `General` - `Read and write permissions` - `Save`
+0. 完整克隆本项目及子项目
 
     ```bash
-    # CI 检测到 tag 会自动进行发版
-    git tag v1.0.0
-    git push origin v1.0.0
+    git clone --recursive https://github.com/quietlysnow/MBCCtools.git
     ```
 
-8. 更多操作，请参考 [个性化配置](./docs/zh_cn/个性化配置.md)（可选）
+1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中
+2. 安装
 
-## 生态共建
+    ```python
+    python ./install.py
+    ```
 
-MAA 正计划建设为一类项目，而非舟的单一软件。
+生成的二进制及相关资源文件在 `install` 目录下
 
-若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX, MXA, MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法！
+## 开发相关
 
-同时，我们也非常欢迎您提出 PR，在 [社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 中添加上您的项目！
+- [MaaFW 开发思路](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF)  
+  MACC 目前使用其中第一种方式（纯 Pipeline 低代码）
+- [Pipeline 流水线协议](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
 
+更多文档请前往 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 主仓库查看
 
 ## 鸣谢
 
