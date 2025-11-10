@@ -13,7 +13,7 @@
 
 ## 说明
 
-本项目是基于另一项目MACC(https://github.com/mxia9416/MACC)而诞生的，MACC作者太久未更新且无渠道联系，故本人自行编写了本项目，开发过程有参考MACC。
+本项目是基于另一项目MACC (https://github.com/mxia9416/MACC) 而诞生的，MACC作者太久未更新且无渠道联系，故本人自行编写了本项目，开发过程有参考MACC。
 本人纯新手，不会代码，使用纯 Pipeline 低代码编写，欢迎大佬指导。
 
 ## 功能介绍
