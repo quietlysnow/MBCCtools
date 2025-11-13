@@ -1,80 +1,90 @@
 <!-- markdownlint-disable MD033 MD041 -->
+<p align="center">
+  <img alt="LOGO" src="https://cdn.jsdelivr.net/gh/MaaAssistantArknights/design@main/logo/maa-logo_512x512.png" width="256" height="256" />
+</p>
+
 <div align="center">
 
-<img alt="LOGO" src="https://github.com/quietlysnow/MBCCtools/blob/main/resource/base/image/logo.jpg" width="256" height="256" />
+# MaaPracticeBoilerplate
 
-# MBCCtools
- 
-基于MaaFramework的 无期迷途 小助手。图像技术 + 模拟控制，解放双手！  
-由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！
 </div>
 
-## 📖 项目说明
+本仓库为 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 所提供的项目模板，开发者可基于此模板直接创建自己的 MaaXXX 项目。
 
-本项目基于 [MACC](https://github.com/mxia9416/MACC) 项目开发，因原项目长期未更新且无法联系作者，故重新编写此项目，开发过程中参考了 MACC 的设计思路。
+> **MaaFramework** 是基于图像识别技术、运用 [MAA](https://github.com/MaaAssistantArknights/MaaAssistantArknights) 开发经验去芜存菁、完全重写的新一代自动化黑盒测试框架。
+> 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
 
-本项目主要使用 Pipeline 低代码方式实现，欢迎各位开发者指导交流。
+## 即刻开始
 
-> ⏰ 项目为个人业余时间开发，随缘更新。发现的 Bug 会找时间修复，建议及时更新最新版本。
+- [📄 快速开始](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md)
+- [🎞️ 视频教程](https://www.bilibili.com/video/BV1yr421E7MW)
 
-### 已实现功能
-- **游戏启动**：关闭广告、禁闭者情绪检测
-- **秘盟捐赠**
-- **好友点数**
-- **日常奖励**：监管奖励、免费礼包、体力领取
-- **每日派遣**：可选区域
-- **体力扫荡**：浊暗之阱、记忆风暴、淘金狂热、恶兆之种、极域搜寻、禁区探查、帕尔马废墟
-- **监察密令奖励**
-  
-后续会添加其他功能比如刷材料之类的
+## 如何开发
 
-## 使用说明
+0. 使用右上角 `Use this template` - `Create a new repository` 来基于本模板创建您自己的项目。
 
-下载地址：<https://github.com/quietlysnow/MBCCtools/releases>
-
-#### Windows 用户
-- **绝大多数用户**：下载 `MBCCtools-win-x86_64.zip`
-- **ARM 架构用户**：下载 `MBCCtools-win-aarch64.zip`  
-  ⚠️ 注意：Windows 设备绝大多数为 x86_64 架构，除非明确知道自己的设备是 ARM 架构，否则请选择 x86_64 版本
-- 解压后运行 `MFAAvalonia.exe`。
-- 本人没有用过macos,无法给出使用指南。
-
-## 注意事项
-
-**应用程序错误**：通常缺少运行库，请安装 [VC++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)
-- **兼容性**：基于 MuMu模拟器5，2560×1440（280DPI）平板版开发
-- **分辨率建议**：
-  - 1280×720 (240DPI)：MAA 原生支持，兼容性最佳
-  - 如遇问题可尝试切换至 720p 分辨率
-
-## 🔧 编译说明
-
-> ⚠️ 仅当需要开发本项目时才需要关注此部分，普通用户请直接[下载发布版](https://github.com/quietlysnow/MBCCtools/releases) 
-
-0. 完整克隆本项目及子项目
+1. 克隆本项目及子项目（地址请修改为您基于本模板创建的新项目地址）。
 
     ```bash
-    git clone --recursive https://github.com/quietlysnow/MBCCtools.git
+    git clone https://github.com/MaaXYZ/MaaPracticeBoilerplate.git
     ```
 
-1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中
-2. 安装
+2. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中。
 
-    ```python
-    python ./install.py
+3. 下载通用资源子模块（MaaCommonAssets）
+
+    ```bash
+    git submodule update --init --recursive
     ```
 
-生成的二进制及相关资源文件在 `install` 目录下
+    请注意，子模块仓库体积较大，请确认您已经成功下载，否则后续 OCR（文字识别）将报错并无识别结果。  
+    若 git 命令始终无法成功下载，也可尝试前往 [Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaCommonAssets&source=ghtempl-readme) 手动下载后解压到 `assets/MaaCommonAssets` 文件夹中，目录结构为 `assets/MaaCommonAssets/OCR`。
 
-## 开发相关
+4. 配置资源文件。
 
-- [MaaFW 开发思路](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF)  
-  MBCCtools 目前使用其中第一种方式（纯 Pipeline 低代码）
-- [Pipeline 流水线协议](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
+    ```bash
+    python ./configure.py
+    ```
 
-更多文档请前往 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 主仓库查看
+    若报错 `File Not Found: XXXXXX`，则说明上一步 MaaCommonAssets 未正常下载，请再次检查！
 
-## 🙏 致谢
+5. 进行开发工作，按您的业务需求修改 `assets` 中的资源文件，请参考 [MaaFramework 相关文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E8%B5%84%E6%BA%90%E5%87%86%E5%A4%87)。
+
+6. 完成开发后，上传您的代码并发布版本。
+
+    ```bash
+    # 配置 git 信息（仅第一次需要，后续不用再配置）
+    git config user.name "您的 GitHub 昵称"
+    git config user.email "您的 GitHub 邮箱"
+    
+    # 提交修改
+    git add .
+    git commit -m "XX 新功能"
+    git push origin HEAD -u
+    ```
+
+7. 发布您的版本
+
+    需要**先**修改仓库设置 `Settings` - `Actions` - `General` - `Read and write permissions` - `Save`
+
+    ```bash
+    # CI 检测到 tag 会自动进行发版
+    git tag v1.0.0
+    git push origin v1.0.0
+    ```
+
+8. 更多操作，请参考 [个性化配置](./docs/zh_cn/个性化配置.md)（可选）
+
+## 生态共建
+
+MAA 正计划建设为一类项目，而非舟的单一软件。
+
+若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX, MXA, MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法！
+
+同时，我们也非常欢迎您提出 PR，在 [社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 中添加上您的项目！
+
+
+## 鸣谢
 
 本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
 
