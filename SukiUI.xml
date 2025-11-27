@@ -247,6 +247,12 @@
             The amount of time in seconds the background transition will take - DEFAULT: 1.0
             </summary>
         </member>
+        <member name="M:SukiUI.Controls.SukiImageBrowser.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
         <member name="P:SukiUI.Controls.SukiMainHost.BackgroundAnimationEnabled">
             <inheritdoc cref="P:SukiUI.Controls.SukiBackground.AnimationEnabled"/>
         </member>
@@ -763,26 +769,46 @@
             <returns>The resource, or <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/> if not found.</returns>
         </member>
         <member name="M:SukiUI.Extensions.WindowExtensions.GetHostScreen(Avalonia.Controls.Window)">
+            <inheritdoc cref="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.GetHostScreen"/>
+        </member>
+        <member name="M:SukiUI.Extensions.WindowExtensions.GetPrimaryScreen(Avalonia.Controls.Window)">
+            <inheritdoc cref="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.GetPrimaryScreen"/>
+        </member>
+        <member name="M:SukiUI.Extensions.WindowExtensions.CenterOnScreen(Avalonia.Controls.Window)">
+            <inheritdoc cref="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.CenterOnScreen"/>
+        </member>
+        <member name="M:SukiUI.Extensions.WindowExtensions.CenterOnScreen(Avalonia.Controls.Window,Avalonia.Platform.Screen)">
+            <inheritdoc cref="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.CenterOnScreen(Avalonia.Platform.Screen)"/>
+        </member>
+        <member name="M:SukiUI.Extensions.WindowExtensions.ConstrainMaxSizeToScreenRatio(Avalonia.Controls.Window,System.Double,System.Double)">
+            <inheritdoc cref="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.ConstrainMaxSizeToScreenRatio(System.Double,System.Double)"/>
+        </member>
+        <member name="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.GetHostScreen">
             <summary>
             Gets the screen that contains the largest area of the window.
             </summary>
             <param name="window"></param>
             <returns></returns>
         </member>
-        <member name="M:SukiUI.Extensions.WindowExtensions.CenterOnScreen(Avalonia.Controls.Window)">
+        <member name="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.GetPrimaryScreen">
+            <summary>
+            获取主屏幕
+            </summary>
+        </member>
+        <member name="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.CenterOnScreen">
             <summary>
             Centers the window on the screen that contains the largest area of the window.
             </summary>
             <param name="window"></param>
         </member>
-        <member name="M:SukiUI.Extensions.WindowExtensions.CenterOnScreen(Avalonia.Controls.Window,Avalonia.Platform.Screen)">
+        <member name="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.CenterOnScreen(Avalonia.Platform.Screen)">
             <summary>
             Centers the window on the specified screen.
             </summary>
             <param name="window"></param>
             <param name="screen"></param>
         </member>
-        <member name="M:SukiUI.Extensions.WindowExtensions.ConstrainMaxSizeToScreenRatio(Avalonia.Controls.Window,System.Double,System.Double)">
+        <member name="M:SukiUI.Extensions.WindowExtensions.&lt;G&gt;$864910494204C0133ADFC7BCA028FD36.ConstrainMaxSizeToScreenRatio(System.Double,System.Double)">
             <summary>
             Constrain the maximum size of the window to a ratio of the screen size.
             </summary>

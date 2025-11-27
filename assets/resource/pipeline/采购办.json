@@ -38,7 +38,7 @@
             "礼包"
         ],
         "action": "Click",
-        "post_delay": 400,
+        "post_delay": 1000,
         "next": [
             "精选推荐"
         ],
@@ -70,6 +70,7 @@
             255
         ],
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "购买"
         ]

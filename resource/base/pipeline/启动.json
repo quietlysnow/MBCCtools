@@ -27,11 +27,20 @@
         "action": "Click",
         "post_delay": 20000,
         "next": [
-            "情绪检测"
+            "等待间隔"
+        ]
+    },
+    "等待间隔": {
+        "action": "DoNothing",
+        "post_delay": 2000,
+        "next": [
+            "首页"
         ],
         "interrupt": [
             "禁闭者生日",
             "月卡",
+            "情绪检测",
+            "卓雅皮肤",
             "点击右下角"
         ]
     },
@@ -50,11 +59,14 @@
             512,
             1,
             1
+        ],
+        "next": [
+            "等待2S"
         ]
     },
     "情绪检测": {
         "recognition": "OCR",
-        "expected": "情绪检测",
+        "expected": "检测",
         "roi": [
             885,
             105,
@@ -84,10 +96,13 @@
         ],
         "action": "Click",
         "target": [
-            67,
-            61,
+            12,
+            15,
             1,
             1
+        ],
+        "next": [
+            "等待2S"
         ],
         "post_wait_freezes": 1000
     },
@@ -114,7 +129,7 @@
     },
     "禁闭者生日": {
         "recognition": "OCR",
-        "expected": "生日快乐",
+        "expected": "快乐",
         "roi": [
             873,
             510,
@@ -149,6 +164,9 @@
             1,
             1
         ],
+        "next": [
+            "等待2S"
+        ],
         "post_wait_freezes": 1000
     },
     "首页": {
@@ -161,5 +179,20 @@
             72
         ],
         "action": "DoNothing"
+    },
+    "卓雅皮肤": {
+        "recognition": "TemplateMatch",
+        "template": "卓雅皮肤.png",
+        "action": "Click",
+        "target": [
+            1092,
+            97,
+            1,
+            1
+        ]
+    },
+    "等待2S": {
+        "action": "DoNothing",
+        "post_delay": 2000
     }
 }

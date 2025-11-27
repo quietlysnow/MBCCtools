@@ -97,6 +97,7 @@
         "next": [
             "跳过"
         ],
+        "timeout": 4000,
         "post_wait_freezes": 1000
     },
     "检查选项": {

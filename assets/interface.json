@@ -1,6 +1,6 @@
 {
     "name": "MBCCtools",
-    "version": "1.1.1",
+    "version": "v1.2",
     "mirrorchyan_rid": "MBCCtools",
     "mirrorchyan_multiplatform": true,
     "url": "https://github.com/quietlysnow/MBCCtools",
@@ -85,6 +85,10 @@
         {
             "name": "每日/密令奖励",
             "entry": "密令"
+        },
+        {
+            "name": "巡游奖励",
+            "entry": "时尚巡游"
         }
     ],
     "option": {
