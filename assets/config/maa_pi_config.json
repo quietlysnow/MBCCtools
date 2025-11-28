@@ -1,0 +1,19 @@
+{
+    "resource": "官服",
+    "controller": {
+        "name": "安卓端"
+    },
+    "adb": {
+        "adb_path": "D:/MuMu Player 12/nx_main/adb.exe",
+        "address": "127.0.0.1:16384",
+        "config": {
+            "extras": {
+                "mumu": {
+                    "enable": true,
+                    "index": 0,
+                    "path": "D:/MuMu Player 12"
+                }
+            }
+        }
+    }
+}
