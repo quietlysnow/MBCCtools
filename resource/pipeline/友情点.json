@@ -20,8 +20,7 @@
         ],
         "action": "Click",
         "next": [
-            "领取友情点",
-            "主菜单"
+            "领取友情点"
         ],
         "post_wait_freezes": 300
     },

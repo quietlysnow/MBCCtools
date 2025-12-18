@@ -92,7 +92,11 @@
         ],
         "next": [
             "处理每日弹窗"
-        ]
+        ],
+        "on_error": [
+            "每周奖励"
+        ],
+        "timeout": 3000
     },
     "处理每日弹窗": {
         "recognition": "TemplateMatch",
@@ -107,6 +111,7 @@
         "next": [
             "每周奖励"
         ],
+        "timeout": 2000,
         "post_wait_freezes": 1000
     },
     "每周奖励": {
@@ -168,11 +173,12 @@
         "next": [
             "密令奖励"
         ],
+        "timeout": 2000,
         "post_wait_freezes": 1000
     },
     "密令奖励": {
         "recognition": "OCR",
-        "expected": "密令",
+        "expected": "密",
         "roi": [
             360,
             331,
@@ -184,7 +190,7 @@
             "识别密令奖励领取"
         ],
         "on_error": [
-            "主菜单"
+            "通行证完成后跳转"
         ],
         "timeout": 4000,
         "post_wait_freezes": 200
@@ -212,7 +218,7 @@
             "处理密令弹窗"
         ],
         "on_error": [
-            "主菜单"
+            "通行证完成后跳转"
         ],
         "timeout": 4000
     },
@@ -227,8 +233,14 @@
             1
         ],
         "next": [
-            "主菜单"
+            "通行证完成后跳转"
         ],
+        "timeout": 2000,
         "post_wait_freezes": 1000
+    },
+    "通行证完成后跳转": {
+        "next": [
+            "主菜单"
+        ]
     }
 }
