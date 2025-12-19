@@ -11,7 +11,9 @@
       "Bash(git cat-file:*)",
       "Bash(git -C \"f:/MBCCtools\" status --porcelain)",
       "Bash(git -C \"f:/MBCCtools\" diff --name-only --diff-filter=D)",
-      "Bash(git -C \"f:/MBCCtools\" show 271748e:assets/interface.json)"
+      "Bash(git -C \"f:/MBCCtools\" show 271748e:assets/interface.json)",
+      "Bash(git tag:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

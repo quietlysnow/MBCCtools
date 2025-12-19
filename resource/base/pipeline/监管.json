@@ -1,0 +1,132 @@
+{
+    "监管": {
+        "next": [
+            "监管入口"
+        ],
+        "interrupt": [
+            "整备中心",
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "监管入口": {
+        "recognition": "OCR",
+        "expected": "监管",
+        "roi": [
+            957,
+            379,
+            116,
+            86
+        ],
+        "action": "Click",
+        "next": [
+            "收菜",
+            "监管终端"
+        ]
+    },
+    "收菜": {
+        "recognition": "TemplateMatch",
+        "template": "一键收取.png",
+        "roi": [
+            21,
+            85,
+            209,
+            294
+        ],
+        "action": "Click",
+        "target": [
+            139,
+            342,
+            1,
+            1
+        ],
+        "post_wait_freezes": 500,
+        "next": [
+            "监管终端"
+        ],
+        "interrupt": [
+            "关闭界面"
+        ]
+    },
+    "监管终端": {
+        "recognition": "TemplateMatch",
+        "template": "监管终端.png",
+        "roi": [
+            21,
+            85,
+            209,
+            294
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "开始按钮"
+        ]
+    },
+    "开始按钮": {
+        "recognition": "TemplateMatch",
+        "template": "开始按钮.png",
+        "action": "Click",
+        "next": [
+            "跳过"
+        ],
+        "post_wait_freezes": 2000
+    },
+    "跳过": {
+        "recognition": "OCR",
+        "expected": "跳过",
+        "action": "Click",
+        "next": [
+            "监管关闭界面"
+        ],
+        "interrupt": [
+            "检查选项"
+        ],
+        "on_error": [
+            "主菜单"
+        ],
+        "timeout": 4000,
+        "post_wait_freezes": 2000
+    },
+    "下一个": {
+        "recognition": "TemplateMatch",
+        "template": "下一位.png",
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "跳过"
+        ],
+        "timeout": 4000,
+        "post_wait_freezes": 1000
+    },
+    "检查选项": {
+        "recognition": "TemplateMatch",
+        "template": "选择对话.png",
+        "roi": [
+            1129,
+            526,
+            84,
+            146
+        ],
+        "action": "Click",
+        "order_by": "Vertical",
+        "index": 0,
+        "post_wait_freezes": 2000
+    },
+    "监管关闭界面": {
+        "recognition": "TemplateMatch",
+        "template": "获取物资.png",
+        "action": "Click",
+        "target": [
+            1208,
+            366,
+            1,
+            1
+        ],
+        "next": [
+            "下一个"
+        ],
+        "post_wait_freezes": 300
+    }
+}

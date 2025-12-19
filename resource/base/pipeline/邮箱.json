@@ -1,0 +1,46 @@
+{
+    "邮箱": {
+        "next": [
+            "邮箱入口"
+        ],
+        "interrupt": [
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "邮箱入口": {
+        "recognition": "OCR",
+        "expected": [
+            "邮箱",
+            "邮"
+        ],
+        "roi": [
+            35,
+            412,
+            120,
+            47
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "领取邮件"
+        ],
+        "interrupt": [
+            "主菜单",
+            "返回按钮"
+        ]
+    },
+    "领取邮件": {
+        "recognition": "TemplateMatch",
+        "template": "领取邮件.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "主菜单"
+        ],
+        "interrupt": [
+            "关闭公告",
+            "返回按钮"
+        ]
+    }
+}

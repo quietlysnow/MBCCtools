@@ -22,7 +22,7 @@
         {
             "name": "官服",
             "path": [
-                "{PROJECT_DIR}/resource"
+                "{PROJECT_DIR}/resource/base"
             ]
         }
     ],

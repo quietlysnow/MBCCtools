@@ -1,0 +1,64 @@
+{
+    "时尚巡游": {
+        "next": [
+            "领取时尚巡游奖励"
+        ],
+        "interrupt": [
+            "危机管理",
+            "返回按钮",
+            "主菜单"
+        ]
+    },
+    "领取时尚巡游奖励": {
+        "recognition": "TemplateMatch",
+        "template": "时尚巡游.png",
+        "roi": [
+            382,
+            14,
+            248,
+            134
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "识别巡游每日奖励"
+        ]
+    },
+    "识别巡游每日奖励": {
+        "recognition": "OCR",
+        "expected": "每日奖励",
+        "roi": [
+            26,
+            127,
+            399,
+            93
+        ],
+        "action": "DoNothing",
+        "next": [
+            "领取每日奖励（巡游）"
+        ],
+        "on_error": [
+            "主菜单"
+        ],
+        "timeout": 3000
+    },
+    "领取每日奖励（巡游）": {
+        "recognition": "OCR",
+        "expected": "每日奖励",
+        "roi": [
+            26,
+            127,
+            399,
+            93
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "主菜单"
+        ],
+        "interrupt": [
+            "关闭界面",
+            "侧边点击"
+        ]
+    }
+}

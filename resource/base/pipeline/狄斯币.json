@@ -1,0 +1,36 @@
+{
+    "狄斯币": {
+        "next": ["狄斯币入口2"],
+        "interrupt": [
+            "狄斯币入口",
+            "锈河",
+            "狄斯",
+            "危机管理2",
+            "危机管理",
+            "主菜单"
+        ]
+    },
+    "狄斯币入口": {
+        "recognition": "TemplateMatch",
+        "template": "狄斯币.png",
+        "roi" : [704,29,296,147],
+        "action": "Click",
+        "post_wait_freezes": 50
+    },
+    "狄斯币入口2": {
+        "recognition": "OCR",
+        "expected": ["淘金狂热"],
+        "roi":[29,105,309,239],
+        "action": "Click",
+        "next": [
+            "扫荡完成",
+            "扫荡失败"
+        ],
+        "interrupt": [
+            "难度选择",
+            "连续扫荡",
+            "扫荡最大次数"
+        ],
+        "post_wait_freezes": 500
+    }
+}
