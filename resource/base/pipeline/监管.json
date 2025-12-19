@@ -1,12 +1,10 @@
 {
     "监管": {
         "next": [
-            "监管入口"
-        ],
-        "interrupt": [
-            "整备中心",
-            "主菜单",
-            "返回按钮"
+            "监管入口",
+            "[JumpBack]整备中心",
+            "[JumpBack]主菜单",
+            "[JumpBack]返回按钮"
         ]
     },
     "监管入口": {
@@ -42,10 +40,8 @@
         ],
         "post_wait_freezes": 500,
         "next": [
-            "监管终端"
-        ],
-        "interrupt": [
-            "关闭界面"
+            "监管终端",
+            "[JumpBack]关闭界面"
         ]
     },
     "监管终端": {
@@ -78,10 +74,8 @@
         "expected": "跳过",
         "action": "Click",
         "next": [
-            "监管关闭界面"
-        ],
-        "interrupt": [
-            "检查选项"
+            "监管关闭界面",
+            "[JumpBack]检查选项"
         ],
         "on_error": [
             "主菜单"

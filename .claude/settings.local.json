@@ -13,7 +13,8 @@
       "Bash(git -C \"f:/MBCCtools\" diff --name-only --diff-filter=D)",
       "Bash(git -C \"f:/MBCCtools\" show 271748e:assets/interface.json)",
       "Bash(git tag:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(python migrate_pipeline_v5.py:*)"
     ],
     "deny": [],
     "ask": []

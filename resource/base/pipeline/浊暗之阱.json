@@ -1,13 +1,11 @@
 {
     "浊暗之阱": {
         "next": [
-            "内海入口"
-        ],
-        "interrupt": [
-            "狄斯",
-            "危机管理2",
-            "危机管理",
-            "主菜单"
+            "内海入口",
+            "[JumpBack]狄斯",
+            "[JumpBack]危机管理2",
+            "[JumpBack]危机管理",
+            "[JumpBack]主菜单"
         ]
     },
     "内海入口": {
@@ -21,11 +19,9 @@
         ],
         "post_delay": 1000,
         "next": [
-            "浊暗之阱入口"
-        ],
-        "interrupt": [
-            "数据间隙",
-            "无尽梦魇"
+            "浊暗之阱入口",
+            "[JumpBack]数据间隙",
+            "[JumpBack]无尽梦魇"
         ],
         "action": "Click"
     },
@@ -35,10 +31,8 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
-            "乐园"
-        ],
-        "interrupt": [
-            "切换"
+            "乐园",
+            "[JumpBack]切换"
         ]
     },
     "切换": {
@@ -85,11 +79,9 @@
         "action": "Click",
         "post_delay": 2000,
         "next": [
-            "主菜单"
-        ],
-        "interrupt": [
-            "关闭界面",
-            "侧边点击"
+            "主菜单",
+            "[JumpBack]关闭界面",
+            "[JumpBack]侧边点击"
         ]
     }
 }

@@ -1,11 +1,9 @@
 {
     "邮箱": {
         "next": [
-            "邮箱入口"
-        ],
-        "interrupt": [
-            "主菜单",
-            "返回按钮"
+            "邮箱入口",
+            "[JumpBack]主菜单",
+            "[JumpBack]返回按钮"
         ]
     },
     "邮箱入口": {
@@ -23,11 +21,9 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
-            "领取邮件"
-        ],
-        "interrupt": [
-            "主菜单",
-            "返回按钮"
+            "领取邮件",
+            "[JumpBack]主菜单",
+            "[JumpBack]返回按钮"
         ]
     },
     "领取邮件": {
@@ -36,11 +32,9 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
-            "主菜单"
-        ],
-        "interrupt": [
-            "关闭公告",
-            "返回按钮"
+            "主菜单",
+            "[JumpBack]关闭公告",
+            "[JumpBack]返回按钮"
         ]
     }
 }

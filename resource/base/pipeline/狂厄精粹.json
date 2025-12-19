@@ -1,15 +1,13 @@
 {
     "狂厄精粹": {
         "next": [
-            "恶兆之种2"
-        ],
-        "interrupt": [
-            "恶兆之种",
-            "锈河",
-            "狄斯",
-            "危机管理2",
-            "危机管理",
-            "主菜单"
+            "恶兆之种2",
+            "[JumpBack]恶兆之种",
+            "[JumpBack]锈河",
+            "[JumpBack]狄斯",
+            "[JumpBack]危机管理2",
+            "[JumpBack]危机管理",
+            "[JumpBack]主菜单"
         ]
     },
     "恶兆之种": {
@@ -38,12 +36,10 @@
         "action": "Click",
         "next": [
             "扫荡完成",
-            "扫荡失败"
-        ],
-        "interrupt": [
-            "难度选择",
-            "连续扫荡",
-            "扫荡最大次数"
+            "扫荡失败",
+            "[JumpBack]难度选择",
+            "[JumpBack]连续扫荡",
+            "[JumpBack]扫荡最大次数"
         ],
         "post_wait_freezes": 500
     }
