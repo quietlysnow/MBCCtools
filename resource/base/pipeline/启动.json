@@ -1,194 +1,658 @@
 {
-    "启动": {
-        "action": "StartApp",
-        "package": "com.zy.wqmt.cn",
-        "next": [
-            "登录",
-            "[JumpBack]关闭公告"
-        ]
+  "$__mpe_config_启动": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": 929.5,
+        "y": 911,
+        "zoom": 1
+      },
+      "nodeOrderMap": {
+        "p_57": 0,
+        "p_58": 1,
+        "p_59": 2,
+        "p_60": 3,
+        "p_61": 4,
+        "p_62": 5,
+        "p_63": 6,
+        "p_64": 7,
+        "p_65": 8,
+        "p_66": 9,
+        "p_67": 10,
+        "p_68": 11,
+        "p_69": 12,
+        "p_70": 13,
+        "p_71": 14,
+        "p_72": 15,
+        "p_73": 16,
+        "p_74": 17,
+        "p_75": 18,
+        "p_76": 19,
+        "p_77": 20,
+        "p_78": 21,
+        "p_79": 22,
+        "p_80": 23
+      },
+      "nextOrderNumber": 25,
+      "filename": "启动",
+      "version": "v0.11.4"
+    }
+  },
+  "启动": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
     },
-    "关闭公告": {
-        "recognition": "OCR",
-        "expected": "公告",
-        "action": "Click",
+    "action": {
+      "type": "StartApp",
+      "param": {
+        "package": "com.zy.wqmt.cn"
+      }
+    },
+    "post_delay": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": -1001,
+        "y": -422
+      }
+    },
+    "next": [
+      "PreLogin_Handler"
+    ]
+  },
+  "关闭公告": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "公告"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
         "target": [
-            113,
-            65,
-            1,
-            1
-        ],
-        "post_delay": 1000
-    },
-    "登录": {
-        "recognition": "OCR",
-        "expected": "进入管理局",
-        "action": "Click",
-        "post_delay": 20000,
-        "next": [
-            "等待间隔"
+          12,
+          15,
+          1,
+          1
         ]
+      }
     },
-    "等待间隔": {
-        "action": "DoNothing",
-        "post_delay": 2000,
-        "next": [
-            "首页",
-            "[JumpBack]禁闭者生日",
-            "[JumpBack]月卡",
-            "[JumpBack]情绪检测",
-            "[JumpBack]卓雅皮肤",
-            "[JumpBack]点击右下角"
-        ]
+    "post_delay": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": -304,
+        "y": -589
+      }
+    }
+  },
+  "登录": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "进入管理局"
+      }
     },
-    "点击右下角": {
-        "recognition": "OCR",
-        "expected": "追踪",
-        "roi": [
-            1156,
-            388,
-            75,
-            66
-        ],
-        "action": "Click",
-        "target": [
-            1236,
-            512,
-            1,
-            1
-        ],
-        "next": [
-            "等待2S"
-        ]
+    "action": {
+      "type": "Click",
+      "param": {}
     },
-    "情绪检测": {
-        "recognition": "OCR",
+    "post_delay": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": -303,
+        "y": -340
+      }
+    },
+    "next": [
+      "PostLogin_Handler"
+    ]
+  },
+  "情绪检测": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "检测",
         "roi": [
-            885,
-            105,
-            187,
-            61
-        ],
-        "action": "Click",
-        "target": [
-            799,
-            484,
-            1,
-            1
-        ],
-        "next": [
-            "情绪检测完成"
-        ],
-        "post_wait_freezes": 1000
+          885,
+          105,
+          187,
+          61
+        ]
+      }
     },
-    "情绪检测完成": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          799,
+          484,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 763,
+        "y": -431
+      }
+    },
+    "next": [
+      "情绪检测完成",
+      "前往补测"
+    ]
+  },
+  "情绪检测完成": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "检测完成",
         "roi": [
-            619,
-            372,
-            123,
-            67
-        ],
-        "action": "Click",
-        "target": [
-            12,
-            15,
-            1,
-            1
-        ],
-        "next": [
-            "等待2S"
-        ],
-        "post_wait_freezes": 1000
+          619,
+          372,
+          123,
+          67
+        ]
+      }
     },
-    "月卡": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          12,
+          15,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 1032,
+        "y": -615
+      }
+    },
+    "next": [
+      "PostLogin_Back"
+    ]
+  },
+  "月卡": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "今日补给",
         "roi": [
-            552,
-            617,
-            172,
-            71
-        ],
-        "action": "Click",
-        "target": [
-            799,
-            484,
-            1,
-            1
-        ],
-        "next": [
-            "关闭界面"
-        ],
-        "post_wait_freezes": 1000
+          552,
+          617,
+          172,
+          71
+        ]
+      }
     },
-    "禁闭者生日": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          799,
+          484,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 770,
+        "y": -109
+      }
+    },
+    "next": [
+      "关闭界面"
+    ]
+  },
+  "禁闭者生日": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "快乐",
         "roi": [
-            873,
-            510,
-            266,
-            107
-        ],
-        "action": "Click",
-        "target": [
-            43,
-            41,
-            1,
-            1
-        ],
-        "next": [
-            "生日日历"
-        ],
-        "post_wait_freezes": 1000
+          873,
+          510,
+          266,
+          107
+        ]
+      }
     },
-    "生日日历": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          43,
+          41,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 773,
+        "y": 364
+      }
+    },
+    "next": [
+      "生日日历"
+    ]
+  },
+  "生日日历": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "日历",
         "roi": [
-            945,
-            4,
-            275,
-            79
-        ],
-        "action": "Click",
-        "target": [
-            43,
-            41,
-            1,
-            1
-        ],
-        "next": [
-            "等待2S"
-        ],
-        "post_wait_freezes": 1000
-    },
-    "首页": {
-        "recognition": "TemplateMatch",
-        "template": "首页.png",
-        "roi": [
-            274,
-            533,
-            90,
-            72
-        ],
-        "action": "DoNothing"
-    },
-    "卓雅皮肤": {
-        "recognition": "TemplateMatch",
-        "template": "卓雅皮肤.png",
-        "action": "Click",
-        "target": [
-            1092,
-            97,
-            1,
-            1
+          945,
+          4,
+          275,
+          79
         ]
+      }
     },
-    "等待2S": {
-        "action": "DoNothing",
-        "post_delay": 2000
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          43,
+          41,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 1012,
+        "y": 362
+      }
+    },
+    "next": [
+      "PostLogin_Back"
+    ]
+  },
+  "首页": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          1018,
+          422,
+          34,
+          40
+        ],
+        "expected": [
+          "禁"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 758,
+        "y": 813
+      }
+    },
+    "next": [
+      "等待2S"
+    ]
+  },
+  "卓雅皮肤": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "卓雅皮肤.png"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1092,
+          97,
+          1,
+          1
+        ]
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 769,
+        "y": 177
+      }
+    },
+    "next": [
+      "PostLogin_Back"
+    ]
+  },
+  "等待2S": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_delay": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 2058,
+        "y": 777
+      }
     }
+  },
+  "PreLogin_Handler": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 30000,
+    "$__mpe_code": {
+      "position": {
+        "x": -688,
+        "y": -455
+      }
+    },
+    "next": [
+      "登录",
+      {
+        "name": "关闭公告",
+        "jump_back": true
+      }
+    ],
+    "on_error": [
+      "PreLogin_Handler_Exception"
+    ]
+  },
+  "PostLogin_Handler": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 15000,
+    "$__mpe_code": {
+      "position": {
+        "x": 377,
+        "y": -264
+      }
+    },
+    "next": [
+      "情绪检测",
+      "卓雅皮肤",
+      "禁闭者生日",
+      {
+        "name": "月卡",
+        "jump_back": true
+      },
+      "首页",
+      "月卡提示 - 取消",
+      "每秒执行"
+    ],
+    "on_error": [
+      "PreLogin_Handler_Exception"
+    ]
+  },
+  "PostLogin_Back": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1489,
+        "y": -146
+      }
+    },
+    "next": [
+      "PostLogin_Handler"
+    ]
+  },
+  "月卡提示 - 取消": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "取消"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 771,
+        "y": 657
+      }
+    },
+    "next": [
+      "点击取消"
+    ]
+  },
+  "点击取消": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": "月卡提示 - 取消"
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1027,
+        "y": 657
+      }
+    }
+  },
+  "点击空白_左上角": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          12,
+          15,
+          1,
+          1
+        ]
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1003,
+        "y": 1007
+      }
+    },
+    "next": [
+      "PostLogin_Back"
+    ]
+  },
+  "每秒执行": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "式"
+        ],
+        "roi": [
+          1170,
+          661,
+          27,
+          35
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "rate_limit": 700,
+    "$__mpe_code": {
+      "position": {
+        "x": 758,
+        "y": 1007
+      }
+    },
+    "next": [
+      "点击空白_左上角"
+    ]
+  },
+  "关闭公告_Exception": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "公告"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          113,
+          65,
+          1,
+          1
+        ]
+      }
+    },
+    "post_delay": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": -137,
+        "y": -12
+      }
+    }
+  },
+  "登录_Exception": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "进入管理局"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_delay": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": -138,
+        "y": 233
+      }
+    }
+  },
+  "PreLogin_Handler_Exception": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": -478,
+        "y": 7
+      }
+    },
+    "next": [
+      {
+        "name": "关闭公告_Exception",
+        "jump_back": true
+      },
+      {
+        "name": "登录_Exception",
+        "jump_back": true
+      },
+      "都没有"
+    ]
+  },
+  "都没有": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": -138,
+        "y": 440
+      }
+    },
+    "next": [
+      "PostLogin_Handler"
+    ]
+  },
+  "$__mpe_external_关闭界面_启动": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1046,
+        "y": -65
+      }
+    }
+  },
+  "前往补测": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "前往补测"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1032,
+        "y": -325
+      }
+    },
+    "next": [
+      "情绪检测"
+    ]
+  }
 }
