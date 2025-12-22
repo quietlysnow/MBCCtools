@@ -78,6 +78,6 @@ Please visit the [MaaFramework](https://github.com/MaaXYZ/MaaFramework) main rep
 
 This project is powered by **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)**!
 
-Thanks to the following developers for their contributions to this project (Replace the links below with your own project address if forking):
+Thanks to the following developers for their contributions to this project :
 
-[![Contributors](https://contrib.rocks/image?repo=MaaXYZ/MaaFramework&max=1000)](https://github.com/MaaXYZ/MaaFramework/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=quietlysnow/MBCCtools&max=1000)](https://github.com/quietlysnow/MBCCtools/graphs/contributors)
