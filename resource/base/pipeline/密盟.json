@@ -11,18 +11,9 @@
     "timeout": 3500,
     "next": [
       "密盟入口",
-      {
-        "name": "整备中心",
-        "jump_back": true
-      },
-      {
-        "name": "主菜单",
-        "jump_back": true
-      },
-      {
-        "name": "返回按钮",
-        "jump_back": true
-      }
+      "[JumpBack]整备中心",
+      "[JumpBack]主菜单",
+      "[JumpBack]返回按钮"
     ],
     "on_error": [
       "PostLogin_Handler_Exception"
@@ -45,17 +36,11 @@
       "type": "Click",
       "param": {}
     },
-    "post_delay": 1000,
+    "post_delay": 2000,
     "next": [
-      "捐赠入口",
-      {
-        "name": "关闭界面",
-        "jump_back": true
-      },
-      {
-        "name": "密盟签到",
-        "jump_back": true
-      }
+      "[JumpBack]密盟签到",
+      "[JumpBack]关闭界面",
+      "捐赠入口"
     ]
   },
   "捐赠入口": {
@@ -78,14 +63,8 @@
     "post_delay": 1000,
     "next": [
       "捐赠完成",
-      {
-        "name": "捐赠",
-        "jump_back": true
-      },
-      {
-        "name": "关闭界面",
-        "jump_back": true
-      }
+      "[JumpBack]捐赠",
+      "[JumpBack]关闭界面"
     ]
   },
   "捐赠完成": {
@@ -108,10 +87,7 @@
     "post_delay": 1500,
     "next": [
       "主菜单",
-      {
-        "name": "关闭界面",
-        "jump_back": true
-      }
+      "[JumpBack]关闭界面"
     ]
   },
   "捐赠": {
@@ -160,6 +136,6 @@
         ]
       }
     },
-    "post_wait_freezes": 500
+    "post_wait_freezes": 10000
   }
 }
