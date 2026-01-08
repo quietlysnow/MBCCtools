@@ -8,6 +8,7 @@
 基于MaaFramework的 无期迷途 小助手。图像技术 + 模拟控制，解放双手！  
 由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！
 </div>
+当前版本v1.4.0
 
 ## 📖 项目说明
 
