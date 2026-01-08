@@ -752,7 +752,7 @@
         ]
       }
     },
-    "post_wait_freezes": 1000,
+    "post_wait_freezes": 20000,
     "$__mpe_code": {
       "position": {
         "x": 3139,

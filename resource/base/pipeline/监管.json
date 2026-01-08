@@ -121,6 +121,10 @@
         "next": [
             "下一个"
         ],
+        "timeout": 4000,
+        "on_error": [
+            "主菜单"
+        ],
         "post_wait_freezes": 300
     }
 }

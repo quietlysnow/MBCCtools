@@ -76,6 +76,7 @@
             1,
             1
         ],
+        "post_wait_freezes": 5000,
         "next": [
             "记忆风暴扫荡"
         ]

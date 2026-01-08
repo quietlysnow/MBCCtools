@@ -26,7 +26,7 @@
         "recognition": "TemplateMatch",
         "template": "一键领取.png",
         "action": "Click",
-        "post_delay": 1000,
+        "post_wait_freezes": 3000,
         "next": [
             "赠送友情点"
         ]
@@ -41,7 +41,7 @@
             71
         ],
         "action": "Click",
-        "post_delay": 1000,
+        "post_wait_freezes": 3000,
         "next": [
             "主菜单"
         ]
