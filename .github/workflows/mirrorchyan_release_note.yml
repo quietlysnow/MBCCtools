@@ -16,7 +16,7 @@ on:
 jobs:
   mirrorchyan:
     runs-on: macos-latest
-    # if: ${{ github.repository_owner == 'quietlysnow' }}
+    if: ${{ github.repository_owner == 'quietlysnow' }}
 
     steps:
       - id: uploading

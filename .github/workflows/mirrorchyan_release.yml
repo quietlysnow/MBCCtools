@@ -12,11 +12,11 @@ on:
 jobs:
   mirrorchyan:
     runs-on: macos-latest
-    # if: ${{ github.repository_owner == 'quietlysnow' }}
+    if: ${{ github.repository_owner == 'quietlysnow' }}
     strategy:
       fail-fast: false
       matrix:
-        os: [win, macos, linux]
+        os: [win, macos] # linux
         arch: [aarch64, x86_64]
     steps:
       - uses: MirrorChyan/uploading-action@v1
