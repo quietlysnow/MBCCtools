@@ -36,7 +36,7 @@
 - **绝大多数用户**：下载 `MBCCtools-win-x86_64.zip`
 - **ARM 架构用户**：下载 `MBCCtools-win-aarch64.zip`  
   ⚠️ 注意：Windows 设备绝大多数为 x86_64 架构，除非明确知道自己的设备是 ARM 架构，否则请选择 x86_64 版本
-- 解压后运行 `MFAAvalonia.exe`。
+- 解压后运行 `MBCC小助手.exe`。
 - 本人没有用过macos,无法给出使用指南。
 
 ## 注意事项
