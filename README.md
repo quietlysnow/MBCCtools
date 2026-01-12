@@ -41,7 +41,7 @@
 
 ## 注意事项
 
-**应用程序错误**：通常缺少运行库，请安装 [VC++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+**应用程序错误**：通常缺少运行库，请安装 [VC++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe) 以及 [.NET 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 - **兼容性**：基于 MuMu模拟器5，2560×1440（280DPI）平板版开发
 - **分辨率建议**：
   - 1280×720 (240DPI)：MAA 原生支持，兼容性最佳
