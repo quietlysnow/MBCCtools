@@ -3,13 +3,42 @@
     "$__mpe_code": {
       "prefix": "",
       "savedViewport": {
-        "x": -1404.786365323982,
-        "y": -413.984205189588,
-        "zoom": 0.8815912614176649
+        "x": -202,
+        "y": -100,
+        "zoom": 0.88
       },
       "filename": "启动",
-      "version": "v0.12.0"
+      "version": "v0.15.2"
     }
+  },
+  "首页检查2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "中"
+        ],
+        "roi": [
+          992,
+          633,
+          99,
+          47
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1028,
+        "y": 791
+      }
+    },
+    "next": [
+      "等待2S"
+    ]
   },
   "禁闭者生日_SecondClick": {
     "recognition": {
@@ -334,6 +363,7 @@
       "type": "DoNothing",
       "param": {}
     },
+    "timeout": 500,
     "$__mpe_code": {
       "position": {
         "x": 758,
@@ -341,7 +371,10 @@
       }
     },
     "next": [
-      "等待2S"
+      "首页检查2"
+    ],
+    "on_error": [
+      "每秒执行"
     ]
   },
   "卓雅皮肤": {
@@ -887,14 +920,18 @@
       "type": "DoNothing",
       "param": {}
     },
+    "timeout": 500,
     "$__mpe_code": {
       "position": {
-        "x": 2865,
-        "y": 692
+        "x": 2871,
+        "y": 703
       }
     },
     "next": [
-      "等待2S_副本26"
+      "首页检查2_Exception"
+    ],
+    "on_error": [
+      "每秒执行_Exception"
     ]
   },
   "卓雅皮肤_Exception": {
@@ -1123,5 +1160,34 @@
         "y": 730
       }
     }
+  },
+  "首页检查2_Exception": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "中"
+        ],
+        "roi": [
+          992,
+          633,
+          99,
+          47
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3114,
+        "y": 699
+      }
+    },
+    "next": [
+      "等待2S_副本26"
+    ]
   }
 }
