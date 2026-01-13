@@ -1,6 +1,6 @@
 {
     "name": "MBCCtools",
-    "version": "v1.3.2",
+    "version": "v1.3.3",
     "mirrorchyan_rid": "MBCCtools",
     "mirrorchyan_multiplatform": true,
     "url": "https://github.com/quietlysnow/MBCCtools",
@@ -30,12 +30,12 @@
         {
             "name": "进入游戏",
             "entry": "启动",
-            "doc": "请注意\n有可能失败，建议手动进入主菜单后再运行"
+            "doc": "[color:orange]请注意[/color]\n有可能失败，建议手动进入主菜单后再运行"
         },
         {
             "name": "秘盟捐赠",
             "entry": "密盟",
-            "doc": "默认捐赠狄斯币"
+            "doc": "默认捐赠[b]狄斯币[/b]"
         },
         {
             "name": "好友点数",
@@ -55,7 +55,7 @@
             "option": [
                 "派遣区域"
             ],
-            "doc": "不会帮你领取声望奖励哦"
+            "doc": "[color:orange]不会[/color]帮你领取声望奖励哦"
         },
         {
             "name": "领取体力",
@@ -76,15 +76,16 @@
             "option": [
                 "畸点选择"
             ],
-            "doc": "扫荡上方选择副本的(已开启)最高难度关卡3次！\n如选中的畸点今日未开放，则本任务会自动扫荡正在开放的畸点"
+            "doc": "扫荡上方选择副本的[b]（已开启）最高难度[/b]关卡 3 次\n\n如选中的畸点今日未开放，则本任务会自动扫荡正在开放的畸点"
         },
         {
             "name": "每日体力用途",
             "entry": "每日体力用途",
             "option": [
-                "作战区域"
+                "作战区域",
+                "材料选择"
             ],
-            "doc": "会用所有体力来扫荡该关卡\n当日关卡未开放会直接跳过"
+            "doc": "会用所有体力来扫荡该关卡\n当日关卡未开放会直接跳过\n\n选择[b]「刷取材料」[/b]时需要同时选择材料\n\n请确保碎金盛宴 [color:orange]N3/N4[/color] 普通难度已解锁扫荡"
         },
         {
             "name": "每日/密令奖励",
@@ -94,9 +95,6 @@
     "option": {
         "作战区域": {
             "cases": [
-                {
-                    "name": "无"
-                },
                 {
                     "name": "淘金狂热（狄斯币）",
                     "pipeline_override": {
@@ -118,6 +116,14 @@
                     "pipeline_override": {
                         "每日体力用途": {
                             "next": "技能书"
+                        }
+                    }
+                },
+                {
+                    "name": "刷取材料（碎金盛宴）",
+                    "pipeline_override": {
+                        "每日体力用途": {
+                            "next": "刷取材料"
                         }
                     }
                 },
@@ -291,6 +297,154 @@
                     "pipeline_override": {
                         "派遣区域选择": {
                             "expected": "砂海"
+                        }
+                    }
+                }
+            ]
+        },
+        "材料选择": {
+            "cases": [
+                {
+                    "name": "裂生冰晶锥",
+                    "icon": "image/材料/裂生冰晶锥.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N4"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N4-8"
+                        }
+                    }
+                },
+                {
+                    "name": "沉雾泪晶",
+                    "icon": "image/材料/沉雾泪晶.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N3"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N3-B3"
+                        }
+                    }
+                },
+                {
+                    "name": "繁盛曲铜晶",
+                    "icon": "image/材料/繁盛曲铜晶.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N4"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N4-B4"
+                        }
+                    }
+                },
+                {
+                    "name": "结霜毒砂晶",
+                    "icon": "image/材料/结霜毒砂晶.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N4"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N4-0"
+                        }
+                    }
+                },
+                {
+                    "name": "燃念赤晶",
+                    "icon": "image/材料/燃念赤晶.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N4"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N4-B1"
+                        }
+                    }
+                },
+                {
+                    "name": "衰变暮辉晶",
+                    "icon": "image/材料/衰变暮辉晶.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N3"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N3-5"
+                        }
+                    }
+                },
+                {
+                    "name": "异化暗凝胶",
+                    "icon": "image/材料/异化暗凝胶.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N3"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N3-6"
+                        }
+                    }
+                },
+                {
+                    "name": "异化诡影鞘翅",
+                    "icon": "image/材料/异化诡影鞘翅.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N3"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N3-B2"
+                        }
+                    }
+                },
+                {
+                    "name": "异化棘状角",
+                    "icon": "image/材料/异化棘状角.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N4"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N4-A4"
+                        }
+                    }
+                },
+                {
+                    "name": "异化尖刺骨片",
+                    "icon": "image/材料/异化尖刺骨片.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N3"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N3-A1"
+                        }
+                    }
+                },
+                {
+                    "name": "异化真红囊泡",
+                    "icon": "image/材料/异化真红囊泡.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N3"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N3-B4"
+                        }
+                    }
+                },
+                {
+                    "name": "异化拟怪腕足",
+                    "icon": "image/材料/异化拟怪腕足.png",
+                    "pipeline_override": {
+                        "碎金盛宴AB选择": {
+                            "expected": "N4"
+                        },
+                        "目标材料关卡": {
+                            "expected": "N4-6"
                         }
                     }
                 }
