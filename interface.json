@@ -1,6 +1,6 @@
 {
     "name": "MBCCtools",
-    "version": "v1.3.1",
+    "version": "v1.3.2",
     "mirrorchyan_rid": "MBCCtools",
     "mirrorchyan_multiplatform": true,
     "url": "https://github.com/quietlysnow/MBCCtools",
@@ -88,14 +88,7 @@
         },
         {
             "name": "每日/密令奖励",
-            "entry": "密令",
-            "option": [
-                "专案密令开关"
-            ]
-        },
-        {
-            "name": "巡游奖励",
-            "entry": "时尚巡游"
+            "entry": "密令"
         }
     ],
     "option": {
@@ -298,21 +291,6 @@
                     "pipeline_override": {
                         "派遣区域选择": {
                             "expected": "砂海"
-                        }
-                    }
-                }
-            ]
-        },
-        "专案密令开关": {
-            "cases": [
-                {
-                    "name": "不执行专案密令"
-                },
-                {
-                    "name": "执行专案密令",
-                    "pipeline_override": {
-                        "通行证完成后跳转": {
-                            "next": "专案密令"
                         }
                     }
                 }
