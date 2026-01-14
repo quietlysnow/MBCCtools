@@ -5,19 +5,22 @@
         "post_wait_freezes": 1000,
         "next": [
             "进入新城",
-            "[JumpBack]锈河",
+            "[JumpBack]远邦to新城",
+            "[JumpBack]里湾to新城",
             "[JumpBack]狄斯",
             "[JumpBack]主菜单"
-        ],
-        "on_error": [
-            "远邦to新城",
-            "里湾to新城"
         ],
         "timeout": 3000
     },
     "进入新城": {
         "recognition": "OCR",
         "expected": "新城",
+        "roi": [
+            33,
+            324,
+            94,
+            76
+        ],
         "action": "DoNothing",
         "post_wait_freezes": 1000,
         "next": [
