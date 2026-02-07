@@ -172,6 +172,9 @@
         "recognition": "OCR",
         "expected": "N3-6",
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入材料关卡"
+        },
         "post_wait_freezes": 1000,
         "next": [
             "扫荡完成",
