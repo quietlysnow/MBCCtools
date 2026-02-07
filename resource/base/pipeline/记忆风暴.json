@@ -1,92 +1,254 @@
 {
-    "记忆风暴": {
-        "next": [
-            "记忆风暴优先选择",
-            "[JumpBack]记忆风暴入口",
-            "[JumpBack]锈河",
-            "[JumpBack]狄斯",
-            "[JumpBack]危机管理2",
-            "[JumpBack]危机管理",
-            "[JumpBack]主菜单"
-        ]
+  "$__mpe_config_记忆风暴": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": 231,
+        "y": 218,
+        "zoom": 0.76
+      },
+      "filename": "记忆风暴",
+      "version": "v1.0.2"
+    }
+  },
+  "记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 0,
+        "y": 61
+      }
     },
-    "记忆风暴入口": {
-        "recognition": "TemplateMatch",
+    "next": [
+      "记忆风暴优先选择",
+      "[JumpBack]记忆风暴入口",
+      "[JumpBack]锈河",
+      "[JumpBack]狄斯",
+      "[JumpBack]危机管理2",
+      "[JumpBack]危机管理",
+      "[JumpBack]主菜单"
+    ]
+  },
+  "记忆风暴入口": {
+    "post_wait_freezes": 500,
+    "focus": {
+      "Node.Action.Succeeded": "进入记忆风暴"
+    },
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
         "template": "记忆风暴.png",
         "roi": [
-            120,
-            152,
-            353,
-            304
-        ],
-        "action": "Click",
-        "post_wait_freezes": 500
-    },
-    "记忆风暴优先选择": {
-        "recognition": "OCR",
-        "expected": "印象畸点",
-        "roi": [
-            25,
-            112,
-            293,
-            349
-        ],
-        "action": "Click",
-        "next": [
-            "确认关卡是否开放"
-        ],
-        "on_error": [
-            "默认选择第一个"
-        ],
-        "timeout": 2000
-    },
-    "默认选择第一个": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            185,
-            151,
-            1,
-            1
-        ],
-        "next": [
-            "进入记忆风暴关卡"
+          120,
+          152,
+          353,
+          304
         ]
+      }
     },
-    "确认关卡是否开放": {
-        "recognition": "OCR",
-        "expected": "印象畸点",
-        "roi": [
-            387,
-            301,
-            448,
-            161
-        ],
-        "action": "Click",
-        "next": [
-            "进入记忆风暴关卡"
-        ]
+    "action": {
+      "type": "Click",
+      "param": {}
     },
-    "进入记忆风暴关卡": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            1087,
-            600,
-            1,
-            1
-        ],
-        "post_wait_freezes": 5000,
-        "next": [
-            "记忆风暴扫荡"
-        ]
-    },
-    "记忆风暴扫荡": {
-        "next": [
-            "扫荡完成",
-            "扫荡失败",
-            "[JumpBack]连续扫荡",
-            "[JumpBack]扫荡最大次数"
-        ]
+    "$__mpe_code": {
+      "position": {
+        "x": 300,
+        "y": 280
+      }
     }
+  },
+  "记忆风暴优先选择": {
+    "timeout": 5000,
+    "focus": {
+      "Node.Action.Succeeded": "优先选择"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "印象畸点",
+        "roi": [
+          25,
+          112,
+          293,
+          349
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 300,
+        "y": -45
+      }
+    },
+    "next": [
+      "确认关卡是否开放"
+    ],
+    "on_error": [
+      "默认选择第一个"
+    ]
+  },
+  "默认选择第一个": {
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          185,
+          151,
+          1,
+          1
+        ]
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 600,
+        "y": 46
+      }
+    },
+    "next": [
+      "进入记忆风暴关卡"
+    ]
+  },
+  "确认关卡是否开放": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "印象畸点",
+        "roi": [
+          387,
+          301,
+          448,
+          161
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 600,
+        "y": 234
+      }
+    },
+    "next": [
+      "进入记忆风暴关卡"
+    ],
+    "on_error": [
+      "默认选择第一个"
+    ]
+  },
+  "进入记忆风暴关卡": {
+    "post_wait_freezes": 5000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1087,
+          600,
+          1,
+          1
+        ]
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 900,
+        "y": 16
+      }
+    },
+    "next": [
+      "记忆风暴扫荡"
+    ]
+  },
+  "记忆风暴扫荡": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1200,
+        "y": 61
+      }
+    },
+    "next": [
+      "扫荡完成",
+      "扫荡失败",
+      "[JumpBack]连续扫荡",
+      "[JumpBack]扫荡最大次数"
+    ]
+  },
+  "$__mpe_external_锈河_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 560
+      }
+    }
+  },
+  "$__mpe_external_狄斯_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 670
+      }
+    }
+  },
+  "$__mpe_external_危机管理2_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 780
+      }
+    }
+  },
+  "$__mpe_external_危机管理_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 890
+      }
+    }
+  },
+  "$__mpe_external_主菜单_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 1000
+      }
+    }
+  },
+  "$__mpe_external_扫荡完成_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1500,
+        "y": 85
+      }
+    }
+  },
+  "$__mpe_external_扫荡失败_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1500,
+        "y": 195
+      }
+    }
+  },
+  "$__mpe_external_连续扫荡_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1500,
+        "y": 305
+      }
+    }
+  },
+  "$__mpe_external_扫荡最大次数_记忆风暴": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1500,
+        "y": 415
+      }
+    }
+  }
 }
