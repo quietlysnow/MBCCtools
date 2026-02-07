@@ -1,85 +1,220 @@
 {
-    "采购办": {
-        "next": [
-            "采购办入口",
-            "[JumpBack]危机管理2",
-            "[JumpBack]危机管理",
-            "[JumpBack]主菜单",
-            "[JumpBack]返回按钮"
-        ]
+  "$__mpe_config_采购办": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": 194,
+        "y": 149,
+        "zoom": 0.66
+      },
+      "filename": "采购办",
+      "version": "v1.0.2"
+    }
+  },
+  "采购办": {
+    "$__mpe_code": {
+      "position": {
+        "x": 0,
+        "y": 0
+      }
     },
-    "采购办入口": {
-        "recognition": "OCR",
+    "next": [
+      "采购办入口",
+      "[JumpBack]危机管理2",
+      "[JumpBack]危机管理",
+      "[JumpBack]主菜单",
+      "[JumpBack]返回按钮"
+    ]
+  },
+  "采购办入口": {
+    "post_delay": 2000,
+    "focus": {
+      "Node.Action.Succeeded": "进入采购办"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": [
-            "采购办"
+          "采购办"
         ],
         "roi": [
-            863,
-            496,
-            386,
-            146
-        ],
-        "action": "Click",
-        "post_delay": 2000,
-        "next": [
-            "精选礼包"
+          863,
+          496,
+          386,
+          146
         ]
+      }
     },
-    "精选礼包": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 300,
+        "y": 419
+      }
+    },
+    "next": [
+      "精选礼包"
+    ]
+  },
+  "精选礼包": {
+    "post_delay": 1000,
+    "focus": {
+      "Node.Action.Succeeded": "精选礼包"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": [
-            "精选礼包",
-            "禮包",
-            "礼包"
-        ],
-        "action": "Click",
-        "post_delay": 1000,
-        "next": [
-            "精选推荐"
+          "精选礼包",
+          "禮包",
+          "礼包"
         ]
+      }
     },
-    "精选推荐": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 600,
+        "y": 435
+      }
+    },
+    "next": [
+      "精选推荐"
+    ]
+  },
+  "精选推荐": {
+    "pre_delay": 300,
+    "post_delay": 400,
+    "focus": {
+      "Node.Action.Succeeded": "精选推荐"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": [
-            "精选推荐"
+          "精选推荐"
         ],
         "index": 0,
-        "order_by": "Vertical",
-        "pre_delay": 300,
-        "action": "Click",
-        "post_delay": 400,
-        "next": [
-            "每日体力"
-        ]
+        "order_by": "Vertical"
+      }
     },
-    "每日体力": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 900,
+        "y": 387
+      }
+    },
+    "next": [
+      "每日体力"
+    ]
+  },
+  "每日体力": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "免费",
         "roi": [
-            341,
-            371,
-            265,
-            255
-        ],
-        "action": "Click",
-        "post_delay": 1000,
-        "next": [
-            "购买"
+          341,
+          371,
+          265,
+          255
         ]
+      }
     },
-    "购买": {
-        "recognition": "OCR",
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1200,
+        "y": 419
+      }
+    },
+    "next": [
+      "购买"
+    ]
+  },
+  "购买": {
+    "focus": {
+      "Node.Action.Succeeded": "购买免费礼包"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
         "expected": "购买",
         "roi": [
-            795,
-            519,
-            320,
-            97
-        ],
-        "action": "Click",
-        "next": [
-            "主菜单",
-            "[JumpBack]关闭界面"
+          795,
+          519,
+          320,
+          97
         ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1500,
+        "y": 447
+      }
+    },
+    "next": [
+      "主菜单",
+      "[JumpBack]关闭界面"
+    ]
+  },
+  "$__mpe_external_危机管理2_采购办": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 89
+      }
     }
+  },
+  "$__mpe_external_危机管理_采购办": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 199
+      }
+    }
+  },
+  "$__mpe_external_主菜单_采购办": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1800,
+        "y": 24
+      }
+    }
+  },
+  "$__mpe_external_返回按钮_采购办": {
+    "$__mpe_code": {
+      "position": {
+        "x": 305,
+        "y": 309
+      }
+    }
+  },
+  "$__mpe_external_关闭界面_采购办": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1800,
+        "y": 524
+      }
+    }
+  }
 }
