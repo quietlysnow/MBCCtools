@@ -20,6 +20,9 @@
             211
         ],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "领取体力"
+        },
         "post_delay": 1000,
         "next": [
             "识别第一罐体力"

@@ -19,6 +19,9 @@
             82
         ],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入派遣界面"
+        },
         "post_delay": 1000,
         "next": [
             "派遣区域选择"
@@ -65,6 +68,9 @@
             79
         ],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "一键派遣完成"
+        },
         "post_wait_freezes": 2000,
         "next": [
             "主菜单"

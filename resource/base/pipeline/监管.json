@@ -17,6 +17,9 @@
             86
         ],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入监管界面"
+        },
         "next": [
             "收菜",
             "监管终端"
@@ -38,6 +41,9 @@
             1,
             1
         ],
+        "focus": {
+            "Node.Action.Succeeded": "一键收取资源"
+        },
         "post_wait_freezes": 500,
         "next": [
             "监管终端",

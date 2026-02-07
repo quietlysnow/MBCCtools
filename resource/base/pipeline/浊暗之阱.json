@@ -29,6 +29,9 @@
         "recognition": "OCR",
         "expected": "暗之阱",
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入浊暗之阱"
+        },
         "post_delay": 1000,
         "next": [
             "乐园",

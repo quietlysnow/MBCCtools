@@ -24,6 +24,9 @@
             1,
             1
         ],
+        "focus": {
+            "Node.Action.Succeeded": "进入监察密令"
+        },
         "next": [
             "每日奖励",
             "[JumpBack]切换到密令任务"

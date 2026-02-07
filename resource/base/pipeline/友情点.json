@@ -17,6 +17,9 @@
             103
         ],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入好友界面"
+        },
         "next": [
             "领取友情点"
         ],

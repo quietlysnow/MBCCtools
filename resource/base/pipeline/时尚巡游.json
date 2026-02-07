@@ -17,6 +17,9 @@
             134
         ],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入时尚巡游"
+        },
         "post_delay": 1000,
         "next": [
             "识别巡游每日奖励"

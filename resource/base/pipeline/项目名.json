@@ -193,7 +193,10 @@
             386,
             174
         ],
-        "action": "Click"
+        "action": "Click",
+        "focus": {
+            "Node.Recognition.Succeeded": "切换到危机管理"
+        }
     },
     "危机管理2": {
         "recognition": "OCR",
@@ -204,7 +207,10 @@
             386,
             174
         ],
-        "action": "Click"
+        "action": "Click",
+        "focus": {
+            "Node.Recognition.Succeeded": "尝试通过途径2切换到危机管理"
+        }
     },
     "整备中心": {
         "recognition": "TemplateMatch",
@@ -232,7 +238,7 @@
     },
     "战斗自动扫荡": {
         "recognition": "TemplateMatch",
-        "template": "",
+        "template": "连续扫荡.png",
         "action": "Click",
         "post_wait_freezes": 30
     },
@@ -270,6 +276,9 @@
             151
         ],
         "action": "Click",
+        "focus": {
+            "Node.Recognition.Succeeded": "切换到狄斯"
+        },
         "post_wait_freezes": 500
     },
     "锈河": {
@@ -282,6 +291,9 @@
             115
         ],
         "action": "Click",
+        "focus": {
+            "Node.Recognition.Succeeded": "切换到锈河"
+        },
         "post_wait_freezes": 1000
     },
     "结束任务": {

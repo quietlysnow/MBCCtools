@@ -22,6 +22,9 @@
         "expected": ["淘金狂热"],
         "roi":[29,105,309,239],
         "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入狄斯币关卡"
+        },
         "next": [
             "扫荡完成",
             "扫荡失败",

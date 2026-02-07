@@ -24,6 +24,9 @@
             1,
             1
         ],
+        "focus": {
+            "Node.Action.Succeeded": "进入专案密令"
+        },
         "next": [
             "切换到专案任务"
         ],
