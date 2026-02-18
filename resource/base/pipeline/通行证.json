@@ -55,10 +55,10 @@
         "recognition": "OCR",
         "expected": "每日",
         "roi": [
-            344,
-            158,
-            131,
-            243
+            345,
+            78,
+            144,
+            135
         ],
         "action": "Click",
         "next": [

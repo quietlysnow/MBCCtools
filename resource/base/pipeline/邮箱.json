@@ -1,16 +1,4 @@
 {
-  "$__mpe_config_邮箱": {
-    "$__mpe_code": {
-      "prefix": "",
-      "savedViewport": {
-        "x": 158.0144846083315,
-        "y": 612.8251172954236,
-        "zoom": 0.7297400953650154
-      },
-      "filename": "邮箱",
-      "version": "v0.12.0"
-    }
-  },
   "邮箱": {
     "recognition": {
       "type": "DirectHit",
@@ -19,12 +7,6 @@
     "action": {
       "type": "DoNothing",
       "param": {}
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 1,
-        "y": -74
-      }
     },
     "next": [
       "邮箱入口",
@@ -56,12 +38,6 @@
       "Node.Action.Succeeded": "进入邮箱"
     },
     "post_delay": 1000,
-    "$__mpe_code": {
-      "position": {
-        "x": 218,
-        "y": 136
-      }
-    },
     "next": [
       "领取邮件",
       "[JumpBack]主菜单",
@@ -87,12 +63,6 @@
       }
     },
     "post_delay": 1000,
-    "$__mpe_code": {
-      "position": {
-        "x": 478,
-        "y": -161
-      }
-    },
     "next": [
       "领取邮件_再次点击"
     ]
@@ -115,12 +85,6 @@
     },
     "post_delay": 1500,
     "timeout": 1500,
-    "$__mpe_code": {
-      "position": {
-        "x": 740,
-        "y": -203
-      }
-    },
     "next": [
       "主菜单",
       "[JumpBack]关闭公告",
@@ -146,38 +110,8 @@
         ]
       }
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 1148,
-        "y": -233
-      }
-    },
     "next": [
       "领取邮件_再次点击"
     ]
-  },
-  "$__mpe_external_主菜单_邮箱": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1183,
-        "y": -3
-      }
-    }
-  },
-  "$__mpe_external_返回按钮_邮箱": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1187,
-        "y": 240
-      }
-    }
-  },
-  "$__mpe_external_关闭公告_邮箱": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1180,
-        "y": 139
-      }
-    }
   }
 }

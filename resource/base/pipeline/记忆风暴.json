@@ -1,23 +1,5 @@
 {
-  "$__mpe_config_记忆风暴": {
-    "$__mpe_code": {
-      "prefix": "",
-      "savedViewport": {
-        "x": 231,
-        "y": 218,
-        "zoom": 0.76
-      },
-      "filename": "记忆风暴",
-      "version": "v1.0.2"
-    }
-  },
   "记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 0,
-        "y": 61
-      }
-    },
     "next": [
       "记忆风暴优先选择",
       "[JumpBack]记忆风暴入口",
@@ -48,12 +30,6 @@
     "action": {
       "type": "Click",
       "param": {}
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 300,
-        "y": 280
-      }
     }
   },
   "记忆风暴优先选择": {
@@ -77,12 +53,6 @@
       "type": "Click",
       "param": {}
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 300,
-        "y": -45
-      }
-    },
     "next": [
       "确认关卡是否开放"
     ],
@@ -100,12 +70,6 @@
           1,
           1
         ]
-      }
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 46
       }
     },
     "next": [
@@ -129,12 +93,6 @@
       "type": "Click",
       "param": {}
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 234
-      }
-    },
     "next": [
       "进入记忆风暴关卡"
     ],
@@ -155,100 +113,16 @@
         ]
       }
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 900,
-        "y": 16
-      }
-    },
     "next": [
       "记忆风暴扫荡"
     ]
   },
   "记忆风暴扫荡": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1200,
-        "y": 61
-      }
-    },
     "next": [
       "扫荡完成",
       "扫荡失败",
       "[JumpBack]连续扫荡",
       "[JumpBack]扫荡最大次数"
     ]
-  },
-  "$__mpe_external_锈河_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 560
-      }
-    }
-  },
-  "$__mpe_external_狄斯_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 670
-      }
-    }
-  },
-  "$__mpe_external_危机管理2_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 780
-      }
-    }
-  },
-  "$__mpe_external_危机管理_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 890
-      }
-    }
-  },
-  "$__mpe_external_主菜单_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 1000
-      }
-    }
-  },
-  "$__mpe_external_扫荡完成_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1500,
-        "y": 85
-      }
-    }
-  },
-  "$__mpe_external_扫荡失败_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1500,
-        "y": 195
-      }
-    }
-  },
-  "$__mpe_external_连续扫荡_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1500,
-        "y": 305
-      }
-    }
-  },
-  "$__mpe_external_扫荡最大次数_记忆风暴": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1500,
-        "y": 415
-      }
-    }
   }
 }

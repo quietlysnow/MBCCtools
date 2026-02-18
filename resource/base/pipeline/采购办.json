@@ -1,23 +1,5 @@
 {
-  "$__mpe_config_采购办": {
-    "$__mpe_code": {
-      "prefix": "",
-      "savedViewport": {
-        "x": 194,
-        "y": 149,
-        "zoom": 0.66
-      },
-      "filename": "采购办",
-      "version": "v1.0.2"
-    }
-  },
   "采购办": {
-    "$__mpe_code": {
-      "position": {
-        "x": 0,
-        "y": 0
-      }
-    },
     "next": [
       "采购办入口",
       "[JumpBack]危机管理2",
@@ -49,12 +31,6 @@
       "type": "Click",
       "param": {}
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 300,
-        "y": 419
-      }
-    },
     "next": [
       "精选礼包"
     ]
@@ -77,12 +53,6 @@
     "action": {
       "type": "Click",
       "param": {}
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 435
-      }
     },
     "next": [
       "精选推荐"
@@ -108,12 +78,6 @@
       "type": "Click",
       "param": {}
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 900,
-        "y": 387
-      }
-    },
     "next": [
       "每日体力"
     ]
@@ -135,12 +99,6 @@
     "action": {
       "type": "Click",
       "param": {}
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 1200,
-        "y": 419
-      }
     },
     "next": [
       "购买"
@@ -166,55 +124,9 @@
       "type": "Click",
       "param": {}
     },
-    "$__mpe_code": {
-      "position": {
-        "x": 1500,
-        "y": 447
-      }
-    },
     "next": [
       "主菜单",
       "[JumpBack]关闭界面"
     ]
-  },
-  "$__mpe_external_危机管理2_采购办": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 89
-      }
-    }
-  },
-  "$__mpe_external_危机管理_采购办": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 199
-      }
-    }
-  },
-  "$__mpe_external_主菜单_采购办": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1800,
-        "y": 24
-      }
-    }
-  },
-  "$__mpe_external_返回按钮_采购办": {
-    "$__mpe_code": {
-      "position": {
-        "x": 305,
-        "y": 309
-      }
-    }
-  },
-  "$__mpe_external_关闭界面_采购办": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1800,
-        "y": 524
-      }
-    }
   }
 }
