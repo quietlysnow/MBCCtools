@@ -1,0 +1,132 @@
+{
+  "采购办": {
+    "next": [
+      "采购办入口",
+      "[JumpBack]危机管理2",
+      "[JumpBack]危机管理",
+      "[JumpBack]主菜单",
+      "[JumpBack]返回按钮"
+    ]
+  },
+  "采购办入口": {
+    "post_delay": 2000,
+    "focus": {
+      "Node.Action.Succeeded": "进入采购办"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "采购办"
+        ],
+        "roi": [
+          863,
+          496,
+          386,
+          146
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "精选礼包"
+    ]
+  },
+  "精选礼包": {
+    "post_delay": 1000,
+    "focus": {
+      "Node.Action.Succeeded": "精选礼包"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "精选礼包",
+          "禮包",
+          "礼包"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "精选推荐"
+    ]
+  },
+  "精选推荐": {
+    "pre_delay": 300,
+    "post_delay": 400,
+    "focus": {
+      "Node.Action.Succeeded": "精选推荐"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "精选推荐"
+        ],
+        "index": 0,
+        "order_by": "Vertical"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "每日体力"
+    ]
+  },
+  "每日体力": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "免费",
+        "roi": [
+          341,
+          371,
+          265,
+          255
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "购买"
+    ]
+  },
+  "购买": {
+    "focus": {
+      "Node.Action.Succeeded": "购买免费礼包"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "购买",
+        "roi": [
+          795,
+          519,
+          320,
+          97
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "主菜单",
+      "[JumpBack]关闭界面"
+    ]
+  }
+}

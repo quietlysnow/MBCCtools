@@ -1,0 +1,49 @@
+{
+    "极域搜寻": {
+        "next": [
+            "重构入口2",
+            "[JumpBack]重构入口",
+            "[JumpBack]锈河",
+            "[JumpBack]狄斯",
+            "[JumpBack]危机管理2",
+            "[JumpBack]危机管理",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "重构入口": {
+        "recognition": "TemplateMatch",
+        "template": "重构.png",
+        "roi": [
+            480,
+            217,
+            296,
+            156
+        ],
+        "action": "Click",
+        "post_wait_freezes": 50
+    },
+    "重构入口2": {
+        "recognition": "OCR",
+        "expected": [
+            "搜寻"
+        ],
+        "roi": [
+            17,
+            91,
+            335,
+            270
+        ],
+        "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入极域搜寻关卡"
+        },
+        "next": [
+            "扫荡完成",
+            "扫荡失败",
+            "[JumpBack]难度选择",
+            "[JumpBack]连续扫荡",
+            "[JumpBack]扫荡最大次数"
+        ],
+        "post_wait_freezes": 500
+    }
+}

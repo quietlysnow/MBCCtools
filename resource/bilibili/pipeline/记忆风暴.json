@@ -1,0 +1,128 @@
+{
+  "记忆风暴": {
+    "next": [
+      "记忆风暴优先选择",
+      "[JumpBack]记忆风暴入口",
+      "[JumpBack]锈河",
+      "[JumpBack]狄斯",
+      "[JumpBack]危机管理2",
+      "[JumpBack]危机管理",
+      "[JumpBack]主菜单"
+    ]
+  },
+  "记忆风暴入口": {
+    "post_wait_freezes": 500,
+    "focus": {
+      "Node.Action.Succeeded": "进入记忆风暴"
+    },
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "记忆风暴.png",
+        "roi": [
+          120,
+          152,
+          353,
+          304
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    }
+  },
+  "记忆风暴优先选择": {
+    "timeout": 5000,
+    "focus": {
+      "Node.Action.Succeeded": "优先选择"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "印象畸点",
+        "roi": [
+          25,
+          112,
+          293,
+          349
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "确认关卡是否开放"
+    ],
+    "on_error": [
+      "默认选择第一个"
+    ]
+  },
+  "默认选择第一个": {
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          185,
+          151,
+          1,
+          1
+        ]
+      }
+    },
+    "next": [
+      "进入记忆风暴关卡"
+    ]
+  },
+  "确认关卡是否开放": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "印象畸点",
+        "roi": [
+          387,
+          301,
+          448,
+          161
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "进入记忆风暴关卡"
+    ],
+    "on_error": [
+      "默认选择第一个"
+    ]
+  },
+  "进入记忆风暴关卡": {
+    "post_wait_freezes": 5000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1087,
+          600,
+          1,
+          1
+        ]
+      }
+    },
+    "next": [
+      "记忆风暴扫荡"
+    ]
+  },
+  "记忆风暴扫荡": {
+    "next": [
+      "扫荡完成",
+      "扫荡失败",
+      "[JumpBack]连续扫荡",
+      "[JumpBack]扫荡最大次数"
+    ]
+  }
+}

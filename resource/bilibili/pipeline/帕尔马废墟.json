@@ -1,0 +1,82 @@
+{
+    "帕尔马废墟": {
+        "next": [
+            "帕尔马废墟入口",
+            "[JumpBack]锈河",
+            "[JumpBack]狄斯",
+            "[JumpBack]危机管理2",
+            "[JumpBack]危机管理",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "帕尔马废墟入口": {
+        "recognition": "TemplateMatch",
+        "template": "职业.png",
+        "roi": [
+            932,
+            300,
+            225,
+            231
+        ],
+        "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入帕尔马废墟"
+        },
+        "post_delay": 1000,
+        "next": [
+            "职业确认"
+        ]
+    },
+    "职业确认": {
+        "next": [
+            "职业选择",
+            "[JumpBack]上滑"
+        ]
+    },
+    "职业选择": {
+        "recognition": "OCR",
+        "expected": [
+            "启迪"
+        ],
+        "roi": [
+            33,
+            113,
+            300,
+            580
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "确认帕尔马废墟是否开放"
+        ],
+        "on_error": [
+            "主菜单"
+        ],
+        "timeout": 3000
+    },
+    "确认帕尔马废墟是否开放": {
+        "recognition": "OCR",
+        "expected": "启迪",
+        "roi": [
+            397,
+            261,
+            203,
+            103
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "帕尔马扫荡"
+        ]
+    },
+    "帕尔马扫荡": {
+        "next": [
+            "扫荡完成",
+            "扫荡失败",
+            "[JumpBack]难度选择",
+            "[JumpBack]连续扫荡",
+            "[JumpBack]扫荡最大次数"
+        ],
+        "post_wait_freezes": 500
+    }
+}

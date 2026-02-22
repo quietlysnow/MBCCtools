@@ -1,0 +1,117 @@
+{
+  "邮箱": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "next": [
+      "邮箱入口",
+      "[JumpBack]主菜单",
+      "[JumpBack]返回按钮"
+    ]
+  },
+  "邮箱入口": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "邮箱",
+          "邮"
+        ],
+        "roi": [
+          35,
+          412,
+          120,
+          47
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "focus": {
+      "Node.Action.Succeeded": "进入邮箱"
+    },
+    "post_delay": 1000,
+    "next": [
+      "领取邮件",
+      "[JumpBack]主菜单",
+      "[JumpBack]返回按钮"
+    ]
+  },
+  "领取邮件": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "领取邮件.png"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          333,
+          651,
+          35,
+          15
+        ]
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "领取邮件_再次点击"
+    ]
+  },
+  "领取邮件_再次点击": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          333,
+          651,
+          35,
+          15
+        ]
+      }
+    },
+    "post_delay": 1500,
+    "timeout": 1500,
+    "next": [
+      "主菜单",
+      "[JumpBack]关闭公告",
+      "[JumpBack]返回按钮"
+    ],
+    "on_error": [
+      "领取邮件奖励_ 点击"
+    ]
+  },
+  "领取邮件奖励_ 点击": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          477,
+          657,
+          55,
+          42
+        ]
+      }
+    },
+    "next": [
+      "领取邮件_再次点击"
+    ]
+  }
+}
