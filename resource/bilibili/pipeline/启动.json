@@ -3,12 +3,12 @@
     "$__mpe_code": {
       "prefix": "",
       "savedViewport": {
-        "x": 383,
+        "x": 90,
         "y": 96,
-        "zoom": 0.29
+        "zoom": 0.63
       },
       "filename": "启动",
-      "version": "v1.1.2"
+      "version": "v1.1.4"
     }
   },
   "登录前处理": {
@@ -62,8 +62,8 @@
     },
     "$__mpe_code": {
       "position": {
-        "x": 600,
-        "y": 0
+        "x": 665,
+        "y": -163
       }
     }
   },
@@ -546,12 +546,12 @@
     },
     "$__mpe_code": {
       "position": {
-        "x": 0,
+        "x": -325,
         "y": 49
       }
     },
     "next": [
-      "登录前处理"
+      "等待加载"
     ]
   },
   "$__mpe_external_关闭界面_启动": {
@@ -668,24 +668,50 @@
     },
     "$__mpe_code": {
       "position": {
-        "x": 2613,
-        "y": -168
+        "x": 2862,
+        "y": -249
       }
     }
   },
   "关闭界面1": {
-    "recognition": "TemplateMatch",
-    "template": "获取物资.png",
-    "action": "Click",
-    "target": [
-      1208,
-      366,
-      1,
-      1
-    ],
     "post_wait_freezes": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "获取物资.png"
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1208,
+          366,
+          1,
+          1
+        ]
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 2547,
+        "y": -264
+      }
+    },
     "next": [
       "点击"
+    ]
+  },
+  "等待加载": {
+    "post_wait_freezes": 4000,
+    "$__mpe_code": {
+      "position": {
+        "x": -7,
+        "y": 71
+      }
+    },
+    "next": [
+      "登录前处理"
     ]
   }
 }
