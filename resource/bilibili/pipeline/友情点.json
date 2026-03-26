@@ -29,6 +29,12 @@
         "recognition": "TemplateMatch",
         "template": "一键领取.png",
         "action": "Click",
+        "target": [
+            1145,
+            624,
+            1,
+            1
+        ],
         "post_wait_freezes": 3000,
         "next": [
             "赠送友情点"

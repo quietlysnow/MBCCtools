@@ -71,7 +71,8 @@
         "template": "开始按钮.png",
         "action": "Click",
         "next": [
-            "跳过"
+            "跳过",
+            "[JumpBack]检查选项"
         ],
         "post_wait_freezes": 2000
     },
