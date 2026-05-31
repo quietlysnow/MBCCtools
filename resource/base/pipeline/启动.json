@@ -252,24 +252,14 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [
-                    552,
-                    617,
-                    172,
-                    71
-                ],
-                "expected": "今日补给"
+                "expected": "剩余",
+                "roi": [491, 443, 310, 84]
             }
         },
         "action": {
             "type": "Click",
             "param": {
-                "target": [
-                    799,
-                    484,
-                    1,
-                    1
-                ]
+                "target": [898, 475, 1, 1]
             }
         },
         "post_wait_freezes": 2000,

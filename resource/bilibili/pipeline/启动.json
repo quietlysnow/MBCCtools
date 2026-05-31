@@ -250,27 +250,13 @@
     },
     "月卡": {
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
-                "roi": [
-                    552,
-                    617,
-                    172,
-                    71
-                ],
-                "expected": "今日补给"
+                "template": "月卡.png"
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    799,
-                    484,
-                    1,
-                    1
-                ]
-            }
+            "type": "Click"
         },
         "post_wait_freezes": 2000,
         "next": [

@@ -41,8 +41,8 @@
         ],
         "post_delay": 1000,
         "next": [
-            "浊暗之阱入口",
-            "[JumpBack]内海右箭头"
+            "[JumpBack]内海右箭头",
+            "浊暗之阱入口"
         ],
         "action": "Click"
     },
@@ -71,7 +71,7 @@
             1,
             1
         ],
-        "post_delay": 2000
+        "post_delay": 3000
     },
     "浊暗之阱入口": {
         "recognition": "OCR",
@@ -138,9 +138,19 @@
     "关闭禁闭者选择界面": {
         "recognition": "OCR",
         "expected": "禁闭者",
-        "roi" : [387,122,176,74],
+        "roi": [
+            387,
+            122,
+            176,
+            74
+        ],
         "action": "Click",
-        "target" : [53,302,1,1],
+        "target": [
+            53,
+            302,
+            1,
+            1
+        ],
         "post_delay": 2000
     }
 }

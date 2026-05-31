@@ -20,6 +20,7 @@
             211
         ],
         "action": "Click",
+        "target" : [185,330,1,1],
         "focus": {
             "Node.Action.Succeeded": "领取体力"
         },
