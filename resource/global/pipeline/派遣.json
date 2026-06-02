@@ -1,0 +1,83 @@
+{
+  "开始派遣": {
+    "recognition": "OCR",
+    "expected": [
+      "派遣"
+    ],
+    "roi": [
+      478,
+      433,
+      176,
+      82
+    ],
+    "action": "Click",
+    "focus": {
+      "Node.Action.Succeeded": "进入派遣界面"
+    },
+    "post_delay": 1000,
+    "next": [
+      "派遣区域选择"
+    ]
+  },
+  "派遣区域选择": {
+    "recognition": "OCR",
+    "expected": [
+      "每日任务",
+      "每日任務"
+    ],
+    "roi": [
+      66,
+      641,
+      1159,
+      65
+    ],
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [
+      "发出派遣",
+      "[JumpBack]收集派遣奖励"
+    ]
+  },
+  "收集派遣奖励": {
+    "recognition": "OCR",
+    "expected": [
+      "一键领取",
+      "一鍵領取",
+      "领取",
+      "領取"
+    ],
+    "roi": [
+      1017,
+      516,
+      238,
+      69
+    ],
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [
+      "关闭界面"
+    ]
+  },
+  "发出派遣": {
+    "recognition": "OCR",
+    "expected": [
+      "一键派遣",
+      "一鍵派遣",
+      "派遣"
+    ],
+    "roi": [
+      1016,
+      512,
+      247,
+      79
+    ],
+    "action": "Click",
+    "focus": {
+      "Node.Action.Succeeded": "一键派遣完成"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "主菜单"
+    ]
+  }
+}

@@ -1,0 +1,833 @@
+{
+  "采购办": {
+    "next": [
+      "[JumpBack]采购办网络恢复_入口",
+      "[JumpBack]采购办网络确认_入口",
+      "采购办入口",
+      "[JumpBack]危机管理2",
+      "[JumpBack]危机管理",
+      "[JumpBack]主菜单",
+      "[JumpBack]返回按钮"
+    ]
+  },
+  "采购办网络恢复_入口": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_入口",
+      "[JumpBack]采购办网络确认_入口",
+      "采购办"
+    ]
+  },
+  "采购办网络确认_入口": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_入口",
+      "[JumpBack]采购办网络确认_入口",
+      "采购办"
+    ]
+  },
+  "采购办网络恢复_精选": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_精选",
+      "[JumpBack]采购办网络确认_精选",
+      "精选礼包"
+    ]
+  },
+  "采购办网络确认_精选": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_精选",
+      "[JumpBack]采购办网络确认_精选",
+      "精选礼包"
+    ]
+  },
+  "采购办网络恢复_养成": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_养成",
+      "[JumpBack]采购办网络确认_养成",
+      "养成补给"
+    ]
+  },
+  "采购办网络确认_养成": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_养成",
+      "[JumpBack]采购办网络确认_养成",
+      "养成补给"
+    ]
+  },
+  "采购办网络恢复_左滑": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_左滑",
+      "[JumpBack]采购办网络确认_左滑",
+      "确认养成补给选中"
+    ]
+  },
+  "采购办网络确认_左滑": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_左滑",
+      "[JumpBack]采购办网络确认_左滑",
+      "确认养成补给选中"
+    ]
+  },
+  "采购办网络恢复_免费": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_免费",
+      "[JumpBack]采购办网络确认_免费",
+      "每日体力"
+    ]
+  },
+  "采购办网络确认_免费": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_免费",
+      "[JumpBack]采购办网络确认_免费",
+      "每日体力"
+    ]
+  },
+  "采购办网络恢复_详情": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_详情",
+      "[JumpBack]采购办网络确认_详情",
+      "确认免费礼包详情"
+    ]
+  },
+  "采购办网络确认_详情": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_详情",
+      "[JumpBack]采购办网络确认_详情",
+      "确认免费礼包详情"
+    ]
+  },
+  "采购办网络恢复_获得": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "意識恢復中",
+          "意识恢复中",
+          "連線中",
+          "连接中",
+          "通信中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 5000
+      }
+    },
+    "post_delay": 1000,
+    "next": [
+      "[JumpBack]采购办网络恢复_获得",
+      "[JumpBack]采购办网络确认_获得",
+      "采购办获得物资",
+      "采购办完成后返回"
+    ]
+  },
+  "采购办网络确认_获得": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "確認",
+          "确定",
+          "重試",
+          "重试",
+          "重新連接",
+          "重新连接",
+          "Retry",
+          "OK"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 2000,
+    "next": [
+      "[JumpBack]采购办网络恢复_获得",
+      "[JumpBack]采购办网络确认_获得",
+      "采购办获得物资",
+      "采购办完成后返回"
+    ]
+  },
+  "采购办入口": {
+    "post_delay": 2000,
+    "focus": {
+      "Node.Action.Succeeded": "进入采购办"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "采购办",
+          "采购部",
+          "採購辦",
+          "採購部"
+        ],
+        "roi": [
+          863,
+          496,
+          386,
+          146
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "[JumpBack]采购办网络恢复_精选",
+      "[JumpBack]采购办网络确认_精选",
+      "精选礼包"
+    ]
+  },
+  "精选礼包": {
+    "post_delay": 1500,
+    "focus": {
+      "Node.Action.Succeeded": "精选礼包"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "精选礼包",
+          "精選禮包",
+          "禮包",
+          "礼包"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "[JumpBack]采购办网络恢复_养成",
+      "[JumpBack]采购办网络确认_养成",
+      "养成补给"
+    ]
+  },
+  "养成补给": {
+    "pre_delay": 800,
+    "post_delay": 2500,
+    "focus": {
+      "Node.Action.Succeeded": "养成补给"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "养成补给",
+          "養成補給"
+        ],
+        "roi": [
+          40,
+          640,
+          210,
+          75
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          125,
+          688,
+          1,
+          1
+        ]
+      }
+    },
+    "next": [
+      "[JumpBack]采购办网络恢复_左滑",
+      "[JumpBack]采购办网络确认_左滑",
+      "确认养成补给选中"
+    ]
+  },
+  "养成补给重试": {
+    "max_hit": 2,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          125,
+          688,
+          1,
+          1
+        ]
+      }
+    },
+    "post_delay": 2500,
+    "next": [
+      "[JumpBack]采购办网络恢复_左滑",
+      "[JumpBack]采购办网络确认_左滑",
+      "确认养成补给选中"
+    ]
+  },
+  "确认养成补给选中": {
+    "pre_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "养成补给",
+          "養成補給"
+        ],
+        "roi": [
+          40,
+          640,
+          210,
+          75
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 500
+      }
+    },
+    "timeout": 5000,
+    "next": [
+      "[JumpBack]采购办网络恢复_左滑",
+      "[JumpBack]采购办网络确认_左滑",
+      "采购办滑动前等待"
+    ],
+    "on_error": [
+      "养成补给重试"
+    ]
+  },
+  "采购办滑动前等待": {
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 2000
+      }
+    },
+    "next": [
+      "[JumpBack]采购办网络恢复_左滑",
+      "[JumpBack]采购办网络确认_左滑",
+      "采购办左滑一页"
+    ]
+  },
+  "采购办左滑一页": {
+    "pre_delay": 500,
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          1080,
+          430,
+          1,
+          1
+        ],
+        "end": [
+          [
+            625,
+            430,
+            1,
+            1
+          ]
+        ],
+        "duration": 700
+      }
+    },
+    "post_wait_freezes": 2500,
+    "next": [
+      "每日体力",
+      "采购办左滑补偿1"
+    ]
+  },
+  "每日体力": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "免费",
+          "免費",
+          "免 費",
+          "免  費"
+        ],
+        "roi": [
+          300,
+          80,
+          960,
+          600
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "timeout": 5000,
+    "next": [
+      "[JumpBack]采购办网络恢复_详情",
+      "[JumpBack]采购办网络确认_详情",
+      "确认免费礼包详情"
+    ],
+    "on_error": []
+  },
+  "采购办左滑补偿1": {
+    "pre_delay": 2000,
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          1080,
+          430,
+          1,
+          1
+        ],
+        "end": [
+          [
+            625,
+            430,
+            1,
+            1
+          ]
+        ],
+        "duration": 700
+      }
+    },
+    "post_wait_freezes": 2500,
+    "next": [
+      "每日体力_补偿1",
+      "采购办完成后返回"
+    ]
+  },
+  "每日体力_补偿1": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "免费",
+          "免費",
+          "免 費",
+          "免  費"
+        ],
+        "roi": [
+          300,
+          80,
+          960,
+          600
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "timeout": 5000,
+    "next": [
+      "[JumpBack]采购办网络恢复_详情",
+      "[JumpBack]采购办网络确认_详情",
+      "确认免费礼包详情"
+    ],
+    "on_error": []
+  },
+  "采购办左滑补偿2": {
+    "pre_delay": 2000,
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          1080,
+          430,
+          1,
+          1
+        ],
+        "end": [
+          [
+            625,
+            430,
+            1,
+            1
+          ]
+        ],
+        "duration": 700
+      }
+    },
+    "post_wait_freezes": 2500,
+    "next": [
+      "每日体力_补偿2"
+    ]
+  },
+  "每日体力_补偿2": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "免费",
+          "免費",
+          "免 費",
+          "免  費"
+        ],
+        "roi": [
+          300,
+          80,
+          960,
+          600
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "timeout": 5000,
+    "next": [
+      "[JumpBack]采购办网络恢复_详情",
+      "[JumpBack]采购办网络确认_详情",
+      "确认免费礼包详情"
+    ],
+    "on_error": [
+      "采购办完成后返回"
+    ]
+  },
+  "确认免费礼包详情": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "免费",
+          "免費",
+          "免 費",
+          "免  費"
+        ],
+        "roi": [
+          640,
+          485,
+          260,
+          120
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {
+        "timeout": 500
+      }
+    },
+    "timeout": 3000,
+    "next": [
+      "购买"
+    ],
+    "on_error": [
+      "采购办完成后返回"
+    ]
+  },
+  "购买": {
+    "focus": {
+      "Node.Action.Succeeded": "购买免费礼包"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "购买",
+          "購買",
+          "領取",
+          "确认",
+          "確認"
+        ],
+        "roi": [
+          795,
+          519,
+          320,
+          97
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          960,
+          575,
+          1,
+          1
+        ]
+      }
+    },
+    "next": [
+      "[JumpBack]采购办网络恢复_获得",
+      "[JumpBack]采购办网络确认_获得",
+      "[JumpBack]采购办获得物资",
+      "采购办完成后返回",
+      "[JumpBack]关闭界面"
+    ]
+  },
+  "采购办获得物资": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "获取物资",
+          "获得物资",
+          "獲得物資"
+        ],
+        "roi": [
+          480,
+          80,
+          320,
+          140
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          640,
+          650,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "next": [
+      "采购办完成后返回"
+    ]
+  },
+  "采购办完成后返回": {
+    "next": [
+      "主菜单",
+      "[JumpBack]返回按钮",
+      "[JumpBack]关闭界面"
+    ]
+  }
+}

@@ -1,0 +1,188 @@
+{
+    "内海入口-破碎防线": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    116,
+                    557,
+                    1074,
+                    149
+                ],
+                "expected": [
+                    "内海",
+                    "內海"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "破碎防线入口",
+            "[JumpBack]内海-推进到中段",
+            "[JumpBack]内海-中段微调向右",
+            "[JumpBack]内海-中段微调向左"
+        ]
+    },
+    "破碎防线入口": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "破碎防线",
+                    "破碎防線"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 1000,
+        "timeout": 5000,
+        "next": [
+            "点击暗域左下角奖励"
+        ],
+        "on_error": [
+            "[JumpBack]主菜单"
+        ]
+    },
+    "内海-推进到中段": {
+        "max_hit": 1,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    840,
+                    369,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        340,
+                        369
+                    ]
+                ]
+            }
+        },
+        "repeat": 2,
+        "repeat_delay": 250,
+        "post_wait_freezes": 500
+    },
+    "内海-中段微调向右": {
+        "max_hit": 2,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    520,
+                    369,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        790,
+                        369
+                    ]
+                ]
+            }
+        },
+        "repeat": 1,
+        "repeat_delay": 250,
+        "post_wait_freezes": 500
+    },
+    "内海-中段微调向左": {
+        "max_hit": 2,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    790,
+                    369,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        520,
+                        369
+                    ]
+                ]
+            }
+        },
+        "repeat": 1,
+        "repeat_delay": 250,
+        "post_wait_freezes": 500
+    },
+    "点击暗域关卡奖励": {
+        "max_hit": 1,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    178,
+                    290,
+                    227,
+                    76
+                ],
+                "expected": [
+                    "关卡奖励",
+                    "關卡獎勵"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    253,
+                    322,
+                    26,
+                    19
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "[JumpBack]第一个boss奖励",
+            "[JumpBack]第二个boss奖励",
+            "[JumpBack]第三个boss奖励"
+        ]
+    },
+    "点击暗域本期奖励": {
+        "max_hit": 1,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    187,
+                    212,
+                    213,
+                    58
+                ],
+                "expected": [
+                    "本期奖励",
+                    "本期獎勵"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    246,
+                    237,
+                    9,
+                    3
+                ]
+            }
+        },
+        "timeout": 5000,
+        "next": [
+            "一键领取暗域本期奖励"
+        ]
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "内海入口": {
+        "recognition": "OCR",
+        "expected": [
+            "内海",
+            "內海"
+        ],
+        "roi": [
+            116,
+            557,
+            1074,
+            149
+        ],
+        "post_delay": 1000,
+        "next": [
+            "浊暗之阱入口",
+            "[JumpBack]数据间隙",
+            "[JumpBack]无尽梦魇"
+        ],
+        "action": "Click"
+    },
+    "浊暗之阱入口": {
+        "recognition": "OCR",
+        "expected": [
+            "暗之阱",
+            "暗之阱",
+            "濁暗之阱"
+        ],
+        "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入浊暗之阱"
+        },
+        "post_delay": 1000,
+        "next": [
+            "乐园",
+            "[JumpBack]切换"
+        ]
+    },
+    "乐园": {
+        "recognition": "OCR",
+        "expected": [
+            "乐园幻境",
+            "樂園幻境"
+        ],
+        "roi": [
+            983,
+            414,
+            271,
+            190
+        ],
+        "action": "Click",
+        "target": [
+            1063,
+            493,
+            1,
+            1
+        ],
+        "post_delay": 1000,
+        "next": [
+            "浊暗之阱扫荡"
+        ]
+    },
+    "浊暗之阱扫荡": {
+        "recognition": "OCR",
+        "expected": [
+            "扫荡",
+            "掃蕩"
+        ],
+        "roi": [
+            624,
+            483,
+            290,
+            203
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "主菜单",
+            "[JumpBack]关闭界面",
+            "[JumpBack]侧边点击"
+        ]
+    }
+}

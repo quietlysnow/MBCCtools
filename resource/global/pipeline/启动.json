@@ -1,0 +1,780 @@
+{
+    "登录前处理": {
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 30000
+            }
+        },
+        "next": [
+            "[JumpBack]网络恢复中",
+            "[JumpBack]网络确认",
+            "[JumpBack]网络错误确认",
+            "[JumpBack]资料载入中",
+            "登录",
+            "[JumpBack]关闭公告"
+        ],
+        "on_error": [
+            "登录前异常处理"
+        ]
+    },
+    "关闭公告": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    234,
+                    12,
+                    876,
+                    698
+                ],
+                "expected": [
+                    "公告",
+                    "系统公告",
+                    "系統公告",
+                    "System Announcement",
+                    "Announcement",
+                    "Notice"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    360,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭公告"
+        }
+    },
+    "登录": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "进入管理局",
+                    "進入管理局"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 10000,
+        "focus": {
+            "Node.Action.Succeeded": "点击登录"
+        },
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "登录后处理": {
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 15000
+            }
+        },
+        "next": [
+            "[JumpBack]网络恢复中",
+            "[JumpBack]网络确认",
+            "[JumpBack]网络错误确认",
+            "[JumpBack]资料载入中",
+            "[JumpBack]关闭公告",
+            "[JumpBack]登录",
+            "[JumpBack]刮刮乐",
+            "[JumpBack]情绪检测",
+            "[JumpBack]禁闭者生日",
+            "[JumpBack]生日日历",
+            "[JumpBack]月卡提示 - 取消",
+            "[JumpBack]月卡",
+            "[JumpBack]活动储值弹窗",
+            "[JumpBack]一般弹窗",
+            "首页"
+        ]
+    },
+    "网络恢复中": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "意識恢復中",
+                    "意识恢复中",
+                    "連線中",
+                    "连接中",
+                    "通信中",
+                    "網路連線",
+                    "网络连接"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 5000
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "网络确认": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "確定",
+                    "確認",
+                    "确定",
+                    "重試",
+                    "重试",
+                    "重新連接",
+                    "重新连接",
+                    "Retry",
+                    "OK"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 2000,
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "网络错误确认": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "發生未知錯誤",
+                    "发生未知错误",
+                    "未知錯誤",
+                    "未知错误",
+                    "請稍後再試",
+                    "请稍后再试",
+                    "內部網路已接入",
+                    "内部网络已接入"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    780,
+                    500,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "focus": {
+            "Node.Action.Succeeded": "网络错误确认"
+        },
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "资料载入中": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "系統資料載入中",
+                    "系統資料载入中",
+                    "系统資料載入中",
+                    "系统資料载入中",
+                    "系统资料载入中",
+                    "資料載入中",
+                    "資料载入中",
+                    "资料载入中",
+                    "安裝檔檢查中",
+                    "安装檔檢查中",
+                    "安装档检查中"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 5000
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "启动弹窗兜底关闭"
+        ]
+    },
+    "启动弹窗兜底关闭": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    640,
+                    690,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "focus": {
+            "Node.Action.Succeeded": "启动弹窗兜底关闭"
+        },
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "情绪检测": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    760,
+                    70,
+                    440,
+                    110
+                ],
+                "expected": [
+                    "检测",
+                    "檢測",
+                    "情绪检测",
+                    "情緒檢測",
+                    "庆典情绪检测",
+                    "慶典情緒檢測"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    799,
+                    484,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "focus": {
+            "Node.Action.Succeeded": "情绪检测"
+        },
+        "next": [
+            "情绪检测完成",
+            "前往补测"
+        ]
+    },
+    "情绪检测完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    520,
+                    320,
+                    260,
+                    140
+                ],
+                "expected": [
+                    "检测完成",
+                    "檢測完成",
+                    "完成",
+                    "今日无事",
+                    "今日無事"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    12,
+                    15,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 3000
+    },
+    "前往补测": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "前往补测",
+                    "前往補測",
+                    "补测",
+                    "補測"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "情绪检测"
+        ]
+    },
+    "禁闭者生日": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    700,
+                    420,
+                    530,
+                    250
+                ],
+                "expected": [
+                    "快乐",
+                    "快樂",
+                    "生日快乐",
+                    "生日快樂",
+                    "禮物已發送至背包",
+                    "礼物已发送至背包",
+                    "雙倍服從度",
+                    "双倍服从度"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    43,
+                    41,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "禁闭者生日_SecondClick": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    43,
+                    41,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "生日日历"
+        ]
+    },
+    "生日日历": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    700,
+                    0,
+                    560,
+                    150
+                ],
+                "expected": [
+                    "生日",
+                    "日历",
+                    "日曆",
+                    "生日日历",
+                    "生日日曆",
+                    "BIRTHDAY"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    43,
+                    41,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "月卡提示 - 取消": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "点击取消"
+        ]
+    },
+    "点击取消": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": "月卡提示 - 取消"
+            }
+        }
+    },
+    "月卡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    552,
+                    617,
+                    172,
+                    71
+                ],
+                "expected": [
+                    "今日补给",
+                    "今日補給"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    799,
+                    484,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "next": [
+            "关闭界面"
+        ]
+    },
+    "一般弹窗": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "弹窗关闭按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 3000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭一般弹窗"
+        }
+    },
+    "活动储值弹窗": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    120,
+                    360,
+                    1060,
+                    300
+                ],
+                "expected": [
+                    "前往儲值",
+                    "前往储值",
+                    "熱門禁閉者",
+                    "热门禁闭者",
+                    "推薦儲值",
+                    "推荐储值",
+                    "任意金额",
+                    "任意金額"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    360,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭活动储值弹窗"
+        },
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "首页": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    960,
+                    300,
+                    210,
+                    230
+                ],
+                "expected": [
+                    "禁閉者",
+                    "禁闭者"
+                ]
+            }
+        },
+        "pre_delay": 2000,
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 3000
+            }
+        },
+        "next": [
+            "首页检查2"
+        ],
+        "on_error": [
+            "登录后处理"
+        ]
+    },
+    "首页检查2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    850,
+                    500,
+                    430,
+                    200
+                ],
+                "expected": [
+                    "採購部",
+                    "采购部",
+                    "危機管理",
+                    "危机管理",
+                    "整備中心",
+                    "整备中心",
+                    "助手模式",
+                    "管理局"
+                ]
+            }
+        },
+        "timeout": 3000,
+        "focus": {
+            "Node.Recognition.Succeeded": "确认到首页"
+        }
+    },
+    "登录_异常处理": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "进入管理局",
+                    "進入管理局"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 10000
+    },
+    "关闭公告_异常处理": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    234,
+                    12,
+                    876,
+                    698
+                ],
+                "expected": [
+                    "公告",
+                    "系统公告",
+                    "系統公告",
+                    "System Announcement",
+                    "Announcement",
+                    "Notice"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    360,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1000
+    },
+    "登录前异常处理": {
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 30000
+            }
+        },
+        "next": [
+            "[JumpBack]网络恢复中",
+            "[JumpBack]网络确认",
+            "[JumpBack]关闭公告_异常处理",
+            "都没有",
+            "[JumpBack]登录_异常处理"
+        ]
+    },
+    "都没有": {
+        "next": [
+            "登录后处理"
+        ]
+    },
+    "启动": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.zy.wqmt.global"
+            }
+        },
+        "post_delay": 5000,
+        "next": [
+            "登录前处理"
+        ]
+    },
+    "刮刮乐": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    432,
+                    21,
+                    425,
+                    115
+                ],
+                "expected": [
+                    "福"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "第一次滑动"
+        ]
+    },
+    "第一次滑动": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    173,
+                    354,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1093,
+                        354,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "第二次滑动"
+        ]
+    },
+    "第二次滑动": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    180,
+                    451,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1099,
+                        457,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "关闭界面1"
+        ]
+    },
+    "点击": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1230,
+                    315,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "关闭界面1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "获取物资.png"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "next": [
+            "点击"
+        ]
+    }
+}

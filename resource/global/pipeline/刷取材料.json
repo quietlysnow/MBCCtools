@@ -1,0 +1,75 @@
+{
+    "进入新城": {
+        "recognition": "OCR",
+        "expected": [
+            "新城"
+        ],
+        "roi": [
+            33,
+            324,
+            94,
+            76
+        ],
+        "action": "DoNothing",
+        "post_wait_freezes": 1000,
+        "next": [
+            "碎金盛宴AB选择",
+            "[JumpBack]从右向左滑"
+        ]
+    },
+    "远邦to新城": {
+        "recognition": "OCR",
+        "expected": [
+            "远邦",
+            "遠邦"
+        ],
+        "roi": [
+            31,
+            324,
+            124,
+            77
+        ],
+        "action": "Swipe",
+        "begin": [
+            63,
+            356,
+            1,
+            1
+        ],
+        "end": [
+            60,
+            461,
+            1,
+            1
+        ],
+        "post_wait_freezes": 1000
+    },
+    "里湾to新城": {
+        "recognition": "OCR",
+        "expected": [
+            "里湾",
+            "裡灣",
+            "里灣"
+        ],
+        "roi": [
+            31,
+            324,
+            124,
+            77
+        ],
+        "action": "Swipe",
+        "begin": [
+            68,
+            462,
+            1,
+            1
+        ],
+        "end": [
+            71,
+            363,
+            1,
+            1
+        ],
+        "post_wait_freezes": 1000
+    }
+}

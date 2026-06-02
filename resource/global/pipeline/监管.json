@@ -1,0 +1,87 @@
+{
+    "监管入口": {
+        "recognition": "OCR",
+        "expected": [
+            "监管",
+            "監管"
+        ],
+        "roi": [
+            957,
+            379,
+            116,
+            86
+        ],
+        "action": "Click",
+        "focus": {
+            "Node.Action.Succeeded": "进入监管界面"
+        },
+        "next": [
+            "收菜",
+            "监管终端"
+        ]
+    },
+    "监管终端": {
+        "recognition": "OCR",
+        "expected": [
+            "监管装置",
+            "監管裝置"
+        ],
+        "roi": [
+            21,
+            170,
+            220,
+            90
+        ],
+        "action": "Click",
+        "target": [
+            128,
+            205,
+            1,
+            1
+        ],
+        "post_delay": 1500,
+        "next": [
+            "开始按钮"
+        ]
+    },
+    "监管关闭界面": {
+        "recognition": "OCR",
+        "expected": [
+            "获取物资",
+            "获得物资",
+            "獲得物資"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            650,
+            1,
+            1
+        ],
+        "next": [
+            "下一个"
+        ],
+        "timeout": 4000,
+        "on_error": [
+            "主菜单"
+        ],
+        "post_wait_freezes": 300
+    },
+    "跳过": {
+        "recognition": "OCR",
+        "expected": [
+            "跳过",
+            "跳過"
+        ],
+        "action": "Click",
+        "next": [
+            "监管关闭界面",
+            "[JumpBack]检查选项"
+        ],
+        "on_error": [
+            "主菜单"
+        ],
+        "timeout": 4000,
+        "post_wait_freezes": 2000
+    }
+}

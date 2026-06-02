@@ -1,0 +1,87 @@
+{
+  "记忆风暴入口": {
+    "post_wait_freezes": 500,
+    "focus": {
+      "Node.Action.Succeeded": "进入记忆风暴"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "记忆风暴",
+          "記憶風暴",
+          "记忆封闭",
+          "記憶封閉"
+        ],
+        "roi": [
+          120,
+          152,
+          353,
+          304
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    }
+  },
+  "记忆风暴优先选择": {
+    "timeout": 5000,
+    "focus": {
+      "Node.Action.Succeeded": "优先选择"
+    },
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "印象畸点",
+          "印象畸點"
+        ],
+        "roi": [
+          25,
+          112,
+          293,
+          349
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "确认关卡是否开放"
+    ],
+    "on_error": [
+      "默认选择第一个"
+    ]
+  },
+  "确认关卡是否开放": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "印象畸点",
+          "印象畸點"
+        ],
+        "roi": [
+          387,
+          301,
+          448,
+          161
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "next": [
+      "进入记忆风暴关卡"
+    ],
+    "on_error": [
+      "默认选择第一个"
+    ]
+  }
+}

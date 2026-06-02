@@ -1,0 +1,43 @@
+{
+  "识别巡游每日奖励": {
+    "recognition": "OCR",
+    "expected": [
+      "每日奖励",
+      "每日獎勵"
+    ],
+    "roi": [
+      26,
+      127,
+      399,
+      93
+    ],
+    "action": "DoNothing",
+    "next": [
+      "领取每日奖励（巡游）"
+    ],
+    "on_error": [
+      "主菜单"
+    ],
+    "timeout": 3000
+  },
+  "领取每日奖励（巡游）": {
+    "recognition": "OCR",
+    "expected": [
+      "每日奖励",
+      "每日獎勵"
+    ],
+    "roi": [
+      26,
+      127,
+      399,
+      93
+    ],
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [
+      "主菜单",
+      "[JumpBack]关闭界面",
+      "[JumpBack]侧边点击"
+    ]
+  }
+}

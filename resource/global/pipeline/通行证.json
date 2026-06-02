@@ -1,0 +1,375 @@
+{
+  "密令入口": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          1112,
+          532,
+          149,
+          93
+        ],
+        "expected": [
+          "监察密令",
+          "監察密令",
+          "察密令"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1168,
+          581,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 2000,
+    "focus": {
+      "Node.Action.Succeeded": "进入监察密令"
+    },
+    "next": [
+      "切换到密令任务"
+    ]
+  },
+  "切换到密令任务": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          11,
+          646,
+          1231,
+          73
+        ],
+        "expected": [
+          "监察任务",
+          "監察任務",
+          "察任务",
+          "察任務"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          339,
+          682,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 500,
+    "next": [
+      "每日奖励"
+    ]
+  },
+  "识别每日奖励领取": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          999,
+          579,
+          220,
+          56
+        ],
+        "expected": [
+          "领取",
+          "一键领取",
+          "領取",
+          "一鍵領取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1108,
+          604,
+          1,
+          1
+        ]
+      }
+    },
+    "timeout": 3000,
+    "next": [
+      "处理每日弹窗"
+    ],
+    "on_error": [
+      "每周奖励"
+    ]
+  },
+  "处理每日弹窗": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          480,
+          80,
+          320,
+          140
+        ],
+        "expected": [
+          "获取物资",
+          "获得物资",
+          "獲得物資"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          640,
+          650,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 2000,
+    "next": [
+      "每周奖励"
+    ]
+  },
+  "每周奖励": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          344,
+          158,
+          131,
+          243
+        ],
+        "expected": [
+          "每周",
+          "每週"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 200,
+    "timeout": 4000,
+    "next": [
+      "识别每周奖励领取"
+    ],
+    "on_error": [
+      "密令奖励"
+    ]
+  },
+  "识别每周奖励领取": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          999,
+          579,
+          220,
+          56
+        ],
+        "expected": [
+          "领取",
+          "一键领取",
+          "領取",
+          "一鍵領取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1108,
+          604,
+          1,
+          1
+        ]
+      }
+    },
+    "timeout": 4000,
+    "next": [
+      "处理每周弹窗"
+    ],
+    "on_error": [
+      "密令奖励"
+    ]
+  },
+  "处理每周弹窗": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          480,
+          80,
+          320,
+          140
+        ],
+        "expected": [
+          "获取物资",
+          "获得物资",
+          "獲得物資"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          640,
+          650,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 2000,
+    "next": [
+      "密令奖励"
+    ]
+  },
+  "识别密令奖励领取": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          999,
+          579,
+          220,
+          56
+        ],
+        "expected": [
+          "领取",
+          "一键领取",
+          "領取",
+          "一鍵領取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1108,
+          604,
+          1,
+          1
+        ]
+      }
+    },
+    "timeout": 4000,
+    "next": [
+      "处理密令弹窗"
+    ],
+    "on_error": [
+      "切换到监察密令等级奖励"
+    ]
+  },
+  "处理密令弹窗": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          480,
+          80,
+          320,
+          140
+        ],
+        "expected": [
+          "获取物资",
+          "获得物资",
+          "獲得物資"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          640,
+          650,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 2000
+  },
+  "切换到监察密令等级奖励": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          640,
+          649,
+          639,
+          70
+        ],
+        "expected": [
+          "监察密",
+          "监察密令",
+          "監察密",
+          "監察密令",
+          "察密"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          974,
+          685,
+          1,
+          1
+        ]
+      }
+    },
+    "post_wait_freezes": 500,
+    "next": [
+      "领取密令等级奖励"
+    ],
+    "on_error": [
+      "通行证完成后跳转"
+    ]
+  },
+  "领取密令等级奖励": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          743,
+          561,
+          213,
+          54
+        ],
+        "expected": [
+          "键领取",
+          "一键领取",
+          "鍵領取",
+          "一鍵領取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": 500,
+    "timeout": 2000,
+    "next": [
+      "通行证完成后跳转"
+    ]
+  }
+}
