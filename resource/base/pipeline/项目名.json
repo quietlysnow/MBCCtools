@@ -135,12 +135,12 @@
     },
     "扫荡失败": {
         "recognition": "OCR",
-        "expected": "不足",
+        "expected": "体力",
         "roi": [
-            497,
-            309,
-            276,
-            87
+            449,
+            298,
+            373,
+            134
         ],
         "action": "Click",
         "target": [

@@ -1,8 +1,20 @@
 {
+    "$__mpe_config_新建Pipeline1": {
+        "$__mpe_code": {
+            "prefix": "",
+            "coordinateMode": "absolute-v1",
+            "savedViewport": {
+                "x": -167,
+                "y": -740,
+                "zoom": 0.76
+            },
+            "filename": "新建Pipeline1",
+            "version": "v1.7.3"
+        }
+    },
     "刷取材料": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
         "post_wait_freezes": 1000,
+        "timeout": 3000,
         "next": [
             "进入新城",
             "[JumpBack]远邦to新城",
@@ -10,177 +22,361 @@
             "[JumpBack]狄斯",
             "[JumpBack]主菜单"
         ],
-        "timeout": 3000
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 429
+            }
+        }
     },
     "进入新城": {
-        "recognition": "OCR",
-        "expected": "新城",
-        "roi": [
-            33,
-            324,
-            94,
-            76
-        ],
-        "action": "DoNothing",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    33,
+                    324,
+                    94,
+                    76
+                ],
+                "expected": "新城"
+            }
+        },
         "post_wait_freezes": 1000,
         "next": [
-            "碎金盛宴AB选择",
+            "碎金盛宴识别",
             "[JumpBack]从右向左滑"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 484,
+                "y": 1080
+            }
+        }
     },
     "远邦to新城": {
-        "recognition": "OCR",
-        "expected": "远邦",
-        "roi": [
-            31,
-            324,
-            124,
-            77
-        ],
-        "action": "Swipe",
-        "begin": [
-            63,
-            356,
-            1,
-            1
-        ],
-        "end": [
-            60,
-            461,
-            1,
-            1
-        ],
-        "post_wait_freezes": 1000
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    31,
+                    324,
+                    124,
+                    77
+                ],
+                "expected": "远邦"
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    63,
+                    356,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        60,
+                        461,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 12
+            }
+        }
     },
     "里湾to新城": {
-        "recognition": "OCR",
-        "expected": "里湾",
-        "roi": [
-            31,
-            324,
-            124,
-            77
-        ],
-        "action": "Swipe",
-        "begin": [
-            68,
-            462,
-            1,
-            1
-        ],
-        "end": [
-            71,
-            363,
-            1,
-            1
-        ],
-        "post_wait_freezes": 1000
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    31,
+                    324,
+                    124,
+                    77
+                ],
+                "expected": "里湾"
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    68,
+                    462,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        71,
+                        363,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 664
+            }
+        }
     },
     "从右向左滑": {
-        "recognition": "DirectHit",
-        "action": "Swipe",
-        "begin": [
-            814,
-            445,
-            1,
-            1
-        ],
-        "end": [
-            550,
-            443,
-            1,
-            1
-        ],
-        "post_wait_freezes": 1000
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    814,
+                    445,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        550,
+                        443,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "$__mpe_code": {
+            "position": {
+                "x": 892,
+                "y": 1016
+            }
+        }
     },
     "从左向右滑": {
-        "recognition": "DirectHit",
-        "action": "Swipe",
-        "begin": [
-            550,
-            443,
-            1,
-            1
-        ],
-        "end": [
-            814,
-            445,
-            1,
-            1
-        ],
-        "post_wait_freezes": 1000
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    550,
+                    443,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        814,
+                        445,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        }
     },
     "碎金盛宴AB选择": {
-        "recognition": "OCR",
-        "expected": "N3",
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "N3"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "post_wait_freezes": 1000,
+        "timeout": 3000,
         "next": [
             "目标材料关卡"
         ],
         "on_error": [
             "滑动找关卡"
         ],
-        "timeout": 3000
+        "$__mpe_code": {
+            "position": {
+                "x": 1083,
+                "y": 1288
+            }
+        }
     },
     "滑动找关卡": {
-        "recognition": "DirectHit",
-        "action": "Swipe",
-        "begin": [
-            200,
-            443,
-            1,
-            1
-        ],
-        "end": [
-            1000,
-            445,
-            1,
-            1
-        ],
-        "duration": 400,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    200,
+                    443,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1000,
+                        445,
+                        1,
+                        1
+                    ]
+                ],
+                "duration": 400
+            }
+        },
         "post_wait_freezes": 1000,
         "next": [
             "目标材料关卡",
             "反向滑动找关卡"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1214,
+                "y": 688
+            }
+        }
     },
     "反向滑动找关卡": {
-        "recognition": "DirectHit",
-        "action": "Swipe",
-        "begin": [
-            1000,
-            445,
-            1,
-            1
-        ],
-        "end": [
-            200,
-            443,
-            1,
-            1
-        ],
-        "duration": 400,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1000,
+                    445,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        200,
+                        443,
+                        1,
+                        1
+                    ]
+                ],
+                "duration": 400
+            }
+        },
         "post_wait_freezes": 1000,
         "timeout": 3000,
         "next": [
             "目标材料关卡",
             "[JumpBack]滑动找关卡"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 892,
+                "y": 610
+            }
+        }
     },
     "目标材料关卡": {
-        "recognition": "OCR",
-        "expected": "N3-6",
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "N3-6"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 1000,
         "focus": {
             "Node.Action.Succeeded": "进入材料关卡"
         },
-        "post_wait_freezes": 1000,
         "next": [
             "扫荡完成",
             "扫荡失败",
             "[JumpBack]连续扫荡",
             "[JumpBack]扫荡最大次数"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1532,
+                "y": 718
+            }
+        }
+    },
+    "碎金盛宴识别": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "N3"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 1000,
+        "timeout": 3000,
+        "next": [
+            "碎金盛宴AB选择"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 779,
+                "y": 1304
+            }
+        }
+    },
+    "$__mpe_external_狄斯_新建Pipeline1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 384
+            }
+        }
+    },
+    "$__mpe_external_主菜单_新建Pipeline1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 524
+            }
+        }
+    },
+    "$__mpe_external_扫荡完成_新建Pipeline1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1852,
+                "y": 662
+            }
+        }
+    },
+    "$__mpe_external_扫荡失败_新建Pipeline1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1852,
+                "y": 802
+            }
+        }
+    },
+    "$__mpe_external_连续扫荡_新建Pipeline1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1852,
+                "y": 1082
+            }
+        }
+    },
+    "$__mpe_external_扫荡最大次数_新建Pipeline1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1852,
+                "y": 942
+            }
+        }
     }
 }
