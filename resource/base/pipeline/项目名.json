@@ -153,6 +153,26 @@
             "主菜单"
         ]
     },
+    "扫荡调令不足": {
+        "recognition": "OCR",
+        "expected": "调令不足",
+        "roi": [
+            410,
+            285,
+            470,
+            175
+        ],
+        "action": "Click",
+        "target": [
+            500,
+            500,
+            1,
+            1
+        ],
+        "next": [
+            "主菜单"
+        ]
+    },
     "扫荡完成": {
         "recognition": "OCR",
         "expected": "完成",
