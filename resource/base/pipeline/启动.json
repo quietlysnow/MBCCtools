@@ -1,4 +1,17 @@
 {
+    "$__mpe_config_新建Pipeline2": {
+        "$__mpe_code": {
+            "prefix": "",
+            "coordinateMode": "absolute-v1",
+            "savedViewport": {
+                "x": -681,
+                "y": -1068,
+                "zoom": 0.76
+            },
+            "filename": "新建Pipeline2",
+            "version": "v1.7.4"
+        }
+    },
     "登录前处理": {
         "action": {
             "type": "DoNothing",
@@ -12,7 +25,13 @@
         ],
         "on_error": [
             "登录前异常处理"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1309
+            }
+        }
     },
     "关闭公告": {
         "recognition": {
@@ -41,6 +60,12 @@
         "post_delay": 1000,
         "focus": {
             "Node.Action.Succeeded": "关闭公告"
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1259
+            }
         }
     },
     "登录": {
@@ -59,7 +84,13 @@
         },
         "next": [
             "登录后处理"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 915
+            }
+        }
     },
     "登录后处理": {
         "action": {
@@ -74,9 +105,16 @@
             "[JumpBack]禁闭者生日",
             "[JumpBack]月卡提示 - 取消",
             "[JumpBack]月卡",
-            "[JumpBack]一般弹窗",
-            "首页"
-        ]
+            "[JumpBack]管理局活动月卡",
+            "首页",
+            "[JumpBack]一般弹窗"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 976
+            }
+        }
     },
     "情绪检测": {
         "recognition": {
@@ -109,7 +147,13 @@
         "next": [
             "情绪检测完成",
             "前往补测"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 491
+            }
+        }
     },
     "情绪检测完成": {
         "recognition": {
@@ -135,7 +179,13 @@
                 ]
             }
         },
-        "post_wait_freezes": 3000
+        "post_wait_freezes": 3000,
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 355
+            }
+        }
     },
     "前往补测": {
         "recognition": {
@@ -151,7 +201,13 @@
         },
         "next": [
             "情绪检测"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 697
+            }
+        }
     },
     "禁闭者生日": {
         "recognition": {
@@ -180,7 +236,13 @@
         "post_wait_freezes": 1000,
         "next": [
             "禁闭者生日_SecondClick"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 899
+            }
+        }
     },
     "禁闭者生日_SecondClick": {
         "action": {
@@ -196,7 +258,13 @@
         },
         "next": [
             "生日日历"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 953
+            }
+        }
     },
     "生日日历": {
         "recognition": {
@@ -222,7 +290,13 @@
                 ]
             }
         },
-        "post_wait_freezes": 2000
+        "post_wait_freezes": 2000,
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 916
+            }
+        }
     },
     "月卡提示 - 取消": {
         "recognition": {
@@ -238,7 +312,13 @@
         },
         "next": [
             "点击取消"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1275
+            }
+        }
     },
     "点击取消": {
         "action": {
@@ -246,26 +326,48 @@
             "param": {
                 "target": "月卡提示 - 取消"
             }
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1294
+            }
         }
     },
     "月卡": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "剩余",
-                "roi": [491, 443, 310, 84]
+                "roi": [
+                    491,
+                    443,
+                    310,
+                    84
+                ],
+                "expected": "剩余"
             }
         },
         "action": {
             "type": "Click",
             "param": {
-                "target": [898, 475, 1, 1]
+                "target": [
+                    898,
+                    475,
+                    1,
+                    1
+                ]
             }
         },
         "post_wait_freezes": 2000,
         "next": [
             "关闭界面"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1610,
+                "y": 1589
+            }
+        }
     },
     "一般弹窗": {
         "recognition": {
@@ -282,6 +384,12 @@
         "post_wait_freezes": 3000,
         "focus": {
             "Node.Action.Succeeded": "关闭一般弹窗"
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 1604,
+                "y": 2209
+            }
         }
     },
     "首页": {
@@ -311,7 +419,13 @@
         ],
         "on_error": [
             "登录后处理"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1604,
+                "y": 2486
+            }
+        }
     },
     "首页检查2": {
         "recognition": {
@@ -331,6 +445,12 @@
         "timeout": 3000,
         "focus": {
             "Node.Recognition.Succeeded": "确认到首页"
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 1966,
+                "y": 2312
+            }
         }
     },
     "登录_异常处理": {
@@ -343,7 +463,13 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 10000
+        "post_delay": 10000,
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1677
+            }
+        }
     },
     "关闭公告_异常处理": {
         "recognition": {
@@ -369,7 +495,13 @@
                 ]
             }
         },
-        "post_delay": 1000
+        "post_delay": 1000,
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1113
+            }
+        }
     },
     "登录前异常处理": {
         "action": {
@@ -382,12 +514,24 @@
             "[JumpBack]关闭公告_异常处理",
             "都没有",
             "[JumpBack]登录_异常处理"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1633
+            }
+        }
     },
     "都没有": {
         "next": [
             "登录后处理"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1455
+            }
+        }
     },
     "启动": {
         "action": {
@@ -399,7 +543,13 @@
         "post_delay": 5000,
         "next": [
             "登录前处理"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1291
+            }
+        }
     },
     "刮刮乐": {
         "recognition": {
@@ -422,7 +572,13 @@
         "post_delay": 1000,
         "next": [
             "第一次滑动"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 12
+            }
+        }
     },
     "第一次滑动": {
         "action": {
@@ -447,7 +603,13 @@
         "post_delay": 1000,
         "next": [
             "第二次滑动"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 13
+            }
+        }
     },
     "第二次滑动": {
         "action": {
@@ -472,7 +634,13 @@
         "post_delay": 1000,
         "next": [
             "关闭界面1"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 13
+            }
+        }
     },
     "点击": {
         "action": {
@@ -484,6 +652,12 @@
                     1,
                     1
                 ]
+            }
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 2892,
+                "y": 75
             }
         }
     },
@@ -508,6 +682,121 @@
         "post_wait_freezes": 1000,
         "next": [
             "点击"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 12
+            }
+        }
+    },
+    "$__mpe_external_关闭界面_新建Pipeline2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1649
+            },
+            "extra_positions": [
+                {
+                    "x": 1929,
+                    "y": 1948
+                }
+            ]
+        }
+    },
+    "管理局活动月卡": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    241,
+                    149,
+                    377,
+                    110
+                ],
+                "expected": [
+                    "管理局"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 3000
+            }
+        },
+        "next": [
+            "检查活动月卡领取"
         ]
+    },
+    "检查活动月卡领取": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    724,
+                    472,
+                    229,
+                    78
+                ],
+                "expected": "领取"
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "timeout": 3000
+            }
+        },
+        "next": [
+            "领取管理局活动月卡"
+        ],
+        "on_error": [
+            "关闭活动月卡界面"
+        ]
+    },
+    "领取管理局活动月卡": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    835,
+                    511,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "关闭活动月卡界面"
+        ]
+    },
+    "关闭活动月卡界面": {
+        "recognition": "TemplateMatch",
+        "template": "获取物资.png",
+        "action": "Click",
+        "target": [
+            1208,
+            366,
+            1,
+            1
+        ],
+        "post_wait_freezes": 300,
+        "next": [
+            "关闭活动月卡侧边"
+        ]
+    },
+    "关闭活动月卡侧边": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1185,
+                    78,
+                    1,
+                    1
+                ]
+            }
+        }
     }
 }
