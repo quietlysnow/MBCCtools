@@ -55,20 +55,20 @@
       "param": {}
     },
     "next": [
-      "精选推荐"
+      "追踪特典"
     ]
   },
-  "精选推荐": {
+  "追踪特典": {
     "pre_delay": 300,
     "post_delay": 400,
     "focus": {
-      "Node.Action.Succeeded": "精选推荐"
+      "Node.Action.Succeeded": "追踪特典"
     },
     "recognition": {
       "type": "OCR",
       "param": {
         "expected": [
-          "精选推荐"
+          "追踪"
         ],
         "index": 0,
         "order_by": "Vertical"
