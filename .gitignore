@@ -455,3 +455,20 @@ debug
 .nicegui/
 .claude/
 appsettings.json
+
+# MFAAvalonia build artifacts (downloaded from Releases at build time)
+MaaNode.node
+MaaNodeServer.node
+MFAAvalonia.deps.json
+MFAAvalonia.runtimeconfig.json
+MFAUpdater.runtimeconfig.json
+MFAAvalonia.desktop
+SukiUI.xml
+changes.json
+
+# MaaAgentBinary (downloaded from MaaFramework Releases)
+libs/MaaAgentBinary/
+
+# Unused assets
+assets/logo.ico
+assets/MaaCommonAssets/
