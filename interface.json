@@ -12,6 +12,13 @@
       "type": "Adb"
     }
   ],
+  "agent": {
+    "child_exec": "python",
+    "child_args": [
+      "./agent/main.py"
+    ],
+    "identifier": "MBCCtools"
+  },
   "resource": [
     {
       "name": "官服",
@@ -104,6 +111,11 @@
       "name": "破碎防线",
       "entry": "破碎防线",
       "doc": "只支持自动领奖，不战斗"
+    },
+    {
+      "name": "抽卡记录",
+      "entry": "抽卡记录",
+      "doc": "[b]依赖 AgentServer[/b]，Agent 没起来时本任务不会有任何动作\n\n[b]入口节点还是空的[/b]：请先在模拟器里手动打开抽卡记录页，再启动本任务\n\n开跑先读页头追踪类型（活动 / 常规 / 定向 / 常驻），随记录存进档案 [color:orange]type[/color] 字段并作为 xlsx「类型」列；读不出时照常采集，只是类型留空\n\n记录累计在 [color:orange]record/抽卡记录.jsonl[/color]，出新卡池后跑一次只追加没见过的几条；收尾导出 [color:orange]record/抽卡记录.xlsx[/color]（一个卡池一张表）并弹窗显示摘要"
     }
   ],
   "option": {

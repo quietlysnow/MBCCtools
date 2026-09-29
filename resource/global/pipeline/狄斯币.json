@@ -1,17 +1,23 @@
 {
     "狄斯币入口2": {
-        "recognition": "OCR",
-        "expected": [
-            "淘金狂热",
-            "淘金狂熱"
-        ],
-        "roi": [
-            7,
-            86,
-            348,
-            283
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "淘金狂热",
+                    "淘金狂熱"
+                ],
+                "roi": [
+                    7,
+                    86,
+                    348,
+                    283
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入狄斯币关卡"
         },

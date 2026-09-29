@@ -11,17 +11,32 @@
         ]
     },
     "狄斯币入口": {
-        "recognition": "TemplateMatch",
-        "template": "狄斯币.png",
-        "roi" : [704,29,296,147],
-        "action": "Click",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "狄斯币.png",
+                "roi": [704,29,296,147]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "进入狄斯币"
+        },
         "post_wait_freezes": 50
     },
     "狄斯币入口2": {
-        "recognition": "OCR",
-        "expected": ["淘金狂热"],
-        "roi":[29,105,309,239],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["淘金狂热"],
+                "roi": [29,105,309,239]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入狄斯币关卡"
         },

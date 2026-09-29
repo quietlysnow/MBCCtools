@@ -11,29 +11,44 @@
         ]
     },
     "技能书入口": {
-        "recognition": "TemplateMatch",
-        "template": "技能.png",
-        "roi": [
-            480,
-            217,
-            296,
-            156
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "技能.png",
+                "roi": [
+                    480,
+                    217,
+                    296,
+                    156
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "进入技能书"
+        },
         "post_wait_freezes": 50
     },
     "技能书入口2": {
-        "recognition": "OCR",
-        "expected": [
-            "探查"
-        ],
-        "roi": [
-            17,
-            91,
-            335,
-            270
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "探查"
+                ],
+                "roi": [
+                    17,
+                    91,
+                    335,
+                    270
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入技能书关卡"
         },

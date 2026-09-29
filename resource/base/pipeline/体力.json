@@ -11,16 +11,24 @@
         ]
     },
     "开始领取体力": {
-        "recognition": "TemplateMatch",
-        "template": "体力.png",
-        "roi": [
-            77,
-            250,
-            193,
-            211
-        ],
-        "action": "Click",
-        "target" : [185,330,1,1],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "体力.png",
+                "roi": [
+                    77,
+                    250,
+                    193,
+                    211
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [185,330,1,1]
+            }
+        },
         "focus": {
             "Node.Action.Succeeded": "领取体力"
         },
@@ -30,29 +38,39 @@
         ]
     },
     "开始领取体力2": {
-        "recognition": "TemplateMatch",
-        "template": "体力2.png",
-        "roi": [
-            77,
-            250,
-            193,
-            211
-        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "体力2.png",
+                "roi": [
+                    77,
+                    250,
+                    193,
+                    211
+                ]
+            }
+        },
         "post_delay": 1000,
         "next": [
             "主菜单"
         ]
     },
     "识别第一罐体力": {
-        "recognition": "TemplateMatch",
-        "template": "体力领取按钮.png",
-        "roi": [
-            555,
-            221,
-            516,
-            186
-        ],
-        "action": "DoNothing",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "体力领取按钮.png",
+                "roi": [
+                    555,
+                    221,
+                    516,
+                    186
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
         "next": [
             "领取第一罐体力"
         ],
@@ -62,15 +80,24 @@
         "timeout": 3000
     },
     "领取第一罐体力": {
-        "recognition": "TemplateMatch",
-        "template": "体力领取按钮.png",
-        "roi": [
-            555,
-            221,
-            516,
-            186
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "体力领取按钮.png",
+                "roi": [
+                    555,
+                    221,
+                    516,
+                    186
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "领取第一罐体力"
+        },
         "post_delay": 1000,
         "next": [
             "领取第二罐体力",
@@ -78,15 +105,24 @@
         ]
     },
     "领取第二罐体力": {
-        "recognition": "TemplateMatch",
-        "template": "体力领取按钮.png",
-        "roi": [
-            555,
-            427,
-            518,
-            182
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "体力领取按钮.png",
+                "roi": [
+                    555,
+                    427,
+                    518,
+                    182
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "领取第二罐体力"
+        },
         "next": [
             "主菜单",
             "[JumpBack]关闭界面",

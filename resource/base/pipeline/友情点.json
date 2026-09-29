@@ -8,15 +8,21 @@
         ]
     },
     "友情点入口": {
-        "recognition": "OCR",
-        "expected": "好友",
-        "roi": [
-            1096,
-            271,
-            147,
-            103
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "好友",
+                "roi": [
+                    1096,
+                    271,
+                    147,
+                    103
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入好友界面"
         },
@@ -26,42 +32,64 @@
         "post_wait_freezes": 300
     },
     "领取友情点": {
-        "recognition": "OCR",
-        "expected": "领取",
-        "roi": [
-            867,
-            581,
-            393,
-            98
-        ],
-        "action": "Click",
-        "target": [
-            1150,
-            616,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "领取",
+                "roi": [
+                    867,
+                    581,
+                    393,
+                    98
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1150,
+                    616,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "领取友情点"
+        },
         "post_delay": 2000,
         "next": [
             "赠送友情点"
         ]
     },
     "赠送友情点": {
-        "recognition": "OCR",
-        "expected": "赠送",
-        "roi": [
-            867,
-            581,
-            393,
-            98
-        ],
-        "action": "Click",
-        "target": [
-            1150,
-            616,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "赠送",
+                "roi": [
+                    867,
+                    581,
+                    393,
+                    98
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1150,
+                    616,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "赠送友情点"
+        },
         "post_wait_freezes": 3000,
         "next": [
             "主菜单"

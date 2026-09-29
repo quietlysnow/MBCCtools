@@ -11,29 +11,44 @@
         ]
     },
     "重构入口": {
-        "recognition": "TemplateMatch",
-        "template": "重构.png",
-        "roi": [
-            480,
-            217,
-            296,
-            156
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "重构.png",
+                "roi": [
+                    480,
+                    217,
+                    296,
+                    156
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "进入重构"
+        },
         "post_wait_freezes": 50
     },
     "重构入口2": {
-        "recognition": "OCR",
-        "expected": [
-            "搜寻"
-        ],
-        "roi": [
-            17,
-            91,
-            335,
-            270
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "搜寻"
+                ],
+                "roi": [
+                    17,
+                    91,
+                    335,
+                    270
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入极域搜寻关卡"
         },

@@ -18,6 +18,9 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "内海入口-破碎防线"
+        },
         "post_delay": 1000,
         "next": [
             "破碎防线入口",
@@ -38,6 +41,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "进入破碎防线"
         },
         "post_wait_freezes": 1000,
         "timeout": 5000,
@@ -66,6 +72,9 @@
                     ]
                 ]
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海-推进到中段"
         },
         "repeat": 2,
         "repeat_delay": 250,
@@ -145,6 +154,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "点击暗域关卡奖励"
+        },
         "timeout": 5000,
         "next": [
             "[JumpBack]第一个boss奖励",
@@ -179,6 +191,9 @@
                     3
                 ]
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点击暗域本期奖励"
         },
         "timeout": 5000,
         "next": [

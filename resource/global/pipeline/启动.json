@@ -1,11 +1,9 @@
 {
     "登录前处理": {
         "action": {
-            "type": "DoNothing",
-            "param": {
-                "timeout": 30000
-            }
+            "type": "DoNothing"
         },
+        "timeout": 30000,
         "next": [
             "[JumpBack]网络恢复中",
             "[JumpBack]网络确认",
@@ -77,11 +75,9 @@
     },
     "登录后处理": {
         "action": {
-            "type": "DoNothing",
-            "param": {
-                "timeout": 15000
-            }
+            "type": "DoNothing"
         },
+        "timeout": 15000,
         "next": [
             "[JumpBack]网络恢复中",
             "[JumpBack]网络确认",
@@ -116,11 +112,9 @@
             }
         },
         "action": {
-            "type": "DoNothing",
-            "param": {
-                "timeout": 5000
-            }
+            "type": "DoNothing"
         },
+        "timeout": 5000,
         "post_delay": 1000,
         "next": [
             "登录后处理"
@@ -145,6 +139,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "网络确认"
         },
         "post_wait_freezes": 2000,
         "next": [
@@ -206,11 +203,9 @@
             }
         },
         "action": {
-            "type": "DoNothing",
-            "param": {
-                "timeout": 5000
-            }
+            "type": "DoNothing"
         },
+        "timeout": 5000,
         "post_delay": 1000,
         "next": [
             "启动弹窗兜底关闭"
@@ -306,6 +301,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "情绪检测完成"
+        },
         "post_wait_freezes": 3000
     },
     "前往补测": {
@@ -322,6 +320,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "前往补测"
         },
         "next": [
             "情绪检测"
@@ -360,6 +361,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "禁闭者生日"
+        },
         "post_wait_freezes": 1000,
         "next": [
             "登录后处理"
@@ -376,6 +380,9 @@
                     1
                 ]
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "禁闭者生日二次点击"
         },
         "next": [
             "生日日历"
@@ -412,6 +419,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "生日日历"
+        },
         "post_wait_freezes": 2000,
         "next": [
             "登录后处理"
@@ -429,6 +439,9 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "月卡提示 - 取消"
+        },
         "next": [
             "点击取消"
         ]
@@ -439,6 +452,9 @@
             "param": {
                 "target": "月卡提示 - 取消"
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点击取消"
         }
     },
     "月卡": {
@@ -467,6 +483,9 @@
                     1
                 ]
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "月卡"
         },
         "post_wait_freezes": 2000,
         "next": [
@@ -549,11 +568,9 @@
         },
         "pre_delay": 2000,
         "action": {
-            "type": "DoNothing",
-            "param": {
-                "timeout": 3000
-            }
+            "type": "DoNothing"
         },
+        "timeout": 3000,
         "next": [
             "首页检查2"
         ],
@@ -601,6 +618,9 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "处理登录异常"
+        },
         "post_delay": 10000
     },
     "关闭公告_异常处理": {
@@ -634,15 +654,16 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "处理关闭公告异常"
+        },
         "post_delay": 1000
     },
     "登录前异常处理": {
         "action": {
-            "type": "DoNothing",
-            "param": {
-                "timeout": 30000
-            }
+            "type": "DoNothing"
         },
+        "timeout": 30000,
         "next": [
             "[JumpBack]网络恢复中",
             "[JumpBack]网络确认",
@@ -662,6 +683,9 @@
             "param": {
                 "package": "com.zy.wqmt.global"
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "启动游戏"
         },
         "post_delay": 5000,
         "next": [
@@ -685,6 +709,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "刮刮乐"
         },
         "post_delay": 1000,
         "next": [

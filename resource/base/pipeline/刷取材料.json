@@ -1,17 +1,4 @@
 {
-    "$__mpe_config_新建Pipeline1": {
-        "$__mpe_code": {
-            "prefix": "",
-            "coordinateMode": "absolute-v1",
-            "savedViewport": {
-                "x": -167,
-                "y": -740,
-                "zoom": 0.76
-            },
-            "filename": "新建Pipeline1",
-            "version": "v1.7.3"
-        }
-    },
     "刷取材料": {
         "post_wait_freezes": 1000,
         "timeout": 3000,
@@ -21,13 +8,7 @@
             "[JumpBack]里湾to新城",
             "[JumpBack]狄斯",
             "[JumpBack]主菜单"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 252,
-                "y": 429
-            }
-        }
+        ]
     },
     "进入新城": {
         "recognition": {
@@ -46,13 +27,7 @@
         "next": [
             "碎金盛宴识别",
             "[JumpBack]从右向左滑"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 484,
-                "y": 1080
-            }
-        }
+        ]
     },
     "远邦to新城": {
         "recognition": {
@@ -86,13 +61,10 @@
                 ]
             }
         },
-        "post_wait_freezes": 1000,
-        "$__mpe_code": {
-            "position": {
-                "x": 572,
-                "y": 12
-            }
-        }
+        "focus": {
+            "Node.Action.Succeeded": "远邦to新城"
+        },
+        "post_wait_freezes": 1000
     },
     "里湾to新城": {
         "recognition": {
@@ -126,13 +98,10 @@
                 ]
             }
         },
-        "post_wait_freezes": 1000,
-        "$__mpe_code": {
-            "position": {
-                "x": 572,
-                "y": 664
-            }
-        }
+        "focus": {
+            "Node.Action.Succeeded": "里湾to新城"
+        },
+        "post_wait_freezes": 1000
     },
     "从右向左滑": {
         "action": {
@@ -154,13 +123,10 @@
                 ]
             }
         },
-        "post_wait_freezes": 1000,
-        "$__mpe_code": {
-            "position": {
-                "x": 892,
-                "y": 1016
-            }
-        }
+        "focus": {
+            "Node.Action.Succeeded": "从右向左滑"
+        },
+        "post_wait_freezes": 1000
     },
     "从左向右滑": {
         "action": {
@@ -182,13 +148,10 @@
                 ]
             }
         },
-        "post_wait_freezes": 1000,
-        "$__mpe_code": {
-            "position": {
-                "x": 12,
-                "y": 12
-            }
-        }
+        "focus": {
+            "Node.Action.Succeeded": "从左向右滑"
+        },
+        "post_wait_freezes": 1000
     },
     "碎金盛宴AB选择": {
         "recognition": {
@@ -200,6 +163,9 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "碎金盛宴AB选择"
+        },
         "post_wait_freezes": 1000,
         "timeout": 3000,
         "next": [
@@ -207,13 +173,7 @@
         ],
         "on_error": [
             "滑动找关卡"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 1083,
-                "y": 1288
-            }
-        }
+        ]
     },
     "滑动找关卡": {
         "action": {
@@ -236,17 +196,14 @@
                 "duration": 400
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "滑动找关卡"
+        },
         "post_wait_freezes": 1000,
         "next": [
             "目标材料关卡",
             "反向滑动找关卡"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 1214,
-                "y": 688
-            }
-        }
+        ]
     },
     "反向滑动找关卡": {
         "action": {
@@ -269,18 +226,15 @@
                 "duration": 400
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "反向滑动找关卡"
+        },
         "post_wait_freezes": 1000,
         "timeout": 3000,
         "next": [
             "目标材料关卡",
             "[JumpBack]滑动找关卡"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 892,
-                "y": 610
-            }
-        }
+        ]
     },
     "目标材料关卡": {
         "recognition": {
@@ -301,13 +255,7 @@
             "扫荡失败",
             "[JumpBack]连续扫荡",
             "[JumpBack]扫荡最大次数"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 1532,
-                "y": 718
-            }
-        }
+        ]
     },
     "碎金盛宴识别": {
         "recognition": {
@@ -319,64 +267,13 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "碎金盛宴识别"
+        },
         "post_wait_freezes": 1000,
         "timeout": 3000,
         "next": [
             "碎金盛宴AB选择"
-        ],
-        "$__mpe_code": {
-            "position": {
-                "x": 779,
-                "y": 1304
-            }
-        }
-    },
-    "$__mpe_external_狄斯_新建Pipeline1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 572,
-                "y": 384
-            }
-        }
-    },
-    "$__mpe_external_主菜单_新建Pipeline1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 572,
-                "y": 524
-            }
-        }
-    },
-    "$__mpe_external_扫荡完成_新建Pipeline1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1852,
-                "y": 662
-            }
-        }
-    },
-    "$__mpe_external_扫荡失败_新建Pipeline1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1852,
-                "y": 802
-            }
-        }
-    },
-    "$__mpe_external_连续扫荡_新建Pipeline1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1852,
-                "y": 1082
-            }
-        }
-    },
-    "$__mpe_external_扫荡最大次数_新建Pipeline1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1852,
-                "y": 942
-            }
-        }
+        ]
     }
 }

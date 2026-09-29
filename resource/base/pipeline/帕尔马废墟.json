@@ -10,15 +10,21 @@
         ]
     },
     "帕尔马废墟入口": {
-        "recognition": "TemplateMatch",
-        "template": "职业.png",
-        "roi": [
-            932,
-            300,
-            225,
-            231
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "职业.png",
+                "roi": [
+                    932,
+                    300,
+                    225,
+                    231
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入帕尔马废墟"
         },
@@ -34,17 +40,26 @@
         ]
     },
     "职业选择": {
-        "recognition": "OCR",
-        "expected": [
-            "启迪"
-        ],
-        "roi": [
-            33,
-            113,
-            300,
-            580
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "启迪"
+                ],
+                "roi": [
+                    33,
+                    113,
+                    300,
+                    580
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "职业选择"
+        },
         "post_delay": 1000,
         "next": [
             "确认帕尔马废墟是否开放"
@@ -55,15 +70,24 @@
         "timeout": 3000
     },
     "确认帕尔马废墟是否开放": {
-        "recognition": "OCR",
-        "expected": "启迪",
-        "roi": [
-            397,
-            261,
-            203,
-            103
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "启迪",
+                "roi": [
+                    397,
+                    261,
+                    203,
+                    103
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "确认帕尔马废墟是否开放"
+        },
         "post_delay": 1000,
         "next": [
             "帕尔马扫荡"

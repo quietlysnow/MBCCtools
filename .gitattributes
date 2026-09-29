@@ -1,0 +1,15 @@
+# 全局 core.autocrlf=true 会把检出文件改成 CRLF，与本项目"resource/**/*.json +
+# interface.json 一律 LF"的约定冲突（AGENTS.md §4.5），这里强制 LF。
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.onnx binary
+*.node binary
+*.dll binary
+*.exe binary
+
+# 批处理必须留 CRLF，cmd.exe 对纯 LF 不稳
+*.bat text eol=crlf
+*.cmd text eol=crlf

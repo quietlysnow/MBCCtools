@@ -1,0 +1,145 @@
+{
+    "抽卡记录": {
+        "next": [
+            "TODO抽卡记录入口"
+        ]
+    },
+    "TODO抽卡记录入口": {
+        "next": [
+            "抽卡记录_识别追踪类型"
+        ]
+    },
+    "抽卡记录_识别追踪类型": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "GachaRecordPoolType",
+                "custom_recognition_param": {
+                    "archive": "record/抽卡记录.jsonl",
+                    "min_score": 0.5
+                },
+                "roi": [411, 210, 154, 55]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 3000,
+        "on_error": [
+            "抽卡记录_回首页"
+        ],
+        "next": [
+            "抽卡记录_回首页"
+        ]
+    },
+    "抽卡记录_回首页": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "GachaRecordFirstPage",
+                "custom_recognition_param": {
+                    "page_roi": [735, 625, 65, 36],
+                    "min_score": 0.5
+                },
+                "roi": [680, 620, 220, 60]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [711, 645, 1, 1]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "回到抽卡记录第一页"
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 100,
+        "timeout": 5000,
+        "on_error": [
+            "抽卡记录_单页识别"
+        ],
+        "next": [
+            "抽卡记录_回首页",
+            "抽卡记录_单页识别"
+        ]
+    },
+    "抽卡记录_单页识别": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "GachaRecordPage",
+                "custom_recognition_param": {
+                    "archive": "record/抽卡记录.jsonl",
+                    "min_score": 0.5,
+                    "line_tol": 14,
+                    "badge_x": [856, 908],
+                    "rarity_dir": "抽卡",
+                    "rarity_tiers": ["狂", "危", "普"],
+                    "page_roi": [735, 625, 65, 36]
+                },
+                "roi": [440, 275, 640, 350]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 3000,
+        "on_error": [
+            "抽卡记录汇总"
+        ],
+        "next": [
+            "抽卡记录翻页"
+        ]
+    },
+    "抽卡记录翻页": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "下一页.png",
+                "roi": [680, 620, 220, 60],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "抽卡记录翻页"
+        },
+        "post_wait_freezes": 800,
+        "timeout": 8000,
+        "on_error": [
+            "抽卡记录汇总"
+        ],
+        "next": [
+            "抽卡记录_单页识别"
+        ]
+    },
+    "抽卡记录汇总": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "GachaRecordExport",
+                "custom_action_param": {
+                    "archive": "record/抽卡记录.jsonl"
+                }
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": {
+                "content": "record/抽卡记录.md",
+                "display": [
+                    "log",
+                    "dialog"
+                ]
+            }
+        },
+        "next": [
+            "返回按钮"
+        ]
+    }
+}

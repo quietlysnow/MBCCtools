@@ -1,14 +1,20 @@
 {
     "浊暗之阱": {
-        "recognition": "OCR",
-        "expected": "禁",
-        "roi": [
-            1018,
-            422,
-            34,
-            40
-        ],
-        "action": "DoNothing",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "禁",
+                "roi": [
+                    1018,
+                    422,
+                    34,
+                    40
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
         "next": [
             "内海入口",
             "[JumpBack]狄斯",
@@ -31,52 +37,78 @@
         ]
     },
     "内海入口": {
-        "recognition": "OCR",
-        "expected": "内海",
-        "roi": [
-            116,
-            557,
-            1074,
-            149
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "内海",
+                "roi": [
+                    116,
+                    557,
+                    1074,
+                    149
+                ]
+            }
+        },
         "post_delay": 1000,
         "next": [
             "[JumpBack]内海右箭头",
             "浊暗之阱入口"
         ],
-        "action": "Click"
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "进入内海"
+        }
     },
     "内海右箭头": {
-        "recognition": "ColorMatch",
-        "upper": [
-            255,
-            209,
-            24
-        ],
-        "lower": [
-            255,
-            209,
-            24
-        ],
-        "roi": [
-            1168,
-            313,
-            107,
-            122
-        ],
-        "action": "Click",
-        "target": [
-            1223,
-            369,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "upper": [
+                    255,
+                    209,
+                    24
+                ],
+                "lower": [
+                    255,
+                    209,
+                    24
+                ],
+                "roi": [
+                    1168,
+                    313,
+                    107,
+                    122
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1223,
+                    369,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海右箭头"
+        },
         "post_delay": 3000
     },
     "浊暗之阱入口": {
-        "recognition": "OCR",
-        "expected": "暗之阱",
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "暗之阱"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入浊暗之阱"
         },
@@ -87,47 +119,76 @@
         ]
     },
     "切换": {
-        "recognition": "TemplateMatch",
-        "template": "浊暗之阱.png",
-        "roi": [
-            468,
-            553,
-            354,
-            161
-        ],
-        "action": "Click"
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "浊暗之阱.png",
+                "roi": [
+                    468,
+                    553,
+                    354,
+                    161
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "切换"
+        }
     },
     "乐园": {
-        "recognition": "OCR",
-        "expected": "乐园幻境",
-        "roi": [
-            983,
-            414,
-            271,
-            190
-        ],
-        "action": "Click",
-        "target": [
-            1063,
-            493,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "乐园幻境",
+                "roi": [
+                    983,
+                    414,
+                    271,
+                    190
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1063,
+                    493,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "乐园"
+        },
         "post_delay": 1000,
         "next": [
             "浊暗之阱扫荡"
         ]
     },
     "浊暗之阱扫荡": {
-        "recognition": "OCR",
-        "expected": "扫荡",
-        "roi": [
-            624,
-            483,
-            290,
-            203
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "扫荡",
+                "roi": [
+                    624,
+                    483,
+                    290,
+                    203
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "浊暗之阱扫荡"
+        },
         "post_delay": 2000,
         "next": [
             "[JumpBack]关闭界面",
@@ -136,21 +197,32 @@
         ]
     },
     "关闭禁闭者选择界面": {
-        "recognition": "OCR",
-        "expected": "禁闭者",
-        "roi": [
-            387,
-            122,
-            176,
-            74
-        ],
-        "action": "Click",
-        "target": [
-            53,
-            302,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "禁闭者",
+                "roi": [
+                    387,
+                    122,
+                    176,
+                    74
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    53,
+                    302,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "关闭禁闭者选择界面"
+        },
         "post_delay": 2000
     }
 }

@@ -64,6 +64,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "切换到密令任务"
+        },
         "post_wait_freezes": 500,
         "next": [
             "每日奖励"
@@ -84,6 +87,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "每日奖励"
         },
         "post_wait_freezes": 500,
         "timeout": 4000,
@@ -121,6 +127,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "识别每日奖励领取"
+        },
         "timeout": 3000,
         "next": [
             "处理每日弹窗"
@@ -147,6 +156,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "处理每日弹窗"
+        },
         "post_wait_freezes": 1000,
         "timeout": 2000,
         "next": [
@@ -168,6 +180,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "每周奖励"
         },
         "post_wait_freezes": 200,
         "timeout": 4000,
@@ -205,6 +220,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "识别每周奖励领取"
+        },
         "timeout": 4000,
         "next": [
             "处理每周弹窗"
@@ -231,6 +249,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "处理每周弹窗"
+        },
         "post_wait_freezes": 1000,
         "timeout": 2000,
         "next": [
@@ -252,6 +273,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "密令奖励"
         },
         "post_wait_freezes": 200,
         "timeout": 4000,
@@ -289,6 +313,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "识别密令奖励领取"
+        },
         "timeout": 4000,
         "next": [
             "处理密令弹窗"
@@ -314,6 +341,9 @@
                     1
                 ]
             }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "处理密令弹窗"
         },
         "post_wait_freezes": 1000,
         "timeout": 2000
@@ -351,6 +381,9 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "切换到监察密令等级奖励"
+        },
         "post_wait_freezes": 500,
         "next": [
             "领取密令等级奖励"
@@ -377,6 +410,9 @@
         },
         "action": {
             "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "领取密令等级奖励"
         },
         "post_wait_freezes": 500,
         "timeout": 2000,

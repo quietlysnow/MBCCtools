@@ -10,15 +10,21 @@
         ]
     },
     "开始派遣": {
-        "recognition": "OCR",
-        "expected": "派遣",
-        "roi": [
-            478,
-            433,
-            176,
-            82
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "派遣",
+                "roi": [
+                    478,
+                    433,
+                    176,
+                    82
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "进入派遣界面"
         },
@@ -28,15 +34,24 @@
         ]
     },
     "派遣区域选择": {
-        "recognition": "OCR",
-        "expected": "每日任务",
-        "roi": [
-            66,
-            641,
-            1159,
-            65
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "每日任务",
+                "roi": [
+                    66,
+                    641,
+                    1159,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "派遣区域选择"
+        },
         "post_delay": 1000,
         "next": [
             "发出派遣",
@@ -44,30 +59,45 @@
         ]
     },
     "收集派遣奖励": {
-        "recognition": "OCR",
-        "expected": "一键领取",
-        "roi": [
-            1017,
-            516,
-            238,
-            69
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "一键领取",
+                "roi": [
+                    1017,
+                    516,
+                    238,
+                    69
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "收集派遣奖励"
+        },
         "post_delay": 1000,
         "next": [
             "关闭界面"
         ]
     },
     "发出派遣": {
-        "recognition": "OCR",
-        "expected": "一键派遣",
-        "roi": [
-            1016,
-            512,
-            247,
-            79
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "一键派遣",
+                "roi": [
+                    1016,
+                    512,
+                    247,
+                    79
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "一键派遣完成"
         },
