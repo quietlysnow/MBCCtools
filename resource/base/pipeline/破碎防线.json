@@ -1,4 +1,20 @@
 {
+    "破碎防线": {
+        "next": [
+            "破碎防线_奖励预览已打开",
+            "暗域主界面已就绪",
+            "内海_找破碎防线",
+            "内海入口-破碎防线",
+            "破碎防线_进狄斯",
+            "破碎防线_进危机管理",
+            "[JumpBack]返回按钮",
+            "[JumpBack]主菜单"
+        ],
+        "timeout": 120000,
+        "focus": {
+            "Node.Recognition.Succeeded": "开始破碎防线领奖"
+        }
+    },
     "内海入口-破碎防线": {
         "recognition": {
             "type": "OCR",
@@ -9,61 +25,469 @@
                     1074,
                     149
                 ],
-                "expected": "内海"
+                "expected": [
+                    "内海",
+                    "內海"
+                ]
             }
         },
         "action": {
             "type": "Click"
         },
+        "post_delay": 2500,
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 8000,
         "focus": {
-            "Node.Action.Succeeded": "内海入口-破碎防线"
+            "Node.Action.Succeeded": "切换到内海"
         },
-        "post_delay": 1000,
+        "next": [
+            "内海_找破碎防线",
+            "破碎防线入口",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "破碎防线_进狄斯": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1120,
+                    120,
+                    150,
+                    70
+                ],
+                "expected": [
+                    "狄斯",
+                    "狄斯城"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 3000,
+        "post_wait_freezes": 500,
+        "max_hit": 1,
+        "timeout": 6000,
+        "focus": {
+            "Node.Action.Succeeded": "切换到狄斯"
+        },
+        "next": [
+            "内海_找破碎防线",
+            "内海入口-破碎防线",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "破碎防线_进危机管理": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    887,
+                    536,
+                    386,
+                    174
+                ],
+                "expected": [
+                    "危机管理",
+                    "危機管理"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "post_wait_freezes": 500,
+        "max_hit": 1,
+        "timeout": 6000,
+        "focus": {
+            "Node.Action.Succeeded": "尝试通过危机管理进入"
+        },
+        "next": [
+            "内海_找破碎防线",
+            "破碎防线_进狄斯",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "内海_找破碎防线": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Recognition.Succeeded": "内海地图：寻找破碎防线"
+        },
         "next": [
             "破碎防线入口",
-            "[JumpBack]内海-左滑到尽头",
-            "[JumpBack]破碎防线_右划"
+            "破碎防线_复位最左",
+            "主菜单"
         ]
     },
-    "大于等于72万": {
+    "破碎防线_复位最左": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [
-                    218,
-                    479,
-                    147,
-                    58
-                ],
                 "expected": [
-                    "^(7[2-9]\\d{4}|[8-9]\\d{5}|[1-9]\\d{6,})(\\.\\d+)?$"
-                ]
-            }
-        }
-    },
-    "小于72万": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    218,
-                    479,
-                    147,
-                    58
-                ],
-                "expected": [
-                    "^([1-6]\\d{5}|7[0-1]\\d{4}|\\d{1,5})$"
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
                 ]
             }
         },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    380,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        860,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "repeat": 4,
+        "repeat_delay": 300,
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 8000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：先复位到最左端"
+        },
         "next": [
-            "TODO设置自动战斗",
-            "大于等于72万"
+            "破碎防线入口",
+            "破碎防线_向右拖1"
         ]
     },
-    "TODO设置自动战斗": {},
-    "点击暗域关卡奖励": {
+    "破碎防线入口": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    80,
+                    330,
+                    1080,
+                    240
+                ],
+                "expected": [
+                    "破碎防线",
+                    "破碎防線"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -50,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
         "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "点击内海地图上的破碎防线"
+        },
+        "next": [
+            "暗域主界面已就绪"
+        ],
+        "on_error": [
+            "[JumpBack]主菜单"
+        ]
+    },
+    "暗域主界面已就绪": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    100,
+                    455,
+                    140,
+                    40
+                ],
+                "expected": [
+                    "当前积分",
+                    "當前積分"
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 2,
+        "timeout": 8000,
+        "rate_limit": 1000,
+        "focus": {
+            "Node.Recognition.Succeeded": "已进入暗域主界面"
+        },
+        "next": [
+            "破碎防线_判断周一",
+            "破碎防线_非周一退出"
+        ]
+    },
+    "破碎防线_判断周一": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    205,
+                    182,
+                    170,
+                    50
+                ],
+                "expected": [
+                    "[67]天",
+                    "[67]\\s*[dD]"
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Recognition.Succeeded": "本周刚重置（周一），开始领取破碎防线奖励"
+        },
+        "next": [
+            "点击暗域左下角奖励"
+        ]
+    },
+    "破碎防线_非周一退出": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 1,
+        "focus": {
+            "Node.Recognition.Succeeded": "本周不是周一（奖励已领过），跳过破碎防线"
+        },
+        "next": [
+            "主菜单"
+        ]
+    },
+    "点击暗域左下角奖励": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    43,
+                    505,
+                    90,
+                    88
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    82,
+                    550,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 2000,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "打开破碎防线奖励预览"
+        },
+        "next": [
+            "破碎防线_奖励预览已打开"
+        ],
+        "on_error": [
+            "[JumpBack]主菜单"
+        ]
+    },
+    "破碎防线_奖励预览已打开": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    400,
+                    160,
+                    400,
+                    40
+                ],
+                "expected": [
+                    "任务达成",
+                    "任務達成",
+                    "任务奖励",
+                    "任務獎勵"
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 2,
+        "timeout": 6000,
+        "focus": {
+            "Node.Recognition.Succeeded": "已打开奖励预览"
+        },
+        "next": [
+            "点击暗域本期奖励"
+        ]
+    },
+    "点击暗域本期奖励": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    187,
+                    212,
+                    213,
+                    58
+                ],
+                "expected": [
+                    "本期奖励",
+                    "本期獎勵"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    200,
+                    218,
+                    110,
+                    42
+                ]
+            }
+        },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "查看本期奖励"
+        },
+        "next": [
+            "一键领取暗域本期奖励"
+        ],
+        "on_error": [
+            "点击暗域关卡奖励"
+        ]
+    },
+    "一键领取暗域本期奖励": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    891,
+                    611,
+                    206,
+                    76
+                ],
+                "template": [
+                    "一键领取.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    963,
+                    639,
+                    60,
+                    24
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
+        "focus": {
+            "Node.Action.Succeeded": "领取本期奖励"
+        },
+        "next": [
+            "破碎防线_关闭获得物资1"
+        ],
+        "on_error": [
+            "点击暗域关卡奖励"
+        ]
+    },
+    "破碎防线_关闭获得物资1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "获取物资.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭获得物资弹窗"
+        },
+        "next": [
+            "点击暗域关卡奖励"
+        ],
+        "on_error": [
+            "点击暗域关卡奖励"
+        ]
+    },
+    "点击暗域关卡奖励": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -74,7 +498,8 @@
                     76
                 ],
                 "expected": [
-                    "关卡奖励"
+                    "关卡奖励",
+                    "關卡獎勵"
                 ]
             }
         },
@@ -84,23 +509,444 @@
                 "target": [
                     253,
                     322,
-                    26,
-                    19
+                    1,
+                    1
                 ]
             }
         },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
         "focus": {
-            "Node.Action.Succeeded": "点击暗域关卡奖励"
+            "Node.Action.Succeeded": "查看关卡奖励"
         },
-        "timeout": 5000,
         "next": [
-            "[JumpBack]第一个boss奖励",
-            "[JumpBack]第二个boss奖励",
-            "[JumpBack]第三个boss奖励"
+            "破碎防线_点击第一个关卡奖励"
+        ],
+        "on_error": [
+            "破碎防线_关闭奖励预览"
+        ]
+    },
+    "破碎防线_点击第一个关卡奖励": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    205,
+                    388,
+                    200,
+                    42
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    270,
+                    409,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "查看第一个情报的关卡奖励"
+        },
+        "next": [
+            "一键领取关卡奖励1"
+        ],
+        "on_error": [
+            "破碎防线_点击第二个关卡奖励"
+        ]
+    },
+    "一键领取关卡奖励1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    891,
+                    611,
+                    206,
+                    76
+                ],
+                "template": [
+                    "一键领取.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    963,
+                    639,
+                    60,
+                    24
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
+        "focus": {
+            "Node.Action.Succeeded": "领取第一个情报的关卡奖励"
+        },
+        "next": [
+            "破碎防线_关闭获得物资2"
+        ],
+        "on_error": [
+            "破碎防线_点击第二个关卡奖励"
+        ]
+    },
+    "破碎防线_关闭获得物资2": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "获取物资.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭获得物资弹窗"
+        },
+        "next": [
+            "破碎防线_点击第二个关卡奖励"
+        ],
+        "on_error": [
+            "破碎防线_点击第二个关卡奖励"
+        ]
+    },
+    "破碎防线_点击第二个关卡奖励": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    205,
+                    452,
+                    200,
+                    42
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    270,
+                    473,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "查看第二个情报的关卡奖励"
+        },
+        "next": [
+            "一键领取关卡奖励2"
+        ],
+        "on_error": [
+            "破碎防线_点击第三个关卡奖励"
+        ]
+    },
+    "一键领取关卡奖励2": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    891,
+                    611,
+                    206,
+                    76
+                ],
+                "template": [
+                    "一键领取.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    963,
+                    639,
+                    60,
+                    24
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
+        "focus": {
+            "Node.Action.Succeeded": "领取第二个情报的关卡奖励"
+        },
+        "next": [
+            "破碎防线_关闭获得物资3"
+        ],
+        "on_error": [
+            "破碎防线_点击第三个关卡奖励"
+        ]
+    },
+    "破碎防线_关闭获得物资3": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "获取物资.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭获得物资弹窗"
+        },
+        "next": [
+            "破碎防线_点击第三个关卡奖励"
+        ],
+        "on_error": [
+            "破碎防线_点击第三个关卡奖励"
+        ]
+    },
+    "破碎防线_点击第三个关卡奖励": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    205,
+                    515,
+                    200,
+                    42
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    270,
+                    536,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "查看第三个情报的关卡奖励"
+        },
+        "next": [
+            "一键领取关卡奖励3"
+        ],
+        "on_error": [
+            "破碎防线_关闭奖励预览"
+        ]
+    },
+    "一键领取关卡奖励3": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    891,
+                    611,
+                    206,
+                    76
+                ],
+                "template": [
+                    "一键领取.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    963,
+                    639,
+                    60,
+                    24
+                ]
+            }
+        },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
+        "focus": {
+            "Node.Action.Succeeded": "领取第三个情报的关卡奖励"
+        },
+        "next": [
+            "破碎防线_关闭获得物资4"
+        ],
+        "on_error": [
+            "破碎防线_关闭奖励预览"
+        ]
+    },
+    "破碎防线_关闭获得物资4": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "获取物资.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭获得物资弹窗"
+        },
+        "next": [
+            "破碎防线_关闭奖励预览"
+        ],
+        "on_error": [
+            "破碎防线_关闭奖励预览"
+        ]
+    },
+    "破碎防线_关闭奖励预览": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    400,
+                    160,
+                    400,
+                    40
+                ],
+                "expected": [
+                    "任务达成",
+                    "任務達成",
+                    "任务奖励",
+                    "任務獎勵"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1500,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "关闭奖励预览"
+        },
+        "next": [
+            "破碎防线_确认已关闭"
+        ],
+        "on_error": [
+            "主菜单"
+        ]
+    },
+    "破碎防线_确认已关闭": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    400,
+                    160,
+                    400,
+                    40
+                ],
+                "expected": [
+                    "任务达成",
+                    "任務達成",
+                    "任务奖励",
+                    "任務獎勵"
+                ]
+            }
+        },
+        "action": "DoNothing",
+        "max_hit": 1,
+        "timeout": 3000,
+        "focus": {
+            "Node.Recognition.Succeeded": "奖励预览仍然打开，改用返回键"
+        },
+        "next": [
+            "破碎防线_按返回键"
+        ],
+        "on_error": [
+            "主菜单"
+        ]
+    },
+    "破碎防线_按返回键": {
+        "action": "ClickKey",
+        "key": 4,
+        "post_delay": 1500,
+        "max_hit": 1,
+        "timeout": 4000,
+        "focus": {
+            "Node.Action.Succeeded": "按返回键关闭奖励预览"
+        },
+        "next": [
+            "主菜单"
+        ],
+        "on_error": [
+            "主菜单"
         ]
     },
     "第一个boss奖励": {
-        "max_hit": 1,
         "recognition": {
             "type": "DirectHit",
             "param": {
@@ -123,16 +969,13 @@
                 ]
             }
         },
-        "focus": {
-            "Node.Action.Succeeded": "第一个boss奖励"
-        },
+        "max_hit": 1,
         "timeout": 5000,
         "next": [
             "一键领取暗域关卡奖励"
         ]
     },
     "第二个boss奖励": {
-        "max_hit": 1,
         "recognition": {
             "type": "DirectHit",
             "param": {
@@ -155,16 +998,13 @@
                 ]
             }
         },
-        "focus": {
-            "Node.Action.Succeeded": "第二个boss奖励"
-        },
+        "max_hit": 1,
         "timeout": 5000,
         "next": [
             "一键领取暗域关卡奖励"
         ]
     },
     "第三个boss奖励": {
-        "max_hit": 1,
         "recognition": {
             "type": "DirectHit",
             "param": {
@@ -187,200 +1027,10 @@
                 ]
             }
         },
-        "focus": {
-            "Node.Action.Succeeded": "第三个boss奖励"
-        },
+        "max_hit": 1,
         "timeout": 5000,
         "next": [
             "一键领取暗域关卡奖励"
-        ]
-    },
-    "点击暗域左下角奖励": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    53,
-                    510,
-                    81,
-                    46
-                ],
-                "template": [
-                    "黄点.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    82,
-                    550,
-                    11,
-                    6
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "点击暗域左下角奖励"
-        },
-        "post_wait_freezes": 200,
-        "timeout": 5000,
-        "next": [
-            "[JumpBack]点击暗域本期奖励",
-            "[JumpBack]点击暗域关卡奖励",
-            "主菜单",
-            "[JumpBack]侧边点击"
-        ]
-    },
-    "破碎防线": {
-        "next": [
-            "内海入口-破碎防线",
-            "[JumpBack]狄斯",
-            "[JumpBack]危机管理",
-            "[JumpBack]危机管理2",
-            "[JumpBack]主菜单"
-        ]
-    },
-    "破碎防线入口": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "破碎防线"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "进入破碎防线"
-        },
-        "post_wait_freezes": 1000,
-        "timeout": 5000,
-        "next": [
-            "点击暗域左下角奖励"
-        ],
-        "on_error": [
-            "[JumpBack]主菜单"
-        ]
-    },
-    "破碎防线_右划": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1000,
-                    372,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        1103,
-                        372
-                    ]
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "破碎防线_右划"
-        },
-        "repeat": 5,
-        "repeat_delay": 200,
-        "post_wait_freezes": 20
-    },
-    "内海-左滑到尽头": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    800,
-                    369,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        200,
-                        369
-                    ]
-                ]
-            }
-        },
-        "repeat": 5,
-        "repeat_delay": 200,
-        "post_wait_freezes": 20
-    },
-    "点击暗域本期奖励": {
-        "max_hit": 1,
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    187,
-                    212,
-                    213,
-                    58
-                ],
-                "expected": [
-                    "本期奖励"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    246,
-                    237,
-                    9,
-                    3
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "点击暗域本期奖励"
-        },
-        "timeout": 5000,
-        "next": [
-            "一键领取暗域本期奖励"
-        ]
-    },
-    "一键领取暗域本期奖励": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    891,
-                    611,
-                    206,
-                    76
-                ],
-                "template": [
-                    "一键领取.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    943,
-                    673,
-                    10,
-                    4
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "一键领取暗域本期奖励"
-        },
-        "post_wait_freezes": 2000,
-        "timeout": 4000,
-        "next": [
-            "关闭界面"
         ]
     },
     "一键领取暗域关卡奖励": {
@@ -399,10 +1049,15 @@
             }
         },
         "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "一键领取暗域关卡奖励"
+            "type": "Click",
+            "param": {
+                "target": [
+                    963,
+                    639,
+                    60,
+                    24
+                ]
+            }
         },
         "post_wait_freezes": 5000,
         "timeout": 3000,
@@ -410,33 +1065,396 @@
             "关闭界面"
         ]
     },
-    "点击暗域左下角奖励_副本4": {
+    "破碎防线_向右拖1": {
         "recognition": {
-            "type": "DirectHit",
+            "type": "OCR",
             "param": {
-                "roi": [
-                    43,
-                    505,
-                    90,
-                    88
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
                 ]
             }
         },
         "action": {
-            "type": "Click",
+            "type": "Swipe",
             "param": {
-                "target": [
-                    82,
-                    550,
-                    11,
-                    6
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 1 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖2"
+        ]
+    },
+    "破碎防线_向右拖2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
                 ]
             }
         },
-        "focus": {
-            "Node.Action.Succeeded": "点击暗域左下角奖励"
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
         },
-        "post_wait_freezes": 200,
-        "timeout": 5000
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 2 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖3"
+        ]
+    },
+    "破碎防线_向右拖3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 3 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖4"
+        ]
+    },
+    "破碎防线_向右拖4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 4 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖5"
+        ]
+    },
+    "破碎防线_向右拖5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 5 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖6"
+        ]
+    },
+    "破碎防线_向右拖6": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 6 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖7"
+        ]
+    },
+    "破碎防线_向右拖7": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 7 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "破碎防线_向右拖8"
+        ]
+    },
+    "破碎防线_向右拖8": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右移动第 8 次"
+        },
+        "next": [
+            "破碎防线入口",
+            "主菜单"
+        ]
     }
 }

@@ -1,536 +1,348 @@
 {
     "侧边点击": {
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    19,
-                    24,
-                    1,
-                    1
-                ]
-            }
-        }
+        "action": "Click",
+        "target": [
+            19,
+            24,
+            1,
+            1
+        ]
     },
     "点击关闭按钮": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "关闭按钮.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
+        "recognition": "TemplateMatch",
+        "template": "关闭按钮.png",
+        "action": "Click",
         "post_wait_freezes": 500
     },
     "返回按钮": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "返回按钮.png",
-                "roi": [
-                    11,
-                    6,
-                    320,
-                    79
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
+        "recognition": "TemplateMatch",
+        "template": "返回按钮.png",
+        "roi": [
+            11,
+            6,
+            320,
+            79
+        ],
+        "threshold": 0.85,
+        "action": "Click",
         "post_wait_freezes": 30
     },
     "主菜单": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "主菜单.png",
-                "roi": [
-                    11,
-                    6,
-                    320,
-                    79
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "主菜单"
-        },
+        "recognition": "TemplateMatch",
+        "template": "主菜单.png",
+        "roi": [
+            11,
+            6,
+            320,
+            79
+        ],
+        "threshold": 0.85,
+        "action": "Click",
         "next": [
             "任务间隔"
         ]
     },
     "左滑": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1000,
-                    372,
-                    1,
-                    1
-                ],
-                "end": [
-                    900,
-                    369,
-                    1,
-                    1
-                ]
-            }
-        },
+        "action": "Swipe",
+        "begin": [
+            1000,
+            372,
+            1,
+            1
+        ],
+        "end": [
+            900,
+            369,
+            1,
+            1
+        ],
         "post_wait_freezes": 20
     },
     "右滑": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    800,
-                    369,
-                    1,
-                    1
-                ],
-                "end": [
-                    1090,
-                    372,
-                    1,
-                    1
-                ]
-            }
-        },
+        "action": "Swipe",
+        "begin": [
+            800,
+            369,
+            1,
+            1
+        ],
+        "end": [
+            1090,
+            372,
+            1,
+            1
+        ],
         "post_wait_freezes": 20
     },
     "上滑": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    219,
-                    609,
-                    1,
-                    1
-                ],
-                "end": [
-                    222,
-                    381,
-                    1,
-                    1
-                ]
-            }
-        },
+        "action": "Swipe",
+        "begin": [
+            219,
+            609,
+            1,
+            1
+        ],
+        "end": [
+            222,
+            381,
+            1,
+            1
+        ],
         "post_wait_freezes": 20
     },
     "自动扫荡": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "扫荡",
-                "roi": [
-                    624,
-                    483,
-                    290,
-                    203
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "自动扫荡"
-        },
+        "recognition": "OCR",
+        "expected": "扫荡",
+        "roi": [
+            624,
+            483,
+            290,
+            203
+        ],
+        "action": "Click",
         "post_wait_freezes": 5000
     },
     "连续扫荡": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "连续扫荡.png",
-                "roi": [
-                    480,
-                    606,
-                    449,
-                    95
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    814,
-                    653,
-                    1,
-                    1
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "连续扫荡"
-        },
+        "recognition": "TemplateMatch",
+        "template": "连续扫荡.png",
+        "roi": [
+            480,
+            606,
+            449,
+            95
+        ],
+        "action": "Click",
+        "target": [
+            814,
+            653,
+            1,
+            1
+        ],
         "post_wait_freezes": 500
     },
     "扫荡最大次数": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "米诺斯管理系统"
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    827,
-                    466,
-                    1,
-                    1
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "扫荡最大次数"
-        },
+        "recognition": "OCR",
+        "expected": "米诺斯管理系统",
+        "action": "Click",
+        "target": [
+            827,
+            466,
+            1,
+            1
+        ],
         "next": [
             "自动扫荡"
         ],
         "post_wait_freezes": 100
     },
     "扫荡失败": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "体力",
-                "roi": [
-                    449,
-                    298,
-                    373,
-                    134
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    500,
-                    493,
-                    1,
-                    1
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "扫荡失败"
-        },
+        "recognition": "OCR",
+        "expected": "体力",
+        "roi": [
+            449,
+            298,
+            373,
+            134
+        ],
+        "action": "Click",
+        "target": [
+            500,
+            493,
+            1,
+            1
+        ],
         "next": [
             "主菜单"
         ]
     },
     "扫荡调令不足": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "调令不足",
-                "roi": [
-                    410,
-                    285,
-                    470,
-                    175
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    500,
-                    500,
-                    1,
-                    1
-                ]
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "扫荡调令不足"
-        },
+        "recognition": "OCR",
+        "expected": "调令不足",
+        "roi": [
+            410,
+            285,
+            470,
+            175
+        ],
+        "action": "Click",
+        "target": [
+            500,
+            500,
+            1,
+            1
+        ],
         "next": [
             "主菜单"
         ]
     },
     "扫荡完成": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "完成",
-                "roi": [
-                    340,
-                    593,
-                    307,
-                    108
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "扫荡完成"
-        },
+        "recognition": "OCR",
+        "expected": "完成",
+        "roi": [
+            340,
+            593,
+            307,
+            108
+        ],
+        "action": "Click",
         "next": [
             "主菜单",
             "返回按钮"
         ]
     },
     "难度选择": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "MS",
-                    "已完成"
-                ],
-                "roi": [
-                    507,
-                    422,
-                    751,
-                    106
-                ],
-                "order_by": "Horizontal",
-                "index": -1
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "难度选择"
-        }
+        "recognition": "OCR",
+        "expected": [
+            "MS",
+            "已完成"
+        ],
+        "roi": [
+            507,
+            422,
+            751,
+            106
+        ],
+        "action": "Click",
+        "order_by": "Horizontal",
+        "index": -1
     },
     "危机管理": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "危机管理.png",
-                "roi": [
-                    887,
-                    536,
-                    386,
-                    174
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
+        "recognition": "TemplateMatch",
+        "template": "危机管理.png",
+        "roi": [
+            887,
+            536,
+            386,
+            174
+        ],
+        "action": "Click",
         "focus": {
             "Node.Recognition.Succeeded": "切换到危机管理"
         }
     },
     "危机管理2": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "危机管理",
-                "roi": [
-                    887,
-                    536,
-                    386,
-                    174
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
+        "recognition": "OCR",
+        "expected": "危机管理",
+        "roi": [
+            887,
+            536,
+            386,
+            174
+        ],
+        "action": "Click",
         "focus": {
             "Node.Recognition.Succeeded": "尝试通过途径2切换到危机管理"
         }
     },
     "整备中心": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "整备中心.png",
-                "roi": [
-                    887,
-                    536,
-                    386,
-                    174
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "整备中心"
-        }
+        "recognition": "TemplateMatch",
+        "template": "整备中心.png",
+        "roi": [
+            887,
+            536,
+            386,
+            174
+        ],
+        "action": "Click"
     },
     "副本未开放": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "开放",
-                "roi": [
-                    669,
-                    505,
-                    190,
-                    50
-                ]
-            }
-        },
+        "recognition": "OCR",
+        "expected": "开放",
+        "roi": [
+            669,
+            505,
+            190,
+            50
+        ],
         "next": [
             "主菜单"
         ]
     },
     "战斗自动扫荡": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "连续扫荡.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "战斗自动扫荡"
-        },
+        "recognition": "TemplateMatch",
+        "template": "连续扫荡.png",
+        "action": "Click",
         "post_wait_freezes": 30
     },
     "数据间隙": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "数据间隙"
-            }
-        },
+        "recognition": "OCR",
+        "expected": "数据间隙",
         "next": "左滑",
-        "action": {
-            "type": "DoNothing"
-        }
+        "action": "DoNothing"
     },
     "无尽梦魇": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "无尽梦"
-            }
-        },
+        "recognition": "OCR",
+        "expected": "无尽梦",
         "next": "左滑",
-        "action": {
-            "type": "DoNothing"
-        }
+        "action": "DoNothing"
     },
     "关闭界面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "获取物资.png"
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1208,
-                    366,
-                    1,
-                    1
-                ]
-            }
-        },
+        "recognition": "TemplateMatch",
+        "template": "获取物资.png",
+        "action": "Click",
+        "target": [
+            1208,
+            366,
+            1,
+            1
+        ],
         "post_wait_freezes": 300
     },
     "狄斯": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "狄斯",
-                "roi": [
-                    898,
-                    100,
-                    350,
-                    151
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
+        "recognition": "OCR",
+        "expected": "狄斯",
+        "roi": [
+            1120,
+            120,
+            150,
+            70
+        ],
+        "action": "Click",
+        "post_delay": 3000,
         "focus": {
             "Node.Recognition.Succeeded": "切换到狄斯"
         },
         "post_wait_freezes": 500
     },
     "锈河": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "锈河",
-                "roi": [
-                    63,
-                    595,
-                    1179,
-                    115
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
+        "recognition": "OCR",
+        "expected": "锈河",
+        "roi": [
+            63,
+            595,
+            1179,
+            115
+        ],
+        "action": "Click",
         "focus": {
             "Node.Recognition.Succeeded": "切换到锈河"
         },
         "post_wait_freezes": 1000
     },
     "结束任务": {
-        "action": {
-            "type": "StopTask"
-        }
+        "action": "StopTask"
     },
     "每日体力用途": {
-        "action": {
-            "type": "DoNothing"
-        },
+        "action": "DoNothing",
         "next": [
             "狄斯币"
         ]
     },
     "管理局入口": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "管理局",
-                "roi": [
-                    1121,
-                    288,
-                    121,
-                    85
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "进入管理局"
-        },
-        "post_delay": 1000
+        "recognition": "OCR",
+        "expected": "管理局",
+        "roi": [
+            1121,
+            288,
+            121,
+            85
+        ],
+        "action": "Click",
+        "post_delay": 2500
     },
     "任务间隔": {
-        "recognition": {
-            "type": "DirectHit"
-        },
-        "action": {
-            "type": "DoNothing"
-        },
+        "recognition": "DirectHit",
+        "action": "DoNothing",
         "post_delay": 3000,
         "enabled": true
     },
