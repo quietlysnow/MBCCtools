@@ -1,5 +1,8 @@
 {
     "破碎防线": {
+        "focus": {
+            "Node.Recognition.Succeeded": "开始破碎防线领奖"
+        },
         "next": [
             "破碎防线_奖励预览已打开",
             "暗域主界面已就绪",
@@ -10,10 +13,7 @@
             "[JumpBack]返回按钮",
             "[JumpBack]主菜单"
         ],
-        "timeout": 120000,
-        "focus": {
-            "Node.Recognition.Succeeded": "开始破碎防线领奖"
-        }
+        "timeout": 120000
     },
     "内海入口-破碎防线": {
         "recognition": {
@@ -34,13 +34,13 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "切换到内海"
+        },
         "post_delay": 2500,
         "post_wait_freezes": 800,
         "max_hit": 1,
         "timeout": 8000,
-        "focus": {
-            "Node.Action.Succeeded": "切换到内海"
-        },
         "next": [
             "内海_找破碎防线",
             "破碎防线入口",
@@ -66,13 +66,13 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "切换到狄斯"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 500,
         "max_hit": 1,
         "timeout": 6000,
-        "focus": {
-            "Node.Action.Succeeded": "切换到狄斯"
-        },
         "next": [
             "内海_找破碎防线",
             "内海入口-破碎防线",
@@ -98,13 +98,13 @@
         "action": {
             "type": "Click"
         },
+        "focus": {
+            "Node.Action.Succeeded": "尝试通过危机管理进入"
+        },
         "post_delay": 2000,
         "post_wait_freezes": 500,
         "max_hit": 1,
         "timeout": 6000,
-        "focus": {
-            "Node.Action.Succeeded": "尝试通过危机管理进入"
-        },
         "next": [
             "内海_找破碎防线",
             "破碎防线_进狄斯",
@@ -131,12 +131,14 @@
                 ]
             }
         },
-        "action": "DoNothing",
-        "max_hit": 1,
-        "timeout": 5000,
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "内海地图：寻找破碎防线"
         },
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_复位最左",
@@ -181,14 +183,14 @@
                 "duration": 800
             }
         },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：先复位到最左端"
+        },
         "repeat": 4,
         "repeat_delay": 300,
         "post_wait_freezes": 800,
         "max_hit": 1,
         "timeout": 8000,
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：先复位到最左端"
-        },
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖1"
@@ -221,12 +223,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 1000,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "点击内海地图上的破碎防线"
         },
+        "post_wait_freezes": 1000,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "暗域主界面已就绪"
         ],
@@ -250,13 +252,15 @@
                 ]
             }
         },
-        "action": "DoNothing",
-        "max_hit": 2,
-        "timeout": 8000,
-        "rate_limit": 1000,
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "已进入暗域主界面"
         },
+        "max_hit": 2,
+        "timeout": 8000,
+        "rate_limit": 1000,
         "next": [
             "破碎防线_判断周一",
             "破碎防线_非周一退出"
@@ -278,12 +282,14 @@
                 ]
             }
         },
-        "action": "DoNothing",
-        "max_hit": 1,
-        "timeout": 5000,
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "本周刚重置（周一），开始领取破碎防线奖励"
         },
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "点击暗域左下角奖励"
         ]
@@ -300,11 +306,13 @@
                 ]
             }
         },
-        "action": "DoNothing",
-        "max_hit": 1,
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "本周不是周一（奖励已领过），跳过破碎防线"
         },
+        "max_hit": 1,
         "next": [
             "主菜单"
         ]
@@ -332,12 +340,12 @@
                 ]
             }
         },
-        "post_delay": 2000,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "打开破碎防线奖励预览"
         },
+        "post_delay": 2000,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线_奖励预览已打开"
         ],
@@ -363,12 +371,14 @@
                 ]
             }
         },
-        "action": "DoNothing",
-        "max_hit": 2,
-        "timeout": 6000,
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "已打开奖励预览"
         },
+        "max_hit": 2,
+        "timeout": 6000,
         "next": [
             "点击暗域本期奖励"
         ]
@@ -400,12 +410,12 @@
                 ]
             }
         },
-        "post_delay": 1200,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "查看本期奖励"
         },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "一键领取暗域本期奖励"
         ],
@@ -440,12 +450,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 2000,
-        "max_hit": 1,
-        "timeout": 3000,
         "focus": {
             "Node.Action.Succeeded": "领取本期奖励"
         },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "破碎防线_关闭获得物资1"
         ],
@@ -474,12 +484,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "关闭获得物资弹窗"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "点击暗域关卡奖励"
         ]
@@ -511,12 +521,12 @@
                 ]
             }
         },
-        "post_delay": 1200,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "查看关卡奖励"
         },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "破碎防线_点击第一个关卡奖励"
         ],
@@ -547,12 +557,12 @@
                 ]
             }
         },
-        "post_delay": 1200,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "查看第一个情报的关卡奖励"
         },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "一键领取关卡奖励1"
         ],
@@ -587,12 +597,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 2000,
-        "max_hit": 1,
-        "timeout": 3000,
         "focus": {
             "Node.Action.Succeeded": "领取第一个情报的关卡奖励"
         },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "破碎防线_关闭获得物资2"
         ],
@@ -621,12 +631,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "关闭获得物资弹窗"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "破碎防线_点击第二个关卡奖励"
         ]
@@ -654,12 +664,12 @@
                 ]
             }
         },
-        "post_delay": 1200,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "查看第二个情报的关卡奖励"
         },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "一键领取关卡奖励2"
         ],
@@ -694,12 +704,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 2000,
-        "max_hit": 1,
-        "timeout": 3000,
         "focus": {
             "Node.Action.Succeeded": "领取第二个情报的关卡奖励"
         },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "破碎防线_关闭获得物资3"
         ],
@@ -728,12 +738,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "关闭获得物资弹窗"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "破碎防线_点击第三个关卡奖励"
         ]
@@ -761,12 +771,12 @@
                 ]
             }
         },
-        "post_delay": 1200,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "查看第三个情报的关卡奖励"
         },
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "一键领取关卡奖励3"
         ],
@@ -801,12 +811,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 2000,
-        "max_hit": 1,
-        "timeout": 3000,
         "focus": {
             "Node.Action.Succeeded": "领取第三个情报的关卡奖励"
         },
+        "post_wait_freezes": 2000,
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "破碎防线_关闭获得物资4"
         ],
@@ -835,12 +845,12 @@
                 ]
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "关闭获得物资弹窗"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "破碎防线_关闭奖励预览"
         ]
@@ -874,12 +884,12 @@
                 ]
             }
         },
-        "post_delay": 1500,
-        "max_hit": 1,
-        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "关闭奖励预览"
         },
+        "post_delay": 1500,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "破碎防线_确认已关闭"
         ],
@@ -905,12 +915,14 @@
                 ]
             }
         },
-        "action": "DoNothing",
-        "max_hit": 1,
-        "timeout": 3000,
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "奖励预览仍然打开，改用返回键"
         },
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "破碎防线_按返回键"
         ],
@@ -919,14 +931,18 @@
         ]
     },
     "破碎防线_按返回键": {
-        "action": "ClickKey",
-        "key": 4,
-        "post_delay": 1500,
-        "max_hit": 1,
-        "timeout": 4000,
+        "action": {
+            "type": "ClickKey",
+            "param": {
+                "key": 4
+            }
+        },
         "focus": {
             "Node.Action.Succeeded": "按返回键关闭奖励预览"
         },
+        "post_delay": 1500,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "主菜单"
         ]
@@ -1088,12 +1104,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 1 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖2"
@@ -1137,12 +1153,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 2 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖3"
@@ -1186,12 +1202,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 3 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖4"
@@ -1235,12 +1251,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 4 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖5"
@@ -1284,12 +1300,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 5 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖6"
@@ -1333,12 +1349,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 6 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖7"
@@ -1382,12 +1398,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 7 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖8"
@@ -1431,12 +1447,12 @@
                 "duration": 800
             }
         },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": {
             "Node.Action.Succeeded": "内海地图：向右移动第 8 次"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "破碎防线入口",
             "主菜单"

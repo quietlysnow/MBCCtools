@@ -1,5 +1,8 @@
 {
     "浊暗之阱": {
+        "focus": {
+            "Node.Recognition.Succeeded": "开始扫荡浊暗之阱"
+        },
         "next": [
             "浊暗之阱关卡列表",
             "浊暗之阱异常模式返回",
@@ -13,66 +16,81 @@
             "[JumpBack]危机管理",
             "[JumpBack]主菜单"
         ],
-        "timeout": 120000,
-        "focus": {
-            "Node.Recognition.Succeeded": "开始扫荡浊暗之阱"
-        }
+        "timeout": 120000
     },
     "狄斯城入口": {
-        "recognition": "OCR",
-        "expected": "狄斯",
-        "roi": [
-            1120,
-            120,
-            150,
-            70
-        ],
-        "action": "Click",
-        "post_delay": 3000,
-        "post_wait_freezes": 800,
-        "timeout": 6000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "狄斯",
+                "roi": [
+                    1120,
+                    120,
+                    150,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "打开狄斯城大地图"
-        }
+        },
+        "post_delay": 3000,
+        "post_wait_freezes": 800,
+        "timeout": 6000
     },
     "内海入口": {
-        "recognition": "OCR",
-        "expected": [
-            "内海",
-            "內海"
-        ],
-        "roi": [
-            950,
-            600,
-            280,
-            90
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "内海",
+                    "內海"
+                ],
+                "roi": [
+                    950,
+                    600,
+                    280,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "切换到内海"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 1000,
         "max_hit": 3,
-        "timeout": 8000,
-        "focus": {
-            "Node.Action.Succeeded": "切换到内海"
-        }
+        "timeout": 8000
     },
     "内海_找浊暗之阱": {
-        "recognition": "OCR",
-        "expected": [
-            "潮间勘探",
-            "潮間勘探",
-            "无尽梦魇",
-            "無盡夢魘",
-            "破碎防线",
-            "破碎防線",
-            "狄斯暗影"
-        ],
-        "action": "DoNothing",
-        "max_hit": 1,
-        "timeout": 5000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "潮间勘探",
+                    "潮間勘探",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "破碎防线",
+                    "破碎防線",
+                    "狄斯暗影"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "内海地图：寻找浊暗之阱"
         },
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "浊暗之阱入口",
             "内海_向右拖1",
@@ -84,177 +102,217 @@
         ]
     },
     "内海_向右拖1": {
-        "recognition": "OCR",
-        "expected": [
-            "潮间勘探",
-            "潮間勘探",
-            "无尽梦魇",
-            "無盡夢魘",
-            "破碎防线",
-            "破碎防線",
-            "狄斯暗影"
-        ],
-        "action": "Swipe",
-        "begin": [
-            1050,
-            430,
-            1,
-            1
-        ],
-        "end": [
-            350,
-            430,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "潮间勘探",
+                    "潮間勘探",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "破碎防线",
+                    "破碎防線",
+                    "狄斯暗影"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1050,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    350,
+                    430,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右拖动第 1 次"
+        },
         "post_wait_freezes": 800,
         "post_delay": 300,
         "max_hit": 1,
         "timeout": 5000,
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：向右拖动第 1 次"
-        },
         "next": [
             "浊暗之阱入口",
             "浊暗之阱"
         ]
     },
     "内海_向右拖2": {
-        "recognition": "OCR",
-        "expected": [
-            "潮间勘探",
-            "潮間勘探",
-            "无尽梦魇",
-            "無盡夢魘",
-            "破碎防线",
-            "破碎防線",
-            "狄斯暗影"
-        ],
-        "action": "Swipe",
-        "begin": [
-            1050,
-            430,
-            1,
-            1
-        ],
-        "end": [
-            350,
-            430,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "潮间勘探",
+                    "潮間勘探",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "破碎防线",
+                    "破碎防線",
+                    "狄斯暗影"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1050,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    350,
+                    430,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右拖动第 2 次"
+        },
         "post_wait_freezes": 800,
         "post_delay": 300,
         "max_hit": 1,
         "timeout": 5000,
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：向右拖动第 2 次"
-        },
         "next": [
             "浊暗之阱入口",
             "浊暗之阱"
         ]
     },
     "内海_向右拖3": {
-        "recognition": "OCR",
-        "expected": [
-            "潮间勘探",
-            "潮間勘探",
-            "无尽梦魇",
-            "無盡夢魘",
-            "破碎防线",
-            "破碎防線",
-            "狄斯暗影"
-        ],
-        "action": "Swipe",
-        "begin": [
-            1050,
-            430,
-            1,
-            1
-        ],
-        "end": [
-            350,
-            430,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "潮间勘探",
+                    "潮間勘探",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "破碎防线",
+                    "破碎防線",
+                    "狄斯暗影"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1050,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    350,
+                    430,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右拖动第 3 次"
+        },
         "post_wait_freezes": 800,
         "post_delay": 300,
         "max_hit": 1,
         "timeout": 5000,
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：向右拖动第 3 次"
-        },
         "next": [
             "浊暗之阱入口",
             "浊暗之阱"
         ]
     },
     "内海_复位最左": {
-        "recognition": "OCR",
-        "expected": [
-            "潮间勘探",
-            "潮間勘探",
-            "无尽梦魇",
-            "無盡夢魘",
-            "破碎防线",
-            "破碎防線",
-            "狄斯暗影"
-        ],
-        "action": "Swipe",
-        "begin": [
-            350,
-            430,
-            1,
-            1
-        ],
-        "end": [
-            1100,
-            430,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "潮间勘探",
+                    "潮間勘探",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "破碎防线",
+                    "破碎防線",
+                    "狄斯暗影"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    350,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    1100,
+                    430,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：复位到最左端"
+        },
         "repeat": 3,
         "repeat_delay": 300,
         "post_wait_freezes": 800,
         "max_hit": 1,
         "timeout": 5000,
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：复位到最左端"
-        },
         "next": [
             "浊暗之阱入口_靠右",
             "浊暗之阱"
         ]
     },
     "浊暗之阱入口": {
-        "recognition": "OCR",
-        "expected": [
-            "浊暗之阱",
-            "濁暗之阱",
-            "暗之阱"
-        ],
-        "roi": [
-            300,
-            350,
-            700,
-            150
-        ],
-        "action": "Click",
-        "target_offset": [
-            -70,
-            0,
-            0,
-            0
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "浊暗之阱",
+                    "濁暗之阱",
+                    "暗之阱"
+                ],
+                "roi": [
+                    300,
+                    350,
+                    700,
+                    150
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -70,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "进入浊暗之阱"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 1000,
         "max_hit": 3,
         "timeout": 8000,
-        "focus": {
-            "Node.Action.Succeeded": "进入浊暗之阱"
-        },
         "next": [
             "浊暗之阱关卡列表",
             "浊暗之阱异常模式返回",
@@ -265,32 +323,40 @@
         ]
     },
     "浊暗之阱入口_重试": {
-        "recognition": "OCR",
-        "expected": [
-            "浊暗之阱",
-            "濁暗之阱",
-            "暗之阱"
-        ],
-        "roi": [
-            300,
-            350,
-            700,
-            150
-        ],
-        "action": "Click",
-        "target_offset": [
-            -70,
-            0,
-            0,
-            0
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "浊暗之阱",
+                    "濁暗之阱",
+                    "暗之阱"
+                ],
+                "roi": [
+                    300,
+                    350,
+                    700,
+                    150
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -70,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "再次尝试进入浊暗之阱"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 1000,
         "max_hit": 2,
         "timeout": 6000,
-        "focus": {
-            "Node.Action.Succeeded": "再次尝试进入浊暗之阱"
-        },
         "next": [
             "浊暗之阱关卡列表",
             "浊暗之阱异常模式返回",
@@ -300,32 +366,40 @@
         ]
     },
     "浊暗之阱入口_靠右": {
-        "recognition": "OCR",
-        "expected": [
-            "浊暗之阱",
-            "濁暗之阱",
-            "暗之阱"
-        ],
-        "roi": [
-            980,
-            350,
-            300,
-            150
-        ],
-        "action": "Click",
-        "target_offset": [
-            -70,
-            0,
-            0,
-            0
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "浊暗之阱",
+                    "濁暗之阱",
+                    "暗之阱"
+                ],
+                "roi": [
+                    980,
+                    350,
+                    300,
+                    150
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -70,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点击右侧边缘的浊暗之阱"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 1000,
         "max_hit": 2,
         "timeout": 6000,
-        "focus": {
-            "Node.Action.Succeeded": "点击右侧边缘的浊暗之阱"
-        },
         "next": [
             "浊暗之阱关卡列表",
             "浊暗之阱异常模式返回",
@@ -335,30 +409,38 @@
         ]
     },
     "浊暗之阱异常模式返回": {
-        "recognition": "OCR",
-        "expected": [
-            "浊暗之阱"
-        ],
-        "roi": [
-            540,
-            615,
-            220,
-            60
-        ],
-        "action": "Click",
-        "target": [
-            637,
-            605,
-            1,
-            1
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "浊暗之阱"
+                ],
+                "roi": [
+                    540,
+                    615,
+                    220,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    637,
+                    605,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "异常模式：点下方白色箭头回到浊暗之阱"
+        },
         "post_delay": 1500,
         "post_wait_freezes": 500,
         "max_hit": 1,
         "timeout": 6000,
-        "focus": {
-            "Node.Action.Succeeded": "异常模式：点下方白色箭头回到浊暗之阱"
-        },
         "next": [
             "浊暗之阱关卡列表",
             "浊暗之阱入口_靠右",
@@ -366,52 +448,66 @@
         ]
     },
     "浊暗之阱关卡列表": {
-        "recognition": "OCR",
-        "expected": [
-            "乐园幻境",
-            "深度"
-        ],
-        "roi": [
-            1000,
-            480,
-            280,
-            140
-        ],
-        "action": "DoNothing",
-        "timeout": 5000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "乐园幻境",
+                    "深度"
+                ],
+                "roi": [
+                    1000,
+                    480,
+                    280,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Recognition.Succeeded": "已进入浊暗之阱关卡列表"
         },
+        "timeout": 5000,
         "next": [
             "乐园幻境关卡",
             "主菜单"
         ]
     },
     "乐园幻境关卡": {
-        "recognition": "OCR",
-        "expected": [
-            "乐园幻境",
-            "樂園幻境"
-        ],
-        "roi": [
-            1000,
-            490,
-            280,
-            130
-        ],
-        "action": "Click",
-        "target_offset": [
-            -105,
-            -60,
-            0,
-            0
-        ],
-        "post_delay": 2000,
-        "max_hit": 1,
-        "timeout": 5000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "乐园幻境",
+                    "樂園幻境"
+                ],
+                "roi": [
+                    1000,
+                    490,
+                    280,
+                    130
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -105,
+                    -60,
+                    0,
+                    0
+                ]
+            }
+        },
         "focus": {
             "Node.Action.Succeeded": "选择关卡：乐园幻境"
         },
+        "post_delay": 2000,
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "浊暗之阱_关闭获得物资",
             "浊暗之阱扫荡弹窗",
@@ -421,70 +517,90 @@
         ]
     },
     "浊暗之阱_关闭获得物资": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "获取物资.png"
-        ],
-        "action": "Click",
-        "target": [
-            1208,
-            366,
-            1,
-            1
-        ],
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 3000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "获取物资.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1208,
+                    366,
+                    1,
+                    1
+                ]
+            }
+        },
         "focus": {
             "Node.Action.Succeeded": "点选关卡后直接发了奖励，关掉获得物资弹窗再去扫荡"
         },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "浊暗之阱扫荡标签"
         ]
     },
     "浊暗之阱扫荡标签": {
-        "recognition": "OCR",
-        "expected": [
-            "扫荡",
-            "掃蕩"
-        ],
-        "roi": [
-            1140,
-            470,
-            140,
-            90
-        ],
-        "action": "Click",
-        "post_delay": 2500,
-        "max_hit": 1,
-        "timeout": 4000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "扫荡",
+                    "掃蕩"
+                ],
+                "roi": [
+                    1140,
+                    470,
+                    140,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "点击关卡右侧的扫荡按钮"
         },
+        "post_delay": 2500,
+        "max_hit": 1,
+        "timeout": 4000,
         "next": [
             "浊暗之阱扫荡弹窗",
             "主菜单"
         ]
     },
     "浊暗之阱扫荡弹窗": {
-        "recognition": "OCR",
-        "expected": [
-            "扫荡",
-            "掃蕩"
-        ],
-        "roi": [
-            624,
-            540,
-            300,
-            150
-        ],
-        "action": "Click",
-        "post_wait_freezes": 6000,
-        "max_hit": 1,
-        "timeout": 8000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "扫荡",
+                    "掃蕩"
+                ],
+                "roi": [
+                    624,
+                    540,
+                    300,
+                    150
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "focus": {
             "Node.Action.Succeeded": "开始扫荡浊暗之阱"
         },
+        "post_wait_freezes": 6000,
+        "max_hit": 1,
+        "timeout": 8000,
         "next": [
             "扫荡完成",
             "扫荡失败",
@@ -494,7 +610,9 @@
         ]
     },
     "浊暗之阱收尾": {
-        "action": "DoNothing",
+        "action": {
+            "type": "DoNothing"
+        },
         "next": [
             "[JumpBack]关闭界面",
             "关闭选择禁闭者弹窗",
@@ -502,52 +620,66 @@
         ]
     },
     "关闭选择禁闭者弹窗": {
-        "recognition": "OCR",
-        "expected": "禁闭者",
-        "roi": [
-            700,
-            140,
-            600,
-            50
-        ],
-        "action": "Click",
-        "target": [
-            151,
-            120,
-            1,
-            1
-        ],
-        "post_delay": 1500,
-        "max_hit": 1,
-        "timeout": 3000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "禁闭者",
+                "roi": [
+                    700,
+                    140,
+                    600,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    151,
+                    120,
+                    1,
+                    1
+                ]
+            }
+        },
         "focus": {
             "Node.Action.Succeeded": "关闭选择禁闭者弹窗"
         },
+        "post_delay": 1500,
+        "max_hit": 1,
+        "timeout": 3000,
         "next": [
             "主菜单"
         ]
     },
     "助手模式入口": {
-        "recognition": "OCR",
-        "expected": [
-            "助手模式",
-            "助手模式(9)",
-            "助手模式（9）"
-        ],
-        "roi": [
-            1150,
-            600,
-            130,
-            90
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "助手模式",
+                    "助手模式(9)",
+                    "助手模式（9）"
+                ],
+                "roi": [
+                    1150,
+                    600,
+                    130,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "途径二：打开主界面右下角的助手模式"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 1000,
         "max_hit": 2,
         "timeout": 8000,
-        "focus": {
-            "Node.Action.Succeeded": "途径二：打开主界面右下角的助手模式"
-        },
         "next": [
             "助手模式_浊暗之阱",
             "浊暗之阱关卡列表",
@@ -555,20 +687,26 @@
         ]
     },
     "助手模式_浊暗之阱": {
-        "recognition": "OCR",
-        "expected": [
-            "浊暗之阱",
-            "濁暗之阱",
-            "暗之阱"
-        ],
-        "action": "Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "浊暗之阱",
+                    "濁暗之阱",
+                    "暗之阱"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "途径二：在助手模式里点「浊暗之阱」"
+        },
         "post_delay": 3000,
         "post_wait_freezes": 1000,
         "max_hit": 2,
         "timeout": 8000,
-        "focus": {
-            "Node.Action.Succeeded": "途径二：在助手模式里点「浊暗之阱」"
-        },
         "next": [
             "浊暗之阱关卡列表",
             "浊暗之阱异常模式返回",
