@@ -65,7 +65,6 @@
         },
         "timeout": 15000,
         "next": [
-            "[JumpBack]刮刮乐",
             "[JumpBack]情绪检测",
             "[JumpBack]禁闭者生日",
             "[JumpBack]月卡提示 - 取消",
@@ -420,32 +419,6 @@
         "post_delay": 5000,
         "next": [
             "等待加载"
-        ]
-    },
-    "刮刮乐": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    432,
-                    21,
-                    425,
-                    115
-                ],
-                "expected": [
-                    "福"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "刮刮乐"
-        },
-        "post_delay": 1000,
-        "next": [
-            "第一次滑动"
         ]
     },
     "第一次滑动": {

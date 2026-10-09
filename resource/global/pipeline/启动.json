@@ -85,7 +85,6 @@
             "[JumpBack]资料载入中",
             "[JumpBack]关闭公告",
             "[JumpBack]登录",
-            "[JumpBack]刮刮乐",
             "[JumpBack]情绪检测",
             "[JumpBack]禁闭者生日",
             "[JumpBack]生日日历",
@@ -690,32 +689,6 @@
         "post_delay": 5000,
         "next": [
             "登录前处理"
-        ]
-    },
-    "刮刮乐": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    432,
-                    21,
-                    425,
-                    115
-                ],
-                "expected": [
-                    "福"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "刮刮乐"
-        },
-        "post_delay": 1000,
-        "next": [
-            "第一次滑动"
         ]
     },
     "第一次滑动": {
