@@ -23,6 +23,7 @@
             320,
             79
         ],
+        "threshold": 0.85,
         "action": "Click",
         "post_wait_freezes": 30
     },
@@ -35,6 +36,7 @@
             320,
             79
         ],
+        "threshold": 0.85,
         "action": "Click",
         "next": [
             "任务间隔"
@@ -290,12 +292,13 @@
         "recognition": "OCR",
         "expected": "狄斯",
         "roi": [
-            898,
-            100,
-            350,
-            151
+            1120,
+            120,
+            150,
+            70
         ],
         "action": "Click",
+        "post_delay": 3000,
         "focus": {
             "Node.Recognition.Succeeded": "切换到狄斯"
         },
@@ -335,7 +338,7 @@
             85
         ],
         "action": "Click",
-        "post_delay": 1000
+        "post_delay": 2500
     },
     "任务间隔": {
         "recognition": "DirectHit",
