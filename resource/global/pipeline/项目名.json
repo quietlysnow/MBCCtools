@@ -112,31 +112,6 @@
             "返回按钮"
         ]
     },
-    "难度选择": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "MS",
-                    "已完成"
-                ],
-                "roi": [
-                    507,
-                    422,
-                    751,
-                    106
-                ],
-                "order_by": "Horizontal",
-                "index": -1
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "难度选择"
-        }
-    },
     "副本未开放": {
         "recognition": {
             "type": "OCR",
@@ -156,29 +131,6 @@
         "next": [
             "主菜单"
         ]
-    },
-    "管理局入口": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "管理局"
-                ],
-                "roi": [
-                    1121,
-                    288,
-                    121,
-                    85
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "进入管理局"
-        },
-        "post_delay": 1000
     },
     "数据间隙": {
         "recognition": {
