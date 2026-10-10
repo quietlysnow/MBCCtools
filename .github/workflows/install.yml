@@ -75,14 +75,34 @@ jobs:
           out-file-path: "deps"
           extract: true
 
+      - name: Resolve MFAAvalonia-MBCC release
+        if: matrix.os != 'android'
+        id: mfa_release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # 本包用的是定制 GUI（quietlysnow/MFAAvalonia-MBCC），不是上游 MaaXYZ/MFAAvalonia。
+          # 该 fork 的 tag 带 "-" 时会被发成 prerelease，release-downloader 的 latest 只认
+          # /releases/latest（不含 prerelease），所以这里自己挑最新的非草稿发布。
+          tag=$(gh api "repos/quietlysnow/MFAAvalonia-MBCC/releases" \
+            --jq '[.[] | select(.draft == false)][0].tag_name // empty')
+          if [ -z "$tag" ]; then
+            echo "::error::quietlysnow/MFAAvalonia-MBCC 还没有可用 release，打不出定制 GUI。"
+            echo "::error::先往该仓库推一个 tag（如 v2.16.3）触发它的 Release workflow，等它发完再重跑本 workflow。"
+            exit 1
+          fi
+          echo "MFAAvalonia-MBCC: $tag"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
       - name: Download MFAAvalonia
         if: matrix.os != 'android'
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
-          repository: MaaXYZ/MFAAvalonia
+          repository: quietlysnow/MFAAvalonia-MBCC
+          tag: ${{ steps.mfa_release.outputs.tag }}
           fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
-          latest: true
           out-file-path: "MFA"
           extract: true
 
