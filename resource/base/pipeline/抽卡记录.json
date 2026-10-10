@@ -1,10 +1,22 @@
 {
     "抽卡记录": {
         "next": [
-            "TODO抽卡记录入口"
+            "抽卡记录_开始采集"
         ]
     },
-    "TODO抽卡记录入口": {
+    "抽卡记录_开始采集": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "GachaRecordBeginRun",
+                "custom_action_param": {
+                    "archive": "record/抽卡记录"
+                }
+            }
+        },
         "next": [
             "抽卡记录_识别追踪类型"
         ]
@@ -15,10 +27,10 @@
             "param": {
                 "custom_recognition": "GachaRecordPoolType",
                 "custom_recognition_param": {
-                    "archive": "record/抽卡记录.jsonl",
+                    "archive": "record/抽卡记录",
                     "min_score": 0.5
                 },
-                "roi": [411, 210, 154, 55]
+                "roi": [414, 218, 425, 60]
             }
         },
         "action": {
@@ -26,10 +38,11 @@
         },
         "timeout": 3000,
         "on_error": [
-            "抽卡记录_回首页"
+            "抽卡记录汇总"
         ],
         "next": [
-            "抽卡记录_回首页"
+            "抽卡记录_回首页",
+            "抽卡记录_单页识别"
         ]
     },
     "抽卡记录_回首页": {
@@ -38,10 +51,13 @@
             "param": {
                 "custom_recognition": "GachaRecordFirstPage",
                 "custom_recognition_param": {
-                    "page_roi": [735, 625, 65, 36],
-                    "min_score": 0.5
+                    "archive": "record/抽卡记录",
+                    "min_score": 0.5,
+                    "line_tol": 14,
+                    "badge_x": [856, 908],
+                    "gate_roi": [414, 218, 425, 60]
                 },
-                "roi": [680, 620, 220, 60]
+                "roi": [440, 275, 640, 350]
             }
         },
         "action": {
@@ -50,14 +66,11 @@
                 "target": [711, 645, 1, 1]
             }
         },
-        "focus": {
-            "Node.Action.Succeeded": "回到抽卡记录第一页"
-        },
         "post_wait_freezes": 800,
         "max_hit": 100,
         "timeout": 5000,
         "on_error": [
-            "抽卡记录_单页识别"
+            "抽卡记录汇总"
         ],
         "next": [
             "抽卡记录_回首页",
@@ -70,13 +83,15 @@
             "param": {
                 "custom_recognition": "GachaRecordPage",
                 "custom_recognition_param": {
-                    "archive": "record/抽卡记录.jsonl",
+                    "archive": "record/抽卡记录",
                     "min_score": 0.5,
                     "line_tol": 14,
                     "badge_x": [856, 908],
                     "rarity_dir": "抽卡",
                     "rarity_tiers": ["狂", "危", "普"],
-                    "page_roi": [735, 625, 65, 36]
+                    "gate_roi": [414, 218, 425, 60],
+                    "page_roi": [735, 625, 65, 36],
+                    "max_pages": 200
                 },
                 "roi": [440, 275, 640, 350]
             }
@@ -94,18 +109,13 @@
     },
     "抽卡记录翻页": {
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "DirectHit",
             "param": {
-                "template": "下一页.png",
-                "roi": [680, 620, 220, 60],
-                "threshold": 0.8
+                "roi": [839, 646, 1, 1]
             }
         },
         "action": {
             "type": "Click"
-        },
-        "focus": {
-            "Node.Action.Succeeded": "抽卡记录翻页"
         },
         "post_wait_freezes": 800,
         "timeout": 8000,
@@ -125,21 +135,27 @@
             "param": {
                 "custom_action": "GachaRecordExport",
                 "custom_action_param": {
-                    "archive": "record/抽卡记录.jsonl"
+                    "archive": "record/抽卡记录"
                 }
             }
         },
+        "next": []
+    },
+    "抽卡记录末页": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "DoNothing"
+        },
         "focus": {
             "Node.Action.Succeeded": {
-                "content": "record/抽卡记录.md",
-                "display": [
-                    "log",
-                    "dialog"
-                ]
+                "content": "已到达最后一页",
+                "display": ["log", "toast"]
             }
         },
         "next": [
-            "返回按钮"
+            "抽卡记录汇总"
         ]
     }
 }

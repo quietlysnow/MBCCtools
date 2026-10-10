@@ -1,7 +1,8 @@
 {
+  "interface_version": 2,
   "name": "MBCCtools",
   "title": "MBCCtools",
-  "icon": "resource/base/image/logo.jpg",
+  "icon": "resource/base/image/logo.ico",
   "version": "v1.4.7",
   "mirrorchyan_rid": "MBCCtools",
   "mirrorchyan_multiplatform": true,
@@ -115,7 +116,10 @@
     {
       "name": "抽卡记录",
       "entry": "抽卡记录",
-      "doc": "[b]依赖 AgentServer[/b]，Agent 没起来时本任务不会有任何动作\n\n[b]入口节点还是空的[/b]：请先在模拟器里手动打开抽卡记录页，再启动本任务\n\n开跑先读页头追踪类型（活动 / 常规 / 定向 / 常驻），随记录存进档案 [color:orange]type[/color] 字段并作为 xlsx「类型」列；读不出时照常采集，只是类型留空\n\n记录累计在 [color:orange]record/抽卡记录.jsonl[/color]，出新卡池后跑一次只追加没见过的几条；收尾导出 [color:orange]record/抽卡记录.xlsx[/color]（一个卡池一张表）并弹窗显示摘要"
+      "option": [
+        "识别方式"
+      ],
+      "doc": "**使用前**\n\n- 先在模拟器里手动打开游戏内的抽卡记录页（当前显示哪个卡池就采哪个）\n- 采完自动结束；要采其它卡池，在游戏里切过去再跑一次\n- 「识别方式」在下方选项里切换\n\n> 有疑问可查看「设置」→「关于我们」→「显示公告」"
     }
   ],
   "option": {
@@ -515,6 +519,82 @@
           }
         }
       ]
+    },
+    "识别方式": {
+      "cases": [
+        {
+          "name": "完整识别",
+          "pipeline_override": {
+            "抽卡记录_单页识别": {
+              "custom_recognition_param": {
+                "archive": "record/抽卡记录",
+                "min_score": 0.5,
+                "line_tol": 14,
+                "badge_x": [
+                  856,
+                  908
+                ],
+                "rarity_dir": "抽卡",
+                "rarity_tiers": [
+                  "狂",
+                  "危",
+                  "普"
+                ],
+                "gate_roi": [
+                  414,
+                  218,
+                  425,
+                  60
+                ],
+                "page_roi": [
+                  735,
+                  625,
+                  65,
+                  36
+                ],
+                "max_pages": 200
+              }
+            }
+          }
+        },
+        {
+          "name": "识别到已知停止",
+          "pipeline_override": {
+            "抽卡记录_单页识别": {
+              "custom_recognition_param": {
+                "archive": "record/抽卡记录",
+                "min_score": 0.5,
+                "line_tol": 14,
+                "badge_x": [
+                  856,
+                  908
+                ],
+                "rarity_dir": "抽卡",
+                "rarity_tiers": [
+                  "狂",
+                  "危",
+                  "普"
+                ],
+                "gate_roi": [
+                  414,
+                  218,
+                  425,
+                  60
+                ],
+                "page_roi": [
+                  735,
+                  625,
+                  65,
+                  36
+                ],
+                "max_pages": 200,
+                "stop_on_known": true
+              }
+            }
+          }
+        }
+      ],
+      "description": "- **完整识别**：从第 1 页翻完整份列表，逐行去重、只补没见过的记录；不会漏页，较慢\n- **识别到已知停止**：撞见已入库的记录就停；快，适合刚抽完卡补记录"
     }
   },
   "github": "https://github.com/quietlysnow/MBCCtools"
