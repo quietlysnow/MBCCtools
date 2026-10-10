@@ -60,8 +60,11 @@ body = """
 {%- endif %}
 """
 
-# 尾部
+# 尾部（开头的空行不能省：正文以「新贡献者」列表结尾时，末尾的换行会被上面的
+# 空白控制标签连同 footer 一起吃掉，链接会直接粘在最后一条列表项后面）
 footer = """
+
+
 [已有 Mirror酱 CDK？点击前往高速下载](https://mirrorchyan.com/zh/projects?rid=MBCCtools)
 """
 
