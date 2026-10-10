@@ -70,7 +70,7 @@ AgentServer.start_up(sock_id)
 
 ```jsonc
 "agent": {
-    "child_exec": "python",                 // CWD = interface.json 所在目录
+    "child_exec": "python",                 // 源码里是开发用裸命令名；发布包会被改写成 ./agent/python/python.exe，见下
     "child_args": ["./agent/main.py"],
     "identifier": "MBCCtools"               // 可选；填了就用它建通信套接字
 }
@@ -78,6 +78,8 @@ AgentServer.start_up(sock_id)
 
 - UI 会向子进程注入 `PI_*` 环境变量（`PI_CLIENT_NAME`、`PI_CONTROLLER`、`PI_RESOURCE` 等，全表见 `3.3`）。**多服项目必须读 `PI_RESOURCE`** 来判断当前选中的是官服/B服/国际服，再加载对应资源。
 - 多个 Agent 可写成数组形式。
+- **`child_exec` 在源码与发布包里不一样**（照 M9A 的版式）：源码写裸命令名 `python`，走开发机 PATH；`install.py` 打包时由 `install_agent_runtime()` 改写成包内相对路径 `./agent/python/python.exe`（macOS 是 `./agent/python/bin/python3`），`check_agent()` 兜底 —— 声明了 agent 却缺脚本或解释器，打包直接失败。解释器与依赖由 `prepare_agent_runtime.py` 现备（Windows 用官方 embed zip，macOS 用 python-build-standalone；依赖钉在根目录 `requirements.txt`）。
+- 该步骤只按平台解析 wheel、**不执行目标解释器**，所以宿主平台必须等于目标平台：`install.yml` 每条腿都在自己的 runner 上构建（`win-x64`/`win-arm64`/`macos-x64`/`macos-arm64`），跨平台构建会直接报错（M9A 同款约束）。
 
 ### 2.4 当前落地状态
 
@@ -100,6 +102,7 @@ AgentServer.start_up(sock_id)
 - **AgentServer 的 Python 绑定版本必须与 AgentClient 的协议代一致**。实测：MFAAvalonia 实际加载的是 `runtimes/win-x64/native/MaaFramework.dll` = **v5.12.3**（协议 protocol=7），而不是根目录那份 v5.13.0。装 5.13.1 会被拒：`Protocol version mismatch client: v5.12.3 kProtocolVersion=7 server: v5.13.1 protocol=8` + `Please update AgentClient`。当前已钉 `pip install MaaFw==5.12.3`（其自带的 `MaaAgentServer.dll` 同为 v5.12.3，与客户端逐版本一致）。
 - 换 MaaFramework / MFAAvalonia 版本时，要同步重选 `MaaFw` 版本，否则 Custom 节点直接连不上。
 - 自定义代码放 `agent/`，**不要**放进 `resource/`（会被当资源包扫描）。
+- **发布包自 2026-10-11 起自带解释器**（版式与理由见 §2.3）。背景：v1.5.0 的发布包其实缺 `agent/`（`install_agent()` 于 `73011cf` 被删、agent 于 `21dfec6` 加回时没恢复），`child_exec` 又指望用户机器上有装好 MaaFw 的 python，两层叠加让发布安装必然"启动 Agent 失败"。开发根 `G:\MBCCtools工作区` 永远正常（`agent/` 就在 `interface.json` 旁边），只有发布安装才暴露 —— 别再用开发根的表现推断发布包。
 
 ## 3. 目录与 bundle 结构
 
@@ -273,6 +276,7 @@ MFAAvalonia 是 .NET 程序，按原生依赖解析规则加载的是 **`runtime
 4. `interface.json` 每个 `task.entry`、每个 `pipeline_override` 的 key，都能在（对应服的）合并后 pipeline 中找到节点。
 5. 坐标不得超出 1280×720 基准（`roi`/`target`/`begin`/`end` 的 `x+w`、`y+h`）。
 6. 实机验证由用户完成：需要 Adb 连接的模拟器（1280×720）+ `MaaPiCli.exe` 或 MFAAvalonia。无法实机验证时，**明确说"未验证"**，不要声称功能正确。
+7. 打包链路（`install.py` / `prepare_agent_runtime.py` / `install.yml`）本地复现：`mkdir -p deps/bin deps/share/MaaAgentBinary && python install.py v0.0.0-test`。会顺带去下载便携解释器与依赖（缓存在 `deps/.agent-runtime-cache/`），跑完删掉 `install/`、`deps/`。要验 agent 真能起来，不必开模拟器：用包内解释器拉起 `install/agent/main.py`，再用 MaaFw 的 `AgentClient` 连一次同 identifier 即可（能列出 `CloseButton` 等注册项就算通）。
 
 推荐工具（写进你的判断依据，不强制）：VSCode 插件 `nekosu.maa-support`（跳转/引用/按 MaaPiCli 运行/截图裁剪）、JSON Schema `tools/pipeline.schema.json`。
 

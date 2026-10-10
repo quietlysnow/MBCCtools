@@ -26,6 +26,8 @@
 /deps/
 /install/
 /MFA/
+# agent 的便携解释器只进发布包（打包时生成），不进源码树
+/agent/python/
 
 # 工具缓存与本地 AI 助手文件
 /.qoder-credits/

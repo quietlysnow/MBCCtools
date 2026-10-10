@@ -1,0 +1,4 @@
+# agent 子进程（agent/main.py）的 Python 依赖，由 prepare_agent_runtime.py 装进发布包内的解释器。
+# 版本必须与 MFAAvalonia 实际加载的 MaaFramework 同协议代：runtimes/win-x64/native/MaaFramework.dll
+# 实测 v5.12.3（protocol 7），跨代会让 AgentServer 直接拒连（AGENTS.md §7.3）。
+MaaFw==5.12.3
