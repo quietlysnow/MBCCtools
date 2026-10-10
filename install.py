@@ -5,7 +5,7 @@ import sys
 import json
 
 from configure import configure_ocr_model
-from prepare_agent_runtime import interpreter_relpath, prepare_runtime, resolve_platform
+from prepare_agent_runtime import interpreter_relpath, prepare_runtime, resolve_platform, use_utf8_console
 
 
 working_dir = Path(__file__).parent
@@ -125,6 +125,7 @@ def check_agent():
 
 
 if __name__ == "__main__":
+    use_utf8_console()
     install_deps()
     install_resource()
     install_chores()

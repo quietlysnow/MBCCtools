@@ -139,6 +139,11 @@ jobs:
         shell: bash
         env:
           AGENT_RUNTIME_PLATFORM: ${{ matrix.agent_platform }}
+          # prepare_agent_runtime.py 要查 python-build-standalone 的最新 release；
+          # 不带 token 会撞 api.github.com 的匿名限流（403 rate limit exceeded）
+          GH_TOKEN: ${{ github.token }}
+          # Windows runner 默认控制台编码是 cp1252，脚本里的中文 print 会抛 UnicodeEncodeError
+          PYTHONIOENCODING: utf-8
         run: |
           # 先把 GUI 包铺进 install/，再让 install.py 覆盖资源侧文件。
           # 原来的 rsync --ignore-existing 是同一效果，但 rsync 在 Windows runner 上没有。

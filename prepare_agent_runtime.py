@@ -51,6 +51,17 @@ _OS_ALIASES = {
 }
 
 
+def use_utf8_console() -> None:
+    """把本进程的 stdout/stderr 切到 UTF-8。
+
+    Windows runner 的控制台编码是 cp1252，脚本里的中文 print 会直接抛 UnicodeEncodeError
+    （configure.py 就是这么把打包打断的），与终端语言无关，出错就替换成 ? 也别中断构建。
+    """
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 def normalize_platform(text: str) -> str | None:
     """把各种写法归一成 win-x64 / win-arm64 / macos-x64 / macos-arm64。"""
     parts = text.strip().lower().replace("_", "-").split("-")
@@ -268,6 +279,7 @@ def _install_requirements(dest: Path, platform_name: str, requirements: Path) ->
 def main() -> int:
     import argparse
 
+    use_utf8_console()
     parser = argparse.ArgumentParser(description="准备发布包内的 agent 解释器")
     parser.add_argument("--dest", default="install/agent/python", help="解释器落盘位置")
     parser.add_argument("--platform", default=None, help="目标平台，默认读 AGENT_RUNTIME_PLATFORM 或宿主")
