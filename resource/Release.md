@@ -1,70 +1,24 @@
-## 1.4.5 (2026-07-30)
-
-### 🐛 Bug修复
-
-- 修复扫荡记忆风暴时，第二次执行可能弹出"锈河调令不足，是否购买锈河调令"导致任务卡住的问题
-- 新增"扫荡调令不足"节点，识别"调令不足"弹窗并点击"取消"返回主菜单
-- 在"记忆风暴"入口和"记忆风暴扫荡"流程中加入该处理分支
-
-## 1.4.4 (2026-07-11)
-
-### 🔧 优化
-
-- 移除 agent/custom 自定义模块残留，更新 pipeline 配置及 MaaNode 节点文件
-
-## 1.4.3 (2026-06-02)
+## 1.5.0 (2026-10-10)
 
 ### ✨ 新增
 
-- 新增国际服（global）资源支持，pipeline 独立、image 复用 base @RomioLA
-
-### 🔧 优化
-
-- 月卡节点改用 OCR 文字识别"剩余"，替代原有 TemplateMatch 图片匹配，提高识别稳定性
-- 月卡节点指定 roi 区域和点击 target 坐标
-
-## 1.4.2 (2026-05-19)
-
-### 🔧 优化
-
-- 更新 pipeline 资源及 MaaNode 节点
-
-## 1.4.1 (2026-05-18)
-
-### 🔧 优化
-
-- 移除 agent 模块，更新 pipeline 资源及 MaaNode 节点
-- 强制 GitHub Actions 使用 Node.js 24 以适配即将到来的弃用
+- 新增「抽卡记录」任务：自动翻查游戏内抽卡记录页，逐条落档时间 / 卡池 / 稀有度 / 角色 @quietlysnow
+- 配套 GUI 更新到定制版 v1.0，新增「抽卡记录」「活动提醒」两个页面 @quietlysnow
+- 新增多账号轮换生成器与队列尾「收工」脚本（tools/）@jie200598
 
 ### 🐛 Bug修复
 
-- 修复 install.py 中对已删除 agent 目录的引用
-
-## 1.4.0 (2026-05-16)
-
-### ✨ 新增
-
-- 新增破碎防线 pipeline，支持自动领奖 @RealHath
-- 项目 interface.json 新增 title 和 icon 字段
-
-### 🐛 Bug修复
-
-- 修复通行证密令流程卡住问题，新增等级奖励领取 @RealHath
-- 修复通行证完成后缺少关闭界面跳转 @RealHath
-- 修复领取密令等级奖励缺少点击动作 @RealHath
-- 恢复 bilibili 友情点和监管 pipeline 配置 @RealHath
+- 破碎防线：修复内海地图进不去，改为复位 + 分步拖动重新识别，并新增周一门闩 @jie200598
+- 浊暗之阱：重写扫荡流程，修复进不去与卡死问题，新增「助手模式」兜底入口 @jie200598
+- 启动流程：移除刮刮乐遗留的滑动跳转，「首页」改为弹窗链末尾（B服 / 国际服 同步）
+- 破碎防线：去掉 next 与 on_error 指向同一节点的重复项
+- 国际服 overlay：被新流程取代的旧节点交给 base 接管
 
 ### 🔧 优化
 
-- 移除 bilibili 冗余资源文件，B服复用 base 资源 @RealHath
-- 移除启动流程中多余的 MaaPipelineEditor 元数据 @RealHath
-- B服资源路径合并到 base
-
-## 1.3.9 (2026-03-26)
-
-### 🐛 Bug修复
-
-- 修复友情点任务卡住的问题 @quietlysnow
-- 修复监管任务卡住的问题 @quietlysnow
+- 抽卡记录：档案按追踪类型分文件存放，新增「识别方式」选项（完整识别 / 识别到已知停止）
+- 公告新增「抽卡记录使用说明」并顺延编号，鸣谢补充 4 位贡献者；图标改用 logo.ico / logo.png
+- 全仓 pipeline 统一 v2 对象式写法；README 与 AGENTS 文档补充
+- 打包链路：GUI 下载源改为定制版 MFAAvalonia-MBCC，修复 configure.py 缺 MaaCommonAssets 时中断打包
 
 [已有 Mirror酱 CDK？点击前往高速下载](https://mirrorchyan.com/zh/projects?rid=MBCCtools)
