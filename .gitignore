@@ -20,16 +20,27 @@
 /backup/
 /assets/
 /record/
+/.nicegui/
 
-# 工具缓存
+# 构建与依赖下载：install.py / CI 的目录布局，本地复现打包时会出现
+/deps/
+/install/
+/MFA/
+
+# 工具缓存与本地 AI 助手文件
 /.qoder-credits/
 /.scratch/
 /.workbuddy/
+/.claude/
+/.zcodeignore
+/node_modules/
 __pycache__/
 *.pyc
 
-# 编辑器与系统
-/.vscode/
+# 编辑器与系统（.vscode 只共享这两个文件，其余本机配置不放进来）
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
 /.idea/
 .DS_Store
 Thumbs.db
