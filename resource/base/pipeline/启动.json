@@ -1,7 +1,8 @@
 {
     "登录前处理": {
-        "timeout": 30000,
+        "timeout": 90000,
         "next": [
+            "[JumpBack]安装包检查中",
             "登录",
             "[JumpBack]关闭公告",
             "[JumpBack]通用关闭弹窗"
@@ -544,5 +545,17 @@
         "focus": {
             "Node.Action.Succeeded": "领取今日补给"
         }
+    },
+    "安装包检查中": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "安装包检查中"
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "post_delay": 2000
     }
 }

@@ -3,8 +3,9 @@
         "action": {
             "type": "DoNothing"
         },
-        "timeout": 30000,
+        "timeout": 90000,
         "next": [
+            "[JumpBack]安装包检查中",
             "登录",
             "[JumpBack]关闭公告"
         ],
