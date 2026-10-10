@@ -410,3 +410,51 @@ print("新增", total, "个")
 ### 12.5 现状
 
 2026-10-10：狂级 74 / 危级 72 / 普级 14，与 wiki 完全一致，无缺失无多余。本次补入的只有 `狂级/阿兰恰.png`（2026 年新角色）。
+
+## 13. 维护操作：重新生成程序图标
+
+**触发语：「更新程序图标」** —— 听到这句就按本节跑一遍，跑完把三个落点与校验结果报给用户。
+
+母版是 `resource/base/image/logo.png`（1254×1254，那幅角色插画）。生成命令：
+
+```bash
+python tools/build-icon.py 输出.ico [更多输出.ico ...]
+python tools/build-icon.py --check 输出.ico        # 只校验，不写入
+```
+
+脚本把尺寸台阶分成两段，要换构图就改这里：
+
+| 尺寸 | 画面 |
+| ---- | ---- |
+| 16 / 24 / 32 | 裁到「脸 + 护目镜」（`CROP_512`，坐标基准是原画缩到 512×512 时） |
+| 48 / 64 / 128 / 256 | 整张原画 |
+
+小尺寸必须用裁切图：整幅原画缩到 16~32px 只剩色块，裁到脸和护目镜之后还能看出两个镜片和头带。换裁切框就改 `CROP_512`，改完重新生成并**逐级目视**（16/24/32 是重点，48 以上原画本来就够清楚）。
+
+### 13.1 三个落点，别只改一个
+
+| 文件 | 谁在用 |
+| ---- | ------ |
+| `resource/base/image/logo.ico` | `interface.json` 的 `icon`，运行时窗口 / 任务栏 / 托盘图标（生产环境走的就是这条：安装目录根**没有** `Assets/`） |
+| `G:/MFAAvalonia工作区/MFAAvalonia/Assets/logo.ico` | exe 的 `<ApplicationIcon>` 内嵌图标（Explorer 里看到的，也是 IconHelper 的兜底来源） |
+| `G:/MFAAvalonia工作区/MFAUpdater/logo.ico` | 更新器的 exe 图标 |
+
+三个用同一份字节。内嵌资源（`avares://MFAAvalonia.Core/Assets/logo.ico`）取的也是它，所以 **exe 图标要重新构建 fork 才生效**（编译期资源）；`resource/` 那个是运行时读文件，换完即时生效——前提是 fork 侧 `IconHelper` 已按 §13.2 修好。
+
+### 13.2 两个坑（2026-10-10 实测）
+
+- **只有一帧 256 的 ICO 一定糊**，而且目录标注必须与实际像素一致。事故原样：`resource/base/image/logo.ico` 曾是一个目录项写 256×256、内里却是 512×512 的 PNG——运行时窗口图标真的就是一张 512 位图被 Windows 缩到 16（用 `WM_GETICON` 实测印证：`ICON_SMALL=512x512`）。现在固定产出 7 帧，`--check` 会报出任何「目录标注与实际像素不符」。
+- **多尺寸帧只有走原始字节才用得上**。Avalonia 的 `IPlatformIconLoader.LoadIcon(IBitmapImpl)` 会把位图重新编码成 PNG 再交给 `Win32Icon`；`Win32Icon` 读到非 ICO 数据就退化成「按位图原尺寸建 HICON」，尺寸信息全丢。所以 fork 的 `IconHelper` 必须留住 `.ico` 原字节、用 `new WindowIcon(new MemoryStream(bytes))`，**不要**先解成 `Bitmap` 再传。
+
+### 13.3 自检
+
+- `python tools/build-icon.py --check <三个文件>` 全绿，且三者 md5 相同。
+- 实测窗口真正设上去的图标尺寸（新旧对比最直观）：
+
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File G:/MFAAvalonia工作区/bin/query-icon.ps1 -Id <pid>
+  ```
+
+  修好后应是 `ICON_SMALL=16x16  ICON_BIG=32x32`（按 DPI 取最近帧）；**再出现 `512x512` 就说明又退回单帧、或 IconHelper 被改回传 Bitmap 了**。
+- 这些 ico 不参与 pipeline，**不用**跑 §8 的 JSON 校验。
+
