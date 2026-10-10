@@ -220,7 +220,7 @@ resource/
 - 参数化用 `option.<组名>.cases[]`，`case` 通过 `pipeline_override` 覆盖同名节点的 `next` / `expected` / `on_error` 实现分支，例如：
   - `"每日体力用途": { "next": "狄斯币" }`
   - `"派遣区域选择": { "expected": "..." }`、`"职业选择": { "expected": "坚韧" }`
-- `case.icon` 写 `image/材料/xxx.png`（相对所选资源目录），而顶层 `icon` 写 `resource/base/image/logo.jpg`（相对项目根）——两种基准并存，新增时照抄同类字段的写法，不要"顺手统一"。
+- `case.icon` 写 `image/材料/xxx.png`（相对所选资源目录），而顶层 `icon` 写 `resource/base/image/logo.ico`（相对项目根）——两种基准并存，新增时照抄同类字段的写法，不要"顺手统一"。
 - `doc` 用 **BBCode**：`[b]…[/b]`、`[color:orange]…[/color]`、`\n`。
 
 ## 7. 已知问题（不要静默"修复"）
@@ -316,3 +316,93 @@ MFAAvalonia 是 .NET 程序，按原生依赖解析规则加载的是 **`runtime
 - 两边靠**文件契约**连接：本仓库往 `record/` 写（`抽卡记录.jsonl`、`活动.json`），fork 的页面只读文件、不联网。这样抓取/解析规则变了只需更新本仓库，用户不用重下 GUI。
 - 想"不动 GUI 就发布内容"时用 `resource/Announcement/*.md`：MFAAvalonia 原生展示公告。
 - fork 侧的约定（页面注册点、构建部署、截图核对）见 `G:/MFAAvalonia工作区/AGENTS.md`。
+
+## 12. 维护操作：拉取禁闭者头像
+
+**触发语：「更新禁闭者头像」** —— 听到这句就按本节跑一遍，不必再问；跑完把「补了谁 / 缺哪个 / 有没有多的」报给用户。
+
+这群图**与 pipeline 无关**，全仓没有任何节点引用它们。用途在 MFAAvalonia fork 的「抽卡记录」页：按 `resource/base/image/头像/<稀有度>级/<名>.png` 找图，缺图退回首字色块。所以**文件名必须与角色名逐字一致、稀有度目录必须选对** —— 那是 fork 侧的查找路径，改个名就等于丢图。
+
+### 12.1 来源与约定
+
+- 来源页 <https://wiki.biligame.com/wqmt/头像图鉴>。它是 Semantic MediaWiki 的 `#ask` 动态渲染，**HTML 里没有名单**，只能走 `api.php`。
+- 目录名 = wiki 的 `类别` 属性：`狂级` / `危级` / `普级`。
+- **只取 `来源=禁闭者`**。同一 `类别` 下还有大量 `来源=装束`（皮肤头像，名字是「一帘烟雨」这类皮肤名而不是角色名）、以及 `活动`/`谜典`/`礼包`/`周边`/`特别装束影像` —— 一律不要。反过来，`幽冕·海拉`、`荒噬·伊琳娜` 属于 `来源=禁闭者`，是正常角色图，别漏。
+- 文件名 = `角色名.png`。wiki 的文件页带「头像」后缀（`文件:阿兰恰头像.png`），**存盘时去掉**。
+- **下载原图，不要缩略图**。原图就是 250×250，本地文件与 wiki 原图**逐字节一致**（2026-10-10 用卓娅比对 md5 确认）。注意别抓成 URL 里带 `/thumb/` 的那份。
+- **只增不改**：已存在的文件不动；本地「多」出来的（wiki 没有）也不删，报给用户决定。
+
+### 12.2 抓取要点（踩过的坑）
+
+- 必须带 `User-Agent` 和 `Referer: https://wiki.biligame.com/wqmt/`，否则被 WAF 挡。被挡的表现是非标准 **HTTP 567**（不是 4xx/5xx）—— 看到 567 就退避重试，不是参数写错了。
+- `limit` 要写在 **SMW 查询串里面**（`...|limit=500`）。当独立 URL 参数传**不生效**，只回默认 20 条，会让你误判成「本地莫名多了几十个」。
+- 列表查询：`action=ask` + `query=[[分类:头像]][[来源::禁闭者]]|?名称|?类别|limit=500`，结果在 `query.results[*].printouts`。
+- 原图 URL：`action=query&prop=imageinfo&iiprop=url|size&titles=文件:<名>头像.png`，取 `imageinfo[0].url`。逐个角色查即可（缺的通常个位数），请求之间 `sleep 0.5`。
+- 若把脚本落成临时文件再跑：本工具的 `Write` 写 `/tmp/x.py` 实际落到 `G:/tmp/x.py`，与 Git Bash 的 `/tmp`（`C:\Users\...\AppData\Local\Temp`）**不是同一处**，Python 会报找不到文件。用 `G:/tmp/...` 这种带盘符的绝对路径。
+
+### 12.3 参考实现（2026-10-10 实测通过）
+
+```python
+import json, os, sys, time, urllib.parse, urllib.request
+
+WIKI = "https://wiki.biligame.com/wqmt/api.php"
+UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Referer": "https://wiki.biligame.com/wqmt/"}
+ROOT = sys.argv[1] if len(sys.argv) > 1 else "resource/base/image/头像"
+ONLY = sys.argv[2:] or ["狂级", "危级", "普级"]
+
+
+def api(params):
+    url = WIKI + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.load(r)
+
+
+# 1. 列表：来源=禁闭者（排除 装束/活动/谜典/礼包/周边/特别装束影像）
+res = api({"action": "ask", "format": "json",
+           "query": "[[分类:头像]][[来源::禁闭者]]|?名称|?类别|limit=500"})["query"]["results"]
+want = {}
+for v in res.values():
+    p = v["printouts"]
+    want.setdefault(p["类别"][0], set()).add(p["名称"][0])
+
+# 2. 与本地比对，只补缺失
+total = 0
+for cat in ONLY:
+    names = want.get(cat, set())
+    d = os.path.join(ROOT, cat)
+    have = {os.path.splitext(f)[0] for f in os.listdir(d)}
+    missing, extra = sorted(names - have), sorted(have - names)
+    print(f"{cat}: wiki {len(names)} / 本地 {len(have)}  缺 {missing or '无'}  多 {extra or '无'}")
+    # 3. 取原图 URL 后落盘
+    for name in missing:
+        info = api({"action": "query", "format": "json", "prop": "imageinfo",
+                    "iiprop": "url|size", "titles": f"文件:{name}头像.png"})["query"]["pages"]
+        ii = next((p["imageinfo"][0] for p in info.values() if "imageinfo" in p), None)
+        if not ii:
+            print(f"  × {name}: wiki 上找不到 文件:{name}头像.png")
+            continue
+        req = urllib.request.Request(ii["url"], headers=UA)
+        with urllib.request.urlopen(req, timeout=60) as r:
+            data = r.read()
+        with open(os.path.join(d, name + ".png"), "wb") as f:
+            f.write(data)
+        print(f"  + {name}.png  {ii['width']}x{ii['height']}  {len(data)}B")
+        total += 1
+        time.sleep(0.5)
+print("新增", total, "个")
+```
+
+把上面这段存成临时脚本（例如 `G:/tmp/upavatar.py`），在仓库根目录跑：`python G:/tmp/upavatar.py "resource/base/image/头像"`（不给第三个参数就是三个稀有度全查）。
+
+### 12.4 自检
+
+- 补完**立刻重跑一遍**：三段都应是「缺 无 多 无」+「新增 0 个」（幂等）。
+- 抽查新文件：`250x250`、能正常打开、md5 与 wiki 原图一致。
+- 文件名与角色名一致，尤其 `L.L..png`、`芭·菲.png` 这类带标点的 —— 对不上 fork 页面就取不到图。
+- 这些图不参与 pipeline，**不用**跑 §8 的 JSON 校验；但要确认新增的 png 没被 `.gitignore` 挡掉。
+
+### 12.5 现状
+
+2026-10-10：狂级 74 / 危级 72 / 普级 14，与 wiki 完全一致，无缺失无多余。本次补入的只有 `狂级/阿兰恰.png`（2026 年新角色）。
