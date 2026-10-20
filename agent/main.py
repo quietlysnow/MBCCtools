@@ -14,10 +14,7 @@ import re
 import sys
 import time
 
-try:
-    import cv2
-except ImportError:  # 页码放大用；缺失时退回原尺寸识别
-    cv2 = None
+import numpy as np
 
 from maa.agent.agent_server import AgentServer
 from maa.custom_action import CustomAction
@@ -188,6 +185,9 @@ class _RecordSession:
         self.store_counts = store_counts
         self.run_counts = {}
         self.last_page = None
+        # 上一页的行签名：页码读不出来时靠它判断"这一页翻动了没有"
+        self.last_rows = None
+        self.pages_seen = 0
         self.back_keys = None
         self.stall_retries = 0
         self.attempts = 0
@@ -240,18 +240,51 @@ def _get_session(archive):
     return session
 
 
+def _upscale(img, k=4):
+    """纯 numpy 双线性放大 k 倍（发布包的便携解释器只有 numpy，没有 cv2）。
+
+    页码在原尺寸下 OCR 不稳：两位数（第 10 页起）会整块读不出来（空文本），个位数也会
+    掉到 0.37~0.62；同一批图放大 4 倍后是 0.96~1.0。最近邻/双线性/双三次实测等价
+    （各帧 0.997~0.999），所以不引第三方依赖。
+    """
+    h, w = img.shape[:2]
+    if h == 0 or w == 0:
+        return img
+    # 先按半像素中心算出目标坐标再钳到 [0, size-1]（边界复制），与 cv2.resize 的
+    # INTER_LINEAR 一致；不钳坐标而是钳索引会把边缘像素和邻居混掉。
+    ys = np.clip((np.arange(h * k) + 0.5) / k - 0.5, 0, h - 1)
+    xs = np.clip((np.arange(w * k) + 0.5) / k - 0.5, 0, w - 1)
+    fy, fx = np.floor(ys), np.floor(xs)
+    wy, wx = (ys - fy).astype(np.float32), (xs - fx).astype(np.float32)
+    y0 = fy.astype(np.int64)
+    x0 = fx.astype(np.int64)
+    y1 = np.clip(y0 + 1, 0, h - 1)
+    x1 = np.clip(x0 + 1, 0, w - 1)
+    a = img[np.ix_(y0, x0)].astype(np.float32)
+    b = img[np.ix_(y0, x1)].astype(np.float32)
+    c = img[np.ix_(y1, x0)].astype(np.float32)
+    d = img[np.ix_(y1, x1)].astype(np.float32)
+    if img.ndim == 3:
+        wy, wx = wy[:, None, None], wx[None, :, None]
+    else:
+        wy, wx = wy[:, None], wx[None, :]
+    out = (a * (1 - wx) * (1 - wy) + b * wx * (1 - wy)
+           + c * (1 - wx) * wy + d * wx * wy)
+    return np.clip(np.rint(out), 0, 255).astype(np.uint8)
+
+
 def _read_page_number(context, image, page_roi, min_score):
     """读底栏 ◀ 页码 ▶ 中间的数字，返回 int；读不到返回 None。
 
-    页码渲染偏小（实测最小 8x12 像素，原尺寸直接 OCR 会把 '2' 读成 'C' 0.41），
-    所以把该区域裁出来放大 4 倍再识别（实测放大后 0.96~1.0）。
-    None 意味着这一眼读不出页码：不在记录页、或页面切换的中间帧。
+    页码渲染偏小（实测最小 8x12 像素，原尺寸直接 OCR 会把 '2' 读成 'C' 0.41、两位数
+    整块读不出来），所以把该区域裁出来放大 4 倍再识别（实测放大后 0.96~1.0）。
+    None 意味着这一眼读不出页码：不在记录页、页面切换的中间帧、或页码渲染异常。
     注：实测末页是"页码停住不再前进"（走 no_advance 那条），不是显示成 "-"——
     2026-10-10 常驻池末页与活动池第 50 页都是如此。"""
     x, y, w, h = page_roi
     crop = image[y:y + h, x:x + w]
-    if cv2 is not None and crop.size:
-        crop = cv2.resize(crop, (w * 4, h * 4), interpolation=cv2.INTER_CUBIC)
+    if crop.size:
+        crop = _upscale(crop, 4)
     detail = context.run_recognition_direct(
         JRecognitionType.OCR,
         JOCR(roi=[0, 0, crop.shape[1], crop.shape[0]]),
@@ -269,17 +302,19 @@ def _read_page_number(context, image, page_roi, min_score):
     return best[1] if best else None
 
 
-def _probe_back(context, page_roi, min_score, back_point, page_no):
+def _probe_back(context, page_roi, min_score, back_point, page_no, rows=None, read_rows=None):
     """判停前的对照点击：点一次 ◀ 再看页码，区分"真到底"和"输入失灵"。
 
     末页没有任何可辨识的图像特征——2026-10-10 逐像素实测：末页的 ▶ 与可用页完全一致
     （最大像素差 0），游戏既不隐藏也不置灰，点它只是不动。但同一次实验里 ◀ / ▶ 在非末页
-    都有响应，所以"点 ◀ 后页码变了"能反证输入通道是通的，剩下的可能就是列表到头。
+    都有响应，所以"点 ◀ 后页面的确变了"能反证输入通道是通的，剩下的可能就是列表到头。
 
     返回 (结论, 点击后的页码)：
-        ok      通道正常（页码变了）→ 判定到达末页
-        stall   点了没反应（页码没变）→ 疑似输入失灵
-        unknown 点后读不到页码（离开记录页 / 中间帧）→ 状态不明
+        ok      通道正常（页码变了 / 行内容变了）→ 判定到达末页
+        stall   点了没反应（页码与行内容都没变）→ 疑似输入失灵
+        unknown 点后读不到页码也读不到行 → 状态不明
+    判定用哪个信号：点击前后页码都读得出来就看页码；任一侧读不出来就退回行内容比对
+    （rows 是点击前的行签名，read_rows(image) 是"从一张图读出当前行签名"的回调）。
     注意本函数会真的翻回上一页；调用方都在收尾路径上，翻不翻回去无所谓。
     调用方在第 1 页会跳过本函数：那一页的 ◀ 本来就不可用，点了没反应说明不了任何事。
     """
@@ -288,9 +323,14 @@ def _probe_back(context, page_roi, min_score, back_point, page_no):
     time.sleep(0.8)
     ctrl.post_screencap().wait()
     after = _read_page_number(context, ctrl.cached_image, page_roi, min_score)
-    if after is None:
+    if page_no is not None and after is not None:
+        return ("ok" if after != page_no else "stall"), after
+    if read_rows is None or rows is None:
         return "unknown", after
-    return ("ok" if after != page_no else "stall"), after
+    keys_after = read_rows(ctrl.cached_image)
+    if not keys_after:
+        return "unknown", after
+    return ("ok" if keys_after != list(rows) else "stall"), after
 
 
 def _rarity_by_row(context, image, row_boxes, rarity_dir, tiers, floor):
@@ -522,10 +562,11 @@ class GachaRecordPage(CustomRecognition):
                         没见过的记录。不会漏页，列表长时较慢。
       识别到已知停止：  从第 1 页往下扫，撞见第一条档案里已有的记录就立即停止——
                         出新卡池后跑一次只补最上面的新页，快，但中断过的采集会漏页。
-    "翻到最后一页"的判定靠页码：每页读完翻页，下一眼读页码——页码前进 = 翻页成功；
-    页码不变 = 点击延迟/丢失，重试翻页（最多 3 次，每次都先重截确认）；页码消失
-    （游戏在末页后再翻会显示"-"）= 列表到头。页码区域裁出后放大 4 倍再 OCR，
-    实测小字号也能 0.96~1.0 可靠读出。
+    "翻到最后一页"的判定以页码为主：每页读完翻页，下一眼读页码——页码前进 = 翻页成功；
+    页码不变 = 点击延迟/丢失，重试翻页（最多 max_stall_retries 次，每次都先重截确认）。
+    页码读不出来时（两位数页码在原尺寸下会整块读不出，见 _upscale）退回用行内容比对：
+    与上一页逐行一致 = 这一页没翻动，有变化 = 新的一页；两条信号都不支持"翻动了"才判停。
+    页码区域裁出后放大 4 倍再 OCR，实测小字号也能 0.96~1.0 可靠读出。
 
     pipeline 参数（写在 custom_recognition_param 里）:
         archive:        str    分类型档案目录，默认 record/抽卡记录；开跑前读目录下所有
@@ -544,14 +585,14 @@ class GachaRecordPage(CustomRecognition):
         max_pages:      int    单次运行最多识别次数（防失控的兜底），默认 100
         stop_on_known:  bool  true = 识别到已知停止；缺省 false = 完整识别
         next_fresh:     str  每页读完（无论有无新记录）都去的节点，默认 抽卡记录翻页
-        next_done:      str  判停（页码消失/同页/空页/不在记录页）时去的节点，默认 抽卡记录汇总
+        next_done:      str  判停（没翻动/空页/不在记录页）时去的节点，默认 抽卡记录汇总
         next_last:      str  确认到达末页（含单页列表）时去的节点，默认 抽卡记录末页
         next_overflow:  str  达到 max_pages 时去的节点，默认 抽卡记录汇总
         back_point:     [x,y] 底栏 ◀ 的坐标，默认 [711,645]；判停时点它反证输入通道
-        max_stall_retries: int 页码不动时连续重试翻页的上限，默认 2
+        max_stall_retries: int 没翻动时连续重试翻页的上限，默认 2
     每条记录附带 type 字段 = GachaRecordPoolType 在本轮采集前识别出的追踪类型（未识别为 null）。
     路由是本设计的核心：识别几乎总是命中，"接下来去哪"由 override_next 按结果动态改写——
-    每页读完都走 next_fresh 翻页继续，判停（页码消失/同页/空页/不在记录页）走 next_done 汇总
+    每页读完都走 next_fresh 翻页继续，判停（没翻动/空页/不在记录页）走 next_done 汇总
     导出，识别次数用尽走 next_overflow。
     绝不靠"未命中 + 超时"推进流程：那会触发框架的 error handling loop 检测（实测直接终止任务），
     还要白等 timeout。所以「翻页」节点不做识别（DirectHit + 定点 roi，roi 即点击点），
@@ -624,38 +665,47 @@ class GachaRecordPage(CustomRecognition):
                 outcome = ("off_page", {})
                 rows = boxes = keys = rarities = None
             else:
-                # 页码是"翻页是否生效 / 是否到最后一页"的主判据（裁出放大后 OCR，可靠）
+                # 页码是"翻页是否生效 / 是否到最后一页"的主判据（裁出放大后 OCR，可靠）；
+                # 行内容读起来比页码稳得多（列表字号大），页码读不出来时退回用它比对
                 page_no = _read_page_number(context, image, page_roi, min_score)
-                if page_no is None:
-                    # 翻过最后一页（游戏把页码显示成"-"）或不在记录页
-                    outcome = ("no_more_pages", {})
-                    rows = boxes = keys = rarities = None
-                elif page_no == session.last_page:
+                rows, boxes = _ocr_rows(context, image, roi, min_score, line_tol, badge_x)
+                keys = [_row_sig(cells) for cells in rows]
+                if not rows:
+                    # 读不到行：列表为空，或这一眼是页面切换的中间帧
+                    outcome = ("empty", {})
+                elif (page_no is not None and session.last_page is not None
+                      and page_no == session.last_page):
                     # 页码没动 = 翻页没生效（点击延迟/丢失）或已在最后一页
                     outcome = ("no_advance", {"page": page_no})
+                elif (page_no is None and session.last_rows is not None
+                      and keys == session.last_rows):
+                    # 页码读不出来，改用行内容判断：与上一页逐行一致 = 这一页没翻动
+                    outcome = ("no_advance", {"page": None})
                 else:
-                    session.last_page = page_no
-                    rows, boxes = _ocr_rows(context, image, roi, min_score, line_tol, badge_x)
-                    keys = [_row_sig(cells) for cells in rows]
-                    if not rows:
-                        outcome = ("empty", {})
+                    # 新的一页（页码前进，或页码读不到但行内容变了）
+                    if page_no is None:
+                        # 页码未知：清掉旧值，免得下一页拿它做无意义的"没动"比较
+                        session.last_page = None
                     else:
-                        rarities = _rarity_by_row(
-                            context, image, boxes,
-                            param.get("rarity_dir", "抽卡"),
-                            param.get("rarity_tiers") or [],
-                            float(param.get("rarity_floor", 0.5)),
-                        )
-                        unknown = [r for r in rarities if r and r.startswith("未知")]
-                        if unknown:
-                            _log(f"GachaRecordPage 有徽章没匹上任何档，需要往对应目录补图: {unknown}")
-                        fresh = self._scan_fresh(session, rows, keys, rarities)
-                        if stop_on_known and not fresh:
-                            # 识别到已知停止：本页全是已入库的记录，下面的页只会更旧，
-                            # 立即停（这一眼不是翻页后的确认，没有竞态，不需要重截）
-                            outcome = ("known_stop", {})
-                            break
-                        outcome = None
+                        session.last_page = page_no
+                    session.last_rows = list(keys)
+                    session.pages_seen += 1
+                    rarities = _rarity_by_row(
+                        context, image, boxes,
+                        param.get("rarity_dir", "抽卡"),
+                        param.get("rarity_tiers") or [],
+                        float(param.get("rarity_floor", 0.5)),
+                    )
+                    unknown = [r for r in rarities if r and r.startswith("未知")]
+                    if unknown:
+                        _log(f"GachaRecordPage 有徽章没匹上任何档，需要往对应目录补图: {unknown}")
+                    fresh = self._scan_fresh(session, rows, keys, rarities)
+                    if stop_on_known and not fresh:
+                        # 识别到已知停止：本页全是已入库的记录，下面的页只会更旧，
+                        # 立即停（这一眼不是翻页后的确认，没有竞态，不需要重截）
+                        outcome = ("known_stop", {})
+                        break
+                    outcome = None
             if outcome is None:
                 break
             if attempt == 0:
@@ -667,11 +717,12 @@ class GachaRecordPage(CustomRecognition):
         if outcome is not None:
             reason, detail = outcome
             if reason == "no_advance" and session.stall_retries < max_stall:
-                # 页码不动先别判停：模拟器卡顿、点击延迟/丢失都会这样。
+                # 没翻动先别判停：模拟器卡顿、点击延迟/丢失都会这样。
                 # 路由回「翻页」再点一次 ▶；每次回来都会先重截一帧确认，最多 max_stall 次。
                 session.stall_retries += 1
-                _log(f"GachaRecordPage 页码停在第 {detail.get('page')} 页，"
-                     f"重试翻页（第 {session.stall_retries}/{max_stall} 次）")
+                where = (f"页码停在第 {detail['page']} 页" if detail.get("page") is not None
+                         else "页码没读出来且行内容与上一页相同")
+                _log(f"GachaRecordPage {where}，重试翻页（第 {session.stall_retries}/{max_stall} 次）")
                 return self._route(context, argv, next_fresh,
                                    boxes[0] if boxes else roi, {"reason": reason, **detail})
             session.stall_retries = 0
@@ -689,19 +740,34 @@ class GachaRecordPage(CustomRecognition):
                          "（◀ 在第 1 页不可用，无法用对照点击反证输入通道）")
                 else:
                     # 重试用尽仍不动：末页与"点击失灵"在图像上完全一样（实测 ▶ 像素级一致），
-                    # 点一次 ◀ 反证输入通道——页码变了说明通道没问题，就是列表到底了。
+                    # 点一次 ◀ 反证输入通道——页码变了（页码读不出来时看行内容变没变）
+                    # 说明通道没问题，就是列表到底了。
+                    def read_rows(frame):
+                        row_cells, _ = _ocr_rows(context, frame, roi, min_score, line_tol, badge_x)
+                        return [_row_sig(cells) for cells in row_cells]
+
                     verdict, after = _probe_back(
-                        context, page_roi, min_score, back_point, page_now)
+                        context, page_roi, min_score, back_point, page_now,
+                        rows=keys, read_rows=read_rows)
                     detail["probe"] = verdict
                     detail["probe_page"] = after
                     if verdict == "ok":
                         done_target = next_last
-                        _log(f"GachaRecordPage 判停：点 ◀ 页码回到 {after}，输入通道正常，判定为最后一页")
+                        hint = f"页码回到 {after}" if after is not None else "行内容有变化"
+                        _log(f"GachaRecordPage 判停：点 ◀ 后{hint}，输入通道正常，判定为最后一页")
+                    elif verdict == "stall" and page_now is None and session.pages_seen <= 1:
+                        # 页码读不出来、也一次都没翻动过：◀ 在第 1 页本就不可用，
+                        # 多次点 ▶ 都没变化，与"列表只有一页"一致（同上面那支的判断口径）
+                        detail["probe"] = "single_page"
+                        done_target = next_last
+                        _log("GachaRecordPage 判停：页码读不出来但从未翻动过（多次点 ▶ 无变化），"
+                             "按列表只有一页收尾")
                     elif verdict == "stall":
-                        _log(f"GachaRecordPage ⚠ 判停：点 ◀ 后页码仍是 {after}，"
+                        hint = f"页码仍是 {after}" if after is not None else "行内容没变"
+                        _log(f"GachaRecordPage ⚠ 判停：点 ◀ 后{hint}，"
                              f"翻页与返回键都没响应，疑似输入通道失灵，本次采集可能不完整")
                     else:
-                        _log("GachaRecordPage ⚠ 判停：点 ◀ 后读不到页码（可能已离开记录页），状态不明，请复核")
+                        _log("GachaRecordPage ⚠ 判停：点 ◀ 后读不到页码与行内容（可能已离开记录页），状态不明，请复核")
             _log(f"GachaRecordPage 判停（{reason}），转 {done_target} 导出")
             return self._route(context, argv, done_target,
                                boxes[0] if boxes else roi, {"reason": reason, **detail})
@@ -709,6 +775,7 @@ class GachaRecordPage(CustomRecognition):
         # 本页读完了，页号记入会话供下一页判断翻页是否生效
         session.stall_retries = 0
         total = sum(session.store_counts.values())
+        page_label = f"第 {page_no} 页" if page_no is not None else "本页（页码未读出）"
         if fresh:
             target = session.file_for(session.pool_type)
             with open(target, "a", encoding="utf-8") as f:
@@ -722,9 +789,9 @@ class GachaRecordPage(CustomRecognition):
                          "type": session.pool_type, "cells": list(cells)},
                         ensure_ascii=False,
                     ) + "\n")
-            _log(f"GachaRecordPage 第 {page_no} 页：采到 {len(rows)} 行，新增 {len(fresh)} 条 -> {target.name}，累计 {total} 条")
+            _log(f"GachaRecordPage {page_label}：采到 {len(rows)} 行，新增 {len(fresh)} 条 -> {target.name}，累计 {total} 条")
         else:
-            _log(f"GachaRecordPage 第 {page_no} 页：{len(rows)} 行都已入库，无新增，继续翻页")
+            _log(f"GachaRecordPage {page_label}：{len(rows)} 行都已入库，无新增，继续翻页")
         # 每页读完都翻页继续。override 每轮都显式重置，防止上一页留下的路由残留。
         return self._route(context, argv, next_fresh, boxes[-1],
                            {"page": page_no, "rows": len(rows), "new_rows": len(fresh),

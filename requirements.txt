@@ -2,3 +2,9 @@
 # 版本必须与 MFAAvalonia 实际加载的 MaaFramework 同协议代：runtimes/win-x64/native/MaaFramework.dll
 # 实测 v5.12.3（protocol 7），跨代会让 AgentServer 直接拒连（AGENTS.md §7.3）。
 MaaFw==5.12.3
+# 抽卡记录导出的 xlsx（GachaRecordExport）。纯 Python wheel，四个平台通用。
+# 漏了它不报错、只跳过 xlsx 并打一行日志——v1.5.1 的发布包就是这样，
+# 用户只拿到 md 摘要（issue #36 里那条「缺 openpyxl，跳过 xlsx」）。
+openpyxl==3.1.5
+# numpy 由 MaaFw 带入（页号放大要用）；不要往 agent 里引 cv2 一类重依赖，
+# 发布包不会装，代码只能按"它不在"来写（见 agent/main.py 的 _upscale）。
