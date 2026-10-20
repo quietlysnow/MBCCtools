@@ -10,6 +10,8 @@
 /libs/
 /runtimes/
 /plugins/
+# 部署脚本顺带拷进来的冗余副本，真正的在 libs/MaaAgentBinary/，程序启动时会自行删掉它
+/MaaAgentBinary/
 
 # 本机状态与运行产物
 /appsettings.json
@@ -34,6 +36,8 @@
 /.scratch/
 /.workbuddy/
 /.claude/
+/.zcode/
+/.commandcode/
 /.zcodeignore
 /node_modules/
 __pycache__/
