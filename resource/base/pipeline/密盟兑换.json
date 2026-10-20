@@ -1,0 +1,523 @@
+{
+    "密盟兑换": {
+        "timeout": 5000,
+        "next": [
+            "密盟兑换_确认页面"
+        ],
+        "on_error": [
+            "密盟兑换_结束"
+        ]
+    },
+    "密盟兑换_确认页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "秘盟兑换",
+                    "秘盟兌換"
+                ],
+                "roi": [330,110,630,40]
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_换下一档"
+        ]
+    },
+    "密盟兑换_去初阶": {
+        "enabled": false,
+        "max_hit": 1,
+        "post_wait_freezes": 1000,
+        "focus": {
+            "Node.Action.Succeeded": "切到初阶档"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [432,131,1,1]
+            }
+        },
+        "next": [
+            "密盟兑换_兑换循环"
+        ]
+    },
+    "密盟兑换_去中阶": {
+        "enabled": false,
+        "max_hit": 1,
+        "post_wait_freezes": 1000,
+        "focus": {
+            "Node.Action.Succeeded": "切到中阶档"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [625,131,1,1]
+            }
+        },
+        "next": [
+            "密盟兑换_兑换循环"
+        ]
+    },
+    "密盟兑换_去高阶": {
+        "enabled": false,
+        "max_hit": 1,
+        "post_wait_freezes": 1000,
+        "focus": {
+            "Node.Action.Succeeded": "切到高阶档"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [842,131,1,1]
+            }
+        },
+        "next": [
+            "密盟兑换_兑换循环"
+        ]
+    },
+    "密盟兑换_换下一档": {
+        "next": [
+            "密盟兑换_去初阶",
+            "密盟兑换_初阶右滑",
+            "密盟兑换_去中阶",
+            "密盟兑换_中阶右滑",
+            "密盟兑换_去高阶",
+            "密盟兑换_高阶右滑",
+            "密盟兑换_结束"
+        ]
+    },
+    "密盟兑换_初阶右滑": {
+        "max_hit": 1,
+        "post_wait_freezes": 800,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [1150,560,1,1],
+                "end": [400,560,1,1],
+                "duration": 500
+            }
+        },
+        "next": [
+            "密盟兑换_兑换循环"
+        ]
+    },
+    "密盟兑换_中阶右滑": {
+        "max_hit": 1,
+        "post_wait_freezes": 800,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [1150,560,1,1],
+                "end": [400,560,1,1],
+                "duration": 500
+            }
+        },
+        "next": [
+            "密盟兑换_兑换循环"
+        ]
+    },
+    "密盟兑换_高阶右滑": {
+        "max_hit": 1,
+        "post_wait_freezes": 800,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [1150,560,1,1],
+                "end": [400,560,1,1],
+                "duration": 500
+            }
+        },
+        "next": [
+            "密盟兑换_兑换循环"
+        ]
+    },
+    "密盟兑换_兑换循环": {
+        "timeout": 3000,
+        "next": [
+            "[JumpBack]密盟兑换_获得物资",
+            "密盟兑换_功绩点不足",
+            "[JumpBack]密盟兑换_物资_狂乱精粹",
+            "[JumpBack]密盟兑换_物资_狄斯币",
+            "[JumpBack]密盟兑换_物资_记忆碎片",
+            "[JumpBack]密盟兑换_物资_中阶材料补给箱",
+            "[JumpBack]密盟兑换_物资_高阶材料补给箱",
+            "[JumpBack]密盟兑换_物资_低阶材料补给箱",
+            "[JumpBack]密盟兑换_物资_技能模组Ⅰ",
+            "[JumpBack]密盟兑换_物资_技能模组Ⅱ",
+            "[JumpBack]密盟兑换_物资_技能模组Ⅲ"
+        ],
+        "on_error": [
+            "密盟兑换_换下一档"
+        ]
+    },
+    "密盟兑换_物资_狂乱精粹": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换狂乱精粹"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/狂乱精粹.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_狄斯币": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换狄斯币"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/狄斯币.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_记忆碎片": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换记忆碎片"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/记忆碎片.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_中阶材料补给箱": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换中阶材料补给箱"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/中阶材料补给箱.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_高阶材料补给箱": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换高阶材料补给箱"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/高阶材料补给箱.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_低阶材料补给箱": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换低阶材料补给箱"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/低阶材料补给箱.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_技能模组Ⅰ": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换技能模组Ⅰ"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/技能模组Ⅰ.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_技能模组Ⅱ": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换技能模组Ⅱ"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/技能模组Ⅱ.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_物资_技能模组Ⅲ": {
+        "enabled": false,
+        "max_hit": 6,
+        "timeout": 4000,
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "兑换技能模组Ⅲ"
+        },
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/技能模组Ⅲ.png",
+                "threshold": 0.9,
+                "roi": [425,220,770,395],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_数量拉满"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_数量拉满": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟兑换/数量减号.png",
+                "threshold": 0.9,
+                "roi": [660,455,140,45],
+                "order_by": "Score",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [790,481,1,1],
+                "end": [1010,481,1,1],
+                "duration": 600
+            }
+        },
+        "post_wait_freezes": 300,
+        "focus": {
+            "Node.Action.Succeeded": "数量拉满"
+        },
+        "next": [
+            "密盟兑换_购买"
+        ]
+    },
+    "密盟兑换_购买": {
+        "timeout": 4000,
+        "post_delay": 1200,
+        "focus": {
+            "Node.Action.Succeeded": "确认购买"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [962,564,1,1]
+            }
+        },
+        "next": [
+            "密盟兑换_获得物资"
+        ],
+        "on_error": [
+            "密盟兑换_关闭详情弹窗"
+        ]
+    },
+    "密盟兑换_获得物资": {
+        "post_delay": 800,
+        "focus": {
+            "Node.Action.Succeeded": "关闭获得物资"
+        },
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "获得物资",
+                    "獲得物資"
+                ],
+                "roi": [480,80,320,140]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [640,650,1,1]
+            }
+        }
+    },
+    "密盟兑换_关闭详情弹窗": {
+        "post_delay": 500,
+        "focus": {
+            "Node.Action.Succeeded": "关闭物资详情"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [1220,400,1,1]
+            }
+        }
+    },
+    "密盟兑换_功绩点不足": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "功绩点不足",
+                    "功績點不足"
+                ],
+                "roi": [420,280,440,180]
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_结束"
+        ]
+    },
+    "密盟兑换_结束": {
+        "next": [
+            "主菜单",
+            "[JumpBack]返回按钮",
+            "[JumpBack]关闭界面"
+        ]
+    }
+}

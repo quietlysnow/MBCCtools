@@ -54,6 +54,15 @@
       "doc": "默认捐赠[b]狄斯币[/b]"
     },
     {
+      "name": "秘盟兑换",
+      "entry": "密盟兑换",
+      "option": [
+        "兑换档位",
+        "兑换物资"
+      ],
+      "doc": "先在游戏里打开[b]采购办 → 玩法兑换 → 秘盟兑换[/b]（停在哪个档位都行）再运行\n\n[b]兑换档位[/b]决定换哪几档（默认三档全换），[b]兑换物资[/b]决定换哪些物资，每种按[b]本月限购[/b]一次买满\n\n两处都不勾则不会兑换任何东西"
+    },
+    {
       "name": "好友点数",
       "entry": "友情点"
     },
@@ -595,6 +604,128 @@
         }
       ],
       "description": "- **完整识别**：从第 1 页翻完整份列表，逐行去重、只补没见过的记录；不会漏页，较慢\n- **识别到已知停止**：撞见已入库的记录就停；快，适合刚抽完卡补记录"
+    },
+    "兑换档位": {
+      "type": "checkbox",
+      "default_case": [
+        "初阶",
+        "中阶",
+        "高阶"
+      ],
+      "cases": [
+        {
+          "name": "初阶",
+          "pipeline_override": {
+            "密盟兑换_去初阶": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "中阶",
+          "pipeline_override": {
+            "密盟兑换_去中阶": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "高阶",
+          "pipeline_override": {
+            "密盟兑换_去高阶": {
+              "enabled": true
+            }
+          }
+        }
+      ],
+      "description": "- 勾哪几档就换哪几档，**默认三档全勾**\n- 只勾一档时任务只切到那一档，不会空跑其他档\n- 一个都不勾则任务立刻收尾"
+    },
+    "兑换物资": {
+      "type": "checkbox",
+      "cases": [
+        {
+          "name": "狂乱精粹",
+          "icon": "image/密盟兑换/狂乱精粹.png",
+          "pipeline_override": {
+            "密盟兑换_物资_狂乱精粹": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "狄斯币",
+          "icon": "image/密盟兑换/狄斯币.png",
+          "pipeline_override": {
+            "密盟兑换_物资_狄斯币": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "记忆碎片",
+          "icon": "image/密盟兑换/记忆碎片.png",
+          "pipeline_override": {
+            "密盟兑换_物资_记忆碎片": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "中阶材料补给箱",
+          "icon": "image/密盟兑换/中阶材料补给箱.png",
+          "pipeline_override": {
+            "密盟兑换_物资_中阶材料补给箱": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "高阶材料补给箱",
+          "icon": "image/密盟兑换/高阶材料补给箱.png",
+          "pipeline_override": {
+            "密盟兑换_物资_高阶材料补给箱": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "低阶材料补给箱",
+          "icon": "image/密盟兑换/低阶材料补给箱.png",
+          "pipeline_override": {
+            "密盟兑换_物资_低阶材料补给箱": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "技能模组Ⅰ",
+          "icon": "image/密盟兑换/技能模组Ⅰ.png",
+          "pipeline_override": {
+            "密盟兑换_物资_技能模组Ⅰ": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "技能模组Ⅱ",
+          "icon": "image/密盟兑换/技能模组Ⅱ.png",
+          "pipeline_override": {
+            "密盟兑换_物资_技能模组Ⅱ": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "技能模组Ⅲ",
+          "icon": "image/密盟兑换/技能模组Ⅲ.png",
+          "pipeline_override": {
+            "密盟兑换_物资_技能模组Ⅲ": {
+              "enabled": true
+            }
+          }
+        }
+      ],
+      "description": "- 每种勾选的物资会按该物资的**本月限购**一次买满：打开物资详情 → 购买数量拉到上限 → 购买\n- 不勾选任何物资时任务会立刻收尾（不会误买）\n- 换满配额的物资会显示「已售罄」并沉到列表后方，任务自动收尾\n- 在**兑换档位**勾选的档位里找该物资，某档没有就跳过；同一物资三档限购互相独立，三档都勾就会各换一份\n- 功绩点不够买满时该物资会被跳过，其他物资照常兑换"
     }
   },
   "github": "https://github.com/quietlysnow/MBCCtools"
