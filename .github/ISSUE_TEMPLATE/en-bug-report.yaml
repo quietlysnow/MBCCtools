@@ -43,25 +43,25 @@ body:
     attributes:
       label: Version
       description: >-
-        Please provide the MXX version.
+        Please provide the MBCCtools version (list both the app version and the resource version shown in the UI).
       placeholder: |
-        MXX Version:
+        MBCCtools Version:
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
       label: Log and config files
-      description: >-
-        **After closing MXX, upload the following 3 files:**
-          1. The `maa.log` and `maa.bak.log` log file in the `debug` folder, and indicate the approximate point in time when the problem occurred.
-          2. The `maa_pi_config.json`(MaaPiCli) config file in the `config` folder
+      description: |
+        **After closing MBCCtools, zip and upload both the `logs` and `debug` folders from the installation directory**, and tell us roughly when the problem occurred.
+        They hold the UI logs (`logs/log-*.log`) and the framework log (`debug/maafw.log`); without them the issue is usually impossible to diagnose.
 
-        If you are using MacBook, please click the "File" option in the top-left corner of the screen, then click "Open Log Folder".
-        **Please drag and drop the full file in, not your own cuttings or copies;**
-        **compress it before uploading if too large.**
+        Alternatively, click the "Export Log" button at the top-right of the log panel and drag the exported package in (same content).
+        For connection, startup or account issues, please also attach the config files from the `config` folder.
+
+        **Upload the complete folders (as one archive), not pasted snippets or screenshots; if too large, drop the `.bak` files before compressing.**
       placeholder: |
-        Please confirm that MXX is not running before uploading files.
+        Please close the program before uploading the log folders (log files may be locked while it is running).
     validations:
       required: true
   - type: textarea
@@ -84,9 +84,9 @@ body:
         If related to this issue, please upload them together.
 
         If available, upload screenshots and recordings to help explain your problem,
-        including but not limited to screenshots of MXX software,
-        screenshots of game screens, MXX debug screenshots (`debug/vision` path pictures,
-        after modifying `save_draw` in `config/maa_option.json` to `true`, run MXX again to obtain)
+        including but not limited to screenshots of the MBCCtools UI,
+        screenshots of game screens, MBCCtools debug screenshots (`debug/vision` path pictures,
+        after modifying `save_draw` in `config/maa_option.json` to `true`, run MBCCtools again to obtain)
 
         If the problem is **recognition related**, please help by providing
         the **original image** taken by the emulator's own screenshot tool
