@@ -56,9 +56,6 @@ body:
         **After closing MBCCtools, zip and upload both the `logs` and `debug` folders from the installation directory**, and tell us roughly when the problem occurred.
         They hold the UI logs (`logs/log-*.log`) and the framework log (`debug/maafw.log`); without them the issue is usually impossible to diagnose.
 
-        Alternatively, click the "Export Log" button at the top-right of the log panel and drag the exported package in (same content).
-        For connection, startup or account issues, please also attach the config files from the `config` folder.
-
         **Upload the complete folders (as one archive), not pasted snippets or screenshots; if too large, drop the `.bak` files before compressing.**
       placeholder: |
         Please close the program before uploading the log folders (log files may be locked while it is running).
