@@ -41,7 +41,10 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 30
+        "post_wait_freezes": {
+            "time": 500,
+            "rate_limit": 300
+        }
     },
     "主菜单": {
         "recognition": {
@@ -491,6 +494,10 @@
         },
         "action": {
             "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "rate_limit": 300
         },
         "post_delay": 2500
     },
