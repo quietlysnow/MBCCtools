@@ -23,6 +23,9 @@
 /assets/
 /record/
 /.nicegui/
+# MFAAvalonia 生成的界面布局状态：GUI 首次启动按 TaskQueueView.axaml 的默认栅格重建。
+# 归 MFA 工作区（UI），本仓库不再跟踪
+/resource/mfa_layout.json
 
 # 构建与依赖下载：install.py / CI 的目录布局，本地复现打包时会出现
 /deps/
@@ -30,6 +33,9 @@
 /MFA/
 # agent 的便携解释器只进发布包（打包时生成），不进源码树
 /agent/python/
+
+# 本机离线查阅的 MaaFramework 文档副本，不入库；在线版以 https://maafw.com/docs 为准
+/docs/
 
 # 工具缓存与本地 AI 助手文件
 /.qoder-credits/

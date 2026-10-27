@@ -1,10 +1,10 @@
 # MBCCtools — Agent 规则
 
 本文件是给 AI 编码助手的项目约束。规则来自**当前仓库里实际观察到的写法**，不是 MaaFramework 通用教程。
-协议细节一律以本地文档副本 `docs/zh_cn/` 为准（见文末索引），本文只写「本项目怎么写」。
+协议细节以 [MaaFramework 官网](https://maafw.com/docs) 为准，本地副本 `docs/zh_cn/` 仅供离线查阅（见文末索引），本文只写「本项目怎么写」。
 
 - §1–§11 是常驻开发约定；§12–§14 是具体维护操作与任务说明 —— §12/§13 由触发语唤起（听到就跑），§14 是秘盟兑换任务的现状与约束。
-- 文中带数字的现状统计最后核对于 **2026-10-14**（§3、§4.2、§4.3、§4.6）；漂了就用 §8 的统计脚本重算，别手改。
+- 文中带数字的现状统计最后核对于 **2026-10-24**（§3、§4.2、§4.3、§4.6）；漂了就用 §8 的统计脚本重算，别手改。
 
 ## 1. 参考项目
 
@@ -13,7 +13,7 @@
 
 ## 2. 开发方式：方案二（JSON + 自定义逻辑扩展）
 
-对应 `docs/zh_cn/1.1-快速开始.md` 的**方案二**（官方标注「推荐」）。细则以 `docs/zh_cn/1.3-Custom&Agent.md`、`3.1` §`Custom`、`3.3` §Agent 子进程环境变量为准，本文只写骨架。
+对应 [1.1 快速开始](https://maafw.com/docs/1.1-QuickStarted) 的**方案二**（官方标注「推荐」）。细则以 [1.3 Custom & Agent](https://maafw.com/docs/1.3-Custom&Agent)、[3.1](https://maafw.com/docs/3.1-PipelineProtocol) §`Custom`、[3.3](https://maafw.com/docs/3.3-ProjectInterfaceV2) §Agent 子进程环境变量为准，本文只写骨架。
 
 **分层原则：主流程继续用 Pipeline 维护，只有 Pipeline 表达不了的逻辑才落到自定义代码。**
 
@@ -63,7 +63,7 @@ class MyActImpl:
 AgentServer.start_up(sock_id)
 ```
 
-- 语言可选 Python 或 Node.js（NodeJS 见 `docs/zh_cn/NodeJS/J1.2-自定义识别_操作.md`）。选定后不要两种混用。
+- 语言可选 Python 或 Node.js（NodeJS 见 [J1.2 自定义识别与操作](https://maafw.com/docs/NodeJS/J1.2-Custom%20Recognition%20and%20Action)）。选定后不要两种混用。
 - 完整示例：`MaaPracticeBoilerplate` commit `126a56c`（`1.1` §方案二 末尾链接）。
 - 注意 `MaaAgentBinary/` 目录是 Android 端的**控制**代理（maatouch/minicap/minitouch），跟 Custom 的 AgentServer 无关，别搞混、别往里放代码。
 
@@ -134,7 +134,7 @@ record/                        # 运行时落档（抽卡记录/、活动.json�
 install.py / prepare_agent_runtime.py / requirements.txt   # 打包链路（§2.3、§8）
 resource/
 ├── default_pipeline.json      # ⚠ 见 §7.1
-├── mfa_layout.json            # MFAAvalonia 界面布局，与算法无关
+├── mfa_layout.json            # ⚠ GUI 生成的界面布局，不入库（见 §11.1）
 ├── base/                      # 官服 bundle（主资源包）
 │   ├── image/                 # 模板图片（材料/ 23 张、密盟兑换/ 10 张，另有 头像/、抽卡/）
 │   ├── model/ocr/             # det.onnx / rec.onnx / keys.txt（PP-OCRv5_mobile）
@@ -152,7 +152,7 @@ resource/
 
 ### 4.1 统一使用 Pipeline v2（对象式）
 
-**全仓节点已于 2026-09-19 全部转成 v2 形式**（当时 120 个原 v1 扁平节点被机械转换，逐节点通过「槽位归一化后键值完全相等」校验），此后新增节点一律是 v2。当前规模：三个 bundle 合计 **396 个节点定义**（base 243 / bilibili 35 / global 118）。新节点照 v2 写：
+**全仓节点已于 2026-09-19 全部转成 v2 形式**（当时 120 个原 v1 扁平节点被机械转换，逐节点通过「槽位归一化后键值完全相等」校验），此后新增节点一律是 v2。当前规模：三个 bundle 合计 **401 个节点定义**（base 250 / bilibili 35 / global 116）。新节点照 v2 写：
 
 ```jsonc
 "节点名": {
@@ -169,7 +169,7 @@ resource/
 
 ### 4.2 实际使用的取值集合
 
-- `recognition` 用过：`OCR`(225)、`TemplateMatch`(66)、`DirectHit`(18)、`Custom`(4)；`action` 用过：`Click`(262)、`DoNothing`(48)、`Swipe`(34)、`StartApp`(3)、`Custom`(2)、`ClickKey`(1，`破碎防线_按返回键` 的 `key: 4`)、`StopTask`(1)。括号是 2026-10-14 的全仓节点数。
+- `recognition` 用过：`OCR`(228)、`TemplateMatch`(65)、`DirectHit`(14)、`Custom`(4)；`action` 用过：`Click`(263)、`DoNothing`(49)、`Swipe`(30)、`StartApp`(3)、`Custom`(2)、`ClickKey`(1，`破碎防线_按返回键` 的 `key: 4`)、`StopTask`(1)。括号是 2026-10-24 的全仓节点数。
 - `Custom` 只有 §2.4 里那两个任务在用。方案二（§2）**允许** `recognition: Custom` / `action: Custom`，但必须配套 AgentServer 实现与 `interface.json` 的 `agent` 段，且引入前先与用户对齐理由。
 - 尚未使用：`FeatureMatch`、`ColorMatch`、`LongPress`（这两个早期用过、现已无）、`NeuralNetworkClassify`、`NeuralNetworkDetect`、`And`/`Or`、`Command`、`Shell`、`Scroll`、`InputText`、`MultiSwipe`。需要引入前先与用户确认。
 - 不使用 `model` 字段（OCR 走 `base/model/ocr` 根目录默认模型）。
@@ -177,11 +177,11 @@ resource/
 
 ### 4.3 字段使用约定（附现状统计）
 
-**字段概貌**（全仓 396 个节点，2026-10-14；复核脚本见 §8）：
+**字段概貌**（全仓 401 个节点，2026-10-24；复核脚本见 §8）：
 
-- 节点级常见：`next`(321) `focus`(287) `post_wait_freezes`(176) `timeout`(142) `post_delay`(111) `on_error`(72) `max_hit`(75) `pre_delay`(9)。
-- 参数级：识别参数常用 `expected`(225) `roi`(215) `template`(66)；动作参数里 `target`(114) 最多，其次 `begin`/`end`(34，`Swipe` 专用)、`duration`(18)、`package`(3)。
-- 少数派（照现有例子写，别自己发明组合）：`threshold`(24)、`order_by`/`index`(14)、`enabled`(13：9 处是 §14.2 的物资白名单开关、3 处是档位开关，1 处是公共节点 `任务间隔`)、`repeat`/`repeat_delay`(5)、`rate_limit`(1)。另有 10 处 `timeout` 误写在 `action.param` 里、属废值，见 §7.2。
+- 节点级常见：`next`(325) `focus`(289) `post_wait_freezes`(175) `timeout`(147) `post_delay`(113) `on_error`(82) `max_hit`(68) `pre_delay`(9)。
+- 参数级：识别参数常用 `expected`(228) `roi`(215) `template`(65)；动作参数里 `target`(110) 最多，其次 `begin`/`end`(30，`Swipe` 专用)、`duration`(17)、`package`(3)。
+- 少数派（照现有例子写，别自己发明组合）：`threshold`(24)、`order_by`/`index`(14)、`enabled`(13：9 处是 §14.2 的物资白名单开关、3 处是档位开关，1 处是公共节点 `任务间隔`)、`repeat`/`repeat_delay`(2)、`rate_limit`(1)。另有 10 处 `timeout` 误写在 `action.param` 里、属废值，见 §7.2。
 
 - **`focus` 约定（2026-09-19 批量补齐后）**：凡是**真的执行动作**的节点（`Click`/`Swipe`/`ClickKey`/`StartApp` 等）都带一条进度通知，写在 `action` 成员之后，只用 `Node.Action.Succeeded` 这一个键：
 
@@ -191,12 +191,12 @@ resource/
   }
   ```
 
-  全仓 386 个节点中 **282 个**带 focus（`Node.Action.Succeeded` 257、`Node.Recognition.Succeeded` 23、`Node.Recognition.Starting` 2）。**不加** focus 的两类：① 纯分发节点、只有 `DoNothing`/`StopTask` 的节点（没有动作结果可上报）；② 纯手势与通用 UI 辅助节点（`左滑`/`右滑`/`上滑`/`第一次滑动`/`点击`/`侧边点击`/`返回按钮`/`点击关闭按钮`/`关闭界面` 等），它们在循环里被反复触发、名字又不含业务对象，只会刷日志。
+  全仓 401 个节点中 **289 个**带 focus（`Node.Action.Succeeded` 265、`Node.Recognition.Succeeded` 22、`Node.Recognition.Starting` 2）。**不加** focus 的两类：① 纯分发节点、只有 `DoNothing`/`StopTask` 的节点（没有动作结果可上报）；② 纯手势与通用 UI 辅助节点（`左滑`/`右滑`/`上滑`/`第一次滑动`/`点击`/`侧边点击`/`返回按钮`/`点击关闭按钮`/`关闭界面` 等），它们在循环里被反复触发、名字又不含业务对象，只会刷日志。
 - 文案默认取节点名本身，仅以下几类按规则改写：`X入口` → `进入X`；`X_异常处理` → `处理X异常`；`X_SecondClick` → `X二次点击`；`X_副本N` → 去掉 `_副本N` 后缀；`StartApp` 节点 → `启动游戏`。新增节点时照这套走，别写英文或留空。
 
 - **延迟策略**：优先 `post_wait_freezes`（等画面静止），其次才用 `post_delay`。官方建议"增加中间节点，少用 delay"（`3.1` §等待画面静止）。
 - **`timeout` / `on_error` 归属上一节点**：想控制"等某个节点出现多久"，改它**父节点**的 `timeout`；想超时后兜底，改父节点 `on_error`。这是本项目最常踩的坑，务必参考 `3.1` §属性字段的原文提示。
-- **阈值要压误判就显式写**：全仓 22 处，集中在四类节点 —— 密盟兑换 8 处 `0.9`、破碎防线 8 处 `0.8`、监管 4 处 `0.9`、项目名通用按钮 2 处 `0.85`。`default_pipeline.json` 的默认值当前不生效（§7.1），所以改阈值必须写在节点上，并先按 §14.4 离线复测。
+- **阈值要压误判就显式写**：全仓 24 处，集中在四类节点 —— 密盟兑换 10 处 `0.9`、破碎防线 8 处 `0.8`、监管 4 处 `0.9`、项目名通用按钮 2 处 `0.85`。`default_pipeline.json` 的默认值当前不生效（§7.1），所以改阈值必须写在节点上，并先按 §14.4 离线复测。
 - 每个 task 的入口节点（`interface.json` 里的 `entry`）必须真实存在于合并后的 pipeline 中。MaaFW **按键名查找**，与键序无关；仓库惯例是入口节点写在文件开头、新增节点追加在末尾。
 
 ### 4.4 坐标
@@ -210,14 +210,14 @@ resource/
 ### 4.5 流程控制惯例
 
 - 入口节点常写成只做分发的纯 `next` 节点（`派遣.json:2-11`、`体力.json:2-12`）。
-- **弹窗/异常恢复用 `[JumpBack]`**（三个 bundle 合计 270 处；除它之外没有用别的回跳机制），挂在父节点 `next`/`on_error` 上，处理完自动回到父节点重新识别：`"[JumpBack]关闭界面"`。
+- **弹窗/异常恢复用 `[JumpBack]`**（三个 bundle 合计 270 处；除它之外没有用别的回跳机制），挂在父节点 `next` 上，处理完自动回到父节点重新识别：`"[JumpBack]关闭界面"`。**不要把它写进 `on_error`** —— `3.1` §节点属性明确「错误处理路径不执行回跳」，写了也只当普通节点执行（`破碎防线` 原先两处已按此清理）。
 - `next` 数组**顺序即优先级**：命中第一个就中断后续。把专有的、易误判的分支放前面，兜底分支放最后。
 - 流程终止条件只有三种（`3.1` §终止条件）：`next` 为空、`next` 未命中且超时、外部 `StopTask`。所以链尾必须以 `DoNothing` 或明确终点收尾，否则会靠超时结束。
 
 ### 4.6 图片引用
 
 - **`template` 相对 `image/` 根目录解析**，可写裸文件名，也可写带子目录的相对路径（如 `"密盟兑换/数量减号.png"`），还可整目录（递归加载其中所有图片）。
-- 本项目现状（2026-10-14）：66 处 `template` 引用、37 张唯一图，两种写法并存 —— 裸文件名 56 处，带子目录 10 处（都在 `密盟兑换/`）。`resource/base/image/材料/` 下 23 张图仍然**只被 `interface.json` 的 `icon` 使用**，pipeline 未引用；要引用就写 `材料/xxx.png` —— 带子目录的相对路径是协议支持的写法，M9A 里 `Psychube/xxx.png` 就是这么写的（只借它的写法，图片素材不通用）。
+- 本项目现状（2026-10-24）：65 处 `template` 引用、37 张唯一图，两种写法并存 —— 裸文件名 55 处，带子目录 10 处（都在 `密盟兑换/`）。`resource/base/image/材料/` 下 23 张图仍然**只被 `interface.json` 的 `icon` 使用**，pipeline 未引用；要引用就写 `材料/xxx.png` —— 带子目录的相对路径是协议支持的写法，M9A 里 `Psychube/xxx.png` 就是这么写的（只借它的写法，图片素材不通用）。
 - 图片必须是**无损原图缩放到 720p 后裁剪**（`1.1` §图像素材）。用 VSCode maa-support / MFA 工具箱 / ImageCropper 截取，不要手工缩放压缩过的截图。
 
 ### 4.7 命名与风格
@@ -334,21 +334,21 @@ MFAAvalonia 是 .NET 程序，按原生依赖解析规则加载的是 **`runtime
 
 推荐工具（写进你的判断依据，不强制）：VSCode 插件 `nekosu.maa-support`（跳转/引用/按 MaaPiCli 运行/截图裁剪）；JSON Schema：根目录 `interface.schema.json`，pipeline 用上游的 `tools/pipeline.schema.json`（本地解包在 `.scratch/maafw5123/tools/`，可重下）。
 
-## 9. 本地文档索引 `docs/zh_cn/`
+## 9. MaaFramework 官方文档
 
-上游 `MaaXYZ/MaaFramework` `main` 分支副本，同步于 commit `b849283`（2026-09-17），详见 `docs/README.md`。与运行时有差异时，**以实际生效的框架版本为准**（MFA 加载 `runtimes/win-x64/native/` 那份，实测 v5.12.3，见 §7.3），字段引入版本查 `3.1` §版本变更表。
+协议细节以 [MaaFW 官网](https://maafw.com/docs) 为准。仓库不再跟踪本地文档副本（`docs/` 已进 `.gitignore`，仅本机离线查阅）；需要对照时直接查官网，字段引入版本看 3.1 的「版本变更」表。与运行时有差异时，**以实际生效的框架版本为准**（MFA 加载 `runtimes/win-x64/native/` 那份，实测 v5.12.3，见 §7.3）。
 
 | 场景 | 查哪份 |
 | ---- | ---- |
-| 任何 pipeline 字段、算法、动作、`next` 语义、节点属性、默认属性 | `docs/zh_cn/3.1-任务流水线协议.md` |
-| `interface.json` / option / 资源覆盖 / 通知 | `docs/zh_cn/3.3-ProjectInterfaceV2协议.md`（`3.2` 是废弃的 v1） |
-| 目录结构、图片规格、OCR 模型、调试与打包 | `docs/zh_cn/1.1-快速开始.md` |
-| 术语 | `docs/zh_cn/1.2-术语解释.md` |
-| Adb 截图/输入方式（本项目控制器） | `docs/zh_cn/2.4-控制方式说明.md` |
-| 回调消息类型（`focus` 相关） | `docs/zh_cn/2.3-回调协议.md` |
-| 提 issue / 日志要求 | `docs/zh_cn/5.1-问题反馈.md` |
-| 自定义识别/动作、AgentServer 与 AgentClient 怎么搭（方案二，§2） | `docs/zh_cn/1.3-Custom&Agent.md` |
-| 用 Node.js 写 Custom（若选 Node 而非 Python） | `docs/zh_cn/NodeJS/J1.1~J1.3` |
+| 任何 pipeline 字段、算法、动作、`next` 语义、节点属性、默认属性 | [3.1 任务流水线协议](https://maafw.com/docs/3.1-PipelineProtocol) |
+| `interface.json` / option / 资源覆盖 / 通知 | [3.3 ProjectInterfaceV2](https://maafw.com/docs/3.3-ProjectInterfaceV2)（`3.2` 是废弃的 v1） |
+| 目录结构、图片规格、OCR 模型、调试与打包 | [1.1 快速开始](https://maafw.com/docs/1.1-QuickStarted) |
+| 术语 | [1.2 术语解释](https://maafw.com/docs/1.2-ExplanationOfTerms) |
+| Adb 截图/输入方式（本项目控制器） | [2.4 控制方式说明](https://maafw.com/docs/2.4-ControlMethods) |
+| 回调消息类型（`focus` 相关） | [2.3 回调协议](https://maafw.com/docs/2.3-CallbackProtocol) |
+| 提 issue / 日志要求 | [5.1 问题反馈](https://maafw.com/docs/5.1-Troubleshooting) |
+| 自定义识别/动作、AgentServer 与 AgentClient 怎么搭（方案二，§2） | [1.3 Custom & Agent](https://maafw.com/docs/1.3-Custom&Agent) |
+| 用 Node.js 写 Custom（若选 Node 而非 Python） | [NodeJS J1.1~J1.3](https://maafw.com/docs/NodeJS/J1.1-QuickStarted) |
 | C++/Win32 集成接口、构建 MaaFW 本体、自定义控制单元 | 本项目用不到，勿据此改代码 |
 
 ## 10. 通用行为约束
@@ -361,19 +361,27 @@ MFAAvalonia 是 .NET 程序，按原生依赖解析规则加载的是 **`runtime
 
 ## 11. 与 MFAAvalonia 工作区的分工
 
-**界面相关改动不在本仓库做**，去 `G:/MFAAvalonia工作区`（MFAAvalonia 的定制 fork，README 里列了它自建的页面）。
+**界面相关改动不在本仓库做**，去 `G:/MFAAvalonia工作区`（MFAAvalonia 的定制 fork，README 里列了它自建的页面）。**逐项归属表见本机 `docs/项目内容分类.md`**（未随仓库发布；2026-10-22 全量核对，新增文件前先对照它的 §7）。
 
 | 要做的事 | 放哪 |
 | --- | --- |
 | pipeline 节点、Custom 识别/动作、模板图、OCR 模型、`default_pipeline.json` | 本仓库 |
-| `interface.json`（任务/选项/文案）、`resource/Announcement/*.md` | 本仓库 |
+| `interface.json`（任务/选项/文案）、`resource/Announcement/*.md`、`resource/Release.md`、`resource/Changelog.md` | 本仓库 |
 | `agent/` 里的自定义逻辑、联网采集与落档到 `record/` | 本仓库 |
 | 新增/修改界面页面、侧栏项、样式、通知呈现 | **MFAAvalonia 工作区** |
+| 界面布局状态（`resource/mfa_layout.json`） | **MFA 工作区生成**，本仓库不跟踪（见 §11.1） |
 
 - MFAAvalonia 没有"资源侧声明自定义页面"的机制，界面只能写在 fork 里；反过来，游戏画面识别与联网抓取也不该塞进 fork —— 分层见 §2。
 - 两边靠**文件契约**连接：本仓库往 `record/` 写（`抽卡记录/*.jsonl`、`抽卡记录.xlsx`、`抽卡记录.md`、`活动.json`；`record/` 不入库），fork 的页面只读文件、不联网。这样抓取/解析规则变了只需更新本仓库，用户不用重下 GUI。
 - 想"不动 GUI 就发布内容"时用 `resource/Announcement/*.md`：MFAAvalonia 原生展示公告。
 - fork 侧的约定（页面注册点、构建部署、截图核对）见 `G:/MFAAvalonia工作区/AGENTS.md`。
+
+### 11.1 边界细则（2026-10-22 审计）
+
+- **本仓库没有任何界面源码**（`git ls-files | grep -Ei '\.(cs|axaml|xaml)$'` 为空）。新增界面不要去本仓库建工程。
+- **界面内容 ≠ 界面代码**：公告、更新日志、`interface.json` 的选项图标、`resource/base/image/头像/` 都是 fork 运行时按相对路径读的**资源包内容**，留在本仓库。搬到 fork 会迫使每次内容更新都重发 GUI，与上面那条设计相反。
+- **`mfa_layout.json` 是 GUI 生成的布局状态**，已取消 git 跟踪并加入 `.gitignore`。GUI 首次启动会按 fork 的 `TaskQueueView.axaml` 默认栅格重建；唯一真源在 fork，不要在本仓库或 fork 里再放一份 JSON 默认值。
+- **根目录的 `MFAAvalonia.exe`/`libs/`/`runtimes/`/`config/` 等是部署副本与运行状态**：MFA 的 `DataRoot` 就是 exe 目录，`interface.json`、`resource/`、`record/` 都相对它解析，所以物理上必须在这，但永不入库、也不要当"UI 文件"清理掉。
 
 ## 12. 维护操作：拉取禁闭者头像
 
@@ -515,14 +523,17 @@ python tools/build-icon.py --check 输出.ico        # 只校验，不写入
 
 ## 14. 秘盟兑换任务（`密盟兑换.json`）
 
-**入口**：`interface.json` 的 task「秘盟兑换」→ 节点 `密盟兑换`。任务**不做导航**，要求用户先手动打开「采购办 → 玩法兑换 → 秘盟兑换」（停在哪个档位都行，同「抽卡记录」的套路）。白名单由 option `兑换物资`（`type: "checkbox"`）勾选，**初阶/中阶/高阶三档会自动依次走一遍**。
+**入口**：`interface.json` 的 task「秘盟兑换」→ 节点 `密盟兑换`。任务**会自己导航**（2026-10-22 加）：从主菜单 OCR「采购办」进去，再按采购办左侧栏的文字点「玩法兑换」→「秘盟兑换」；**已经停在兑换页**（停在哪个档位都行）时直接跳过导航开跑。白名单由 option `兑换物资`（`type: "checkbox"`）勾选，**初阶/中阶/高阶三档会自动依次走一遍**。
 
-### 14.1 交互闭环（2026-10-11 首验；2026-10-14 补三档与横滑翻屏）
+### 14.1 交互闭环（2026-10-11 首验；2026-10-14 补三档与横滑翻屏；2026-10-22 补入口导航）
 
 点卡片**不会直接买**，会开详情弹窗，所以每种物资的流程是：
 
 ```
-密盟兑换_确认页面  OCR「秘盟兑换」确认停在兑换页（不在就收尾，不会乱点）
+密盟兑换_采购办入口  主菜单上 OCR「采购办」→ 点进去（已经在采购办则跳过）
+密盟兑换_玩法兑换入口  采购办侧栏 OCR「玩法兑换」→ 展开该分组的子条目
+密盟兑换_秘盟兑换入口  侧栏 OCR「秘盟兑换」→ 进兑换页
+密盟兑换_确认页面  OCR「秘盟兑换」确认停在兑换页（已在兑换页就直接从这里开始，不再点导航）
 密盟兑换_换下一档  按顺序挑下一步：去初阶 → 初阶右滑 → 去中阶 → 中阶右滑 → 去高阶 → 高阶右滑 → 结束
 密盟兑换_去初阶/去中阶/去高阶  点档位页签；每档只能进一次（max_hit: 1 当状态机）
 密盟兑换_初阶右滑/中阶右滑/高阶右滑  每档横滑一屏，看列表后半段；也是每档一次
@@ -533,6 +544,7 @@ python tools/build-icon.py --check 输出.ico        # 只校验，不写入
 密盟兑换_获得物资 OCR「获得物资」→ 点掉遮罩（链尾，JumpBack 负责回循环）
 ```
 
+- **入口导航全走侧栏 OCR**（2026-10-22 加，**未实机回归**）：`密盟兑换.next` 按 `确认页面 → 采购办入口 → 秘盟兑换入口 → 玩法兑换入口` 的顺序试，已经在兑换页就命中第一个、直接开跑；三个入口节点都只点 OCR 命中的文字框（`采购办` 用主菜单那块 ROI，两个侧栏条目共用一个左侧栏 ROI），不写死坐标，原因见 §14.5。`秘盟兑换入口` 排在 `玩法兑换入口` 前面：命中就直接进兑换页，免得对已经展开的分组再点一次。导航链走不通时由 `密盟兑换_结束` 收尾（回主菜单，不会乱点）。
 - **切档/翻屏用 `max_hit: 1` 当状态机**：`密盟兑换_换下一档.next` 是一张有序清单（去初阶 → 初阶右滑 → … → 结束），节点被用掉一次后自动被跳过，所以顺序天然成立。改档位数、档位顺序、每档要滑几屏，都只改这一条 next 与相应节点。
 - **列表是横向可滚动的**（2026-10-14 纠正：早先"列表不滚动"的结论是拿**纵向**滑动测的，测错了）。一屏放 3 列 6 格，物资多于一屏就得横滑；**切档位会把该档的滚动位置重置回最左**（实测），所以每档"起始一屏 + 右滑一屏"两屏就能覆盖该档全部物资（最长的高阶 9 件正好两屏）。滑完不要当它回到原位——所以每档只有一个右滑节点。
 - **切档/翻屏后都要等画面静止**（`post_wait_freezes: 1000` / `800`），否则会拿旧画面去点新画面上的卡。
@@ -573,5 +585,5 @@ tasker.post_recognition("TemplateMatch", JTemplateMatch(template=[...], threshol
 ### 14.5 未验证 / 待办
 
 - `密盟兑换_功绩点不足`（OCR「功绩点不足」）**从未在实机见过**：功绩点够不够买满时游戏到底弹不弹框、弹在哪都未知。该节点目前只做 DoNothing 后收尾，属防御性占位。
-- **没做导航**：进入兑换页仍是手动（**三档切换已自动**）。补导航时注意（2026-10-11 实测）：**采购办左侧栏可滚动、滚动位置不固定**，同一个 y 不同时刻指向不同条目（`(137,498)` 一会儿是「秘盟兑换」、滚一下就变成「兑换中心」），所以切子页必须 OCR 侧栏文字再点，不能写死坐标。路径：主菜单 → 采购办 `(1037,588)` → 侧栏「玩法兑换」→ 其子栏「秘盟兑换」→ 档位页签（这一排不随侧栏滚：y≈131，初阶 x≈432 / 中阶 x≈625 / 高阶 x≈842，任务已在用）。另注意「兑换中心」是另一个商店（追踪认证，卖狂乱精粹×6000 等、另一种货币），别和秘盟兑换搞混。
-- 国际服：弹窗判据走模板所以不受语言影响，但「获得物资」「功绩点不足」两个 OCR 是中文；国际服要另建 `resource/global/pipeline/密盟兑换.json` overlay 补本地化文案。
+- **入口导航已加，但只在离线截图上看过真 OCR，没有实机回归**（2026-10-22）。约束照旧（2026-10-11 实测）：**采购办左侧栏可滚动、滚动位置不固定**，同一个 y 不同时刻指向不同条目（`(137,498)` 一会儿是「秘盟兑换」、滚一下就变成「兑换中心」），所以**只能 OCR 侧栏文字再点，不能写死坐标**。路径：主菜单 → 采购办 `(1037,588)` → 侧栏「玩法兑换」→ 其子栏「秘盟兑换」→ 档位页签（这一排不随侧栏滚：y≈131，初阶 x≈432 / 中阶 x≈625 / 高阶 x≈842，任务已在用）。两个侧栏节点共用 ROI `[30,100,230,610]`：观察到的位置（初始态「玩法兑换」y≈690、展开后 y≈155~360、「秘盟兑换」y≈462 或 y≈670）都在里面，但**没做侧栏翻页兜底** —— 万一哪次滚动位置把目标挤出这个 ROI，任务会走 `密盟兑换_结束` 而不是继续找。另一个坑：真 OCR 会在「兑/兌」「换/換」之间跳（同一帧里的条目可能读成 `玩法兑换` / `玩法兌換` / `玩法兑換`），所以两个侧栏节点的 `expected` 各列了 4 种组合（真实截图实测），**别精简成 2 种**。另注意「兑换中心」是另一个商店（追踪认证，卖狂乱精粹×6000 等、另一种货币），别和秘盟兑换搞混。离线复核用 `.scratch/nav_probe.py`（拿真实截图跑真 OCR，看侧栏那条 ROI 里到底读出什么字）与 `.scratch/nav_e2e.py`（四张截图当假游戏、按点击位置切帧，整条入口链在真框架里跑一遍）—— 两个都是 gitignored 的临时脚本。
+- 国际服：弹窗判据走模板所以不受语言影响，`获得物资`/`功绩点不足` 两个 OCR 在 base 里已带繁体（`獲得物資`/`功績點不足`）；`resource/global/pipeline/密盟兑换.json` overlay **已建**，目前只覆盖 `密盟兑换_采购办入口`（补 `採購辦`/`採購部`），侧栏两个条目 base 里已含 `兌/換` 写法。**这个 overlay 是照 `global/采购办.json` 的写法推出来的，没在繁体客户端上实测过。**

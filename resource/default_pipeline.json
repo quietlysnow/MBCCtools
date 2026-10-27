@@ -4,7 +4,7 @@
     // 2. 优先级：节点显式配置 > default_pipeline.json > 内置默认值
     // 3. 多个 Bundle 加载时，已加载的节点不受后续 Bundle 的默认配置影响
     // 4. 建议为常用算法/动作配置合理的默认值，减少重复配置
-    // 文档： https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md#%E9%BB%98%E8%AE%A4%E5%B1%9E%E6%80%A7
+    // 文档： https://maafw.com/docs/3.1-PipelineProtocol
     // ====================
     // 所有节点的通用默认配置
     "Default": {

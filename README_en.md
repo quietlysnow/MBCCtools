@@ -47,33 +47,6 @@ Download: <https://github.com/quietlysnow/MBCCtools/releases>
   - 1280×720 (240 DPI): Natively supported by MAA, best compatibility.
   - If encountering issues, try switching to 720p resolution.
 
-## 🔧 Build Instructions
-
-> ⚠️ This section is only relevant if you need to develop this project. Regular users should directly [download the release version](https://github.com/quietlysnow/MBCCtools/releases).
-
-0. Clone this project and its submodules completely.
-
-    ```bash
-    git clone --recursive https://github.com/quietlysnow/MBCCtools.git
-    ```
-
-1. Download the MaaFramework [Release package](https://github.com/MaaXYZ/MaaFramework/releases) and extract it into the `deps` folder.
-2. Run the install script.
-
-    ```python
-    python ./install.py
-    ```
-
-The generated binaries and related resource files are in the `install` directory.
-
-## Development
-
-- [MaaFW Development Approach](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF)
-  MBCCtools currently uses the first method described (Pure Pipeline low-code).
-- [Pipeline Protocol](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
-
-Please visit the [MaaFramework](https://github.com/MaaXYZ/MaaFramework) main repository for more documentation.
-
 ## 🙏 Acknowledgments
 
 This project is powered by **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)**!

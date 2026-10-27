@@ -49,32 +49,34 @@
   - 1280×720 (240DPI)：MAA 原生支持，兼容性最佳
   - 如遇问题可尝试切换至 720p 分辨率
 
-## 🔧 编译说明
+## 🔧 开发说明
 
 > ⚠️ 仅当需要开发本项目时才需要关注此部分，普通用户请直接[下载发布版](https://github.com/quietlysnow/MBCCtools/releases) 
 
-0. 完整克隆本项目及子项目
+本地开发**不需要 `deps`，也不需要运行 `install.py`**：
+
+0. 克隆本仓库（已无子模块，`--recursive` 可省略）
 
     ```bash
-    git clone --recursive https://github.com/quietlysnow/MBCCtools.git
+    git clone https://github.com/quietlysnow/MBCCtools.git
     ```
 
-1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中
-2. 安装
+1. 准备 GUI：下载最新发布包解压到任意目录（或使用现成的部署目录），把仓库的 `resource/` 同步进去；`interface.json` 用发布包自带的（如果改了任务/选项，需要换成仓库那份，见贡献指南）。
+2. 用 VSCode、任意 IDE 或 [MaaPipelineEditor](https://github.com/kqcoxn/MaaPipelineEditor) 编辑 `resource/*/pipeline/*.json`；Custom 识别/动作写在 `agent/`。
+3. 重启 GUI 后重跑任务。
 
-    ```python
-    python ./install.py
-    ```
+完整步骤、节点写法约定与提交前自检见 [贡献指南](CONTRIBUTING.md)。
 
-生成的二进制及相关资源文件在 `install` 目录下
+> `deps` 只在**本地复现发布包**时才需要（把 MaaFramework Release 解压到 `deps/` 再运行 `install.py`）；这一步平时由 CI 完成，开发阶段不用管，细节见贡献指南。
 
 ## 开发相关
 
-- [MaaFW 开发思路](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF)  
+- [贡献指南](CONTRIBUTING.md)：环境准备、pipeline 写法约定、提交前自检与 PR 流程
+- [MaaFW 开发思路](https://maafw.com/docs/1.1-QuickStarted)  
   MBCCtools 目前使用其中第二种方式
-- [Pipeline 流水线协议](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
+- [Pipeline 流水线协议](https://maafw.com/docs/3.1-PipelineProtocol)
 
-更多文档请前往 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 主仓库查看
+更多文档请前往 [MaaFramework 官网](https://maafw.com/docs) 查看
 
 ## 🙏 致谢
 

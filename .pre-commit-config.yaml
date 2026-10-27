@@ -19,7 +19,7 @@ repos:
     rev: v0.13.0
     hooks:
       - id: markdownlint-cli2
-        files: ^docs/.*|^README\.md$
+        files: ^README\.md$
         types:
           - markdown
-        args: ["--fix", "--config", "docs/.markdownlint.yaml", "#**/node_modules"]
+        args: ["--fix", "--config", ".markdownlint.yaml", "#**/node_modules"]
