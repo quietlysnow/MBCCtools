@@ -39,7 +39,7 @@
         },
         "post_delay": 2500,
         "post_wait_freezes": 800,
-        "max_hit": 1,
+        "max_hit": 2,
         "timeout": 8000,
         "next": [
             "内海_找破碎防线",
@@ -71,7 +71,7 @@
         },
         "post_delay": 3000,
         "post_wait_freezes": 500,
-        "max_hit": 1,
+        "max_hit": 2,
         "timeout": 6000,
         "next": [
             "内海_找破碎防线",
@@ -103,7 +103,7 @@
         },
         "post_delay": 2000,
         "post_wait_freezes": 500,
-        "max_hit": 1,
+        "max_hit": 2,
         "timeout": 6000,
         "next": [
             "内海_找破碎防线",
@@ -169,14 +169,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    380,
+                    350,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        860,
+                        1100,
                         430
                     ]
                 ],
@@ -186,7 +186,7 @@
         "focus": {
             "Node.Action.Succeeded": "内海地图：先复位到最左端"
         },
-        "repeat": 4,
+        "repeat": 3,
         "repeat_delay": 300,
         "post_wait_freezes": 800,
         "max_hit": 1,
@@ -194,6 +194,9 @@
         "next": [
             "破碎防线入口",
             "破碎防线_向右拖1"
+        ],
+        "on_error": [
+            "主菜单"
         ]
     },
     "破碎防线入口": {
@@ -227,13 +230,14 @@
             "Node.Action.Succeeded": "点击内海地图上的破碎防线"
         },
         "post_wait_freezes": 1000,
-        "max_hit": 1,
-        "timeout": 4000,
+        "max_hit": 2,
+        "timeout": 6000,
         "next": [
-            "暗域主界面已就绪"
+            "暗域主界面已就绪",
+            "破碎防线入口_重试"
         ],
         "on_error": [
-            "[JumpBack]主菜单"
+            "主菜单"
         ]
     },
     "暗域主界面已就绪": {
@@ -262,11 +266,11 @@
         "timeout": 8000,
         "rate_limit": 1000,
         "next": [
-            "破碎防线_判断周一",
-            "破碎防线_非周一退出"
+            "破碎防线_判断非周一",
+            "点击暗域左下角奖励"
         ]
     },
-    "破碎防线_判断周一": {
+    "破碎防线_判断非周一": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -277,32 +281,7 @@
                     50
                 ],
                 "expected": [
-                    "[67]天",
-                    "[67]\\s*[dD]"
-                ]
-            }
-        },
-        "action": {
-            "type": "DoNothing"
-        },
-        "focus": {
-            "Node.Recognition.Succeeded": "本周刚重置（周一），开始领取破碎防线奖励"
-        },
-        "max_hit": 1,
-        "timeout": 5000,
-        "next": [
-            "点击暗域左下角奖励"
-        ]
-    },
-    "破碎防线_非周一退出": {
-        "recognition": {
-            "type": "DirectHit",
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    1280,
-                    720
+                    "[1-5]\\s*天|[1-5]\\s*[dD]"
                 ]
             }
         },
@@ -313,9 +292,16 @@
             "Node.Recognition.Succeeded": "本周不是周一（奖励已领过），跳过破碎防线"
         },
         "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "破碎防线_非周一退出"
+        ]
+    },
+    "破碎防线_非周一退出": {
         "next": [
             "主菜单"
-        ]
+        ],
+        "timeout": 6000
     },
     "点击暗域左下角奖励": {
         "recognition": {
@@ -350,7 +336,7 @@
             "破碎防线_奖励预览已打开"
         ],
         "on_error": [
-            "[JumpBack]主菜单"
+            "主菜单"
         ]
     },
     "破碎防线_奖励预览已打开": {
@@ -415,7 +401,7 @@
         },
         "post_delay": 1200,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 5000,
         "next": [
             "一键领取暗域本期奖励"
         ],
@@ -455,7 +441,7 @@
         },
         "post_wait_freezes": 2000,
         "max_hit": 1,
-        "timeout": 3000,
+        "timeout": 6000,
         "next": [
             "破碎防线_关闭获得物资1"
         ],
@@ -489,9 +475,12 @@
         },
         "post_wait_freezes": 800,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 6000,
         "next": [
             "点击暗域关卡奖励"
+        ],
+        "on_error": [
+            "破碎防线_无获得物资1"
         ]
     },
     "点击暗域关卡奖励": {
@@ -526,7 +515,7 @@
         },
         "post_delay": 1200,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 5000,
         "next": [
             "破碎防线_点击第一个关卡奖励"
         ],
@@ -602,7 +591,7 @@
         },
         "post_wait_freezes": 2000,
         "max_hit": 1,
-        "timeout": 3000,
+        "timeout": 6000,
         "next": [
             "破碎防线_关闭获得物资2"
         ],
@@ -636,9 +625,12 @@
         },
         "post_wait_freezes": 800,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 6000,
         "next": [
             "破碎防线_点击第二个关卡奖励"
+        ],
+        "on_error": [
+            "破碎防线_无获得物资2"
         ]
     },
     "破碎防线_点击第二个关卡奖励": {
@@ -709,7 +701,7 @@
         },
         "post_wait_freezes": 2000,
         "max_hit": 1,
-        "timeout": 3000,
+        "timeout": 6000,
         "next": [
             "破碎防线_关闭获得物资3"
         ],
@@ -743,9 +735,12 @@
         },
         "post_wait_freezes": 800,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 6000,
         "next": [
             "破碎防线_点击第三个关卡奖励"
+        ],
+        "on_error": [
+            "破碎防线_无获得物资3"
         ]
     },
     "破碎防线_点击第三个关卡奖励": {
@@ -816,7 +811,7 @@
         },
         "post_wait_freezes": 2000,
         "max_hit": 1,
-        "timeout": 3000,
+        "timeout": 6000,
         "next": [
             "破碎防线_关闭获得物资4"
         ],
@@ -850,9 +845,12 @@
         },
         "post_wait_freezes": 800,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 6000,
         "next": [
             "破碎防线_关闭奖励预览"
+        ],
+        "on_error": [
+            "破碎防线_无获得物资4"
         ]
     },
     "破碎防线_关闭奖励预览": {
@@ -889,15 +887,13 @@
         },
         "post_delay": 1500,
         "max_hit": 1,
-        "timeout": 4000,
+        "timeout": 5000,
         "next": [
-            "破碎防线_确认已关闭"
-        ],
-        "on_error": [
+            "破碎防线_预览未关闭",
             "主菜单"
         ]
     },
-    "破碎防线_确认已关闭": {
+    "破碎防线_预览未关闭": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -947,125 +943,6 @@
             "主菜单"
         ]
     },
-    "第一个boss奖励": {
-        "recognition": {
-            "type": "DirectHit",
-            "param": {
-                "roi": [
-                    208,
-                    385,
-                    179,
-                    48
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    253,
-                    402,
-                    18,
-                    16
-                ]
-            }
-        },
-        "max_hit": 1,
-        "timeout": 5000,
-        "next": [
-            "一键领取暗域关卡奖励"
-        ]
-    },
-    "第二个boss奖励": {
-        "recognition": {
-            "type": "DirectHit",
-            "param": {
-                "roi": [
-                    206,
-                    448,
-                    179,
-                    48
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    249,
-                    463,
-                    19,
-                    18
-                ]
-            }
-        },
-        "max_hit": 1,
-        "timeout": 5000,
-        "next": [
-            "一键领取暗域关卡奖励"
-        ]
-    },
-    "第三个boss奖励": {
-        "recognition": {
-            "type": "DirectHit",
-            "param": {
-                "roi": [
-                    204,
-                    515,
-                    179,
-                    48
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    249,
-                    528,
-                    19,
-                    14
-                ]
-            }
-        },
-        "max_hit": 1,
-        "timeout": 5000,
-        "next": [
-            "一键领取暗域关卡奖励"
-        ]
-    },
-    "一键领取暗域关卡奖励": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    891,
-                    611,
-                    206,
-                    76
-                ],
-                "template": [
-                    "一键领取.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    963,
-                    639,
-                    60,
-                    24
-                ]
-            }
-        },
-        "post_wait_freezes": 5000,
-        "timeout": 3000,
-        "next": [
-            "关闭界面"
-        ]
-    },
     "破碎防线_向右拖1": {
         "recognition": {
             "type": "OCR",
@@ -1090,14 +967,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    1020,
+                    1050,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        540,
+                        350,
                         430
                     ]
                 ],
@@ -1112,7 +989,8 @@
         "timeout": 5000,
         "next": [
             "破碎防线入口",
-            "破碎防线_向右拖2"
+            "破碎防线_向右拖2",
+            "主菜单"
         ]
     },
     "破碎防线_向右拖2": {
@@ -1139,14 +1017,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    1020,
+                    1050,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        540,
+                        350,
                         430
                     ]
                 ],
@@ -1161,7 +1039,8 @@
         "timeout": 5000,
         "next": [
             "破碎防线入口",
-            "破碎防线_向右拖3"
+            "破碎防线_向右拖3",
+            "主菜单"
         ]
     },
     "破碎防线_向右拖3": {
@@ -1188,14 +1067,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    1020,
+                    1050,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        540,
+                        350,
                         430
                     ]
                 ],
@@ -1210,7 +1089,8 @@
         "timeout": 5000,
         "next": [
             "破碎防线入口",
-            "破碎防线_向右拖4"
+            "破碎防线_向右拖4",
+            "主菜单"
         ]
     },
     "破碎防线_向右拖4": {
@@ -1237,14 +1117,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    1020,
+                    1050,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        540,
+                        350,
                         430
                     ]
                 ],
@@ -1259,7 +1139,8 @@
         "timeout": 5000,
         "next": [
             "破碎防线入口",
-            "破碎防线_向右拖5"
+            "破碎防线_向右拖5",
+            "主菜单"
         ]
     },
     "破碎防线_向右拖5": {
@@ -1286,14 +1167,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    1020,
+                    1050,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        540,
+                        350,
                         430
                     ]
                 ],
@@ -1308,7 +1189,8 @@
         "timeout": 5000,
         "next": [
             "破碎防线入口",
-            "破碎防线_向右拖6"
+            "破碎防线_向右拖6",
+            "主菜单"
         ]
     },
     "破碎防线_向右拖6": {
@@ -1335,14 +1217,14 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    1020,
+                    1050,
                     430,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        540,
+                        350,
                         430
                     ]
                 ],
@@ -1357,105 +1239,83 @@
         "timeout": 5000,
         "next": [
             "破碎防线入口",
-            "破碎防线_向右拖7"
-        ]
-    },
-    "破碎防线_向右拖7": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "极限挑战",
-                    "極限挑戰",
-                    "数据间隙",
-                    "數據間隙",
-                    "破碎防线",
-                    "破碎防線",
-                    "无尽梦魇",
-                    "無盡夢魘",
-                    "潮间勘探",
-                    "潮間勘探",
-                    "浊暗之阱",
-                    "濁暗之阱"
-                ]
-            }
-        },
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1020,
-                    430,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        540,
-                        430
-                    ]
-                ],
-                "duration": 800
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：向右移动第 7 次"
-        },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
-        "next": [
-            "破碎防线入口",
-            "破碎防线_向右拖8"
-        ]
-    },
-    "破碎防线_向右拖8": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "极限挑战",
-                    "極限挑戰",
-                    "数据间隙",
-                    "數據間隙",
-                    "破碎防线",
-                    "破碎防線",
-                    "无尽梦魇",
-                    "無盡夢魘",
-                    "潮间勘探",
-                    "潮間勘探",
-                    "浊暗之阱",
-                    "濁暗之阱"
-                ]
-            }
-        },
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1020,
-                    430,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        540,
-                        430
-                    ]
-                ],
-                "duration": 800
-            }
-        },
-        "focus": {
-            "Node.Action.Succeeded": "内海地图：向右移动第 8 次"
-        },
-        "post_wait_freezes": 800,
-        "max_hit": 1,
-        "timeout": 5000,
-        "next": [
-            "破碎防线入口",
             "主菜单"
+        ]
+    },
+    "破碎防线入口_重试": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    80,
+                    330,
+                    1080,
+                    240
+                ],
+                "expected": [
+                    "破碎防线",
+                    "破碎防線"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -50,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "再次点击内海地图上的破碎防线"
+        },
+        "post_wait_freezes": 1000,
+        "max_hit": 1,
+        "timeout": 6000,
+        "next": [
+            "暗域主界面已就绪"
+        ],
+        "on_error": [
+            "主菜单"
+        ]
+    },
+    "破碎防线_无获得物资1": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "点击暗域关卡奖励"
+        ]
+    },
+    "破碎防线_无获得物资2": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "破碎防线_点击第二个关卡奖励"
+        ]
+    },
+    "破碎防线_无获得物资3": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "破碎防线_点击第三个关卡奖励"
+        ]
+    },
+    "破碎防线_无获得物资4": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "破碎防线_关闭奖励预览"
         ]
     }
 }

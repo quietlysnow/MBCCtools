@@ -1,0 +1,33 @@
+{
+    "密盟兑换_采购办入口": {
+        "timeout": 8000,
+        "post_delay": 2000,
+        "focus": {
+            "Node.Action.Succeeded": "进入采购办"
+        },
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "采购办",
+                    "采购部",
+                    "採購辦",
+                    "採購部"
+                ],
+                "roi": [863,496,386,146]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "next": [
+            "密盟兑换_秘盟兑换入口",
+            "密盟兑换_玩法兑换入口"
+        ],
+        "on_error": [
+            "密盟兑换_侧栏上滑",
+            "密盟兑换_结束"
+        ]
+    }
+}
