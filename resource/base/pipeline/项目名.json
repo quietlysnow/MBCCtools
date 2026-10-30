@@ -511,6 +511,56 @@
         "post_delay": 3000,
         "enabled": true
     },
+    "打开助手模式": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "助手模式",
+                "roi": [1060, 625, 220, 95]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 6000,
+        "max_hit": 16,
+        "next": [
+            "助手面板已打开",
+            "点击助手模式"
+        ]
+    },
+    "点击助手模式": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "助手模式",
+                "roi": [1060, 625, 220, 95]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "打开助手模式"
+        },
+        "timeout": 6000,
+        "max_hit": 16,
+        "next": [
+            "助手面板已打开"
+        ]
+    },
+    "助手面板已打开": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["夜莺助手", "左滑条目删除提示"],
+                "roi": [950, 125, 290, 510]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        }
+    },
     "通用关闭弹窗": {
         "recognition": {
             "type": "Custom",

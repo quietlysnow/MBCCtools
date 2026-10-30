@@ -1,0 +1,470 @@
+{
+    "助手待办": {
+        "timeout": 8000,
+        "next": [
+            "助手待办准备面板",
+            "[JumpBack]打开助手模式",
+            "[JumpBack]助手待办返回主页"
+        ]
+    },
+    "助手待办准备面板": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["夜莺助手", "左滑条目删除提示"],
+                "roi": [950, 125, 290, 510]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 6000,
+        "next": [
+            "助手待办无优先事项计数",
+            "助手待办初始化列表"
+        ]
+    },
+    "助手待办初始化列表": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "左滑条目删除提示",
+                "roi": [1080, 590, 160, 50]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [1090, 235, 1, 1],
+                "end": [1090, 515, 1, 1],
+                "duration": 600
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "回到助手列表上方开始检查"
+        },
+        "max_hit": 1,
+        "repeat": 3,
+        "post_delay": 1000,
+        "next": [
+            "助手待办面板"
+        ]
+    },
+    "助手待办面板": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["夜莺助手", "左滑条目删除提示"],
+                "roi": [950, 125, 290, 510]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 6000,
+        "next": [
+            "助手待办无优先事项计数",
+            "助手待办体力专属补给",
+            "助手待办监管物资",
+            "助手待办免费礼包",
+            "助手待办监管事件",
+            "助手待办派遣",
+            "助手待办友情点",
+            "助手待办记忆风暴",
+            "助手待办秘盟捐赠",
+            "助手待办浊暗之阱",
+            "助手待办纵向查找",
+            "助手待办清体力",
+            "助手待办每日活跃",
+            "助手待办仍有提醒",
+            "助手待办检查结束"
+        ]
+    },
+    "助手待办记忆风暴": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "有记忆风暴次数可用",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入记忆风暴"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行记忆风暴",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行记忆风暴": {
+        "max_hit": 1,
+        "next": [
+            "记忆风暴"
+        ]
+    },
+    "助手待办返回面板": {
+        "timeout": 8000,
+        "next": [
+            "助手待办面板",
+            "[JumpBack]打开助手模式",
+            "[JumpBack]助手待办返回主页"
+        ]
+    },
+    "助手待办秘盟捐赠": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "有秘盟捐赠次数可用",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入秘盟捐赠"
+        },
+        "post_delay": 2500,
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "助手待办秘盟准备"
+        ]
+    },
+    "助手待办秘盟准备": {
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]密盟签到",
+            "[JumpBack]关闭界面",
+            "助手待办捐赠次数已用完",
+            "助手待办核对狄斯币",
+            "助手待办秘盟大厅"
+        ]
+    },
+    "助手待办秘盟大厅": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "密盟捐赠.png",
+                "roi": [571, 559, 695, 121]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "打开秘盟捐赠页面"
+        },
+        "post_delay": 1000,
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "助手待办核对狄斯币"
+        ]
+    },
+    "助手待办核对狄斯币": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^狄斯币$",
+                "roi": [180, 125, 160, 65]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "助手待办核对捐赠价格"
+        ],
+        "on_error": [
+            "助手待办捐赠结果待核对"
+        ]
+    },
+    "助手待办核对捐赠价格": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^[0-9]+/2000$",
+                "roi": [115, 275, 310, 40]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "助手待办捐赠狄斯币"
+        ],
+        "on_error": [
+            "助手待办捐赠结果待核对"
+        ]
+    },
+    "助手待办捐赠狄斯币": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^全部捐赠$",
+                "roi": [275, 575, 145, 55]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "按每次两千狄斯币执行左侧全部捐赠"
+        },
+        "max_hit": 1,
+        "post_delay": 1200,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]关闭界面",
+            "助手待办捐赠次数已用完"
+        ],
+        "on_error": [
+            "助手待办捐赠结果待核对"
+        ]
+    },
+    "助手待办捐赠次数已用完": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "明日可捐赠",
+                "roi": [120, 548, 294, 97]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "已识别明日可捐赠，返回助手复查"
+        },
+        "next": [
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办捐赠结果待核对": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "捐赠币种、价格或结果未确认，保留待办"
+        },
+        "next": [
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办返回主页": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "返回按钮.png",
+                "roi": [11, 6, 320, 79],
+                "threshold": 0.85
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "返回主页复查助手待办"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "rate_limit": 300,
+            "target": [950, 125, 330, 590],
+            "timeout": 6000
+        },
+        "post_delay": 1000,
+        "max_hit": 16
+    },
+    "助手待办监管事件": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "前往处理监管事件",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入监管事件"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行监管事件",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行监管事件": {
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "监管终端",
+            "开始按钮"
+        ]
+    },
+    "助手待办纵向查找": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^助手模式[（(]([5-9]|[1-9][0-9]+)[）)]$",
+                "roi": [1060, 625, 220, 95]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [1090, 515, 1, 1],
+                "end": [1090, 235, 1, 1],
+                "duration": 600
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "纵向查看下方助手条目"
+        },
+        "max_hit": 4,
+        "post_delay": 1000,
+        "next": [
+            "助手待办面板"
+        ]
+    },
+    "助手待办浊暗之阱": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "有浊暗之阱事务需要处理",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入浊暗之阱"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行浊暗之阱",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行浊暗之阱": {
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "浊暗之阱关卡列表",
+            "浊暗之阱异常模式返回"
+        ]
+    },
+    "助手待办每日活跃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "监察任务每日活跃待处理",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入监察每日任务"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行每日奖励",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行每日奖励": {
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "每日奖励"
+        ]
+    },
+    "助手待办仍有提醒": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["次数可用", "处理", "领取", "收取", "可购买", "可以进行"],
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "助手仍有待办，请核对剩余条目；本轮不重复执行"
+        }
+    },
+    "助手待办无优先事项计数": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^助手模式$",
+                "roi": [1090, 635, 180, 65]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 4000,
+        "next": [
+            "助手待办长期任务确认"
+        ],
+        "on_error": [
+            "助手待办检查结束"
+        ]
+    },
+    "助手待办长期任务确认": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "长期任务",
+                "roi": [1110, 155, 125, 55]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "助手待办清体力",
+            "助手待办日常完成"
+        ]
+    },
+    "助手待办日常完成": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "日常优先事项已清空，助手现显示长期任务"
+        }
+    },
+    "助手待办检查结束": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ["夜莺助手", "左滑条目删除提示"],
+                "roi": [950, 125, 290, 510]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "助手检查结束，请核对面板；未识别的条目不视为完成"
+        }
+    }
+}
