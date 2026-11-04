@@ -1,0 +1,99 @@
+{
+    "助手待办体力专属补给": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^体力专属补给可领取$",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "max_hit": 2,
+        "timeout": 8000,
+        "next": [
+            "助手待办点击体力专属补给领取"
+        ],
+        "on_error": [
+            "助手快捷领取按钮未命中"
+        ]
+    },
+    "助手待办点击体力专属补给领取": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领取$",
+                "roi": "助手待办体力专属补给",
+                "roi_offset": [170, -25, -20, 40]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "已点击助手体力专属补给领取，等待结果复查"
+        },
+        "max_hit": 2,
+        "post_delay": 1000,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]关闭界面",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办监管物资": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^监管系统有物资可收取$",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "助手待办点击监管物资领取"
+        ],
+        "on_error": [
+            "助手快捷领取按钮未命中"
+        ]
+    },
+    "助手待办点击监管物资领取": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^领取$",
+                "roi": "助手待办监管物资",
+                "roi_offset": [170, -25, -20, 40]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "已点击助手监管物资领取，等待结果复查"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]关闭界面",
+            "助手待办返回面板"
+        ]
+    },
+    "助手快捷领取按钮未命中": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "未识别到该助手条目的领取按钮，保留待办并返回复查"
+        },
+        "next": [
+            "助手待办返回面板"
+        ]
+    }
+}

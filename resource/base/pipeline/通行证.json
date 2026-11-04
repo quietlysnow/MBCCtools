@@ -346,10 +346,14 @@
             "Node.Action.Succeeded": "处理密令弹窗"
         },
         "post_wait_freezes": 1000,
-        "timeout": 2000
+        "timeout": 2000,
+        "next": [
+            "切换到监察密令等级奖励"
+        ]
     },
     "通行证完成后跳转": {
         "next": [
+            "[JumpBack]监察嘉奖二选一保留选择",
             "主菜单",
             "[JumpBack]关闭界面"
         ]
@@ -385,6 +389,7 @@
             "Node.Action.Succeeded": "切换到监察密令等级奖励"
         },
         "post_wait_freezes": 500,
+        "timeout": 4000,
         "next": [
             "领取密令等级奖励"
         ],
@@ -419,5 +424,40 @@
         "next": [
             "通行证完成后跳转"
         ]
+    },
+    "监察嘉奖二选一保留选择": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "监察嘉奖.*选",
+                "roi": [470, 25, 340, 80]
+            }
+        },
+        "action": {"type": "DoNothing"},
+        "max_hit": 3,
+        "timeout": 4000,
+        "next": ["监察嘉奖稍后再领"],
+        "on_error": ["监察嘉奖暂缓状态复查"]
+    },
+    "监察嘉奖稍后再领": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "稍后再领",
+                "roi": [530, 620, 230, 85]
+            }
+        },
+        "action": {"type": "Click"},
+        "focus": {
+            "Node.Action.Succeeded": "暂缓监察嘉奖二选一，保留奖励选择"
+        },
+        "max_hit": 3,
+        "post_delay": 1200
+    },
+    "监察嘉奖暂缓状态复查": {
+        "action": {"type": "DoNothing"},
+        "focus": {
+            "Node.Recognition.Succeeded": "复查监察嘉奖暂缓后的当前弹窗"
+        }
     }
 }

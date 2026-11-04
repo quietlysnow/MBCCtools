@@ -27,7 +27,8 @@
             "Node.Action.Succeeded": "进入好友界面"
         },
         "next": [
-            "领取友情点"
+            "领取友情点",
+            "友情点已领满"
         ],
         "post_wait_freezes": 300
     },
@@ -35,7 +36,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "领取",
+                "expected": "^有可领取友情点$",
                 "roi": [
                     867,
                     581,
@@ -60,14 +61,15 @@
         },
         "post_delay": 2000,
         "next": [
-            "赠送友情点"
+            "赠送友情点",
+            "友情点已领满"
         ]
     },
     "赠送友情点": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": "赠送",
+                "expected": "^有可赠送友情点$",
                 "roi": [
                     867,
                     581,
@@ -91,6 +93,41 @@
             "Node.Action.Succeeded": "赠送友情点"
         },
         "post_wait_freezes": 3000,
+        "next": [
+            "主菜单"
+        ]
+    },
+    "友情点已领满": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^已领取\\(100/100\\)$",
+                "roi": [
+                    867,
+                    581,
+                    393,
+                    98
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "赠送友情点",
+            "友情点无待赠提示"
+        ]
+    },
+    "友情点无待赠提示": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "友情点已领满，未识别到待赠提示，跳过赠送"
+        },
         "next": [
             "主菜单"
         ]

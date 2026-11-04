@@ -54,13 +54,19 @@
             "type": "Click",
             "param": {}
         },
+        "timeout": 4000,
         "next": [
+            "每日体力",
             "追踪特典"
+        ],
+        "on_error": [
+            "未发现每日免费补给"
         ]
     },
     "追踪特典": {
         "pre_delay": 300,
         "post_delay": 400,
+        "timeout": 4000,
         "focus": {
             "Node.Action.Succeeded": "追踪特典"
         },
@@ -80,6 +86,9 @@
         },
         "next": [
             "每日体力"
+        ],
+        "on_error": [
+            "未发现每日免费补给"
         ]
     },
     "每日体力": {
@@ -103,6 +112,38 @@
         "focus": {
             "Node.Action.Succeeded": "每日体力"
         },
+        "next": [
+            "核对每日免费补给详情"
+        ]
+    },
+    "核对每日免费补给详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^每日免费补给$",
+                "roi": [155, 115, 320, 80]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 4000,
+        "next": [
+            "核对每日免费补给价格"
+        ]
+    },
+    "核对每日免费补给价格": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "^免费$",
+                "roi": [770, 535, 95, 65]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 4000,
         "next": [
             "购买"
         ]
@@ -130,6 +171,29 @@
         "next": [
             "主菜单",
             "[JumpBack]关闭界面"
+        ]
+    },
+    "未发现每日免费补给": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "精选礼包",
+                "roi": [
+                    50,
+                    250,
+                    220,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "未检测到每日免费补给，跳过本次领取"
+        },
+        "next": [
+            "主菜单"
         ]
     }
 }

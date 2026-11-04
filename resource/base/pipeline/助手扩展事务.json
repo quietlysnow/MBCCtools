@@ -1,0 +1,165 @@
+{
+    "助手待办友情点": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "有友情点可以领取",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入好友页面"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行友情点",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行友情点": {
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "领取友情点",
+            "友情点已领满"
+        ],
+        "on_error": [
+            "助手待办友情点页面待核对"
+        ]
+    },
+    "助手待办友情点页面待核对": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "检查好友页面，未识别到预期领取状态"
+        },
+        "max_hit": 1,
+        "next": [
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办免费礼包": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "有免费礼包可购买",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入免费礼包页面"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行免费礼包",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行免费礼包": {
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "助手待办免费礼包页面"
+        ],
+        "on_error": [
+            "助手待办免费礼包页面待核对"
+        ]
+    },
+    "助手待办免费礼包页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "精选礼包",
+                "roi": [50, 250, 220, 70]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "检查采购办精选礼包页面"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "精选礼包"
+        ],
+        "on_error": [
+            "助手待办免费礼包页面待核对"
+        ]
+    },
+    "助手待办免费礼包页面待核对": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "检查免费礼包页面，未识别到预期页面状态"
+        },
+        "max_hit": 1,
+        "next": [
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办派遣": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "有派遣任务可以进行",
+                "roi": [950, 210, 280, 380]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "从助手进入派遣页面"
+        },
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "[JumpBack]助手待办执行派遣",
+            "助手待办返回面板"
+        ]
+    },
+    "助手待办执行派遣": {
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "派遣区域选择",
+            "开始派遣"
+        ],
+        "on_error": [
+            "助手待办派遣页面待核对"
+        ]
+    },
+    "助手待办派遣页面待核对": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "检查派遣页面，未识别到预期区域或入口，保留待办"
+        },
+        "max_hit": 1,
+        "next": [
+            "助手待办返回面板"
+        ]
+    }
+}
