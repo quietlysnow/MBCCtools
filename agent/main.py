@@ -1010,6 +1010,209 @@ def _load_wiki_activity():
     return wiki_activity
 
 
+_ANYU_DEFAULTS = {
+    # 这两个 pipeline 节点分别认「第 N 期」和「剩余 N 天」，门闩直接复用它们读值
+    "ocr_node": "暗域_主界面",
+    "state_file": "config/anyu_weekly.json",
+    "weekday": 0,                # 0 = 周一；暗域每周一重置
+    "month_day": 1,              # 每月几号跑秘盟兑换
+    "cache_hours": 12,          # 缓存多久内不再重复 OCR（同一次进场里两处都能用）
+    "force": False,
+}
+
+
+def _anyu_cfg(argv):
+    cfg = dict(_ANYU_DEFAULTS)
+    cfg.update(_parse_param(argv) or {})
+    cfg["force"] = bool(cfg.get("force"))
+    return cfg
+
+
+def _anyu_state_path(state_file):
+    path = pathlib.Path(state_file)
+    if not path.is_absolute():
+        path = _project_root() / path
+    return path
+
+
+def _anyu_instance_key():
+    """MFA 把当前实例名写在 config/config.json 的 Instances.LastActive 里。"""
+    cfg_path = _project_root() / "config" / "config.json"
+    try:
+        with open(cfg_path, encoding="utf-8-sig") as f:
+            data = json.load(f)
+        key = data.get("Instances.LastActive")
+        if key:
+            return str(key)
+        _log("[anyu] config.json 里没有 Instances.LastActive，实例名用 default 兜底")
+    except FileNotFoundError:
+        _log(f"[anyu] 找不到 {cfg_path}，实例名用 default 兜底")
+    except json.JSONDecodeError as e:
+        _log(f"[anyu] config.json 解析失败（{e}），实例名用 default 兜底")
+    return "default"
+
+
+def _anyu_load_state(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except FileNotFoundError:
+        return {}
+    except json.JSONDecodeError as e:
+        _log(f"[anyu] 状态文件解析失败（{e}），按空处理：{path}")
+        return {}
+
+
+def _anyu_save_state(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    tmp.replace(path)
+
+
+def _anyu_item(state, key):
+    item = state.get(key)
+    return item if isinstance(item, dict) else {}
+
+
+def _anyu_read_texts(context, ocr_node):
+    """用 pipeline 里的 OCR 节点读一次，返回读到的所有文本。"""
+    try:
+        image = context.tasker.controller.cached_image
+    except Exception as e:
+        _log(f"[anyu] 取截图失败：{e}")
+        return []
+    if image is None or getattr(image, "size", 0) == 0:
+        _log("[anyu] 截图是空的")
+        return []
+
+    detail = context.run_recognition(ocr_node, image)
+    if detail is None:
+        _log(f"[anyu] run_recognition({ocr_node!r}) 没起来（节点不存在或被禁用？）")
+        return []
+    if not detail.hit:
+        return []
+
+    texts = []
+    best = getattr(detail, "best_result", None)
+    if best is not None and getattr(best, "text", None):
+        texts.append(best.text)
+    for item in getattr(detail, "all_results", None) or []:
+        text = getattr(item, "text", None)
+        if text and text not in texts:
+            texts.append(text)
+    return texts
+
+
+def _anyu_read_period(context, ocr_node):
+    """读「第 N 期」里的期数，返回 (期数 or None, 原文)。"""
+    texts = _anyu_read_texts(context, ocr_node)
+    for text in texts:
+        match = re.search(r"(\d{1,4})\s*期", text)
+        if match:
+            return int(match.group(1)), text
+    return None, (texts[0] if texts else "")
+
+
+def _anyu_cached_period(item, cache_hours):
+    """缓存里的期数够新就直接用，省一次进场读 OCR。"""
+    ts = item.get("seen_ts")
+    try:
+        ts = float(ts) if ts is not None else None
+    except (TypeError, ValueError):
+        ts = None
+    if ts is None or (time.time() - ts) > cache_hours * 3600:
+        return None
+    period = item.get("seen_period")
+    try:
+        return int(period) if period is not None else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _anyu_note_seen(state, key, period, raw_period):
+    item = dict(_anyu_item(state, key))
+    if period is not None:
+        item["seen_period"] = period
+        item["seen_period_raw"] = raw_period
+    item["seen_ts"] = time.time()
+    state[key] = item
+    return state
+
+
+@AgentServer.custom_action("AnyuMondayGate")
+class AnyuMondayGate(CustomAction):
+    """只在周一执行：暗域每周一重置，这两个任务都按周算。"""
+
+    def run(self, context, argv):
+        cfg = _anyu_cfg(argv)
+        try:
+            weekday = int(cfg.get("weekday", 0))
+        except (TypeError, ValueError):
+            weekday = 0
+        now = time.localtime()
+        today = time.strftime("%Y-%m-%d")
+        names = ("周一", "周二", "周三", "周四", "周五", "周六", "周日")
+        if now.tm_wday == weekday:
+            _log(f"[anyu] 今天 {today} {names[now.tm_wday]}：照常执行")
+            return True
+        _log(f"[anyu] 今天 {today} {names[now.tm_wday]}，不是周一：跳过这两个任务")
+        return False
+
+
+@AgentServer.custom_action("AnyuWeeklyGate")
+class AnyuWeeklyGate(CustomAction):
+    """一期一次门闩。返回 False 时 pipeline 走 on_error（跳过本次）。"""
+
+    def run(self, context, argv):
+        cfg = _anyu_cfg(argv)
+        state_path = _anyu_state_path(cfg["state_file"])
+        key = _anyu_instance_key()
+        state = _anyu_load_state(state_path)
+        item = _anyu_item(state, key)
+        last_period = item.get("last_period")
+        try:
+            last_period = int(last_period) if last_period is not None else None
+        except (TypeError, ValueError):
+            last_period = None
+        last_human = item.get("last_run") or "从未"
+
+        if cfg["force"]:
+            _log(f"[anyu] 强制模式（实例 {key}，上次 {last_human}）：直接开跑")
+            return True
+
+        period = _anyu_cached_period(item, cfg["cache_hours"])
+        raw = item.get("seen_period_raw", "")
+        source = "缓存"
+        if period is None:
+            period, raw = _anyu_read_period(context, cfg["ocr_node"])
+            source = "OCR"
+            if period is not None:
+                state = _anyu_note_seen(state, key, period, raw)
+                _anyu_save_state(state_path, state)
+
+        if period is None:
+            _log(f"[anyu] 没读到期数（{source}，OCR={raw!r}，实例 {key}，上次 {last_human}）：读不到就放行")
+            return True
+        if last_period is not None and period == last_period:
+            _log(f"[anyu] 第 {period} 期已经跑过了（{source}，实例 {key}，上次 {last_human}）：跳过")
+            return False
+        _log(f"[anyu] 第 {period} 期还没跑（{source}，实例 {key}，上次第 "
+             f"{last_period if last_period is not None else '——'} 期）：开跑")
+        return True
+
+
+@AgentServer.custom_action("AnyuMarkRun")
+class AnyuMarkRun(CustomAction):
+    def run(self, context, argv):
+        cfg = _anyu_cfg(argv)
+        state_path = _anyu_state_path(cfg["state_file"])
+        key = _anyu_instance_key()
+        state = _anyu_load_st
+
+
 def main():
     if len(sys.argv) < 2:
         _log("缺少连接标识符。正常应由 UI 按 interface.json 的 agent 段拉起；"
