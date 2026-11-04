@@ -1,0 +1,3503 @@
+{
+    "暗域自动重开": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "开始暗域自动重开"
+        },
+        "timeout": 20000,
+        "next": [
+            "暗域_周一门闩"
+        ]
+    },
+    "暗域_进狄斯": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "狄斯",
+                    "狄斯城"
+                ],
+                "roi": [
+                    1120,
+                    120,
+                    150,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "导航：切到狄斯"
+        },
+        "post_delay": 3000,
+        "post_wait_freezes": 500,
+        "max_hit": 1,
+        "timeout": 6000,
+        "next": [
+            "暗域_找暗域",
+            "暗域_内海入口",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "暗域_进危机管理": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "危机管理",
+                    "危機管理"
+                ],
+                "roi": [
+                    887,
+                    536,
+                    386,
+                    174
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "导航：尝试经危机管理进入"
+        },
+        "post_delay": 2000,
+        "post_wait_freezes": 500,
+        "max_hit": 1,
+        "timeout": 6000,
+        "next": [
+            "暗域_找暗域",
+            "暗域_进狄斯",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "暗域_内海入口": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "内海",
+                    "內海"
+                ],
+                "roi": [
+                    116,
+                    557,
+                    1074,
+                    149
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "focus": {
+            "Node.Action.Succeeded": "导航：切到内海"
+        },
+        "post_delay": 2500,
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "暗域_找暗域",
+            "暗域_破碎防线入口",
+            "[JumpBack]主菜单"
+        ]
+    },
+    "暗域_找暗域": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "内海地图：找破碎防线（暗域入口）"
+        },
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_破碎防线入口",
+            "暗域_复位最左",
+            "主菜单"
+        ]
+    },
+    "暗域_复位最左": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    380,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        860,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：先复位到最左端"
+        },
+        "repeat": 4,
+        "repeat_delay": 300,
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 8000,
+        "next": [
+            "暗域_破碎防线入口",
+            "暗域_向右拖1"
+        ]
+    },
+    "暗域_破碎防线入口": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "破碎防线",
+                    "破碎防線"
+                ],
+                "roi": [
+                    80,
+                    330,
+                    1080,
+                    240
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -50,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：点进破碎防线"
+        },
+        "post_wait_freezes": 1000,
+        "max_hit": 1,
+        "timeout": 4000,
+        "next": [
+            "暗域_主界面"
+        ],
+        "on_error": [
+            "[JumpBack]主菜单"
+        ]
+    },
+    "暗域_向右拖1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右拖第 1 次"
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_破碎防线入口",
+            "暗域_向右拖2"
+        ]
+    },
+    "暗域_向右拖2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右拖第 2 次"
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_破碎防线入口",
+            "暗域_向右拖3"
+        ]
+    },
+    "暗域_向右拖3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "极限挑战",
+                    "極限挑戰",
+                    "数据间隙",
+                    "數據間隙",
+                    "破碎防线",
+                    "破碎防線",
+                    "无尽梦魇",
+                    "無盡夢魘",
+                    "潮间勘探",
+                    "潮間勘探",
+                    "浊暗之阱",
+                    "濁暗之阱"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1020,
+                    430,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        540,
+                        430
+                    ]
+                ],
+                "duration": 800
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "内海地图：向右拖第 3 次"
+        },
+        "post_wait_freezes": 800,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_破碎防线入口",
+            "主菜单"
+        ]
+    },
+    "暗域_主界面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "第\\s*\\d+\\s*期",
+                    "第[0-9]+期"
+                ],
+                "roi": [
+                    235,
+                    78,
+                    180,
+                    48
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "已到暗域主界面（第 N 期）"
+        },
+        "max_hit": 6,
+        "timeout": 20000,
+        "next": [
+            "暗域_每周门闩",
+            "暗域_情报1_点卡片",
+            "暗域_情报2_点卡片",
+            "暗域_情报3_点卡片",
+            "暗域_收工"
+        ]
+    },
+    "暗域_每周门闩": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "AnyuWeeklyGate",
+                "custom_action_param": {}
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "门闩：本期还没跑，开跑",
+            "Node.Action.Failed": "门闩：本期已经跑过，跳过"
+        },
+        "max_hit": 1,
+        "timeout": 15000,
+        "next": [
+            "暗域_情报1_点卡片"
+        ],
+        "on_error": [
+            "暗域_门闩跳过"
+        ]
+    },
+    "暗域_门闩跳过": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "本期已跑过，直接退出暗域"
+        },
+        "next": [
+            "暗域_返回键"
+        ]
+    },
+    "暗域_记录运行": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "AnyuMarkRun",
+                "custom_action_param": {}
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "已记录本次运行时间"
+        },
+        "max_hit": 1,
+        "timeout": 15000,
+        "next": [
+            "暗域_返回键"
+        ]
+    },
+    "暗域_收工": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "三个情报跑完，记录运行时间并退出暗域"
+        },
+        "timeout": 10000,
+        "next": [
+            "暗域_记录运行"
+        ]
+    },
+    "暗域_返回键": {
+        "action": {
+            "type": "ClickKey",
+            "param": {
+                "key": 4
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "按返回键离开暗域"
+        },
+        "post_delay": 1500,
+        "next": [
+            "[JumpBack]主菜单",
+            "结束任务"
+        ]
+    },
+    "暗域_情报1_点卡片": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    880,
+                    147,
+                    240,
+                    100
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000,
+                    197,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点开情报1卡片"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "post_wait_freezes": 800,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_详情",
+            "暗域_主界面"
+        ]
+    },
+    "暗域_情报1_详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "已进入情报1情报详情"
+        },
+        "max_hit": 3,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报1_选择增益",
+            "暗域_主界面"
+        ]
+    },
+    "暗域_情报1_选择增益": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "选择增益",
+                    "選擇增益"
+                ],
+                "roi": [
+                    700,
+                    635,
+                    240,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    817,
+                    667,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "打开增益选择"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "post_wait_freezes": 600,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报1_增益未选",
+            "暗域_情报1_增益确定"
+        ],
+        "on_error": [
+            "暗域_情报1_行动开始"
+        ]
+    },
+    "暗域_情报1_增益1": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    263,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第1张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_增益1_选项"
+        ]
+    },
+    "暗域_情报1_增益2": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    627,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第2张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_增益2_选项"
+        ]
+    },
+    "暗域_情报1_增益3": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第3张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_增益3_选项"
+        ]
+    },
+    "暗域_情报1_增益确定": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    900,
+                    520,
+                    320,
+                    160
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1067,
+                    615,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "确认增益（右下确定）"
+        },
+        "max_hit": 3,
+        "post_delay": 1200,
+        "post_wait_freezes": 600,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_行动开始",
+            "暗域_情报1_增益未选"
+        ],
+        "on_error": [
+            "暗域_情报1_行动开始",
+            "暗域_情报1_详情"
+        ]
+    },
+    "暗域_情报1_行动开始": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1087,
+                    653,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点行动开始"
+        },
+        "max_hit": 1,
+        "post_delay": 3000,
+        "post_wait_freezes": 800,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报1_打开队伍",
+            "暗域_情报1_作战开始"
+        ]
+    },
+    "暗域_情报1_打开队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "队伍",
+                    "隊伍"
+                ],
+                "roi": [
+                    20,
+                    505,
+                    150,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    78,
+                    527,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "展开队伍列表"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_选队伍"
+        ],
+        "on_error": [
+            "暗域_情报1_作战开始"
+        ]
+    },
+    "暗域_情报1_选队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "不使用编队",
+                    "不使用編隊"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    45,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "选「不使用编队」下面那一队"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_一键上阵",
+            "暗域_情报1_作战开始"
+        ],
+        "on_error": [
+            "暗域_情报1_作战开始"
+        ]
+    },
+    "暗域_情报1_一键上阵": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "一键上阵",
+                    "一鍵上陣"
+                ],
+                "roi": [
+                    0,
+                    660,
+                    220,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    70,
+                    690,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "一键上阵"
+        },
+        "max_hit": 2,
+        "post_delay": 1500,
+        "post_wait_freezes": 600,
+        "timeout": 3000,
+        "next": [
+            "暗域_情报1_一键上阵",
+            "暗域_情报1_作战开始"
+        ],
+        "on_error": [
+            "暗域_情报1_作战开始"
+        ]
+    },
+    "暗域_情报1_作战开始": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "作战开始",
+                    "作戰開始"
+                ],
+                "roi": [
+                    980,
+                    625,
+                    210,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1087,
+                    653,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点作战开始"
+        },
+        "max_hit": 4,
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报1_循环"
+        ]
+    },
+    "暗域_情报1_循环": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "情报1战斗循环"
+        },
+        "rate_limit": 800,
+        "max_hit": 60,
+        "timeout": 90000,
+        "next": [
+            "暗域_情报1_开战确认",
+            "暗域_情报1_菜单重开",
+            "暗域_情报1_菜单放弃",
+            "暗域_情报1_战斗内",
+            "暗域_情报1_作战开始",
+            "暗域_情报1_已回详情"
+        ],
+        "on_error": [
+            "暗域_主界面",
+            "主菜单"
+        ]
+    },
+    "暗域_情报1_开战确认": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "米诺斯管理系统",
+                    "米諾斯管理系統",
+                    "内部网络已接入",
+                    "內部網絡已接入"
+                ],
+                "roi": [
+                    280,
+                    165,
+                    800,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    783,
+                    497,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "关掉开战提示（等级过低＋烙印不完整），确定开战"
+        },
+        "max_hit": 12,
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_循环"
+        ]
+    },
+    "暗域_情报1_菜单重开": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "重新开始",
+                    "重新開始"
+                ],
+                "roi": [
+                    545,
+                    540,
+                    200,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    640,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "重新开始"
+        },
+        "max_hit": 3,
+        "post_delay": 4000,
+        "post_wait_freezes": 800,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_循环"
+        ]
+    },
+    "暗域_情报1_菜单放弃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "放弃行动",
+                    "放棄行動"
+                ],
+                "roi": [
+                    285,
+                    540,
+                    180,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    370,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点放弃行动"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_确认放弃"
+        ]
+    },
+    "暗域_情报1_战斗内": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "战斗统计",
+                    "戰鬥統計"
+                ],
+                "roi": [
+                    1115,
+                    78,
+                    160,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    40,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "战斗中打开暂停菜单"
+        },
+        "max_hit": 12,
+        "post_delay": 2000,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报1_循环"
+        ]
+    },
+    "暗域_情报1_确认放弃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "是否确认放弃",
+                    "是否確認放棄"
+                ],
+                "roi": [
+                    500,
+                    335,
+                    340,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    773,
+                    497,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "二次确认放弃"
+        },
+        "max_hit": 1,
+        "post_delay": 3000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报1_挑战失败",
+            "暗域_情报1_点空白"
+        ]
+    },
+    "暗域_情报1_挑战失败": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "提升方式",
+                    "提升局長權能",
+                    "提升局长权能",
+                    "强化烙印",
+                    "強化烙印"
+                ],
+                "roi": [
+                    0,
+                    410,
+                    760,
+                    190
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    470,
+                    650,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点掉挑战失败结算页"
+        },
+        "max_hit": 1,
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_已回详情",
+            "暗域_情报1_点空白"
+        ],
+        "on_error": [
+            "暗域_情报1_点空白"
+        ]
+    },
+    "暗域_情报1_已回详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "情报1已回到情报详情（收尾）"
+        },
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_返回主界面"
+        ]
+    },
+    "暗域_情报1_返回主界面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    40,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "返回暗域主界面"
+        },
+        "max_hit": 2,
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "暗域_主界面",
+            "[JumpBack]关闭界面",
+            "主菜单"
+        ]
+    },
+    "暗域_情报2_点卡片": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    880,
+                    337,
+                    240,
+                    100
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000,
+                    387,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点开情报2卡片"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "post_wait_freezes": 800,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_详情",
+            "暗域_主界面"
+        ]
+    },
+    "暗域_情报2_详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "已进入情报2情报详情"
+        },
+        "max_hit": 3,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报2_选择增益",
+            "暗域_主界面"
+        ]
+    },
+    "暗域_情报2_选择增益": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "选择增益",
+                    "選擇增益"
+                ],
+                "roi": [
+                    700,
+                    635,
+                    240,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    817,
+                    667,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "打开增益选择"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "post_wait_freezes": 600,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报2_增益未选",
+            "暗域_情报2_增益确定"
+        ],
+        "on_error": [
+            "暗域_情报2_行动开始"
+        ]
+    },
+    "暗域_情报2_增益1": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    263,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第1张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_增益1_选项"
+        ]
+    },
+    "暗域_情报2_增益2": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    627,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第2张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_增益2_选项"
+        ]
+    },
+    "暗域_情报2_增益3": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第3张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_增益3_选项"
+        ]
+    },
+    "暗域_情报2_增益确定": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    900,
+                    520,
+                    320,
+                    160
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1067,
+                    615,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "确认增益（右下确定）"
+        },
+        "max_hit": 3,
+        "post_delay": 1200,
+        "post_wait_freezes": 600,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_行动开始",
+            "暗域_情报2_增益未选"
+        ],
+        "on_error": [
+            "暗域_情报2_行动开始",
+            "暗域_情报2_详情"
+        ]
+    },
+    "暗域_情报2_行动开始": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1087,
+                    653,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点行动开始"
+        },
+        "max_hit": 1,
+        "post_delay": 3000,
+        "post_wait_freezes": 800,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报2_打开队伍",
+            "暗域_情报2_作战开始"
+        ]
+    },
+    "暗域_情报2_打开队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "队伍",
+                    "隊伍"
+                ],
+                "roi": [
+                    20,
+                    505,
+                    150,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    78,
+                    527,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "展开队伍列表"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_选队伍"
+        ],
+        "on_error": [
+            "暗域_情报2_作战开始"
+        ]
+    },
+    "暗域_情报2_选队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "不使用编队",
+                    "不使用編隊"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    45,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "选「不使用编队」下面那一队"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_一键上阵",
+            "暗域_情报2_作战开始"
+        ],
+        "on_error": [
+            "暗域_情报2_作战开始"
+        ]
+    },
+    "暗域_情报2_一键上阵": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "一键上阵",
+                    "一鍵上陣"
+                ],
+                "roi": [
+                    0,
+                    660,
+                    220,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    70,
+                    690,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "一键上阵"
+        },
+        "max_hit": 2,
+        "post_delay": 1500,
+        "post_wait_freezes": 600,
+        "timeout": 3000,
+        "next": [
+            "暗域_情报2_一键上阵",
+            "暗域_情报2_作战开始"
+        ],
+        "on_error": [
+            "暗域_情报2_作战开始"
+        ]
+    },
+    "暗域_情报2_作战开始": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "作战开始",
+                    "作戰開始"
+                ],
+                "roi": [
+                    980,
+                    625,
+                    210,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1087,
+                    653,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点作战开始"
+        },
+        "max_hit": 4,
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报2_循环"
+        ]
+    },
+    "暗域_情报2_循环": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "情报2战斗循环"
+        },
+        "rate_limit": 800,
+        "max_hit": 60,
+        "timeout": 90000,
+        "next": [
+            "暗域_情报2_开战确认",
+            "暗域_情报2_菜单重开",
+            "暗域_情报2_菜单放弃",
+            "暗域_情报2_战斗内",
+            "暗域_情报2_作战开始",
+            "暗域_情报2_已回详情"
+        ],
+        "on_error": [
+            "暗域_主界面",
+            "主菜单"
+        ]
+    },
+    "暗域_情报2_开战确认": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "米诺斯管理系统",
+                    "米諾斯管理系統",
+                    "内部网络已接入",
+                    "內部網絡已接入"
+                ],
+                "roi": [
+                    280,
+                    165,
+                    800,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    783,
+                    497,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "关掉开战提示（等级过低＋烙印不完整），确定开战"
+        },
+        "max_hit": 12,
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_循环"
+        ]
+    },
+    "暗域_情报2_菜单重开": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "重新开始",
+                    "重新開始"
+                ],
+                "roi": [
+                    545,
+                    540,
+                    200,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    640,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "重新开始"
+        },
+        "max_hit": 3,
+        "post_delay": 4000,
+        "post_wait_freezes": 800,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_循环"
+        ]
+    },
+    "暗域_情报2_菜单放弃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "放弃行动",
+                    "放棄行動"
+                ],
+                "roi": [
+                    285,
+                    540,
+                    180,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    370,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点放弃行动"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_确认放弃"
+        ]
+    },
+    "暗域_情报2_战斗内": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "战斗统计",
+                    "戰鬥統計"
+                ],
+                "roi": [
+                    1115,
+                    78,
+                    160,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    40,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "战斗中打开暂停菜单"
+        },
+        "max_hit": 12,
+        "post_delay": 2000,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报2_循环"
+        ]
+    },
+    "暗域_情报2_确认放弃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "是否确认放弃",
+                    "是否確認放棄"
+                ],
+                "roi": [
+                    500,
+                    335,
+                    340,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    773,
+                    497,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "二次确认放弃"
+        },
+        "max_hit": 1,
+        "post_delay": 3000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报2_挑战失败",
+            "暗域_情报2_点空白"
+        ]
+    },
+    "暗域_情报2_挑战失败": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "提升方式",
+                    "提升局長權能",
+                    "提升局长权能",
+                    "强化烙印",
+                    "強化烙印"
+                ],
+                "roi": [
+                    0,
+                    410,
+                    760,
+                    190
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    470,
+                    650,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点掉挑战失败结算页"
+        },
+        "max_hit": 1,
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_已回详情",
+            "暗域_情报2_点空白"
+        ],
+        "on_error": [
+            "暗域_情报2_点空白"
+        ]
+    },
+    "暗域_情报2_已回详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "情报2已回到情报详情（收尾）"
+        },
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_返回主界面"
+        ]
+    },
+    "暗域_情报2_返回主界面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    40,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "返回暗域主界面"
+        },
+        "max_hit": 2,
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "暗域_主界面",
+            "[JumpBack]关闭界面",
+            "主菜单"
+        ]
+    },
+    "暗域_情报3_点卡片": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    880,
+                    523,
+                    240,
+                    100
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点开情报3卡片"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "post_wait_freezes": 800,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_详情",
+            "暗域_主界面"
+        ]
+    },
+    "暗域_情报3_详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "已进入情报3情报详情"
+        },
+        "max_hit": 3,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报3_选择增益",
+            "暗域_主界面"
+        ]
+    },
+    "暗域_情报3_选择增益": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "选择增益",
+                    "選擇增益"
+                ],
+                "roi": [
+                    700,
+                    635,
+                    240,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    817,
+                    667,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "打开增益选择"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "post_wait_freezes": 600,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报3_增益未选",
+            "暗域_情报3_增益确定"
+        ],
+        "on_error": [
+            "暗域_情报3_行动开始"
+        ]
+    },
+    "暗域_情报3_增益1": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    263,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第1张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_增益1_选项"
+        ]
+    },
+    "暗域_情报3_增益2": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    627,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第2张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_增益2_选项"
+        ]
+    },
+    "暗域_情报3_增益3": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    90,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000,
+                    167,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点第3张增益卡"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "post_wait_freezes": 300,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_增益3_选项"
+        ]
+    },
+    "暗域_情报3_增益确定": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    900,
+                    520,
+                    320,
+                    160
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1067,
+                    615,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "确认增益（右下确定）"
+        },
+        "max_hit": 3,
+        "post_delay": 1200,
+        "post_wait_freezes": 600,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_行动开始",
+            "暗域_情报3_增益未选"
+        ],
+        "on_error": [
+            "暗域_情报3_行动开始",
+            "暗域_情报3_详情"
+        ]
+    },
+    "暗域_情报3_行动开始": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1087,
+                    653,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点行动开始"
+        },
+        "max_hit": 1,
+        "post_delay": 3000,
+        "post_wait_freezes": 800,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报3_打开队伍",
+            "暗域_情报3_作战开始"
+        ]
+    },
+    "暗域_情报3_打开队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "队伍",
+                    "隊伍"
+                ],
+                "roi": [
+                    20,
+                    505,
+                    150,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    78,
+                    527,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "展开队伍列表"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_选队伍"
+        ],
+        "on_error": [
+            "暗域_情报3_作战开始"
+        ]
+    },
+    "暗域_情报3_选队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "不使用编队",
+                    "不使用編隊"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    45,
+                    0,
+                    0
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "选「不使用编队」下面那一队"
+        },
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_一键上阵",
+            "暗域_情报3_作战开始"
+        ],
+        "on_error": [
+            "暗域_情报3_作战开始"
+        ]
+    },
+    "暗域_情报3_一键上阵": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "一键上阵",
+                    "一鍵上陣"
+                ],
+                "roi": [
+                    0,
+                    660,
+                    220,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    70,
+                    690,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "一键上阵"
+        },
+        "max_hit": 2,
+        "post_delay": 1500,
+        "post_wait_freezes": 600,
+        "timeout": 3000,
+        "next": [
+            "暗域_情报3_一键上阵",
+            "暗域_情报3_作战开始"
+        ],
+        "on_error": [
+            "暗域_情报3_作战开始"
+        ]
+    },
+    "暗域_情报3_作战开始": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "作战开始",
+                    "作戰開始"
+                ],
+                "roi": [
+                    980,
+                    625,
+                    210,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1087,
+                    653,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点作战开始"
+        },
+        "max_hit": 4,
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报3_循环"
+        ]
+    },
+    "暗域_情报3_循环": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "情报3战斗循环"
+        },
+        "rate_limit": 800,
+        "max_hit": 60,
+        "timeout": 90000,
+        "next": [
+            "暗域_情报3_开战确认",
+            "暗域_情报3_菜单重开",
+            "暗域_情报3_菜单放弃",
+            "暗域_情报3_战斗内",
+            "暗域_情报3_作战开始",
+            "暗域_情报3_已回详情"
+        ],
+        "on_error": [
+            "暗域_主界面",
+            "主菜单"
+        ]
+    },
+    "暗域_情报3_开战确认": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "米诺斯管理系统",
+                    "米諾斯管理系統",
+                    "内部网络已接入",
+                    "內部網絡已接入"
+                ],
+                "roi": [
+                    280,
+                    165,
+                    800,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    783,
+                    497,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "关掉开战提示（等级过低＋烙印不完整），确定开战"
+        },
+        "max_hit": 12,
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_循环"
+        ]
+    },
+    "暗域_情报3_菜单重开": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "重新开始",
+                    "重新開始"
+                ],
+                "roi": [
+                    545,
+                    540,
+                    200,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    640,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "重新开始"
+        },
+        "max_hit": 3,
+        "post_delay": 4000,
+        "post_wait_freezes": 800,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_循环"
+        ]
+    },
+    "暗域_情报3_菜单放弃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "放弃行动",
+                    "放棄行動"
+                ],
+                "roi": [
+                    285,
+                    540,
+                    180,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    370,
+                    573,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点放弃行动"
+        },
+        "max_hit": 1,
+        "post_delay": 1500,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_确认放弃"
+        ]
+    },
+    "暗域_情报3_战斗内": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "战斗统计",
+                    "戰鬥統計"
+                ],
+                "roi": [
+                    1115,
+                    78,
+                    160,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    40,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "战斗中打开暂停菜单"
+        },
+        "max_hit": 12,
+        "post_delay": 2000,
+        "timeout": 8000,
+        "next": [
+            "暗域_情报3_循环"
+        ]
+    },
+    "暗域_情报3_确认放弃": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "是否确认放弃",
+                    "是否確認放棄"
+                ],
+                "roi": [
+                    500,
+                    335,
+                    340,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    773,
+                    497,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "二次确认放弃"
+        },
+        "max_hit": 1,
+        "post_delay": 3000,
+        "timeout": 6000,
+        "next": [
+            "暗域_情报3_挑战失败",
+            "暗域_情报3_点空白"
+        ]
+    },
+    "暗域_情报3_挑战失败": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "提升方式",
+                    "提升局長權能",
+                    "提升局长权能",
+                    "强化烙印",
+                    "強化烙印"
+                ],
+                "roi": [
+                    0,
+                    410,
+                    760,
+                    190
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    470,
+                    650,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点掉挑战失败结算页"
+        },
+        "max_hit": 1,
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_已回详情",
+            "暗域_情报3_点空白"
+        ],
+        "on_error": [
+            "暗域_情报3_点空白"
+        ]
+    },
+    "暗域_情报3_已回详情": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "情报3已回到情报详情（收尾）"
+        },
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_返回主界面"
+        ]
+    },
+    "暗域_情报3_返回主界面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "行动开始",
+                    "行動開始"
+                ],
+                "roi": [
+                    985,
+                    630,
+                    205,
+                    65
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    40,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "返回暗域主界面"
+        },
+        "max_hit": 2,
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "暗域_主界面",
+            "[JumpBack]关闭界面",
+            "主菜单"
+        ]
+    },
+    "暗域_情报1_点空白": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    470,
+                    650,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点掉结算页（兜底）"
+        },
+        "max_hit": 1,
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_已回详情"
+        ]
+    },
+    "暗域_情报2_点空白": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    470,
+                    650,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点掉结算页（兜底）"
+        },
+        "max_hit": 1,
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_已回详情"
+        ]
+    },
+    "暗域_情报3_点空白": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    470,
+                    650,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "点掉结算页（兜底）"
+        },
+        "max_hit": 1,
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_已回详情"
+        ]
+    },
+    "暗域_情报1_增益未选": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "未选择",
+                    "未選擇"
+                ],
+                "roi": [
+                    150,
+                    120,
+                    1000,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "三个增益还没选满，逐张选"
+        },
+        "max_hit": 2,
+        "timeout": 3000,
+        "next": [
+            "暗域_情报1_增益1"
+        ],
+        "on_error": [
+            "暗域_情报1_增益确定"
+        ]
+    },
+    "暗域_情报1_增益1_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第1张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_增益2"
+        ]
+    },
+    "暗域_情报1_增益2_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第2张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_增益3"
+        ]
+    },
+    "暗域_情报1_增益3_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第3张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报1_增益确定"
+        ]
+    },
+    "暗域_情报2_增益未选": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "未选择",
+                    "未選擇"
+                ],
+                "roi": [
+                    150,
+                    120,
+                    1000,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "三个增益还没选满，逐张选"
+        },
+        "max_hit": 2,
+        "timeout": 3000,
+        "next": [
+            "暗域_情报2_增益1"
+        ],
+        "on_error": [
+            "暗域_情报2_增益确定"
+        ]
+    },
+    "暗域_情报2_增益1_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第1张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_增益2"
+        ]
+    },
+    "暗域_情报2_增益2_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第2张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_增益3"
+        ]
+    },
+    "暗域_情报2_增益3_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第3张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报2_增益确定"
+        ]
+    },
+    "暗域_情报3_增益未选": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "未选择",
+                    "未選擇"
+                ],
+                "roi": [
+                    150,
+                    120,
+                    1000,
+                    90
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "三个增益还没选满，逐张选"
+        },
+        "max_hit": 2,
+        "timeout": 3000,
+        "next": [
+            "暗域_情报3_增益1"
+        ],
+        "on_error": [
+            "暗域_情报3_增益确定"
+        ]
+    },
+    "暗域_情报3_增益1_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第1张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_增益2"
+        ]
+    },
+    "暗域_情报3_增益2_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第2张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_增益3"
+        ]
+    },
+    "暗域_情报3_增益3_选项": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    260,
+                    1280,
+                    220
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    233,
+                    313,
+                    1,
+                    1
+                ]
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "第3张卡选第一个增益"
+        },
+        "max_hit": 2,
+        "post_delay": 900,
+        "timeout": 5000,
+        "next": [
+            "暗域_情报3_增益确定"
+        ]
+    },
+    "暗域_入口门闩": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "AnyuWeeklyGate",
+                "custom_action_param": {}
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "入口门闩：本期还没跑，进场",
+            "Node.Action.Failed": "入口门闩：本期已经跑过，不进场"
+        },
+        "max_hit": 1,
+        "timeout": 15000,
+        "next": [
+            "暗域_找暗域",
+            "暗域_内海入口",
+            "暗域_进狄斯",
+            "暗域_进危机管理",
+            "暗域_破碎防线入口",
+            "[JumpBack]返回按钮",
+            "[JumpBack]主菜单"
+        ],
+        "on_error": [
+            "暗域_入口跳过"
+        ]
+    },
+    "暗域_入口跳过": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "本期已跑过，任务正常收尾"
+        },
+        "max_hit": 1
+    },
+    "暗域_周一门闩": {
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1280,
+                    720
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "AnyuMondayGate",
+                "custom_action_param": {}
+            }
+        },
+        "focus": {
+            "Node.Action.Succeeded": "今天是周一，暗域照常跑",
+            "Node.Action.Failed": "今天不是周一，暗域不动"
+        },
+        "max_hit": 1,
+        "timeout": 15000,
+        "next": [
+            "暗域_主界面",
+            "暗域_入口门闩",
+            "暗域_找暗域",
+            "暗域_内海入口",
+            "暗域_进狄斯",
+            "暗域_进危机管理",
+            "暗域_破碎防线入口",
+            "[JumpBack]返回按钮",
+            "[JumpBack]主菜单"
+        ],
+        "on_error": [
+            "暗域_入口跳过"
+        ]
+    }
+}
