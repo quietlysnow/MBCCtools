@@ -43,9 +43,32 @@ python tools/recognition_probe.py 截图.png 密盟兑换/数量减号.png --roi
 python tools/recognition_probe.py 截图.png --ocr "获得物资"
 ```
 
-它会打印命中框与得分最高的几条结果（OCR 模式打印识别文本），需要 Pillow 或 opencv-python 之一。
+先在独立的开发虚拟环境中安装依赖：
+
+```bash
+python -m venv .scratch/venv
+# Windows 激活命令；macOS/Linux 使用 source .scratch/venv/bin/activate
+.scratch/venv/Scripts/activate
+python -m pip install -r requirements-dev.txt
+```
+
+`requirements-dev.txt` 在运行依赖之外增加 Pillow，仅供离线读图；发布 Agent 继续只安装 `requirements.txt`。已有 opencv-python 时，工具也可用它读图。
+
+工具默认按脚本位置定位仓库资源，从其他工作目录以绝对路径调用也可以；相对截图路径相对于当前工作目录。截图须按项目坐标基准准备为 1280×720，工具不会自动缩放，尺寸不同只打印提示。ROI 使用 `x,y,w,h`，默认 `0,0,0,0` 为全屏。
+
+文本模式打印命中框和得分最高的几条结果；OCR 模式同时打印文本。需要程序读取结果时使用 `--json`：
+
+```bash
+python tools/recognition_probe.py 截图.png 黄点.png --roi 140,150,40,40 --threshold 0.85 --json
+```
+
+退出码 **0 表示识别已完成，包含正常未命中**；判断命中请读 JSON 的 `hit`。退出码 1 表示截图、模板、资源或框架运行错误；退出码 2 表示参数错误。阈值须在 0–1 之间，ROI 须在截图内。模板路径相对资源包的 `image/`，模板不存在会报错。
+
+工具只调用 MaaFW 识别接口，控制器提供静态图片并拒绝点击、滑动、启动或停止应用，不连接模拟器。日志写入被忽略的 `.scratch/recognition-probe/`，截图与完整识别输出保留在本地，公开提交前检查账户信息。
 
 测差异包时加 `--overlay global` 或 `--overlay bilibili`。
+
+测试另一份运行资源时指定 `--resource-root /path/to/runtime/resource`，无需改脚本。它只加载资源，不会运行任务；离线命中不能替代实机流程和奖励到账验收。
 
 提交时改的是你 clone 的仓库，不是发布包里的副本。建议固定「仓库改 → 拷到你的本地文件夹 → 验证」这个方向，避免两边分叉。
 
