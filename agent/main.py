@@ -1116,6 +1116,14 @@ def _anyu_read_period(context, ocr_node):
     return None, (texts[0] if texts else "")
 
 
+def _anyu_week_key(ts):
+    """把时间戳换算成 ISO 周（2026-W45）。用周做去重，期数编号可能几周不变。"""
+    try:
+        return time.strftime("%G-W%V", time.localtime(float(ts)))
+    except (TypeError, ValueError):
+        return None
+
+
 def _anyu_cached_period(item, cache_hours):
     """缓存里的期数够新就直接用，省一次进场读 OCR。"""
     ts = item.get("seen_ts")
@@ -1164,7 +1172,7 @@ class AnyuMondayGate(CustomAction):
 
 @AgentServer.custom_action("AnyuWeeklyGate")
 class AnyuWeeklyGate(CustomAction):
-    """一期一次门闩。返回 False 时 pipeline 走 on_error（跳过本次）。"""
+    """一周一次门闩（暗域每周一重置）。返回 False 时 pipeline 走 on_error（跳过本次）。"""
 
     def run(self, context, argv):
         cfg = _anyu_cfg(argv)
@@ -1172,35 +1180,28 @@ class AnyuWeeklyGate(CustomAction):
         key = _anyu_instance_key()
         state = _anyu_load_state(state_path)
         item = _anyu_item(state, key)
-        last_period = item.get("last_period")
-        try:
-            last_period = int(last_period) if last_period is not None else None
-        except (TypeError, ValueError):
-            last_period = None
+        last_ts = item.get("last_run_ts")
         last_human = item.get("last_run") or "从未"
+        this_week = _anyu_week_key(time.time())
+        last_week = _anyu_week_key(last_ts) if last_ts is not None else None
 
         if cfg["force"]:
             _log(f"[anyu] 强制模式（实例 {key}，上次 {last_human}）：直接开跑")
             return True
 
+        if last_week is not None and last_week == this_week:
+            _log(f"[anyu] 本周（{this_week}）已经跑过了（实例 {key}，上次 {last_human}）：跳过")
+            return False
+
         period = _anyu_cached_period(item, cfg["cache_hours"])
-        raw = item.get("seen_period_raw", "")
-        source = "缓存"
         if period is None:
             period, raw = _anyu_read_period(context, cfg["ocr_node"])
-            source = "OCR"
             if period is not None:
                 state = _anyu_note_seen(state, key, period, raw)
                 _anyu_save_state(state_path, state)
 
-        if period is None:
-            _log(f"[anyu] 没读到期数（{source}，OCR={raw!r}，实例 {key}，上次 {last_human}）：读不到就放行")
-            return True
-        if last_period is not None and period == last_period:
-            _log(f"[anyu] 第 {period} 期已经跑过了（{source}，实例 {key}，上次 {last_human}）：跳过")
-            return False
-        _log(f"[anyu] 第 {period} 期还没跑（{source}，实例 {key}，上次第 "
-             f"{last_period if last_period is not None else '——'} 期）：开跑")
+        period_txt = f"第 {period} 期" if period is not None else "期数没读到"
+        _log(f"[anyu] 本周（{this_week}）还没跑（实例 {key}，上次 {last_human}，{period_txt}）：开跑")
         return True
 
 
