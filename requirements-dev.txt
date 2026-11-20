@@ -1,0 +1,3 @@
+# 仅用于本地资源检查与离线读图，不纳入发布 Agent 的依赖。
+-r requirements.txt
+Pillow==13.0.0
