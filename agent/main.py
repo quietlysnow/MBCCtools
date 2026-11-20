@@ -1207,11 +1207,31 @@ class AnyuWeeklyGate(CustomAction):
 
 @AgentServer.custom_action("AnyuMarkRun")
 class AnyuMarkRun(CustomAction):
+    """跑完一趟记下时间，供 AnyuWeeklyGate 按 ISO 周去重。
+
+    只写 last_run_ts / last_run 两个键：门闩读的就是它们。期数（seen_*）由门闩自己
+    进场读一次时顺手缓存，这里不再重复 OCR。写盘失败不影响任务结果 —— 门闩下次会
+    当作「本周没跑」再跑一趟，多跑一次总比整周漏跑好。
+    """
+
     def run(self, context, argv):
         cfg = _anyu_cfg(argv)
         state_path = _anyu_state_path(cfg["state_file"])
         key = _anyu_instance_key()
-        state = _anyu_load_st
+        state = _anyu_load_state(state_path)
+        now = time.time()
+        item = dict(_anyu_item(state, key))
+        item["last_run_ts"] = now
+        item["last_run"] = time.strftime("%Y-%m-%d %H:%M", time.localtime(now))
+        state[key] = item
+        try:
+            _anyu_save_state(state_path, state)
+        except OSError as e:
+            _log(f"[anyu] 状态写盘失败（{e}），本周的门闩可能失效：{state_path}")
+            return True
+        _log(f"[anyu] 已记录本次运行（实例 {key}，{item['last_run']}，"
+             f"ISO 周 {_anyu_week_key(now)}）")
+        return True
 
 
 def main():
